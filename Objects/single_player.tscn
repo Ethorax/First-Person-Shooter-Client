@@ -1,0 +1,269 @@
+[gd_scene load_steps=11 format=3 uid="uid://bxcbs3i3cw22c"]
+
+[ext_resource type="Script" path="res://Scripts/single_player.gd" id="1_hxx5e"]
+[ext_resource type="PackedScene" uid="uid://ds0p43gbtinbm" path="res://Objects/pistol.tscn" id="2_l1k50"]
+[ext_resource type="PackedScene" uid="uid://c12iijp3uibbu" path="res://Objects/sniper.tscn" id="3_x1u67"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_fxfxp"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_c00fc"]
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_gm3kf"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Camera3D:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Camera3D/Guns/Pistol:visible")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Camera3D/Guns/Sniper:visible")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Camera3D/Guns/Bazooka:visible")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+
+[sub_resource type="Animation" id="Animation_00u7p"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_6jwrx"]
+resource_name = "death"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 1.5708)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, -0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_xianb"]
+resource_name = "respawn"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, -0.5, 0), Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 1.5708), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("DeathMenu:visible")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8d5ss"]
+_data = {
+"RESET": SubResource("Animation_00u7p"),
+"death": SubResource("Animation_6jwrx"),
+"respawn": SubResource("Animation_xianb")
+}
+
+[node name="SinglePlayer" type="CharacterBody3D" groups=["Player"]]
+script = ExtResource("1_hxx5e")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("CapsuleMesh_fxfxp")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("CapsuleShape3D_c00fc")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_gm3kf")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.518173, 0)
+current = true
+
+[node name="Aim" type="RayCast3D" parent="Camera3D"]
+target_position = Vector3(0, 0, -100)
+
+[node name="Target" type="Node3D" parent="Camera3D/Aim"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
+
+[node name="ShootLocation" type="Marker3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.669376)
+
+[node name="Guns" type="Node3D" parent="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.690203, -0.518173, -0.847041)
+
+[node name="Pistol" parent="Camera3D/Guns" instance=ExtResource("2_l1k50")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+
+[node name="MeshInstance3D" parent="Camera3D/Guns/Pistol" index="0"]
+transform = Transform3D(0.951078, 0.308951, 0, -0.308951, 0.951078, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Sniper" parent="Camera3D/Guns" instance=ExtResource("3_x1u67")]
+transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0, 0, 0)
+visible = false
+
+[node name="ShotgunContainer" type="Node3D" parent="Camera3D"]
+
+[node name="RayCast3D" type="RayCast3D" parent="Camera3D/ShotgunContainer"]
+target_position = Vector3(0, 0, -100)
+
+[node name="RayCast3D2" type="RayCast3D" parent="Camera3D/ShotgunContainer"]
+target_position = Vector3(0, 0, -100)
+
+[node name="RayCast3D3" type="RayCast3D" parent="Camera3D/ShotgunContainer"]
+target_position = Vector3(0, 0, -100)
+
+[node name="RayCast3D4" type="RayCast3D" parent="Camera3D/ShotgunContainer"]
+target_position = Vector3(0, 0, -100)
+
+[node name="RayCast3D5" type="RayCast3D" parent="Camera3D/ShotgunContainer"]
+target_position = Vector3(0, 0, -100)
+
+[node name="RayCast3D6" type="RayCast3D" parent="Camera3D/ShotgunContainer"]
+target_position = Vector3(0, 0, -100)
+
+[node name="RayCast3D7" type="RayCast3D" parent="Camera3D/ShotgunContainer"]
+target_position = Vector3(0, 0, -100)
+
+[node name="RayCast3D8" type="RayCast3D" parent="Camera3D/ShotgunContainer"]
+target_position = Vector3(0, 0, -100)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_8d5ss")
+}
+
+[node name="DeathMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Respawn" type="Button" parent="DeathMenu"]
+layout_mode = 0
+offset_left = 475.0
+offset_top = 213.0
+offset_right = 695.0
+offset_bottom = 301.0
+text = "Respawn"
+
+[node name="Quit" type="Button" parent="DeathMenu"]
+layout_mode = 0
+offset_left = 494.0
+offset_top = 329.0
+offset_right = 679.0
+offset_bottom = 401.0
+text = "Quit
+"
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+scale = Vector2(2, 2.142)
+size_flags_horizontal = 8
+size_flags_vertical = 8
+
+[node name="MeshInstance2D" type="Polygon2D" parent="Control"]
+position = Vector2(288, 146.36)
+scale = Vector2(2, 2.142)
+polygon = PackedVector2Array(0, -2, 2, 0, 0, 2, -2, 0)
+
+[node name="Label" type="Label" parent="."]
+offset_left = 441.0
+offset_top = -2.0
+offset_right = 737.0
+offset_bottom = 42.0
+text = "(0,0,0)"
+
+[node name="ReloadTimer" type="Timer" parent="."]
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+stretch = true
+
+[node name="SubViewport" type="SubViewport" parent="CanvasLayer/SubViewportContainer"]
+transparent_bg = true
+handle_input_locally = false
+size = Vector2i(1152, 648)
+render_target_update_mode = 4
+
+[node name="SubviewportCamera" type="Camera3D" parent="CanvasLayer/SubViewportContainer/SubViewport"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.482052, 0)
+cull_mask = 524288
+
+[connection signal="pressed" from="DeathMenu/Respawn" to="." method="_on_respawn_pressed"]
+[connection signal="pressed" from="DeathMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+
+[editable path="Camera3D/Guns/Pistol"]

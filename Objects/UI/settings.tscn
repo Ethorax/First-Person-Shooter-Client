@@ -1,0 +1,95 @@
+[gd_scene load_steps=2 format=3 uid="uid://bt8k6ddnuhgug"]
+
+[ext_resource type="Script" path="res://Scripts/settings.gd" id="1_r6ilw"]
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -514.0
+offset_bottom = -407.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_r6ilw")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 637.0
+offset_bottom = 239.0
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.0
+offset_right = 31.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "Settings
+"
+
+[node name="VBoxContainer" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_left = 2.29
+offset_top = 48.355
+offset_right = 471.29
+offset_bottom = 226.355
+
+[node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "Volume
+"
+
+[node name="TabBar" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+
+[node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "FOV
+"
+
+[node name="TabBar" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+
+[node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "Mouse Sensitivity"
+
+[node name="TabBar" type="HSlider" parent="VBoxContainer/HBoxContainer3"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+
+[node name="Apply" type="Button" parent="."]
+layout_mode = 0
+offset_left = 233.0
+offset_top = 196.0
+offset_right = 285.0
+offset_bottom = 227.0
+text = "Apply"
+
+[node name="Discard" type="Button" parent="."]
+layout_mode = 0
+offset_left = 371.0
+offset_top = 195.0
+offset_right = 438.0
+offset_bottom = 226.0
+text = "Discard"
+
+[connection signal="pressed" from="Apply" to="." method="_on_apply_pressed"]
+[connection signal="pressed" from="Discard" to="." method="_on_discard_pressed"]

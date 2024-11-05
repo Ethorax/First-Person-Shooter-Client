@@ -1,0 +1,470 @@
+[gd_scene load_steps=28 format=3 uid="uid://48c4gt87x0i1"]
+
+[ext_resource type="PackedScene" uid="uid://cthfoq2i0kg0p" path="res://Graphics/Meshes/player.glb" id="1_lv1nl"]
+[ext_resource type="Script" path="res://Scripts/player_model.gd" id="2_sducw"]
+[ext_resource type="Texture2D" uid="uid://bk0xal5fph3lb" path="res://Graphics/Meshes/player_player.png" id="3_dtgsa"]
+
+[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_034fm"]
+load_path = "res://.godot/imported/player_player.png-bdc1ffc7dd29727a34be4dd4d950b210.s3tc.ctex"
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4ywy"]
+resource_local_to_scene = true
+albedo_texture = SubResource("CompressedTexture2D_034fm")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ket4"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vug6"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0yp4"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cra8u"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3boy"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbxm3"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1p5cb"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_047f3"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sv238"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjhg2"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6i4u"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmt1l"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6ryk"]
+albedo_texture = ExtResource("3_dtgsa")
+
+[sub_resource type="Animation" id="Animation_vrma8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chest/RightShoulder/RightBicep/RightForearm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.642159, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest/RightShoulder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.709249, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_t10k8"]
+resource_name = "pistol_grip"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chest/RightShoulder/RightBicep/RightForearm:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.642159, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest/RightShoulder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.709249, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3tqgo"]
+_data = {
+"RESET": SubResource("Animation_vrma8"),
+"pistol_grip": SubResource("Animation_t10k8")
+}
+
+[sub_resource type="Animation" id="Animation_qjcfx"]
+resource_name = "Idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pelvis/RightThigh/RightKnee/RightShin/RightFoot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(-0.275099, 0, 0), Vector3(-0.275099, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pelvis/RightThigh/RightKnee:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.154305, 0, 0), Vector3(0.34198, 0, 0), Vector3(0.154305, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pelvis/RightThigh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.261799, 0, 0), Vector3(0.261799, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pelvis/LeftThigh/LeftKnee/LeftShin/LeftFoot:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0.179245, 0, 0), Vector3(0.179245, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pelvis/LeftThigh/LeftKnee:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.0021991, 0, 0), Vector3(0.157411, 0, 0), Vector3(0.0021991, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pelvis/LeftThigh:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.261799, 0, 0), Vector3(-0.378928, 0, 0), Vector3(-0.261799, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.5, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1, 0), Vector3(0, -1.05, 0), Vector3(0, -1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_b8lm8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pelvis/RightThigh/RightKnee/RightShin/RightFoot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pelvis/RightThigh/RightKnee:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pelvis/RightThigh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pelvis/LeftThigh:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pelvis/LeftThigh/LeftKnee:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pelvis/LeftThigh/LeftKnee/LeftShin/LeftFoot:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_iw4xm"]
+resource_name = "Running"
+length = 2.2
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Pelvis/RightThigh/RightKnee/RightShin/RightFoot:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.543775, 0, 0), Vector3(0.234729, 0, 0), Vector3(0.0733038, 0, 0), Vector3(-0.160123, 0.0440438, -0.0202984), Vector3(0.225246, 0.000994424, -0.000293616), Vector3(-0.0722163, 0.0334776, -0.0142371), Vector3(0.134472, 0.0336946, -0.00730171), Vector3(0.464258, 0, 0), Vector3(0.0737576, 0, 0), Vector3(-0.370341, 0, 0), Vector3(0.0980003, 0, 0), Vector3(0.543775, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Pelvis/RightThigh/RightKnee:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.439038, 0, 0), Vector3(1.46133, 0, 0), Vector3(1.82158, 0, 0), Vector3(1.97945, 0, 0), Vector3(2.16005, 0, 0), Vector3(1.11177, 0, 0), Vector3(0.742254, 0, 0), Vector3(0.287089, 0, 0), Vector3(0.377864, 0, 0), Vector3(0.561123, 0, 0), Vector3(0.0374197, 0, 0), Vector3(0.439038, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Pelvis/RightThigh:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.598264, 0, 0), Vector3(0.1494, 0, 0), Vector3(-0.0400029, 0, 0), Vector3(-0.45225, 0, 0), Vector3(-1.03941, 0, 0), Vector3(-1.1719, 0, 0), Vector3(-0.943263, 0, 0), Vector3(-0.714451, 0, 0), Vector3(-0.475253, 0, 0), Vector3(-0.199578, 0, 0), Vector3(0.421776, 0, 0), Vector3(0.598264, 0, 0)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Pelvis/LeftThigh:rotation")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.08106, 0, 0), Vector3(-0.759515, 0, 0), Vector3(-0.404236, 0, 0), Vector3(-0.294507, 0, 0), Vector3(0.093567, 0, 0), Vector3(0.527962, 0, 0), Vector3(0.614216, 0, 0), Vector3(0.290301, 0, 0), Vector3(-0.147463, 0, 0), Vector3(-0.565347, 0, 0), Vector3(-1.12272, 0, 0), Vector3(-1.08106, 0, 0)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Pelvis/LeftThigh/LeftKnee:rotation")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.05385, 0, 0), Vector3(0.455549, 0, 0), Vector3(0.295345, 0, 0), Vector3(0.532046, 0, 0), Vector3(0.531174, 0, 0), Vector3(0.170292, 0, 0), Vector3(0.606502, 0, 0), Vector3(1.75545, 0, 0), Vector3(2.39627, 0, 0), Vector3(2.45442, 0, 0), Vector3(2.1016, 0, 0), Vector3(1.05385, 0, 0)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Pelvis/LeftThigh/LeftKnee/LeftShin/LeftFoot:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2, 1.4, 1.6, 1.8, 2, 2.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.125821, 0, 0), Vector3(0.231483, 0, 0), Vector3(-0.244259, 0, 0), Vector3(-0.11116, 0, 0), Vector3(0.437502, 0, 0), Vector3(0.204675, 0, 0), Vector3(-0.0414166, 0, 0), Vector3(-0.220976, 0, 0), Vector3(0.0345924, 0, 0), Vector3(-0.335452, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gt528"]
+_data = {
+"Idle": SubResource("Animation_qjcfx"),
+"RESET": SubResource("Animation_b8lm8"),
+"Running": SubResource("Animation_iw4xm")
+}
+
+[sub_resource type="BoxMesh" id="BoxMesh_phhay"]
+size = Vector3(10, 1, 10)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_apmo8"]
+properties/0/path = NodePath("Pelvis Animator:current_animation")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath("Chest Animator:current_animation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Chest:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+
+[node name="playerModel" instance=ExtResource("1_lv1nl")]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1, 0)
+script = ExtResource("2_sducw")
+
+[node name="Pelvis" parent="." index="0"]
+material_override = SubResource("StandardMaterial3D_b4ywy")
+
+[node name="LeftThigh" parent="Pelvis" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193497, -0.132444, -0.0319123)
+material_override = SubResource("StandardMaterial3D_6ket4")
+
+[node name="LeftKnee" parent="Pelvis/LeftThigh" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0178276, -1.00973, -0.0161812)
+
+[node name="LeftShin" parent="Pelvis/LeftThigh/LeftKnee" index="0"]
+material_override = SubResource("StandardMaterial3D_0vug6")
+
+[node name="LeftFoot" parent="Pelvis/LeftThigh/LeftKnee/LeftShin" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0216177, -0.884766, -0.00562763)
+
+[node name="RightThigh" parent="Pelvis" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218101, -0.1305, -0.0319123)
+material_override = SubResource("StandardMaterial3D_l0yp4")
+
+[node name="RightKnee" parent="Pelvis/RightThigh" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0178276, -1.02804, -0.0161815)
+
+[node name="RightShin" parent="Pelvis/RightThigh/RightKnee" index="0"]
+material_override = SubResource("StandardMaterial3D_cra8u")
+
+[node name="RightFoot" parent="Pelvis/RightThigh/RightKnee/RightShin" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -0.0216175, -0.865626, 0.000402629)
+
+[node name="LeftBicep" parent="Chest/LeftShoulder" index="0"]
+material_override = SubResource("StandardMaterial3D_g3boy")
+
+[node name="LeftForearm" parent="Chest/LeftShoulder/LeftBicep" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.176723, -0.435823, 0.00277114)
+material_override = SubResource("StandardMaterial3D_mbxm3")
+
+[node name="LeftHand" parent="Chest/LeftShoulder/LeftBicep/LeftForearm" index="0"]
+material_override = SubResource("StandardMaterial3D_1p5cb")
+
+[node name="LeftThumb" parent="Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand" index="0"]
+material_override = SubResource("StandardMaterial3D_047f3")
+
+[node name="Cube_049" parent="Chest/Neck/Head" index="0"]
+material_override = SubResource("StandardMaterial3D_sv238")
+
+[node name="RightShoulder" parent="Chest" index="2"]
+transform = Transform3D(1, 0, 0, 0, 0.758851, 0.651264, 0, -0.651264, 0.758851, -0.454899, 0.243722, -0.193662)
+
+[node name="RightBicep" parent="Chest/RightShoulder" index="0"]
+material_override = SubResource("StandardMaterial3D_sjhg2")
+
+[node name="RightForearm" parent="Chest/RightShoulder/RightBicep" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.800804, 0.598926, 0, -0.598926, 0.800804, -0.20855, -0.449282, 0.0067659)
+material_override = SubResource("StandardMaterial3D_i6i4u")
+
+[node name="RightHand" parent="Chest/RightShoulder/RightBicep/RightForearm" index="0"]
+material_override = SubResource("StandardMaterial3D_gmt1l")
+
+[node name="RightThumb" parent="Chest/RightShoulder/RightBicep/RightForearm/RightHand" index="0"]
+material_override = SubResource("StandardMaterial3D_b6ryk")
+
+[node name="GunHand" type="Marker3D" parent="Chest/RightShoulder/RightBicep/RightForearm/RightHand" index="1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.160267, 0.0357358)
+
+[node name="Chest Animator" type="AnimationPlayer" parent="." index="2"]
+libraries = {
+"": SubResource("AnimationLibrary_3tqgo")
+}
+
+[node name="Pelvis Animator" type="AnimationPlayer" parent="." index="3"]
+libraries = {
+"": SubResource("AnimationLibrary_gt528")
+}
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="4"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.412784, -0.0103587)
+visible = false
+mesh = SubResource("BoxMesh_phhay")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="5"]
+replication_config = SubResource("SceneReplicationConfig_apmo8")

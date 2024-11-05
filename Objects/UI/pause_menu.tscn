@@ -1,0 +1,79 @@
+[gd_scene load_steps=2 format=3 uid="uid://c5kiwpxpjprmm"]
+
+[ext_resource type="Script" path="res://Objects/UI/pause_menu.gd" id="1_7vwgq"]
+
+[node name="PauseMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_7vwgq")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1159.0
+offset_bottom = 660.0
+
+[node name="Resume" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -140.0
+offset_right = 35.0
+offset_bottom = -109.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Resume
+"
+
+[node name="Settings" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -35.0
+offset_top = -106.0
+offset_right = 35.0
+offset_bottom = -75.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Settings
+"
+
+[node name="QuitMenu" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -50.0
+offset_top = -72.0
+offset_right = 50.0
+offset_bottom = -41.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit - Menu"
+
+[node name="QuitDesktop" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -59.5
+offset_top = -37.0
+offset_right = 59.5
+offset_bottom = -6.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Quit - Desktop"

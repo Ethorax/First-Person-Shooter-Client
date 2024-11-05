@@ -1,0 +1,114 @@
+[gd_scene load_steps=13 format=3 uid="uid://dfggua15rmjsc"]
+
+[ext_resource type="Script" path="res://Scripts/multiplayer_test.gd" id="1_ylr5b"]
+[ext_resource type="PackedScene" uid="uid://da3tqj3m5lpc3" path="res://Objects/Player.tscn" id="2_fp4bl"]
+[ext_resource type="PackedScene" uid="uid://wi4yefj7x5n8" path="res://Objects/enemy.tscn" id="3_8tjo4"]
+[ext_resource type="Texture2D" uid="uid://cke6cbxlhmvsg" path="res://icon.svg" id="4_31wca"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_4pr3f"]
+size = Vector3(50, 1, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q1drs"]
+data = PackedVector3Array(-25, 0.5, 25, 25, 0.5, 25, -25, -0.5, 25, 25, 0.5, 25, 25, -0.5, 25, -25, -0.5, 25, 25, 0.5, -25, -25, 0.5, -25, 25, -0.5, -25, -25, 0.5, -25, -25, -0.5, -25, 25, -0.5, -25, 25, 0.5, 25, 25, 0.5, -25, 25, -0.5, 25, 25, 0.5, -25, 25, -0.5, -25, 25, -0.5, 25, -25, 0.5, -25, -25, 0.5, 25, -25, -0.5, -25, -25, 0.5, 25, -25, -0.5, 25, -25, -0.5, -25, 25, 0.5, 25, -25, 0.5, 25, 25, 0.5, -25, -25, 0.5, 25, -25, 0.5, -25, 25, 0.5, -25, -25, -0.5, 25, 25, -0.5, 25, -25, -0.5, -25, 25, -0.5, 25, 25, -0.5, -25, -25, -0.5, -25)
+
+[sub_resource type="Gradient" id="Gradient_qlmaq"]
+colors = PackedColorArray(0, 0.168627, 0.466667, 1, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_40hbs"]
+gradient = SubResource("Gradient_qlmaq")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_v6pj4"]
+panorama = SubResource("GradientTexture2D_40hbs")
+
+[sub_resource type="Sky" id="Sky_xb3xi"]
+sky_material = SubResource("PanoramaSkyMaterial_v6pj4")
+
+[sub_resource type="Environment" id="Environment_pgb5e"]
+background_mode = 2
+sky = SubResource("Sky_xb3xi")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_hyqgq"]
+size = Vector3(1, 1, 0.165771)
+
+[node name="Multiplayer Test" type="Node3D"]
+script = ExtResource("1_ylr5b")
+player_scene = ExtResource("2_fp4bl")
+
+[node name="Host" type="Button" parent="."]
+offset_left = 435.0
+offset_right = 479.0
+offset_bottom = 31.0
+text = "Host"
+
+[node name="Join" type="Button" parent="."]
+offset_left = 718.0
+offset_right = 756.0
+offset_bottom = 31.0
+text = "Join"
+
+[node name="IP" type="TextEdit" parent="."]
+offset_left = 805.0
+offset_top = -2.0
+offset_right = 1003.0
+offset_bottom = 38.0
+text = "localhost"
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+spawn_path = NodePath("..")
+
+[node name="Camera3D" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.62708, 0.778955, 0, -0.778955, 0.62708, 0, 27.1978, 19.7364)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_4pr3f")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_q1drs")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_pgb5e")
+
+[node name="Enemy" parent="." instance=ExtResource("3_8tjo4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1576, 1, -17)
+
+[node name="Enemy2" parent="." instance=ExtResource("3_8tjo4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.84117, 1, -17)
+
+[node name="Enemy3" parent="." instance=ExtResource("3_8tjo4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.61825, 1, -17)
+
+[node name="Enemy4" parent="." instance=ExtResource("3_8tjo4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90386, 1, -17)
+
+[node name="Enemy5" parent="." instance=ExtResource("3_8tjo4")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85111, 1, -17)
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6929, 3.04548, -21.8137)
+
+[node name="Marker3D2" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0631, 3.04548, -21.8137)
+
+[node name="Marker3D3" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6929, 3.04548, 16.4709)
+
+[node name="Marker3D4" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0631, 3.04548, 16.4709)
+
+[node name="Target" type="StaticBody3D" parent="."]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -17.6423, 3.78274, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Target"]
+texture = ExtResource("4_31wca")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Target"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0162413)
+shape = SubResource("BoxShape3D_hyqgq")
+
+[connection signal="pressed" from="Host" to="." method="_on_host_pressed"]
+[connection signal="pressed" from="Join" to="." method="_on_join_pressed"]

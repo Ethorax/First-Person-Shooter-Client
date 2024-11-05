@@ -1,0 +1,108 @@
+[gd_scene load_steps=16 format=3 uid="uid://j1bpuvhtc15w"]
+
+[ext_resource type="Script" path="res://Scripts/singleplayer_test.gd" id="1_iy764"]
+[ext_resource type="PackedScene" uid="uid://wi4yefj7x5n8" path="res://Objects/enemy.tscn" id="1_n814b"]
+[ext_resource type="Texture2D" uid="uid://7spl477x7qsm" path="res://Graphics/normal/orange/orange_texture7_text.png" id="2_ssv2h"]
+[ext_resource type="Texture2D" uid="uid://cke6cbxlhmvsg" path="res://icon.svg" id="2_un1x3"]
+[ext_resource type="PackedScene" uid="uid://bxcbs3i3cw22c" path="res://Objects/single_player.tscn" id="3_m863s"]
+[ext_resource type="PackedScene" uid="uid://b0r0pobkl8gyb" path="res://Objects/weapon_pickup.tscn" id="6_52024"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g6h7h"]
+albedo_texture = ExtResource("2_ssv2h")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_b0yja"]
+material = SubResource("StandardMaterial3D_g6h7h")
+size = Vector3(50, 5, 50)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_x4auy"]
+data = PackedVector3Array(-25, 2.5, 25, 25, 2.5, 25, -25, -2.5, 25, 25, 2.5, 25, 25, -2.5, 25, -25, -2.5, 25, 25, 2.5, -25, -25, 2.5, -25, 25, -2.5, -25, -25, 2.5, -25, -25, -2.5, -25, 25, -2.5, -25, 25, 2.5, 25, 25, 2.5, -25, 25, -2.5, 25, 25, 2.5, -25, 25, -2.5, -25, 25, -2.5, 25, -25, 2.5, -25, -25, 2.5, 25, -25, -2.5, -25, -25, 2.5, 25, -25, -2.5, 25, -25, -2.5, -25, 25, 2.5, 25, -25, 2.5, 25, 25, 2.5, -25, -25, 2.5, 25, -25, 2.5, -25, 25, 2.5, -25, -25, -2.5, 25, 25, -2.5, 25, -25, -2.5, -25, 25, -2.5, 25, 25, -2.5, -25, -25, -2.5, -25)
+
+[sub_resource type="Gradient" id="Gradient_beb7t"]
+colors = PackedColorArray(0, 0.168627, 0.466667, 1, 0, 1, 1, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_rok0n"]
+gradient = SubResource("Gradient_beb7t")
+fill_from = Vector2(1, 1)
+
+[sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_2047n"]
+panorama = SubResource("GradientTexture2D_rok0n")
+
+[sub_resource type="Sky" id="Sky_6v3u3"]
+sky_material = SubResource("PanoramaSkyMaterial_2047n")
+
+[sub_resource type="Environment" id="Environment_nfwj4"]
+background_mode = 1
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_6v3u3")
+reflected_light_source = 2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_qjeo1"]
+size = Vector3(1, 1, 0.165771)
+
+[node name="SingleplayerTest" type="Node3D"]
+script = ExtResource("1_iy764")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -2, 0)
+mesh = SubResource("BoxMesh_b0yja")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="MeshInstance3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="MeshInstance3D/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_x4auy")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_nfwj4")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="WorldEnvironment"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 14, 0)
+sky_mode = 1
+
+[node name="Enemy" parent="." instance=ExtResource("1_n814b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 12.1576, 1, -17)
+
+[node name="Enemy2" parent="." instance=ExtResource("1_n814b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.84117, 1, -17)
+
+[node name="Enemy3" parent="." instance=ExtResource("1_n814b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 7.61825, 1, -17)
+
+[node name="Enemy4" parent="." instance=ExtResource("1_n814b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.90386, 1, -17)
+
+[node name="Enemy5" parent="." instance=ExtResource("1_n814b")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.85111, 1, -17)
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6929, 3.04548, -21.8137)
+
+[node name="Marker3D2" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0631, 3.04548, -21.8137)
+
+[node name="Marker3D3" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 19.6929, 3.04548, 16.4709)
+
+[node name="Marker3D4" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.0631, 3.04548, 16.4709)
+
+[node name="Target" type="StaticBody3D" parent="."]
+transform = Transform3D(-2.18557e-07, 0, 5, 0, 5, 0, -5, 0, -2.18557e-07, -17.6423, 3.78274, 0)
+
+[node name="Sprite3D" type="Sprite3D" parent="Target"]
+texture = ExtResource("2_un1x3")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Target"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.0162413)
+shape = SubResource("BoxShape3D_qjeo1")
+
+[node name="SinglePlayer" parent="." instance=ExtResource("3_m863s")]
+
+[node name="WeaponPickup" parent="." instance=ExtResource("6_52024")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.07039, 0.5, -1.12568)
+
+[node name="WeaponPickup2" parent="." instance=ExtResource("6_52024")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 11.5937, 0.5, -1.12568)
+gun_model = "res://Objects/Shotgun.tscn"

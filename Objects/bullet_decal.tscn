@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://d3pwpj7abtn6j"]
+
+[ext_resource type="Texture2D" uid="uid://dvg4grfp3iolb" path="res://Graphics/bullethole.png" id="1_8pwwg"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwcm6"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_8pwwg")
+
+[sub_resource type="QuadMesh" id="QuadMesh_s2hh3"]
+material = SubResource("StandardMaterial3D_kwcm6")
+size = Vector2(0.1, 0.1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_qjyln"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+
+[node name="BulletDecal" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, -0.02)
+mesh = SubResource("QuadMesh_s2hh3")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_qjyln")

@@ -1,0 +1,106 @@
+[gd_scene load_steps=5 format=3 uid="uid://cu2yutayj2ylg"]
+
+[ext_resource type="PackedScene" uid="uid://ba4h3pratxw34" path="res://Graphics/Meshes/Guns/shotgun.glb" id="1_2tb56"]
+
+[sub_resource type="Animation" id="Animation_kxmke"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shotgun/Shotgun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shotgun/Shotgun:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-3.35239, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shotgun/Shotgun/Cube:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(3.586, -1.932, -0.035)]
+}
+
+[sub_resource type="Animation" id="Animation_6n3ha"]
+resource_name = "fire"
+step = 0.05
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("shotgun/Shotgun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-3.35239, 0, 0), Vector3(-5.44067, 0, 0), Vector3(-3.35239, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("shotgun/Shotgun:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.05, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 0.42305), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("shotgun/Shotgun/Cube:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.4, 0.55, 0.7),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(4.7407, -1.93237, -0.0346525), Vector3(3.586, -1.932, -0.035), Vector3(4.7407, -1.93237, -0.0346525)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_0fhqk"]
+_data = {
+"RESET": SubResource("Animation_kxmke"),
+"fire": SubResource("Animation_6n3ha")
+}
+
+[node name="Shotgun" type="Node3D"]
+
+[node name="shotgun" parent="." instance=ExtResource("1_2tb56")]
+transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, 0, 0)
+
+[node name="Shotgun" parent="shotgun" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.302598, 0, 0, 0, 0.339363, -3.35239, 0, 0)
+
+[node name="Cube" parent="shotgun/Shotgun" index="0"]
+transform = Transform3D(1.4556, 0, 0, -2.38419e-07, 1.21451, 0, 0, 0, 1.08294, 3.586, -1.932, -0.035)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_0fhqk")
+}
+
+[editable path="shotgun"]

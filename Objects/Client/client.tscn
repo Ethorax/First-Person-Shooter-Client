@@ -1,0 +1,89 @@
+[gd_scene load_steps=3 format=3 uid="uid://c3xsjy74q11mh"]
+
+[ext_resource type="Texture2D" uid="uid://bxribisrtollw" path="res://Graphics/normal/orange/orange_texture4_text.png" id="1_g8q3l"]
+[ext_resource type="Script" path="res://Objects/Client/client.gd" id="1_s05ac"]
+
+[node name="Client" type="Node"]
+script = ExtResource("1_s05ac")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Polygon2D" type="Polygon2D" parent="CanvasLayer"]
+texture_repeat = 2
+texture = ExtResource("1_g8q3l")
+polygon = PackedVector2Array(-22, 12, -36, 695, 1175, 693, 1180, -64, -36, -53)
+
+[node name="Connect" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -36.0
+offset_top = -62.0
+offset_right = 36.0
+offset_bottom = -31.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "Connect"
+
+[node name="Quit" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -4.0
+offset_top = -4.0
+offset_right = 4.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+text = "Quit"
+
+[node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -71.0
+offset_top = -113.0
+offset_right = 70.0
+offset_bottom = -73.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "localhost"
+placeholder_text = "IP ADDRESS"
+
+[node name="Customize" type="Control" parent="CanvasLayer"]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="ColorPicker" type="ColorPicker" parent="CanvasLayer/Customize"]
+layout_mode = 0
+offset_left = 827.0
+offset_top = 65.0
+offset_right = 1125.0
+offset_bottom = 641.0
+edit_alpha = false
+presets_visible = false
+
+[node name="Username" type="LineEdit" parent="CanvasLayer/Customize"]
+layout_mode = 0
+offset_left = 829.0
+offset_top = 26.0
+offset_right = 1123.0
+offset_bottom = 57.0
+placeholder_text = "Username"
+alignment = 1
+
+[node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("res://Objects/rocket.tscn", "res://Objects/explosion.tscn")
+spawn_path = NodePath("..")
+
+[connection signal="pressed" from="CanvasLayer/Connect" to="." method="_on_connect_pressed"]
+[connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]

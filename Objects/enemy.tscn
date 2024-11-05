@@ -1,0 +1,21 @@
+[gd_scene load_steps=5 format=3 uid="uid://wi4yefj7x5n8"]
+
+[ext_resource type="Script" path="res://Scripts/enemy.gd" id="1_2ecgl"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_m5wxe"]
+albedo_color = Color(1, 0.3241, 0.258944, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_87iqd"]
+material = SubResource("StandardMaterial3D_m5wxe")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_gg5oo"]
+data = PackedVector3Array(-0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, -0.5, 0.5, -0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, 0.5, -0.5, 0.5, 0.5, 0.5, 0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, 0.5, 0.5, -0.5, 0.5, -0.5, -0.5, -0.5, 0.5, -0.5, 0.5, 0.5, -0.5, -0.5, -0.5, -0.5, -0.5)
+
+[node name="Enemy" type="CharacterBody3D"]
+script = ExtResource("1_2ecgl")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_87iqd")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("ConcavePolygonShape3D_gg5oo")

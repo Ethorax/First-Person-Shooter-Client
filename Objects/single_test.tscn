@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2er3rxpu5ud"]
+
+[ext_resource type="PackedScene" uid="uid://da3tqj3m5lpc3" path="res://Objects/Player.tscn" id="1_8a5da"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_50dix"]
+size = Vector3(50, 1, 50)
+
+[node name="SingleTest" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_50dix")
+
+[node name="Player" parent="." instance=ExtResource("1_8a5da")]

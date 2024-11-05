@@ -1,0 +1,110 @@
+[gd_scene load_steps=12 format=3 uid="uid://e6x2e401y71c"]
+
+[ext_resource type="PackedScene" uid="uid://cawy6oxkwkvaw" path="res://Graphics/Meshes/Guns/flamer.glb" id="1_7vcp2"]
+[ext_resource type="Shader" path="res://Shaders/flame.gdshader" id="2_ak4ry"]
+
+[sub_resource type="Animation" id="Animation_atko0"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flame:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_n5ql4"]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Flame:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ehtpk"]
+_data = {
+"RESET": SubResource("Animation_atko0"),
+"fire": SubResource("Animation_n5ql4")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48c5t"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_rnq1g"]
+material = SubResource("StandardMaterial3D_48c5t")
+size = Vector3(0.25, 0.25, 0.25)
+
+[sub_resource type="Gradient" id="Gradient_oq5hr"]
+colors = PackedColorArray(1, 0, 0.666667, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_v5t3x"]
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_p04yb"]
+render_priority = 0
+shader = ExtResource("2_ak4ry")
+shader_parameter/detail_strength = 3.0
+shader_parameter/scroll_speed = 1.2
+shader_parameter/fire_height = 1.0
+shader_parameter/fire_shape = 1.5
+shader_parameter/fire_thickness = 4.615
+shader_parameter/fire_sharpness = 1.0
+shader_parameter/intensity = 1.0
+shader_parameter/noise_octaves = 6
+shader_parameter/noise_lacunarity = 3.0
+shader_parameter/noise_gain = 0.5
+shader_parameter/noise_amplitude = 1.0
+shader_parameter/noise_frequency = 1.5
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_ogpcr"]
+material = SubResource("ShaderMaterial_p04yb")
+orientation = 0
+
+[node name="Flamer" type="Node3D"]
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, 0, 0)
+
+[node name="flamer" parent="." instance=ExtResource("1_7vcp2")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_ehtpk")
+}
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.024303, 2.37682)
+emitting = false
+lifetime = 0.55
+mesh = SubResource("BoxMesh_rnq1g")
+particle_flag_align_y = true
+gravity = Vector3(0, 2, 0)
+scale_amount_min = 0.1
+scale_amount_max = 0.2
+color = Color(1, 0.15, 0, 1)
+color_ramp = SubResource("Gradient_oq5hr")
+color_initial_ramp = SubResource("Gradient_v5t3x")
+
+[node name="Flame" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.9201)
+emitting = false
+mesh = SubResource("PlaneMesh_ogpcr")
+emission_shape = 1
+emission_sphere_radius = 0.25
+direction = Vector3(0, 0, 1)
+spread = 0.7
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 4.0
+initial_velocity_max = 4.0
+scale_amount_min = 0.5
+scale_amount_max = 1.25

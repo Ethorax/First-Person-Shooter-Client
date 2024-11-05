@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://b2asxyc03msil"]
+
+[ext_resource type="Script" path="res://Scripts/kill_plane.gd" id="1_cmgk1"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nmplq"]
+size = Vector3(1000, 1, 1000)
+
+[node name="KillPlane" type="Area3D"]
+script = ExtResource("1_cmgk1")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_nmplq")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
