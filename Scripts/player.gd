@@ -3,6 +3,7 @@ extends CharacterBody3D
 @onready var camera_3d: Camera3D = $Camera3D
 @onready var aim: RayCast3D = $Camera3D/Aim
 @onready var shotgun_container: Node3D = $Camera3D/ShotgunContainer
+#@onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
 
 
 
@@ -75,8 +76,11 @@ func _enter_tree() -> void:
 	
 	
 	
+	
 func _ready() -> void:
 	#position = Global.spawn_points.pick_random().position
+	#multiplayer_synchronizer.replication_config.add_property(name+":position")
+	
 	if is_multiplayer_authority():
 		#player_model.update_color(color)
 		username_label.text = username
@@ -156,6 +160,7 @@ func _input(event):
 			$CanvasLayer/Scoreboard.hide()
 	
 func process_movement(delta):
+	delta
 	if !in_water:
 		direction = Vector3.ZERO
 		
@@ -214,7 +219,7 @@ func fire_gun():
 						var b = BULLET_DECAL.instantiate()
 						get_parent().add_child(b)
 						b.global_position = aim.get_collision_point()
-						print(aim.get_collision_point())
+						#print(aim.get_collision_point())
 						var surface_dir_up = Vector3(0,1,0)
 						var surface_dir_down = Vector3(0,-1,0)
 						if aim.get_collision_normal() == surface_dir_up:
@@ -226,7 +231,7 @@ func fire_gun():
 				var pistol_anim = $Camera3D/Guns/Pistol/AnimationPlayer as AnimationPlayer	
 				pistol_anim.stop()
 				pistol_anim.play("fire")
-				print(aim.rotation_degrees)
+				#print(aim.rotation_degrees)
 				aim.rotation_degrees = Vector3.ZERO
 		if $Camera3D/Guns.get_node_or_null("Sniper"):
 			if($Camera3D/Guns/Sniper.visible):
@@ -244,7 +249,7 @@ func fire_gun():
 						var b = BULLET_DECAL.instantiate()
 						get_parent().add_child(b)
 						b.global_position = aim.get_collision_point()
-						print(aim.get_collision_point())
+						#print(aim.get_collision_point())
 						var surface_dir_up = Vector3(0,1,0)
 						var surface_dir_down = Vector3(0,-1,0)
 						if aim.get_collision_normal() == surface_dir_up:
@@ -256,7 +261,7 @@ func fire_gun():
 				var sniper_anim = $Camera3D/Guns/Sniper/AnimationPlayer as AnimationPlayer	
 				sniper_anim.stop()
 				sniper_anim.play("fire")
-				print(aim.rotation_degrees)
+				#print(aim.rotation_degrees)
 				aim.rotation_degrees = Vector3.ZERO
 					
 					
@@ -302,7 +307,7 @@ func fire_gun():
 							var b = BULLET_DECAL.instantiate()
 							get_parent().add_child(b)
 							b.global_position = shotgun_aim.get_collision_point()
-							print(shotgun_aim.get_collision_point())
+							#print(shotgun_aim.get_collision_point())
 							var surface_dir_up = Vector3(0,1,0)
 							var surface_dir_down = Vector3(0,-1,0)
 							if shotgun_aim.get_collision_normal() == surface_dir_up:
@@ -445,3 +450,17 @@ func update_health():
 	
 func update_colors():
 	player_model.get_node("Pelvis").material_override.albedo_color = color
+	player_model.get_node("Pelvis/RightThigh").material_override.albedo_color = color
+	player_model.get_node("Pelvis/LeftThigh").material_override.albedo_color = color
+	player_model.get_node("Pelvis/RightThigh/RightKnee/RightShin").material_override.albedo_color = color
+	player_model.get_node("Pelvis/LeftThigh/LeftKnee/LeftShin").material_override.albedo_color = color
+	player_model.get_node("Chest/RightShoulder/RightBicep").material_override.albedo_color = color
+	player_model.get_node("Chest/RightShoulder/RightBicep/RightForearm").material_override.albedo_color = color
+	player_model.get_node("Chest/RightShoulder/RightBicep/RightForearm/RightHand").material_override.albedo_color = color
+	player_model.get_node("Chest/RightShoulder/RightBicep/RightForearm/RightHand/RightThumb").material_override.albedo_color = color
+
+	player_model.get_node("Chest/LeftShoulder/LeftBicep").material_override.albedo_color = color
+	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm").material_override.albedo_color = color
+	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand").material_override.albedo_color = color
+	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand/LeftThumb").material_override.albedo_color = color
+	player_model.get_node("Chest/Neck/Head/Cube_049").material_override.albedo_color = color

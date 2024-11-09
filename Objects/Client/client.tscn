@@ -82,7 +82,7 @@ placeholder_text = "Username"
 alignment = 1
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Objects/rocket.tscn", "res://Objects/explosion.tscn")
+_spawnable_scenes = PackedStringArray("res://Objects/rocket.tscn", "res://Objects/explosion.tscn", "res://Objects/Player.tscn")
 spawn_path = NodePath("..")
 
 [connection signal="pressed" from="CanvasLayer/Connect" to="." method="_on_connect_pressed"]

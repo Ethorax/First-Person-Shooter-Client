@@ -16,16 +16,13 @@ func _ready() -> void:
 	multiplayer.connection_failed.connect(OnConnectionFailed)
 	#connect_to_server()
 	#print(self.get_path())
-	#spawner.add_spawnable_scene("res://Objects/rocket.tscn")
-	#spawner.add_spawnable_scene("res://Objects/explosion.tscn")
-	#spawner.spawn_path = ".."
-	#add_child(spawner)
+	spawner.add_spawnable_scene("res://Objects/rocket.tscn")
+	spawner.add_spawnable_scene("res://Objects/explosion.tscn")
+	spawner.spawn_path = ".."
+	spawner.add_spawnable_scene("res://Objects/Player.tscn")
+	add_child(spawner)
 	
 	
-
-
-func _exit_tree() -> void:
-	print("Hello")
 
 func connect_to_server():
 	
@@ -41,27 +38,33 @@ func OnConnectionFailed():
 func OnConnectionSucceeded():
 	print("Successfully Connected")
 	
-@rpc("any_peer","call_remote")
+@rpc("any_peer","call_remote","reliable")
 func recieve_map(map):
-	print(map)
+	print("Receiving Map: "+map)
 	enter_game()
 	
 func enter_game():
 	get_tree().root.get_node("Client").get_node("CanvasLayer").hide()
 	var map_instance = load("res://Objects/Maps/DefaultDM.tscn").instantiate()
 	get_tree().root.get_node("Client").add_child(map_instance)
+	print("Entering Game...")
 	
 	
 
 func add_player_character(peer_id, color):
+	
+	print("Adding player: "+str(peer_id)+" With color: "+ str(color))
+	
 	connected_peer_ids.append(peer_id)
 	var player_character = preload("res://Objects/Player.tscn").instantiate()
-	
+	#await get_tree().create_timer(1).timeout
+	add_child(player_character)
 	player_character.color = color
 	player_character.position = Global.spawn_points.pick_random()
-	player_character.set_multiplayer_authority(int(peer_id),true)
+	player_character.set_multiplayer_authority(int(peer_id))
 	player_character.name = str(peer_id)
-	add_child(player_character)
+	
+	#add_child(player_character)
 	
 	if int(peer_id) == multiplayer.get_unique_id():
 		local_player_character = player_character
@@ -82,14 +85,14 @@ func send_rocket(direction, position,target,fly_direction,player_name):
 func add_rocket(direction, position,target,fly_direction,player_name):
 	rpc_id(1,"send_rocket",direction, position,target,fly_direction,player_name)
 
-@rpc
+@rpc("reliable")
 func add_newly_connected_player_character(new_peer_id, color):
 	add_player_character(new_peer_id, color)
 	
-@rpc
+@rpc("reliable")
 func add_previously_connected_player_characters(peer_ids,peer_names,peer_colors):
 	for i in peer_ids.size():
-		
+		#print(peer_colors[i])
 		
 		
 		add_player_character(peer_ids[i],peer_colors[i])
@@ -97,6 +100,7 @@ func add_previously_connected_player_characters(peer_ids,peer_names,peer_colors)
 @rpc("any_peer")
 func remove_player(player_id = 1):
 	player_id
+	print("Player " +str(player_id) + " Removed")
 	rpc_id(1, "remove_player", multiplayer.get_unique_id())
 	
 @rpc
@@ -117,9 +121,11 @@ func kill_player(player_id):
 @rpc
 func update_colors(player_id):
 	for player in get_children():
-		if player.get_multiplayer_authority() == int(player_id):
+		#if player.get_multiplayer_authority() == int(player_id):
+		if player is CharacterBody3D:
 			player.update_colors()
-			break
+			print("Player color updated: " +str(player.name))
+				#break
 
 
 @rpc
@@ -127,11 +133,11 @@ func knockback_player(player_id,direction,energy):
 	var target = get_node(str(player_id))
 	target.knockback(direction, energy)
 
-@rpc	("any_peer")
+@rpc("any_peer")
 func send_player_data(player_id,color, username):
 	pass
 	
-@rpc
+@rpc("reliable")
 func recieve_player_data(player_id):
 	rpc_id(1,"send_player_data",str(player_id),Global.char_color,Global.char_name)
 	

@@ -1,8 +1,10 @@
-[gd_scene load_steps=23 format=3 uid="uid://da3tqj3m5lpc3"]
+[gd_scene load_steps=39 format=3 uid="uid://da3tqj3m5lpc3"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_gjkee"]
 [ext_resource type="PackedScene" uid="uid://48c4gt87x0i1" path="res://Objects/player_model.tscn" id="2_3kiwc"]
 [ext_resource type="PackedScene" uid="uid://ds0p43gbtinbm" path="res://Objects/pistol.tscn" id="2_3o1w8"]
+[ext_resource type="Script" path="res://Objects/player_synchronizer.gd" id="2_pfj5x"]
+[ext_resource type="Texture2D" uid="uid://bk0xal5fph3lb" path="res://Graphics/Meshes/player_player.png" id="3_iqtbq"]
 [ext_resource type="PackedScene" uid="uid://c12iijp3uibbu" path="res://Objects/sniper.tscn" id="3_o4fod"]
 [ext_resource type="PackedScene" uid="uid://dj0kw8wv7i2jo" path="res://Objects/bazooka.tscn" id="4_gsvk4"]
 [ext_resource type="PackedScene" uid="uid://d4ei2e4e1qf3l" path="res://Objects/UI/scoreboard.tscn" id="5_p5rfr"]
@@ -19,47 +21,67 @@ load_path = "res://.godot/imported/player_player.png-bdc1ffc7dd29727a34be4dd4d95
 resource_local_to_scene = true
 albedo_texture = SubResource("CompressedTexture2D_034fm")
 
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_387nc"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eoomt"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6fyg"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rwji"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0m7p5"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0m8di"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61nj3"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3y88v"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g72yf"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmdc6"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lc2f3"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_whlfp"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_roty3"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44ueg"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1kc6"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0oiv"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("3_iqtbq")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7bk0o"]
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5yclh"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath("Camera3D:rotation")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-properties/3/path = NodePath("Camera3D/Guns/Pistol:visible")
-properties/3/spawn = true
-properties/3/replication_mode = 1
-properties/4/path = NodePath("Camera3D/Guns/Sniper:visible")
-properties/4/spawn = true
-properties/4/replication_mode = 1
-properties/5/path = NodePath("Camera3D/Guns/Bazooka:visible")
-properties/5/spawn = true
-properties/5/replication_mode = 1
-properties/6/path = NodePath("MeshInstance3D:visible")
-properties/6/spawn = true
-properties/6/replication_mode = 2
-properties/7/path = NodePath("Camera3D/Guns:visible")
-properties/7/spawn = true
-properties/7/replication_mode = 2
-properties/8/path = NodePath("Gibs/Organs:emitting")
-properties/8/spawn = true
-properties/8/replication_mode = 2
-properties/9/path = NodePath("Gibs/Bones:emitting")
-properties/9/spawn = true
-properties/9/replication_mode = 2
-properties/10/path = NodePath("username:text")
-properties/10/spawn = true
-properties/10/replication_mode = 2
-properties/11/path = NodePath(".:color")
-properties/11/spawn = true
-properties/11/replication_mode = 1
 
 [sub_resource type="Animation" id="Animation_00u7p"]
 length = 0.001
@@ -168,6 +190,47 @@ colors = PackedColorArray(0, 1, 0, 0.254902)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tyemr"]
 gradient = SubResource("Gradient_bfjf2")
 
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5yclh"]
+properties/0/path = NodePath(".:position")
+properties/0/spawn = true
+properties/0/replication_mode = 1
+properties/1/path = NodePath(".:rotation")
+properties/1/spawn = true
+properties/1/replication_mode = 1
+properties/2/path = NodePath("Camera3D:rotation")
+properties/2/spawn = true
+properties/2/replication_mode = 1
+properties/3/path = NodePath("Camera3D/Guns/Pistol:visible")
+properties/3/spawn = true
+properties/3/replication_mode = 1
+properties/4/path = NodePath("Camera3D/Guns/Sniper:visible")
+properties/4/spawn = true
+properties/4/replication_mode = 1
+properties/5/path = NodePath("Camera3D/Guns/Bazooka:visible")
+properties/5/spawn = true
+properties/5/replication_mode = 1
+properties/6/path = NodePath("Camera3D/Guns:visible")
+properties/6/spawn = true
+properties/6/replication_mode = 1
+properties/7/path = NodePath("Gibs/Organs:emitting")
+properties/7/spawn = true
+properties/7/replication_mode = 1
+properties/8/path = NodePath("Gibs/Bones:emitting")
+properties/8/spawn = true
+properties/8/replication_mode = 1
+properties/9/path = NodePath("username:text")
+properties/9/spawn = true
+properties/9/replication_mode = 1
+properties/10/path = NodePath("playerModel/Chest Animator:current_animation")
+properties/10/spawn = true
+properties/10/replication_mode = 1
+properties/11/path = NodePath("playerModel/Pelvis Animator:current_animation")
+properties/11/spawn = true
+properties/11/replication_mode = 1
+properties/12/path = NodePath("playerModel/Chest:rotation")
+properties/12/spawn = true
+properties/12/replication_mode = 1
+
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_gjkee")
 
@@ -176,19 +239,89 @@ transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 
 
 [node name="Pelvis" parent="playerModel" index="0"]
 material_override = SubResource("StandardMaterial3D_s7j8k")
+surface_material_override/0 = SubResource("StandardMaterial3D_eoomt")
+
+[node name="LeftThigh" parent="playerModel/Pelvis" index="0"]
+material_override = SubResource("StandardMaterial3D_r6fyg")
 
 [node name="LeftKnee" parent="playerModel/Pelvis/LeftThigh" index="0"]
 transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -0.0178276, -1.00973, -0.0161812)
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-visible = false
-mesh = SubResource("CapsuleMesh_387nc")
+[node name="LeftShin" parent="playerModel/Pelvis/LeftThigh/LeftKnee" index="0"]
+material_override = SubResource("StandardMaterial3D_0m7p5")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="LeftFoot" parent="playerModel/Pelvis/LeftThigh/LeftKnee/LeftShin" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="RightThigh" parent="playerModel/Pelvis" index="1"]
+material_override = SubResource("StandardMaterial3D_0m8di")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="RightKnee" parent="playerModel/Pelvis/RightThigh" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="RightShin" parent="playerModel/Pelvis/RightThigh/RightKnee" index="0"]
+material_override = SubResource("StandardMaterial3D_61nj3")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="RightFoot" parent="playerModel/Pelvis/RightThigh/RightKnee/RightShin" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="Chest" parent="playerModel" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="LeftShoulder" parent="playerModel/Chest" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="LeftBicep" parent="playerModel/Chest/LeftShoulder" index="0"]
+material_override = SubResource("StandardMaterial3D_3y88v")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="LeftForearm" parent="playerModel/Chest/LeftShoulder/LeftBicep" index="0"]
+material_override = SubResource("StandardMaterial3D_g72yf")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="LeftHand" parent="playerModel/Chest/LeftShoulder/LeftBicep/LeftForearm" index="0"]
+material_override = SubResource("StandardMaterial3D_lmdc6")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="LeftThumb" parent="playerModel/Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand" index="0"]
+material_override = SubResource("StandardMaterial3D_lc2f3")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="Neck" parent="playerModel/Chest" index="1"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="Head" parent="playerModel/Chest/Neck" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="Cube_049" parent="playerModel/Chest/Neck/Head" index="0"]
+material_override = SubResource("StandardMaterial3D_whlfp")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="RightShoulder" parent="playerModel/Chest" index="2"]
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="RightBicep" parent="playerModel/Chest/RightShoulder" index="0"]
+material_override = SubResource("StandardMaterial3D_roty3")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="RightForearm" parent="playerModel/Chest/RightShoulder/RightBicep" index="0"]
+material_override = SubResource("StandardMaterial3D_44ueg")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="RightHand" parent="playerModel/Chest/RightShoulder/RightBicep/RightForearm" index="0"]
+material_override = SubResource("StandardMaterial3D_d1kc6")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+
+[node name="RightThumb" parent="playerModel/Chest/RightShoulder/RightBicep/RightForearm/RightHand" index="0"]
+material_override = SubResource("StandardMaterial3D_x0oiv")
+surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_7bk0o")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_5yclh")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.518173, -0.393375)
@@ -404,6 +537,11 @@ offset_bottom = -58.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12752, 0)
 billboard = 1
 text = "USERNAME"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+process_priority = 1
+replication_config = SubResource("SceneReplicationConfig_5yclh")
+script = ExtResource("2_pfj5x")
 
 [connection signal="pressed" from="DeathMenu/Respawn" to="." method="_on_respawn_pressed"]
 [connection signal="pressed" from="DeathMenu/Quit" to="." method="_on_quit_pressed"]

@@ -14,6 +14,7 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _physics_process(delta: float) -> void:
+	delta
 	weapon_holder.rotation_degrees.y = fposmod(move_toward(weapon_holder.rotation_degrees.y,361,1), 360)
 	
 	$AnimationPlayer.play("normal") 

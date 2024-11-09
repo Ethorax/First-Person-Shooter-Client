@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://48c4gt87x0i1"]
+[gd_scene load_steps=27 format=3 uid="uid://48c4gt87x0i1"]
 
 [ext_resource type="PackedScene" uid="uid://cthfoq2i0kg0p" path="res://Graphics/Meshes/player.glb" id="1_lv1nl"]
 [ext_resource type="Script" path="res://Scripts/player_model.gd" id="2_sducw"]
@@ -12,42 +12,55 @@ resource_local_to_scene = true
 albedo_texture = SubResource("CompressedTexture2D_034fm")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ket4"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vug6"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0yp4"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cra8u"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3boy"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbxm3"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1p5cb"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_047f3"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sv238"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjhg2"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6i4u"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmt1l"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6ryk"]
+resource_local_to_scene = true
 albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="Animation" id="Animation_vrma8"]
@@ -79,6 +92,7 @@ tracks/1/keys = {
 
 [sub_resource type="Animation" id="Animation_t10k8"]
 resource_name = "pistol_grip"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -372,17 +386,6 @@ _data = {
 [sub_resource type="BoxMesh" id="BoxMesh_phhay"]
 size = Vector3(10, 1, 10)
 
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_apmo8"]
-properties/0/path = NodePath("Pelvis Animator:current_animation")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath("Chest Animator:current_animation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
-properties/2/path = NodePath("Chest:rotation")
-properties/2/spawn = true
-properties/2/replication_mode = 1
-
 [node name="playerModel" instance=ExtResource("1_lv1nl")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1, 0)
 script = ExtResource("2_sducw")
@@ -465,6 +468,3 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.412784, -0.0103587)
 visible = false
 mesh = SubResource("BoxMesh_phhay")
-
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="." index="5"]
-replication_config = SubResource("SceneReplicationConfig_apmo8")

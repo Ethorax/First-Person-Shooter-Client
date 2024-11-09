@@ -14,7 +14,7 @@ void fog() {
 	DENSITY *= pow(clamp(-2.0 * SDF / min(min(SIZE.x, SIZE.y), SIZE.z), 0.0, 1.0), edge_fade);
 	ALBEDO = albedo.rgb;
 	EMISSION = emission.rgb;
-	
+
 	// Anything above the fade plane will be drawn. Anything below has its density set to 0.
 	float fade_sharpness = 0.35; // Higher is faster fade
 	vec3 fade_plane_origin = fade_plane.xyz * fade_plane.w;
