@@ -8,6 +8,7 @@ var damage : int
 func _ready() -> void:
 	$Timer.start()
 	$AnimationPlayer.play("explode")
+	$AudioStreamPlayer3D.play()
 
 func _on_body_entered(body: Node3D) -> void:
 	if(body is CharacterBody3D):
@@ -25,6 +26,7 @@ func _on_body_entered(body: Node3D) -> void:
 		print(target_body)
 		#rpc_id(target_body,"knockback",direction,energy/distance_squared)
 		Server.knockback_player(body.get_multiplayer_authority(),direction,energy/distance_squared)
+		
 		#body.knockback.rpc_id(body.get_multiplayer_authority(),direction,10*energy)
 		
 		

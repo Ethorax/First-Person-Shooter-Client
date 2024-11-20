@@ -103,4 +103,7 @@ libraries = {
 "": SubResource("AnimationLibrary_0fhqk")
 }
 
+[node name="Grip" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.769728, -0.145572, 0)
+
 [editable path="shotgun"]

@@ -1,6 +1,7 @@
-[gd_scene load_steps=16 format=3 uid="uid://8oim78yr2vu4"]
+[gd_scene load_steps=17 format=3 uid="uid://8oim78yr2vu4"]
 
 [ext_resource type="Script" path="res://Scripts/explosion.gd" id="1_ni0mk"]
+[ext_resource type="AudioStream" uid="uid://ch0icnlc2sqtq" path="res://Audio/SFX/Guns/bazooka.wav" id="2_3c41j"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0qndj"]
 radius = 1.0
@@ -267,6 +268,11 @@ initial_velocity_max = 15.0
 
 [node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
 replication_config = SubResource("SceneReplicationConfig_vpqxg")
+
+[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
+stream = ExtResource("2_3c41j")
+pitch_scale = 0.5
+bus = &"SFX"
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://ignsnpnh8ghn"]
+
+[ext_resource type="PackedScene" uid="uid://cwem7cq2dfgom" path="res://Graphics/Meshes/Guns/grenadeLauncher.glb" id="1_mo500"]
+
+[node name="GrenadeLauncher" type="Node3D"]
+
+[node name="grenadeLauncher" parent="." instance=ExtResource("1_mo500")]

@@ -86,3 +86,5 @@ skeleton = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_0w2jq")
 }
+
+[node name="Grip" type="Marker3D" parent="."]

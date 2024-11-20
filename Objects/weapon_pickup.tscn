@@ -60,7 +60,6 @@ size = Vector3(1, 0.817139, 1)
 [node name="WeaponPickup" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_amajw")
-gun_model = "res://Objects/bazooka.tscn"
 
 [node name="WeaponHolder" type="Marker3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.033793, 0.531731, -0.0293851)
@@ -88,6 +87,9 @@ libraries = {
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.428833, 0)
 shape = SubResource("BoxShape3D_r1j0k")
 
+[node name="Timer" type="Timer" parent="."]
+
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
 
 [editable path="WeaponHolder/bazooka"]

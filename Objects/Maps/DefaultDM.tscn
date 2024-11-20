@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dta4lpdcyncgs"]
+[gd_scene load_steps=32 format=3 uid="uid://dta4lpdcyncgs"]
 
 [ext_resource type="PackedScene" uid="uid://b4218sg2bhjr8" path="res://Graphics/Meshes/Maps/DefaultDM.glb" id="1_4j6la"]
 [ext_resource type="Script" path="res://Scripts/map.gd" id="2_6l2ro"]
@@ -6,17 +6,18 @@
 [ext_resource type="PackedScene" uid="uid://b0r0pobkl8gyb" path="res://Objects/weapon_pickup.tscn" id="4_efh2i"]
 [ext_resource type="Shader" path="res://Shaders/Water.gdshader" id="5_26f8e"]
 [ext_resource type="PackedScene" uid="uid://ca0wevg1lb4rx" path="res://water test/WaterMaker3D.tscn" id="6_60sf2"]
+[ext_resource type="PackedScene" uid="uid://b6ho3h5p26ly6" path="res://Objects/pickup.tscn" id="7_10kd7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_efxg1"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
 
-[sub_resource type="Sky" id="Sky_d22ok"]
+[sub_resource type="Sky" id="Sky_xjg3v"]
 sky_material = SubResource("ProceduralSkyMaterial_efxg1")
 
 [sub_resource type="Environment" id="Environment_kjjet"]
 background_mode = 2
-sky = SubResource("Sky_d22ok")
+sky = SubResource("Sky_xjg3v")
 tonemap_mode = 2
 glow_enabled = true
 
@@ -173,7 +174,6 @@ shape = SubResource("ConcavePolygonShape3D_uiddn")
 
 [node name="Measurer" type="MeshInstance3D" parent="." index="5"]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 8.80531, 0)
-visible = false
 mesh = SubResource("CapsuleMesh_3mh0m")
 
 [node name="SpawnPoints" type="Node3D" parent="." index="6"]
@@ -204,7 +204,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 279.313, 0)
 
 [node name="WeaponPickup" parent="." index="9" instance=ExtResource("4_efh2i")]
 transform = Transform3D(2.66667, 0, 0, 0, 2.66667, 0, 0, 0, 2.66667, 1.80713, 20.3718, 2.5724)
-gun_model = "res://Objects/shotgun.tscn"
 
 [node name="Water" type="MeshInstance3D" parent="." index="10"]
 transform = Transform3D(9.5433, 0, 0, 0, 1, 0, 0, 0, 5.40953, 2.27703, 3.57943, -3.11802)
@@ -230,5 +229,8 @@ script = null
 transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -0.359751, -6.06603, -0.605246)
 size = Vector3(48.9646, 14.4465, 28.2548)
 material = SubResource("StandardMaterial3D_0v4ri")
+
+[node name="Pickup" parent="." index="13" instance=ExtResource("7_10kd7")]
+transform = Transform3D(1.33333, 0, 0, 0, 1.33333, 0, 0, 0, 1.33333, -47.7136, 21.1317, -23.4017)
 
 [editable path="WaterMaker3D"]

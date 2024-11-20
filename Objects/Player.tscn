@@ -1,14 +1,10 @@
-[gd_scene load_steps=39 format=3 uid="uid://da3tqj3m5lpc3"]
+[gd_scene load_steps=35 format=3 uid="uid://da3tqj3m5lpc3"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_gjkee"]
 [ext_resource type="PackedScene" uid="uid://48c4gt87x0i1" path="res://Objects/player_model.tscn" id="2_3kiwc"]
-[ext_resource type="PackedScene" uid="uid://ds0p43gbtinbm" path="res://Objects/pistol.tscn" id="2_3o1w8"]
 [ext_resource type="Script" path="res://Objects/player_synchronizer.gd" id="2_pfj5x"]
 [ext_resource type="Texture2D" uid="uid://bk0xal5fph3lb" path="res://Graphics/Meshes/player_player.png" id="3_iqtbq"]
-[ext_resource type="PackedScene" uid="uid://c12iijp3uibbu" path="res://Objects/sniper.tscn" id="3_o4fod"]
-[ext_resource type="PackedScene" uid="uid://dj0kw8wv7i2jo" path="res://Objects/bazooka.tscn" id="4_gsvk4"]
 [ext_resource type="PackedScene" uid="uid://d4ei2e4e1qf3l" path="res://Objects/UI/scoreboard.tscn" id="5_p5rfr"]
-[ext_resource type="PackedScene" uid="uid://e6x2e401y71c" path="res://Objects/flamer.tscn" id="5_pcd2j"]
 [ext_resource type="FontFile" uid="uid://p7sbyvx2o7pu" path="res://Graphics/Fonts/DIGIT-LCD.ttf" id="6_bjxa6"]
 [ext_resource type="PackedScene" uid="uid://c5kiwpxpjprmm" path="res://Objects/UI/pause_menu.tscn" id="6_jfxdn"]
 [ext_resource type="PackedScene" uid="uid://cmio8icdo5h3f" path="res://Objects/Gibs/gibs.tscn" id="7_k7k6i"]
@@ -17,67 +13,59 @@
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_034fm"]
 load_path = "res://.godot/imported/player_player.png-bdc1ffc7dd29727a34be4dd4d950b210.s3tc.ctex"
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_s7j8k"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fajgu"]
 resource_local_to_scene = true
 albedo_texture = SubResource("CompressedTexture2D_034fm")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_eoomt"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_wbpbd"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_r6fyg"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mfjc7"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6rwji"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ko8r2"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0m7p5"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_irh5c"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0m8di"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_t36bo"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_61nj3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6t38d"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_3y88v"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2tchm"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g72yf"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_y4exi"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lmdc6"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kd784"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_lc2f3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4wqc"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_whlfp"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gj8ea"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_roty3"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yqmxo"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_44ueg"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_iqtbq")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_d1kc6"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_iqtbq")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_x0oiv"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kelhl"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
@@ -190,6 +178,18 @@ colors = PackedColorArray(0, 1, 0, 0.254902)
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_tyemr"]
 gradient = SubResource("Gradient_bfjf2")
 
+[sub_resource type="Gradient" id="Gradient_o57rn"]
+offsets = PackedFloat32Array(1)
+colors = PackedColorArray(0.791518, 0.567196, 0.453443, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_0mcm0"]
+resource_local_to_scene = true
+gradient = SubResource("Gradient_o57rn")
+width = 128
+height = 32
+fill_from = Vector2(1, 1)
+fill_to = Vector2(1, 0.576923)
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5yclh"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -200,131 +200,123 @@ properties/1/replication_mode = 1
 properties/2/path = NodePath("Camera3D:rotation")
 properties/2/spawn = true
 properties/2/replication_mode = 1
-properties/3/path = NodePath("Camera3D/Guns/Pistol:visible")
+properties/3/path = NodePath("Gibs/Organs:emitting")
 properties/3/spawn = true
-properties/3/replication_mode = 1
-properties/4/path = NodePath("Camera3D/Guns/Sniper:visible")
+properties/3/replication_mode = 2
+properties/4/path = NodePath("Gibs/Bones:emitting")
 properties/4/spawn = true
-properties/4/replication_mode = 1
-properties/5/path = NodePath("Camera3D/Guns/Bazooka:visible")
+properties/4/replication_mode = 2
+properties/5/path = NodePath("username:text")
 properties/5/spawn = true
-properties/5/replication_mode = 1
-properties/6/path = NodePath("Camera3D/Guns:visible")
+properties/5/replication_mode = 2
+properties/6/path = NodePath("playerModel/Chest Animator:current_animation")
 properties/6/spawn = true
 properties/6/replication_mode = 1
-properties/7/path = NodePath("Gibs/Organs:emitting")
+properties/7/path = NodePath("playerModel/Pelvis Animator:current_animation")
 properties/7/spawn = true
 properties/7/replication_mode = 1
-properties/8/path = NodePath("Gibs/Bones:emitting")
+properties/8/path = NodePath("playerModel/Chest:rotation")
 properties/8/spawn = true
 properties/8/replication_mode = 1
-properties/9/path = NodePath("username:text")
+properties/9/path = NodePath("playerModel/Chest/Guns/Sword:visible")
 properties/9/spawn = true
-properties/9/replication_mode = 1
-properties/10/path = NodePath("playerModel/Chest Animator:current_animation")
+properties/9/replication_mode = 2
+properties/10/path = NodePath("playerModel/Chest/Guns/Pistol:visible")
 properties/10/spawn = true
-properties/10/replication_mode = 1
-properties/11/path = NodePath("playerModel/Pelvis Animator:current_animation")
+properties/10/replication_mode = 2
+properties/11/path = NodePath("playerModel/Chest/Guns/Sniper:visible")
 properties/11/spawn = true
-properties/11/replication_mode = 1
-properties/12/path = NodePath("playerModel/Chest:rotation")
+properties/11/replication_mode = 2
+properties/12/path = NodePath("playerModel/Chest/Guns/Bazooka:visible")
 properties/12/spawn = true
-properties/12/replication_mode = 1
+properties/12/replication_mode = 2
+properties/13/path = NodePath("playerModel/Chest/Guns/GrenadeLauncher:visible")
+properties/13/spawn = true
+properties/13/replication_mode = 2
+properties/14/path = NodePath("playerModel/Chest/Guns/Flamer:visible")
+properties/14/spawn = true
+properties/14/replication_mode = 2
+properties/15/path = NodePath("playerModel/Chest/Guns/Shotgun:visible")
+properties/15/spawn = true
+properties/15/replication_mode = 2
 
 [node name="Player" type="CharacterBody3D" groups=["Player"]]
 script = ExtResource("1_gjkee")
 
 [node name="playerModel" parent="." instance=ExtResource("2_3kiwc")]
-transform = Transform3D(-0.5, 0, 7.54979e-08, 0, 0.5, 0, -7.54979e-08, 0, -0.5, 0, -1, 0)
+transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0, -1, 0)
 
 [node name="Pelvis" parent="playerModel" index="0"]
-material_override = SubResource("StandardMaterial3D_s7j8k")
-surface_material_override/0 = SubResource("StandardMaterial3D_eoomt")
+material_override = SubResource("StandardMaterial3D_fajgu")
 
 [node name="LeftThigh" parent="playerModel/Pelvis" index="0"]
-material_override = SubResource("StandardMaterial3D_r6fyg")
-
-[node name="LeftKnee" parent="playerModel/Pelvis/LeftThigh" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 0.999999, -0.0178276, -1.00973, -0.0161812)
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_wbpbd")
 
 [node name="LeftShin" parent="playerModel/Pelvis/LeftThigh/LeftKnee" index="0"]
-material_override = SubResource("StandardMaterial3D_0m7p5")
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
-
-[node name="LeftFoot" parent="playerModel/Pelvis/LeftThigh/LeftKnee/LeftShin" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_mfjc7")
 
 [node name="RightThigh" parent="playerModel/Pelvis" index="1"]
-material_override = SubResource("StandardMaterial3D_0m8di")
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
-
-[node name="RightKnee" parent="playerModel/Pelvis/RightThigh" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_ko8r2")
 
 [node name="RightShin" parent="playerModel/Pelvis/RightThigh/RightKnee" index="0"]
-material_override = SubResource("StandardMaterial3D_61nj3")
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
-
-[node name="RightFoot" parent="playerModel/Pelvis/RightThigh/RightKnee/RightShin" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_irh5c")
 
 [node name="Chest" parent="playerModel" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
-
-[node name="LeftShoulder" parent="playerModel/Chest" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.014, 2.84, -0.012)
 
 [node name="LeftBicep" parent="playerModel/Chest/LeftShoulder" index="0"]
-material_override = SubResource("StandardMaterial3D_3y88v")
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_t36bo")
 
 [node name="LeftForearm" parent="playerModel/Chest/LeftShoulder/LeftBicep" index="0"]
-material_override = SubResource("StandardMaterial3D_g72yf")
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_6t38d")
 
 [node name="LeftHand" parent="playerModel/Chest/LeftShoulder/LeftBicep/LeftForearm" index="0"]
-material_override = SubResource("StandardMaterial3D_lmdc6")
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_2tchm")
 
 [node name="LeftThumb" parent="playerModel/Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand" index="0"]
-material_override = SubResource("StandardMaterial3D_lc2f3")
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
-
-[node name="Neck" parent="playerModel/Chest" index="1"]
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
-
-[node name="Head" parent="playerModel/Chest/Neck" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_y4exi")
 
 [node name="Cube_049" parent="playerModel/Chest/Neck/Head" index="0"]
-material_override = SubResource("StandardMaterial3D_whlfp")
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
-
-[node name="RightShoulder" parent="playerModel/Chest" index="2"]
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_kd784")
 
 [node name="RightBicep" parent="playerModel/Chest/RightShoulder" index="0"]
-material_override = SubResource("StandardMaterial3D_roty3")
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_a4wqc")
 
 [node name="RightForearm" parent="playerModel/Chest/RightShoulder/RightBicep" index="0"]
-material_override = SubResource("StandardMaterial3D_44ueg")
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_gj8ea")
 
 [node name="RightHand" parent="playerModel/Chest/RightShoulder/RightBicep/RightForearm" index="0"]
-material_override = SubResource("StandardMaterial3D_d1kc6")
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_yqmxo")
 
 [node name="RightThumb" parent="playerModel/Chest/RightShoulder/RightBicep/RightForearm/RightHand" index="0"]
-material_override = SubResource("StandardMaterial3D_x0oiv")
-surface_material_override/0 = SubResource("StandardMaterial3D_6rwji")
+material_override = SubResource("StandardMaterial3D_kelhl")
+
+[node name="Pistol" parent="playerModel/Chest/Guns" index="1"]
+transform = Transform3D(-3.50165e-06, 9.19521e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
+
+[node name="MeshInstance3D" parent="playerModel/Chest/Guns/Pistol" index="0"]
+transform = Transform3D(0.951078, 0.308951, 0, -0.308951, 0.951078, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="Shotgun" parent="playerModel/Chest/Guns" index="2"]
+transform = Transform3D(-0.427757, 0.195283, 0.647216, 0.332237, 0.727749, 1.74255e-08, -0.588763, 0.268787, -0.470225, -0.73167, -0.144539, -0.0950127)
+
+[node name="Cube" parent="playerModel/Chest/Guns/Shotgun/shotgun/Shotgun" index="0"]
+transform = Transform3D(1.4556, -2.23517e-08, 3.55271e-15, 3.57628e-07, 1.21451, 0, 0, 0, 1.08294, 0, 0, 0)
+
+[node name="Bazooka" parent="playerModel/Chest/Guns" index="5"]
+transform = Transform3D(-0.587789, 0, 0.809014, 0, 1, 0, -0.809014, 0, -0.587789, -0.128259, -0.294339, 0.30849)
+
+[node name="GrenadeLauncher" parent="playerModel/Chest/Guns" index="6"]
+transform = Transform3D(-0.293891, 0, 0.40451, 0, 0.5, 0, -0.40451, 0, -0.293891, -0.426324, -0.0614387, 0.309743)
+
+[node name="Barrel" parent="playerModel/Chest/Guns/GrenadeLauncher/grenadeLauncher/NadeLauncher" index="0"]
+transform = Transform3D(0.222876, -3.13369e-07, 0, 5.65031e-07, 0.123608, 0, 0, 0, -0.817161, 1.45061, 0.0554583, 0)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_7bk0o")
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.518173, -0.393375)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.757565, 0.0354523)
 
 [node name="Aim" type="RayCast3D" parent="Camera3D"]
 target_position = Vector3(0, 0, -100)
@@ -334,27 +326,6 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -100)
 
 [node name="ShootLocation" type="Marker3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -1)
-
-[node name="Guns" type="Node3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.518173, 0)
-
-[node name="Pistol" parent="Camera3D/Guns" instance=ExtResource("2_3o1w8")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.704, 0.024, -0.724)
-
-[node name="MeshInstance3D" parent="Camera3D/Guns/Pistol" index="0"]
-transform = Transform3D(0.951078, 0.308951, 0, -0.308951, 0.951078, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="Sniper" parent="Camera3D/Guns" instance=ExtResource("3_o4fod")]
-transform = Transform3D(-4.37114e-08, 0, 1, 0, 1, 0, -1, 0, -4.37114e-08, 0.325, 0.2, -0.84)
-visible = false
-
-[node name="Bazooka" parent="Camera3D/Guns" instance=ExtResource("4_gsvk4")]
-transform = Transform3D(0.139173, 0, 0.990268, 0, 1, 0, -0.990268, 0, 0.139173, 0.935, -0.37, -0.58)
-visible = false
-
-[node name="Flamer" parent="Camera3D/Guns" instance=ExtResource("5_pcd2j")]
-transform = Transform3D(-0.5, 0, -4.37114e-08, 0, 0.5, 0, 4.37114e-08, 0, -0.5, 0.714753, 0, -0.253738)
-visible = false
 
 [node name="ShotgunContainer" type="Node3D" parent="Camera3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.518173, 0)
@@ -511,6 +482,29 @@ theme_override_font_sizes/font_size = 76
 text = "50"
 horizontal_alignment = 2
 
+[node name="Chat" type="Panel" parent="CanvasLayer/UI"]
+visible = false
+layout_mode = 0
+offset_right = 421.0
+offset_bottom = 121.0
+
+[node name="VScrollBar" type="ScrollContainer" parent="CanvasLayer/UI/Chat"]
+layout_mode = 2
+offset_right = 422.0
+offset_bottom = 122.0
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/Chat/VScrollBar"]
+layout_mode = 2
+alignment = 2
+
+[node name="ChatBox" type="LineEdit" parent="CanvasLayer/UI/Chat"]
+layout_mode = 0
+offset_top = 121.0
+offset_right = 422.0
+offset_bottom = 157.0
+focus_mode = 1
+placeholder_text = "Type your message..."
+
 [node name="Scoreboard" parent="CanvasLayer" instance=ExtResource("5_p5rfr")]
 visible = false
 offset_left = 149.0
@@ -518,6 +512,9 @@ offset_top = 72.0
 offset_right = 149.0
 offset_bottom = 72.0
 scale = Vector2(0.75, 0.75)
+
+[node name="Color" parent="CanvasLayer/Scoreboard/VBoxContainer/PlayerInfo2" index="1"]
+texture = SubResource("GradientTexture2D_0mcm0")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_jfxdn")]
 visible = false
@@ -543,15 +540,27 @@ process_priority = 1
 replication_config = SubResource("SceneReplicationConfig_5yclh")
 script = ExtResource("2_pfj5x")
 
+[node name="chat_timer" type="Timer" parent="."]
+
 [connection signal="pressed" from="DeathMenu/Respawn" to="." method="_on_respawn_pressed"]
 [connection signal="pressed" from="DeathMenu/Quit" to="." method="_on_quit_pressed"]
+[connection signal="child_entered_tree" from="CanvasLayer/UI/Chat/VScrollBar/VBoxContainer" to="." method="box_container_child_entered_tree"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/QuitMenu" to="." method="_on_quit_menu_pressed"]
 [connection signal="pressed" from="CanvasLayer/PauseMenu/QuitDesktop" to="." method="_on_quit_desktop_pressed"]
 [connection signal="timeout" from="ReloadTimer" to="." method="_on_reload_timer_timeout"]
+[connection signal="timeout" from="chat_timer" to="." method="_on_chat_timer_timeout"]
 
 [editable path="playerModel"]
-[editable path="Camera3D/Guns/Pistol"]
+[editable path="playerModel/Chest/Guns/Sword"]
+[editable path="playerModel/Chest/Guns/Pistol"]
+[editable path="playerModel/Chest/Guns/Shotgun"]
+[editable path="playerModel/Chest/Guns/Shotgun/shotgun"]
+[editable path="playerModel/Chest/Guns/GrenadeLauncher"]
+[editable path="playerModel/Chest/Guns/GrenadeLauncher/grenadeLauncher"]
+[editable path="CanvasLayer/Scoreboard"]
+[editable path="CanvasLayer/Scoreboard/VBoxContainer/PlayerInfo"]
+[editable path="CanvasLayer/Scoreboard/VBoxContainer/PlayerInfo2"]
 [editable path="CanvasLayer/PauseMenu"]
 [editable path="Gibs"]

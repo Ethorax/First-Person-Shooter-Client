@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bq6e83i60ddai"
+path="res://.godot/imported/Sci-Fi Overshield 002.wav-44763ad0d934e40066e059e0d88b5454.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Pickups/Sci-Fi Overshield 002.wav"
+dest_files=["res://.godot/imported/Sci-Fi Overshield 002.wav-44763ad0d934e40066e059e0d88b5454.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

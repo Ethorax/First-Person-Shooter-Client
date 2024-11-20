@@ -71,3 +71,6 @@ transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
 libraries = {
 "": SubResource("AnimationLibrary_w770i")
 }
+
+[node name="Grip" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.396693, 0.171118, -0.262923)

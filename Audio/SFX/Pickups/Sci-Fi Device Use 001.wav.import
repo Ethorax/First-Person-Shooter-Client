@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://dgqn3jnhgqwwn"
+path="res://.godot/imported/Sci-Fi Device Use 001.wav-6e3df963f8b4bee858febd69ccde6dda.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Pickups/Sci-Fi Device Use 001.wav"
+dest_files=["res://.godot/imported/Sci-Fi Device Use 001.wav-6e3df963f8b4bee858febd69ccde6dda.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

@@ -45,21 +45,21 @@ func recieve_map(map):
 	
 func enter_game():
 	get_tree().root.get_node("Client").get_node("CanvasLayer").hide()
-	var map_instance = load("res://Objects/Maps/DefaultDM.tscn").instantiate()
+	var map_instance = load("res://Objects/Maps/default_dm_textured.tscn").instantiate()
 	get_tree().root.get_node("Client").add_child(map_instance)
 	print("Entering Game...")
 	
 	
 
-func add_player_character(peer_id, color):
+func add_player_character(peer_id):
 	
-	print("Adding player: "+str(peer_id)+" With color: "+ str(color))
+	#print("Adding player: "+str(peer_id)+" With color: "+ str(color))
 	
 	connected_peer_ids.append(peer_id)
 	var player_character = preload("res://Objects/Player.tscn").instantiate()
 	#await get_tree().create_timer(1).timeout
 	add_child(player_character)
-	player_character.color = color
+	#player_character.color = color
 	player_character.position = Global.spawn_points.pick_random()
 	player_character.set_multiplayer_authority(int(peer_id))
 	player_character.name = str(peer_id)
@@ -82,12 +82,25 @@ func send_rocket(direction, position,target,fly_direction,player_name):
 	r.shooter = player_name
 	add_child(r)
 
+func add_grenade(direction, position,target,fly_direction,player_name):
+	rpc_id(1,"send_grenade",direction, position,target,fly_direction,player_name)
+	
+@rpc("any_peer")
+func send_grenade(direction, position,target,fly_direction,player_name):
+	var g = preload("res://Objects/grenade.tscn").instantiate()
+	
+	g.position = position
+	g.shooter = player_name
+	add_child(g)
+	g.apply_central_force(direction*-10)
+
 func add_rocket(direction, position,target,fly_direction,player_name):
-	rpc_id(1,"send_rocket",direction, position,target,fly_direction,player_name)
+	rpc_id(1,"send_rocket",direction, position,target,fly_direction,player_name)	
+
 
 @rpc("reliable")
-func add_newly_connected_player_character(new_peer_id, color):
-	add_player_character(new_peer_id, color)
+func add_newly_connected_player_character(new_peer_id):
+	add_player_character(new_peer_id)
 	
 @rpc("reliable")
 func add_previously_connected_player_characters(peer_ids,peer_names,peer_colors):
@@ -95,7 +108,7 @@ func add_previously_connected_player_characters(peer_ids,peer_names,peer_colors)
 		#print(peer_colors[i])
 		
 		
-		add_player_character(peer_ids[i],peer_colors[i])
+		add_player_character(peer_ids[i])
 		
 @rpc("any_peer")
 func remove_player(player_id = 1):
@@ -114,17 +127,23 @@ func remove_other_player(player_id):
 @rpc
 func kill_player(player_id):
 	for player in get_children():
-		if player.get_multiplayer_authority() == player_id:
-			player.take_damage(1000)
-			break
+		if player.is_in_group("Player"):
+			if player.get_multiplayer_authority() == player_id:
+				player.take_damage(1000,"1",str(player_id))
+				break
 
 @rpc
-func update_colors(player_id):
+func update_colors(player_ids,player_colors):
 	for player in get_children():
+		for i in player_ids.size():
+			if str(player_ids[i]) == player.name:
+				player.color = player_colors[i]
+				player.update_colors()
+				break
 		#if player.get_multiplayer_authority() == int(player_id):
-		if player is CharacterBody3D:
-			player.update_colors()
-			print("Player color updated: " +str(player.name))
+		#if player.is_in_group("Player"):
+			#player.update_colors()
+		print("Player color updated: " +str(player.name))
 				#break
 
 
@@ -144,3 +163,38 @@ func recieve_player_data(player_id):
 @rpc	
 func update_cosmetics():
 	pass
+	
+@rpc("any_peer")
+func broadcast_chat(player_name,text):
+	rpc_id(1,"broadcast_chat",player_name,text)
+	
+@rpc
+func new_chat(player_name,text):
+	for player in get_children():
+		if player.is_in_group("Player"):
+			var new_text : Label = Label.new()
+			new_text.text = (player_name+": "+text)
+			print(player_name+": "+text)
+			player.get_node("CanvasLayer/UI/Chat/VScrollBar/VBoxContainer").add_child(new_text)
+
+
+			#player.get_node("CanvasLayer/UI/Chat/VScrollBar").get_v_scroll_bar().value = player.get_node("CanvasLayer/UI/Chat/VScrollBar").get_v_scroll_bar().max_value
+@rpc
+func damage_player(damage,to,from):
+	for player in get_children():
+		if player.is_in_group("Player") and player.name == str(to):
+			player.take_damage(damage,to,from)
+
+@rpc("any_peer","call_local")
+func hit_player(damage,to,from):
+	rpc_id(1,"hit_player",damage,to,from)
+	
+@rpc("any_peer")
+func frag(to,from):
+	pass
+
+@rpc
+func update_scoreboard(name_array,color_array,frag_array):
+	for player in get_children():
+		if player.is_in_group("Player"):
+			player.update_scores(name_array,color_array,frag_array)

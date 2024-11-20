@@ -1,0 +1,24 @@
+[remap]
+
+importer="wav"
+type="AudioStreamWAV"
+uid="uid://bcdmggdbb86gj"
+path="res://.godot/imported/Books Impact D.wav-eb6bb705f4fef6fc2aa0022eb9d4b9f1.sample"
+
+[deps]
+
+source_file="res://Audio/SFX/Pickups/Books Impact D.wav"
+dest_files=["res://.godot/imported/Books Impact D.wav-eb6bb705f4fef6fc2aa0022eb9d4b9f1.sample"]
+
+[params]
+
+force/8_bit=false
+force/mono=false
+force/max_rate=false
+force/max_rate_hz=44100
+edit/trim=false
+edit/normalize=false
+edit/loop_mode=0
+edit/loop_begin=0
+edit/loop_end=-1
+compress/mode=0

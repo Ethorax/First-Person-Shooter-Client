@@ -1,4 +1,4 @@
-[gd_scene load_steps=3 format=3 uid="uid://c3xsjy74q11mh"]
+[gd_scene load_steps=3 format=3 uid="uid://jpidwahcl0ma"]
 
 [ext_resource type="Texture2D" uid="uid://bxribisrtollw" path="res://Graphics/normal/orange/orange_texture4_text.png" id="1_g8q3l"]
 [ext_resource type="Script" path="res://Objects/Client/client.gd" id="1_s05ac"]
