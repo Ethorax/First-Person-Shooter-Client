@@ -27,7 +27,7 @@ func _on_body_entered(body: Node3D) -> void:
 		print(target_body)
 		#rpc_id(target_body,"knockback",direction,energy/distance_squared)
 		Server.knockback_player(body.get_multiplayer_authority(),direction,energy/distance_squared)
-		Server.hit_player(100/distance_squared,str(body.get_multiplayer_authority()),"1")
+		Server.hit_player(100/distance_squared,str(body.get_multiplayer_authority()),str(player_id))
 		
 		#body.knockback.rpc_id(body.get_multiplayer_authority(),direction,10*energy)
 		

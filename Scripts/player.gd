@@ -293,6 +293,7 @@ func process_movement(delta):
 func fire_gun():
 	if can_shoot and ammo_dict[gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)] > 0:
 		player_model.get_node("AudioController").get_node(str($playerModel/Chest/Guns.get_child(current_weapon_index).name)).play()
+		chest_animator.stop()
 		chest_animator.play("fire_"+$playerModel/Chest/Guns.get_child(current_weapon_index).name.to_lower())
 		ammo_dict[gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)] -= 1
 		$"CanvasLayer/UI/Ammo/Ammo Label".text = str(ammo_dict.get(gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)))
@@ -365,8 +366,7 @@ func fire_gun():
 				sniper_anim.play("fire")
 				#print(aim.rotation_degrees)
 				aim.rotation_degrees = Vector3.ZERO
-					
-					
+									
 		if $playerModel/Chest/Guns.get_node_or_null("Bazooka")!=null:
 			if($playerModel/Chest/Guns/Bazooka.visible):
 				$playerModel/Chest/Guns/Bazooka/AnimationPlayer.play("fire")
@@ -431,12 +431,11 @@ func fire_gun():
 				#
 				#var direction = (target - global_position).normalized()
 				Server.add_fireball($Camera3D/ShootLocation.global_transform.basis.z*100,$Camera3D/ShootLocation.global_position,$Camera3D/Aim/Target.global_position,(target - global_position).normalized(),name)
-				
-				
+						
 				
 		if $playerModel/Chest/Guns.get_node_or_null("GrenadeLauncher")!=null:
 			if($playerModel/Chest/Guns/GrenadeLauncher.visible):			
-				$playerModel/Chest/Guns/Flamer/AnimationPlayer.play("fire")
+				#$playerModel/Chest/Guns/Flamer/AnimationPlayer.play("fire")
 				
 				apply_shake(0.01)
 				reload_timer.start(0.8)
@@ -446,6 +445,44 @@ func fire_gun():
 				#var direction = (target - global_position).normalized()
 				Server.add_grenade($Camera3D/ShootLocation.global_transform.basis.z*100,$Camera3D/ShootLocation.global_position,$Camera3D/Aim/Target.global_position,(target - global_position).normalized(),name)
 				#r_instance.velocity = direction  * 15
+
+		if $playerModel/Chest/Guns.get_node_or_null("Magnum")!=null:
+			if($playerModel/Chest/Guns/Magnum.visible):			
+				#$playerModel/Chest/Guns/Flamer/AnimationPlayer.play("fire")
+				
+				apply_shake(0.05)
+				reload_timer.start(0.8)
+				can_shoot = false
+				
+				aim.global_rotation_degrees.x += rng.randf_range(-b_spread,b_spread)
+				aim.global_rotation_degrees.y += rng.randf_range(-b_spread,b_spread)
+				aim.force_raycast_update()
+				if(aim.is_colliding()):
+					
+					if(aim.get_collider().is_in_group("Player")):
+						print("Player Hit")
+						var hit_player = aim.get_collider()
+						#hit_player.take_damage.rpc_id(hit_player.get_multiplayer_authority(),5,name)
+						Server.hit_player(40,hit_player.name,name)
+					else:
+						var b = BULLET_DECAL.instantiate()
+						get_parent().add_child(b)
+						b.global_position = aim.get_collision_point()
+						#print(aim.get_collision_point())
+						var surface_dir_up = Vector3(0,1,0)
+						var surface_dir_down = Vector3(0,-1,0)
+						if aim.get_collision_normal() == surface_dir_up:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.RIGHT)
+						elif aim.get_collision_normal() == surface_dir_down:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.RIGHT)
+						else:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.DOWN)
+				#var pistol_anim = $playerModel/Chest/Guns/Pistol/AnimationPlayer as AnimationPlayer	
+				#pistol_anim.stop()
+				#pistol_anim.play("fire")
+				#print(aim.rotation_degrees)
+				aim.rotation_degrees = Vector3.ZERO
+				
 		
 func alt_fire():
 	if($playerModel/Chest/Guns.get_node("Pistol").visible):

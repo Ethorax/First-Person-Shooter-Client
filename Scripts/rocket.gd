@@ -20,6 +20,7 @@ func _physics_process(delta: float) -> void:
 		print("explosion")
 		var e = explosion.instantiate()
 		e.global_position = e_location
+		e.player_id = str(shooter)
 		get_parent().add_child(e)
 		queue_free()
 	

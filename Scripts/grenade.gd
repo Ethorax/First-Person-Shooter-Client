@@ -19,5 +19,6 @@ func _on_timer_timeout() -> void:
 	var e = explosion.instantiate()
 	e.global_position = global_position
 	e.scale = e.scale *1.5
+	e.player_id = str(shooter)
 	get_parent().add_child(e)
 	queue_free()

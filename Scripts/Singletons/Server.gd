@@ -203,7 +203,7 @@ func hit_player(damage,to,from):
 	rpc_id(1,"hit_player",damage,to,from)
 	
 @rpc("any_peer")
-func frag(to,from):
+func frag(to,from = "1"):
 	pass
 
 @rpc
@@ -218,3 +218,13 @@ func update_scoreboard(name_array,color_array,frag_array):
 @rpc
 func test_connection():
 	print("testing connection")
+	
+	
+@rpc
+func server_message(message):
+	for player in get_children():
+		if player.is_in_group("Player"):
+			var new_text : Label = Label.new()
+			new_text.text = (message)
+			print(message)
+			player.get_node("CanvasLayer/UI/Chat/VScrollBar/VBoxContainer").add_child(new_text)

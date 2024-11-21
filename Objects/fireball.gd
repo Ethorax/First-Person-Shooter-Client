@@ -21,3 +21,12 @@ func _process(delta: float) -> void:
 	#e.scale = e.scale *1.5
 	#get_parent().add_child(e)
 	#queue_free()
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player") and body.name != shooter:
+		Server.hit_player(30,str(body.get_multiplayer_authority()),str(shooter))
+
+
+func _on_timer_timeout() -> void:
+	queue_free()

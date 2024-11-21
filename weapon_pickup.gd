@@ -1,3 +1,4 @@
+@tool
 extends Node3D
 
 @onready var weapon_holder: Marker3D = $WeaponHolder
@@ -8,7 +9,8 @@ enum gun {
 	sniper,
 	flamer,
 	bazooka,
-	grenade
+	grenade,
+	magnum
 }
 var weapon_index
 @export var gun_pickup = gun.shotgun
@@ -33,6 +35,9 @@ func _ready() -> void:
 		gun.grenade:
 			gun_model = "res://Objects/grenade_launcher.tscn"
 			weapon_index = 6
+		gun.magnum:
+			gun_model = "res://Objects/magnum.tscn"
+			weapon_index = 7
 	
 	
 	var gun_instance = load(gun_model).instantiate()
