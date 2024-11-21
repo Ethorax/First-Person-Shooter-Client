@@ -83,14 +83,15 @@ var current_weapon_index : int = 0
 var can_shoot : bool = true
 @onready var reload_timer: Timer = $ReloadTimer
 # KEY : MELEE, PISTOL, SHOTGUN, SNIPER, FLAMER, BAZOOKA, GRENADEa
-var weapons = [true,true,true,true,true,true,true]
+var weapons = [true,true,true,true,true,true,true,true]
 var ammo_dict = {
 	"sword" : 99999999999,
 	"pistol" : 40,
 	"shotgun" : 40,
 	"sniper" : 40,
 	"flamer" : 40,
-	"bazooka" : 40
+	"bazooka" : 40,
+	"magnum" : 40
  }
 var gun_to_ammo = {
 	"Sword" : "sword",
@@ -99,7 +100,8 @@ var gun_to_ammo = {
 	"Sniper" : "sniper",
 	"Flamer" : "flamer",
 	"Bazooka" : "bazooka",
-	"GrenadeLauncher" : "bazooka"
+	"GrenadeLauncher" : "bazooka",
+	"Magnum" : "magnum"
 }
  
 
@@ -126,6 +128,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
+	auto_disconnect_check()
 	
 	if is_multiplayer_authority():
 		
@@ -249,7 +252,7 @@ func _input(event):
 				pass
 			
 func process_movement(delta):
-	delta
+	
 	if !in_water:
 		direction = Vector3.ZERO
 		
@@ -280,8 +283,8 @@ func process_movement(delta):
 		var actualSpeed = speed / 2 if !isRunning else speed
 		
 		if is_on_floor():
-			velocity.x = lerp(velocity.x,direction.x * actualSpeed,0.5)
-			velocity.z = lerp(velocity.z,direction.z * actualSpeed,0.5)
+			velocity.x = lerp(velocity.x,direction.x * actualSpeed,0.25)
+			velocity.z = lerp(velocity.z,direction.z * actualSpeed,0.25)
 		else:
 			velocity.x = lerp(velocity.x,direction.x * actualSpeed,0.01)
 			velocity.z = lerp(velocity.z,direction.z * actualSpeed,0.01)
@@ -420,7 +423,16 @@ func fire_gun():
 
 		if $playerModel/Chest/Guns.get_node_or_null("Flamer")!=null:
 			if($playerModel/Chest/Guns/Flamer.visible):			
-				$playerModel/Chest/Guns/Flamer/AnimationPlayer.play("fire")
+				#$playerModel/Chest/Guns/Flamer/AnimationPlayer.play("fire")
+				apply_shake(0.01)
+				reload_timer.start(0.8)
+				can_shoot = false
+				var target = $Camera3D/Aim/Target.global_position
+				#
+				#var direction = (target - global_position).normalized()
+				Server.add_fireball($Camera3D/ShootLocation.global_transform.basis.z*100,$Camera3D/ShootLocation.global_position,$Camera3D/Aim/Target.global_position,(target - global_position).normalized(),name)
+				
+				
 				
 		if $playerModel/Chest/Guns.get_node_or_null("GrenadeLauncher")!=null:
 			if($playerModel/Chest/Guns/GrenadeLauncher.visible):			
@@ -554,9 +566,21 @@ func add_weapon(weapon_index : int):
 
 func add_ammo(amount, type):
 	
-	ammo_dict[type] += amount
-	
-	$"CanvasLayer/UI/Ammo/Ammo Label".text = str(ammo_dict.get(gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)))
+	if type == "health":
+		health += amount
+		if health > 100:
+			health = 100
+		$"CanvasLayer/UI/Health/Health Label".text = str(health)
+		
+	elif type == "armor":
+		shield += amount
+		if shield > 100:
+			shield = 100
+		$"CanvasLayer/UI/Ammo/Ammo Label".text = str(shield)
+	else:
+		ammo_dict[type] += amount
+		
+		$"CanvasLayer/UI/Ammo/Ammo Label".text = str(ammo_dict.get(gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)))
 
 	
 
@@ -671,8 +695,16 @@ func update_scores(names,colors,frags):
 			scoreboard.get_child(2).add_child(info_instance)
 		
 	
+
+
+func auto_disconnect_check():
 	
-	
-	
-	
-	
+	if username == "USERNAME":
+		var old_position = position
+		await get_tree().creat_timer(3).timeout
+		if old_position == position:
+			disconnect_from_game()
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.get_multiplayer_authority() != get_multiplayer_authority():
+		Server.hit_player(30,str(body.get_multiplayer_authority()),str(get_multiplayer_authority()))

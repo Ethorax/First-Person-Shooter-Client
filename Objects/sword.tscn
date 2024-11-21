@@ -71,6 +71,7 @@ _data = {
 
 [node name="Area3D" type="Area3D" parent="sword"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.116121, 0)
+monitoring = false
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="sword/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.682745, 0)

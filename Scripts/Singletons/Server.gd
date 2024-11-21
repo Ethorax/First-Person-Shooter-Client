@@ -98,6 +98,19 @@ func add_rocket(direction, position,target,fly_direction,player_name):
 	rpc_id(1,"send_rocket",direction, position,target,fly_direction,player_name)	
 
 
+func add_fireball(direction, position,target,fly_direction,player_name):
+	rpc_id(1,"send_fireball",direction, position,target,fly_direction,player_name)
+	
+@rpc("any_peer")
+func send_fireball(direction, position,target,fly_direction,player_name):
+	var f = preload("res://Objects/fireball.tscn").instantiate()
+	
+	f.position = position
+	f.shooter = player_name
+	add_child(f)
+	f.apply_central_force(direction*-10)
+
+
 @rpc("reliable")
 func add_newly_connected_player_character(new_peer_id):
 	add_player_character(new_peer_id)
@@ -198,3 +211,10 @@ func update_scoreboard(name_array,color_array,frag_array):
 	for player in get_children():
 		if player.is_in_group("Player"):
 			player.update_scores(name_array,color_array,frag_array)
+
+
+
+
+@rpc
+func test_connection():
+	print("testing connection")

@@ -7,7 +7,8 @@ enum gun {
 	shotgun,
 	sniper,
 	flamer,
-	bazooka
+	bazooka,
+	grenade
 }
 var weapon_index
 @export var gun_pickup = gun.shotgun
@@ -29,7 +30,9 @@ func _ready() -> void:
 		gun.bazooka:
 			gun_model ="res://Objects/bazooka.tscn"
 			weapon_index = 5
-
+		gun.grenade:
+			gun_model = "res://Objects/grenade_launcher.tscn"
+			weapon_index = 6
 	
 	
 	var gun_instance = load(gun_model).instantiate()

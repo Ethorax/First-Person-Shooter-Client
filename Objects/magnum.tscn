@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://de8yiftlqsf2v"]
+
+[ext_resource type="PackedScene" uid="uid://dpsushdpgyupf" path="res://Graphics/Meshes/Guns/magnum.glb" id="1_4e5g8"]
+
+[node name="Magnum" type="Node3D"]
+
+[node name="magnum" parent="." instance=ExtResource("1_4e5g8")]

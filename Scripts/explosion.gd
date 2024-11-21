@@ -4,6 +4,7 @@ extends Area3D
 var energy : float = 10
 var size : float
 var damage : int
+var player_id
 
 func _ready() -> void:
 	$Timer.start()
@@ -11,7 +12,7 @@ func _ready() -> void:
 	$AudioStreamPlayer3D.play()
 
 func _on_body_entered(body: Node3D) -> void:
-	if(body is CharacterBody3D):
+	if(body is CharacterBody3D and body.is_in_group("Player")):
 		print("character exploded")
 		
 		var center = global_transform.origin
@@ -26,6 +27,7 @@ func _on_body_entered(body: Node3D) -> void:
 		print(target_body)
 		#rpc_id(target_body,"knockback",direction,energy/distance_squared)
 		Server.knockback_player(body.get_multiplayer_authority(),direction,energy/distance_squared)
+		Server.hit_player(100/distance_squared,str(body.get_multiplayer_authority()),"1")
 		
 		#body.knockback.rpc_id(body.get_multiplayer_authority(),direction,10*energy)
 		

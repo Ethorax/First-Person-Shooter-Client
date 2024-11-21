@@ -1,0 +1,53 @@
+[gd_scene load_steps=8 format=3 uid="uid://t4yxn2p8u6br"]
+
+[ext_resource type="Script" path="res://Objects/fireball.gd" id="1_i85si"]
+[ext_resource type="Shader" path="res://Shaders/flame.gdshader" id="1_x0fx0"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_8t4on"]
+bounce = 1.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_pwex7"]
+render_priority = 0
+shader = ExtResource("1_x0fx0")
+shader_parameter/detail_strength = 3.0
+shader_parameter/scroll_speed = 1.2
+shader_parameter/fire_height = 1.0
+shader_parameter/fire_shape = -4.535
+shader_parameter/fire_thickness = 0.55
+shader_parameter/fire_sharpness = -0.08
+shader_parameter/intensity = 0.905
+shader_parameter/noise_octaves = 6
+shader_parameter/noise_lacunarity = 3.0
+shader_parameter/noise_gain = -0.615
+shader_parameter/noise_amplitude = 2.015
+shader_parameter/noise_frequency = 1.5
+
+[sub_resource type="SphereMesh" id="SphereMesh_pdhtt"]
+material = SubResource("ShaderMaterial_pwex7")
+radius = 0.25
+height = 0.5
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_pshog"]
+radius = 0.1
+
+[sub_resource type="SphereMesh" id="SphereMesh_xqm82"]
+material = SubResource("ShaderMaterial_pwex7")
+radius = 0.1
+height = 0.2
+
+[node name="Fireball" type="RigidBody3D"]
+physics_material_override = SubResource("PhysicsMaterial_8t4on")
+script = ExtResource("1_i85si")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_pdhtt")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_pshog")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+mesh = SubResource("SphereMesh_xqm82")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 0, 0)
+scale_amount_min = 0.5

@@ -1,8 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://bgypwhjq181rl"]
+[gd_scene load_steps=18 format=3 uid="uid://bgypwhjq181rl"]
 
 [ext_resource type="Script" path="res://Scripts/map.gd" id="1_mq8cp"]
 [ext_resource type="PackedScene" uid="uid://kf0nu517w33v" path="res://Objects/Maps/DefaultDMtextured.glb" id="2_ta48m"]
 [ext_resource type="PackedScene" uid="uid://ca0wevg1lb4rx" path="res://water test/WaterMaker3D.tscn" id="3_xxj7b"]
+[ext_resource type="PackedScene" uid="uid://b0r0pobkl8gyb" path="res://Objects/weapon_pickup.tscn" id="4_l8m5j"]
+[ext_resource type="PackedScene" uid="uid://b6ho3h5p26ly6" path="res://Objects/pickup.tscn" id="5_ojvii"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_ayuu6"]
 sky_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -123,5 +125,60 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -54.1504, 30.3371, 23.4301)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.76653, 0.186386, 0.0558128)
 size = Vector3(60.6608, 6.74991, 35.2739)
 material = SubResource("StandardMaterial3D_of48y")
+
+[node name="WeaponPickup" parent="." instance=ExtResource("4_l8m5j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -0.168892, 20.3713, 2.79083)
+gun_pickup = 4
+
+[node name="WeaponPickup2" parent="." instance=ExtResource("4_l8m5j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -5.99102, 20.3586, 35.2563)
+
+[node name="WeaponPickup3" parent="." instance=ExtResource("4_l8m5j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -2.52764, 4.30009, -29.0677)
+gun_pickup = 3
+
+[node name="WeaponPickup4" parent="." instance=ExtResource("4_l8m5j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -43.1693, 4.2083, -2.00075)
+gun_pickup = 4
+
+[node name="WeaponPickup5" parent="." instance=ExtResource("4_l8m5j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -76.7564, 20.3713, -2.83639)
+gun_pickup = 1
+
+[node name="WeaponPickup6" parent="." instance=ExtResource("4_l8m5j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 56.706, 20.4572, 3.15662)
+gun_pickup = 1
+
+[node name="WeaponPickup7" parent="." instance=ExtResource("4_l8m5j")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 30.1815, 20.352, -51.2678)
+gun_pickup = 2
+
+[node name="Pickup" parent="." instance=ExtResource("5_ojvii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 29.604, 20.7467, 2.81575)
+type = 5
+
+[node name="Pickup2" parent="." instance=ExtResource("5_ojvii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.7094, 20.7467, 2.81575)
+type = 8
+
+[node name="Pickup3" parent="." instance=ExtResource("5_ojvii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 25.9326, 20.7467, 2.81575)
+type = 9
+
+[node name="Pickup4" parent="." instance=ExtResource("5_ojvii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.188244, 20.8577, -0.663102)
+type = 4
+
+[node name="Pickup5" parent="." instance=ExtResource("5_ojvii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.0397, 20.9496, 2.92436)
+type = 5
+
+[node name="Pickup6" parent="." instance=ExtResource("5_ojvii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -35.106, 20.9408, 2.91986)
+type = 6
+
+[node name="Pickup7" parent="." instance=ExtResource("5_ojvii")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37.1288, 20.9496, 2.92436)
+type = 5
 
 [editable path="DefaultDMtextured"]

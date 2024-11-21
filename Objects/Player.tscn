@@ -1,9 +1,10 @@
-[gd_scene load_steps=35 format=3 uid="uid://da3tqj3m5lpc3"]
+[gd_scene load_steps=36 format=3 uid="uid://da3tqj3m5lpc3"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_gjkee"]
 [ext_resource type="PackedScene" uid="uid://48c4gt87x0i1" path="res://Objects/player_model.tscn" id="2_3kiwc"]
 [ext_resource type="Script" path="res://Objects/player_synchronizer.gd" id="2_pfj5x"]
 [ext_resource type="Texture2D" uid="uid://bk0xal5fph3lb" path="res://Graphics/Meshes/player_player.png" id="3_iqtbq"]
+[ext_resource type="Texture2D" uid="uid://dn5ly5ci8y2q5" path="res://Objects/UI/reticle.png" id="4_8yjlq"]
 [ext_resource type="PackedScene" uid="uid://d4ei2e4e1qf3l" path="res://Objects/UI/scoreboard.tscn" id="5_p5rfr"]
 [ext_resource type="FontFile" uid="uid://p7sbyvx2o7pu" path="res://Graphics/Fonts/DIGIT-LCD.ttf" id="6_bjxa6"]
 [ext_resource type="PackedScene" uid="uid://c5kiwpxpjprmm" path="res://Objects/UI/pause_menu.tscn" id="6_jfxdn"]
@@ -292,7 +293,7 @@ material_override = SubResource("StandardMaterial3D_yqmxo")
 material_override = SubResource("StandardMaterial3D_kelhl")
 
 [node name="Pistol" parent="playerModel/Chest/Guns" index="1"]
-transform = Transform3D(-3.50165e-06, 9.19521e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
+transform = Transform3D(-3.50164e-06, 9.1952e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
 
 [node name="MeshInstance3D" parent="playerModel/Chest/Guns/Pistol" index="0"]
 transform = Transform3D(0.951078, 0.308951, 0, -0.308951, 0.951078, 0, 0, 0, 1, 0, 0, 0)
@@ -303,14 +304,8 @@ transform = Transform3D(-0.427757, 0.195283, 0.647216, 0.332237, 0.727749, 1.742
 [node name="Cube" parent="playerModel/Chest/Guns/Shotgun/shotgun/Shotgun" index="0"]
 transform = Transform3D(1.4556, -2.23517e-08, 3.55271e-15, 3.57628e-07, 1.21451, 0, 0, 0, 1.08294, 0, 0, 0)
 
-[node name="Bazooka" parent="playerModel/Chest/Guns" index="5"]
-transform = Transform3D(-0.587789, 0, 0.809014, 0, 1, 0, -0.809014, 0, -0.587789, -0.128259, -0.294339, 0.30849)
-
-[node name="GrenadeLauncher" parent="playerModel/Chest/Guns" index="6"]
-transform = Transform3D(-0.293891, 0, 0.40451, 0, 0.5, 0, -0.40451, 0, -0.293891, -0.426324, -0.0614387, 0.309743)
-
-[node name="Barrel" parent="playerModel/Chest/Guns/GrenadeLauncher/grenadeLauncher/NadeLauncher" index="0"]
-transform = Transform3D(0.222876, -3.13369e-07, 0, 5.65031e-07, 0.123608, 0, 0, 0, -0.817161, 1.45061, 0.0554583, 0)
+[node name="Flamer" parent="playerModel/Chest/Guns" index="4"]
+transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0.309314, 0.345748, 0.354024)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("CapsuleShape3D_7bk0o")
@@ -385,15 +380,28 @@ text = "Quit
 
 [node name="Crosshair" type="Control" parent="."]
 layout_mode = 3
-anchors_preset = 0
-scale = Vector2(2, 2.142)
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(0.5, 0.5)
 size_flags_horizontal = 8
 size_flags_vertical = 8
 
-[node name="MeshInstance2D" type="Polygon2D" parent="Crosshair"]
-position = Vector2(288, 146.36)
+[node name="MeshInstance2D" type="TextureRect" parent="Crosshair"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -32.0
+offset_top = -35.014
+offset_bottom = -3.01401
+grow_horizontal = 0
 scale = Vector2(2, 2.142)
-polygon = PackedVector2Array(0, -2, 2, 0, 0, 2, -2, 0)
+texture = ExtResource("4_8yjlq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
@@ -542,6 +550,7 @@ script = ExtResource("2_pfj5x")
 
 [node name="chat_timer" type="Timer" parent="."]
 
+[connection signal="body_entered" from="playerModel/Chest/Guns/Sword/sword/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="pressed" from="DeathMenu/Respawn" to="." method="_on_respawn_pressed"]
 [connection signal="pressed" from="DeathMenu/Quit" to="." method="_on_quit_pressed"]
 [connection signal="child_entered_tree" from="CanvasLayer/UI/Chat/VScrollBar/VBoxContainer" to="." method="box_container_child_entered_tree"]
@@ -557,6 +566,7 @@ script = ExtResource("2_pfj5x")
 [editable path="playerModel/Chest/Guns/Pistol"]
 [editable path="playerModel/Chest/Guns/Shotgun"]
 [editable path="playerModel/Chest/Guns/Shotgun/shotgun"]
+[editable path="playerModel/Chest/Guns/Flamer"]
 [editable path="playerModel/Chest/Guns/GrenadeLauncher"]
 [editable path="playerModel/Chest/Guns/GrenadeLauncher/grenadeLauncher"]
 [editable path="CanvasLayer/Scoreboard"]
