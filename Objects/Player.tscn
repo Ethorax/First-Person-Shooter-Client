@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://da3tqj3m5lpc3"]
+[gd_scene load_steps=39 format=3 uid="uid://da3tqj3m5lpc3"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_gjkee"]
 [ext_resource type="PackedScene" uid="uid://48c4gt87x0i1" path="res://Objects/player_model.tscn" id="2_3kiwc"]
@@ -54,6 +54,8 @@ albedo_texture = ExtResource("3_iqtbq")
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_5ewyc"]
+
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_a4wqc"]
 resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
@@ -71,6 +73,7 @@ resource_local_to_scene = true
 albedo_texture = ExtResource("3_iqtbq")
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_7bk0o"]
+height = 1.79104
 
 [sub_resource type="Animation" id="Animation_00u7p"]
 length = 0.001
@@ -191,6 +194,16 @@ height = 32
 fill_from = Vector2(1, 1)
 fill_to = Vector2(1, 0.576923)
 
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1450b"]
+albedo_color = Color(0.379831, 0, 0.0870727, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_ib8t6"]
+material = SubResource("StandardMaterial3D_1450b")
+radius = 0.2
+height = 0.4
+radial_segments = 4
+rings = 16
+
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5yclh"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
@@ -277,8 +290,16 @@ material_override = SubResource("StandardMaterial3D_2tchm")
 [node name="LeftThumb" parent="playerModel/Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand" index="0"]
 material_override = SubResource("StandardMaterial3D_y4exi")
 
+[node name="Head" parent="playerModel/Chest/Neck" index="0" groups=["Head", "Player"]]
+
 [node name="Cube_049" parent="playerModel/Chest/Neck/Head" index="0"]
 material_override = SubResource("StandardMaterial3D_kd784")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="playerModel/Chest/Neck/Head" index="1" groups=["Head", "Player"]]
+collision_layer = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="playerModel/Chest/Neck/Head/StaticBody3D"]
+shape = SubResource("SphereShape3D_5ewyc")
 
 [node name="RightBicep" parent="playerModel/Chest/RightShoulder" index="0"]
 material_override = SubResource("StandardMaterial3D_a4wqc")
@@ -293,7 +314,7 @@ material_override = SubResource("StandardMaterial3D_yqmxo")
 material_override = SubResource("StandardMaterial3D_kelhl")
 
 [node name="Pistol" parent="playerModel/Chest/Guns" index="1"]
-transform = Transform3D(-3.50164e-06, 9.1952e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
+transform = Transform3D(-3.50165e-06, 9.19521e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
 
 [node name="MeshInstance3D" parent="playerModel/Chest/Guns/Pistol" index="0"]
 transform = Transform3D(0.951078, 0.308951, 0, -0.308951, 0.951078, 0, 0, 0, 1, 0, 0, 0)
@@ -307,10 +328,8 @@ transform = Transform3D(1.4556, -2.23517e-08, 3.55271e-15, 3.57628e-07, 1.21451,
 [node name="Flamer" parent="playerModel/Chest/Guns" index="4"]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0.309314, 0.345748, 0.354024)
 
-[node name="Bazooka" parent="playerModel/Chest/Guns" index="5"]
-transform = Transform3D(-0.587789, 0, 0.809014, 0, 1, 0, -0.809014, 0, -0.587789, -0.128259, -0.294339, 0.30849)
-
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.179922, 0)
 shape = SubResource("CapsuleShape3D_7bk0o")
 
 [node name="Camera3D" type="Camera3D" parent="."]
@@ -540,6 +559,15 @@ offset_bottom = -58.0
 [node name="ReloadTimer" type="Timer" parent="."]
 
 [node name="Gibs" parent="." instance=ExtResource("7_k7k6i")]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="Gibs"]
+emitting = false
+amount = 50
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("SphereMesh_ib8t6")
+direction = Vector3(0, 1, 0)
+initial_velocity_max = 8.0
 
 [node name="username" type="Label3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.12752, 0)

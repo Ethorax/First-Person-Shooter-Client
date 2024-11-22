@@ -3146,7 +3146,7 @@ visible = false
 monitoring = true
 
 [node name="Pistol" parent="Chest/Guns" index="1" instance=ExtResource("5_po4to")]
-transform = Transform3D(-3.50164e-06, 9.1952e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
+transform = Transform3D(-3.50165e-06, 9.19521e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
 visible = false
 
 [node name="MeshInstance3D" parent="Chest/Guns/Pistol" index="0"]

@@ -345,6 +345,9 @@ func fire_gun():
 				if(aim.is_colliding()):
 					
 					if(aim.get_collider().is_in_group("Player")):
+						
+						print(aim.get_collider().name)
+						
 						print("Player Hit")
 						var hit_player = aim.get_collider()
 						Server.hit_player(10,hit_player.name,name)
@@ -613,7 +616,7 @@ func add_ammo(amount, type):
 		shield += amount
 		if shield > 100:
 			shield = 100
-		$"CanvasLayer/UI/Ammo/Ammo Label".text = str(shield)
+		$"CanvasLayer/UI/Shield/Shield Label".text = str(shield)
 	else:
 		ammo_dict[type] += amount
 		
