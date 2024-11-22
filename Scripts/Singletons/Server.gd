@@ -192,13 +192,13 @@ func new_chat(player_name,text):
 
 
 			#player.get_node("CanvasLayer/UI/Chat/VScrollBar").get_v_scroll_bar().value = player.get_node("CanvasLayer/UI/Chat/VScrollBar").get_v_scroll_bar().max_value
-@rpc
+@rpc("reliable")
 func damage_player(damage,to,from):
 	for player in get_children():
 		if player.is_in_group("Player") and player.name == str(to):
 			player.take_damage(damage,to,from)
 
-@rpc("any_peer","call_local")
+@rpc("any_peer","call_local","reliable")
 func hit_player(damage,to,from):
 	rpc_id(1,"hit_player",damage,to,from)
 	

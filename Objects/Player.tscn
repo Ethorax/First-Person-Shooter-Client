@@ -314,7 +314,7 @@ material_override = SubResource("StandardMaterial3D_yqmxo")
 material_override = SubResource("StandardMaterial3D_kelhl")
 
 [node name="Pistol" parent="playerModel/Chest/Guns" index="1"]
-transform = Transform3D(-3.50165e-06, 9.19521e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
+transform = Transform3D(-3.50164e-06, 9.1952e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
 
 [node name="MeshInstance3D" parent="playerModel/Chest/Guns/Pistol" index="0"]
 transform = Transform3D(0.951078, 0.308951, 0, -0.308951, 0.951078, 0, 0, 0, 1, 0, 0, 0)
