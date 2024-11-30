@@ -56,13 +56,13 @@ func _process(delta):
 
 func _on_swimmable_area_3d_body_entered(body: Node3D) -> void:
 	print(body.name)
-	if body.is_in_group("Player"):
+	if body.is_in_group("PlayerRoot"):
 		body.in_water = true
 		print("in water")
 
 
 func _on_swimmable_area_3d_body_exited(body: Node3D) -> void:
 	print(body.name)
-	if body.is_in_group("Player"):
+	if body.is_in_group("PlayerRoot"):
 		body.in_water = false
 		print("out of water")

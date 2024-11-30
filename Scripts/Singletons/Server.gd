@@ -69,6 +69,7 @@ func add_player_character(peer_id):
 	if int(peer_id) == multiplayer.get_unique_id():
 		local_player_character = player_character
 		
+		local_player_character.toggle_hitbox()
 		
 @rpc("any_peer")
 func send_rocket(direction, position,target,fly_direction,player_name):
@@ -195,7 +196,7 @@ func new_chat(player_name,text):
 @rpc("reliable")
 func damage_player(damage,to,from):
 	for player in get_children():
-		if player.is_in_group("Player") and player.name == str(to):
+		if player.name == str(to):
 			player.take_damage(damage,to,from)
 
 @rpc("any_peer","call_local","reliable")

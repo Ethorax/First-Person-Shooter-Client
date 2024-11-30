@@ -1,4 +1,4 @@
-[gd_scene load_steps=56 format=3 uid="uid://48c4gt87x0i1"]
+[gd_scene load_steps=59 format=3 uid="uid://48c4gt87x0i1"]
 
 [ext_resource type="PackedScene" uid="uid://cthfoq2i0kg0p" path="res://Graphics/Meshes/player.glb" id="1_lv1nl"]
 [ext_resource type="Script" path="res://Scripts/player_model.gd" id="2_sducw"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://ds0p43gbtinbm" path="res://Objects/pistol.tscn" id="5_po4to"]
 [ext_resource type="PackedScene" uid="uid://cu2yutayj2ylg" path="res://Objects/shotgun.tscn" id="6_bisf7"]
 [ext_resource type="PackedScene" uid="uid://c12iijp3uibbu" path="res://Objects/sniper.tscn" id="7_kyppt"]
+[ext_resource type="PackedScene" uid="uid://d3nget1g4mqyc" path="res://Objects/gatling.tscn" id="7_stpax"]
 [ext_resource type="PackedScene" uid="uid://e6x2e401y71c" path="res://Objects/flamer.tscn" id="8_18h8k"]
 [ext_resource type="PackedScene" uid="uid://dj0kw8wv7i2jo" path="res://Objects/bazooka.tscn" id="9_20v23"]
 [ext_resource type="PackedScene" uid="uid://ignsnpnh8ghn" path="res://Objects/grenade_launcher.tscn" id="10_ve0ol"]
@@ -122,10 +123,10 @@ tracks/3/path = NodePath("Chest/RightShoulder/RightBicep/RightForearm:position")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 0.001),
-"transitions": PackedFloat32Array(1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0), Vector3(-0.20855, -0.449282, 0.00676589)]
+"values": [Vector3(-0.20855, -0.449282, 0.00676589)]
 }
 tracks/4/type = "value"
 tracks/4/imported = false
@@ -414,6 +415,66 @@ tracks/27/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0, 0.656189, -0.160127)]
+}
+tracks/28/type = "value"
+tracks/28/imported = false
+tracks/28/enabled = true
+tracks/28/path = NodePath("Chest/Guns/Gatling:position")
+tracks/28/interp = 1
+tracks/28/loop_wrap = true
+tracks/28/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.950353, -0.530699, -0.47982)]
+}
+tracks/29/type = "value"
+tracks/29/imported = false
+tracks/29/enabled = true
+tracks/29/path = NodePath("Chest/Guns/Gatling:rotation")
+tracks/29/interp = 1
+tracks/29/loop_wrap = true
+tracks/29/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.51327, 0)]
+}
+tracks/30/type = "value"
+tracks/30/imported = false
+tracks/30/enabled = true
+tracks/30/path = NodePath("Chest/Guns/Gatling/gatling/GatlingGun/Barrels:rotation")
+tracks/30/interp = 1
+tracks/30/loop_wrap = true
+tracks/30/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/31/type = "value"
+tracks/31/imported = false
+tracks/31/enabled = true
+tracks/31/path = NodePath("Chest/OmniLight3D:position")
+tracks/31/interp = 1
+tracks/31/loop_wrap = true
+tracks/31/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00347841, 0.122429, -0.414925)]
+}
+tracks/32/type = "value"
+tracks/32/imported = false
+tracks/32/enabled = true
+tracks/32/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/32/interp = 1
+tracks/32/loop_wrap = true
+tracks/32/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
 }
 
 [sub_resource type="Animation" id="Animation_u7idq"]
@@ -744,6 +805,225 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.551524, -0.0985792, 0.239912)]
+}
+
+[sub_resource type="Animation" id="Animation_m4mqv"]
+resource_name = "fire_gatling"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chest/LeftShoulder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.454898, 0.243722, -0.193662)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest/LeftShoulder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.735342, -0.374695, -0.26735)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chest/LeftShoulder/LeftBicep/LeftForearm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.329407, -0.230627, -0.390552)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chest/LeftShoulder/LeftBicep/LeftForearm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.176723, -0.435823, 0.00277105)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Chest/Neck/Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00351592, 0.383105, 0.06779)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Chest/Neck/Head:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.628319, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Chest/RightShoulder:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.454899, 0.243722, -0.193662)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Chest/RightShoulder:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.07885, 0.692139, -0.161406)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Chest/RightShoulder/RightBicep/RightForearm:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.20855, -0.449282, 0.00676596)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Chest/RightShoulder/RightBicep/RightForearm:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.25905, -3.11188, 3.12782)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Chest:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.628319, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Chest/Guns/Sniper:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.22011, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Chest/Guns/Sniper:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.552929, -0.0672101, -0.0348915)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Chest/Guns/Gatling:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.950353, -0.530699, -0.47982)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Chest/Guns/Gatling:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.51327, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Chest/Guns/Gatling/gatling/GatlingGun/Barrels:rotation")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0, 6.28319)]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Chest/OmniLight3D:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.759175, -0.592398, 1.96674)]
+}
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.5, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_nshs3"]
@@ -1139,6 +1419,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [Vector3(0, 1.5708, 0), Vector3(-5.2161e-08, 1.5708, 0.271207), Vector3(0, 1.5708, 0)]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [1.0, 0.0]
+}
 
 [sub_resource type="Animation" id="Animation_72l1r"]
 resource_name = "fire_shotgun"
@@ -1322,6 +1614,18 @@ tracks/14/keys = {
 "update": 1,
 "values": [false, true]
 }
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [2.0, 0.0]
+}
 
 [sub_resource type="Animation" id="Animation_g3ese"]
 resource_name = "fire_sniper"
@@ -1480,6 +1784,30 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Chest/OmniLight3D:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.666551, -0.173634, 1.95006)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [1.2, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_ytgoe"]
@@ -1912,6 +2240,213 @@ tracks/12/keys = {
 "values": [Vector3(-0.551524, -0.0985792, 0.239912)]
 }
 
+[sub_resource type="Animation" id="Animation_o1a4k"]
+resource_name = "hold_gatling"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chest/LeftShoulder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.454898, 0.243722, -0.193662)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest/LeftShoulder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.735342, -0.374695, -0.26735)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chest/LeftShoulder/LeftBicep/LeftForearm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.329407, -0.230627, -0.390552)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chest/LeftShoulder/LeftBicep/LeftForearm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.176723, -0.435823, 0.00277105)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Chest/Neck/Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00351592, 0.383105, 0.06779)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Chest/Neck/Head:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.628319, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Chest/RightShoulder:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.454899, 0.243722, -0.193662)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Chest/RightShoulder:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.07885, 0.692139, -0.161406)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Chest/RightShoulder/RightBicep/RightForearm:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.20855, -0.449282, 0.00676596)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Chest/RightShoulder/RightBicep/RightForearm:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.25905, -3.11188, 3.12782)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Chest:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.628319, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Chest/Guns/Sniper:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.22011, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Chest/Guns/Sniper:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.552929, -0.0672101, -0.0348915)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Chest/Guns/Gatling:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.950353, -0.530699, -0.47982)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Chest/Guns/Gatling:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.51327, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Chest/OmniLight3D:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.52225, -0.430233, -1.17336)]
+}
+
 [sub_resource type="Animation" id="Animation_mljjm"]
 resource_name = "hold_grenadelauncher"
 tracks/0/type = "value"
@@ -2294,6 +2829,30 @@ tracks/8/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Chest/OmniLight3D:position")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.75433, -0.0412626, 1.22124)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_luhfj"]
 resource_name = "hold_shotgun"
@@ -2465,6 +3024,30 @@ tracks/13/keys = {
 "update": 0,
 "values": [Vector3(3.586, -1.932, -0.0349989)]
 }
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Chest/OmniLight3D:position")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.09399, -0.160665, -0.583918)]
+}
 
 [sub_resource type="Animation" id="Animation_x4des"]
 resource_name = "hold_sniper"
@@ -2624,6 +3207,30 @@ tracks/12/keys = {
 "update": 0,
 "values": [Vector3(-0.552929, -0.0672101, -0.0348915)]
 }
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Chest/OmniLight3D:position")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.40904, 0.000467181, -1.14606)]
+}
 
 [sub_resource type="Animation" id="Animation_guc2v"]
 resource_name = "hold_sword"
@@ -2772,12 +3379,25 @@ tracks/11/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Chest/Guns/Sword/sword/Area3D:monitoring")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_3tqgo"]
 _data = {
 "RESET": SubResource("Animation_vrma8"),
 "fire_bazooka": SubResource("Animation_u7idq"),
 "fire_flamer": SubResource("Animation_os1h6"),
+"fire_gatling": SubResource("Animation_m4mqv"),
 "fire_grenadelauncher": SubResource("Animation_nshs3"),
 "fire_magnum": SubResource("Animation_40rwy"),
 "fire_pistol": SubResource("Animation_rf8js"),
@@ -2786,6 +3406,7 @@ _data = {
 "fire_sword": SubResource("Animation_ytgoe"),
 "hold_bazooka": SubResource("Animation_urd2r"),
 "hold_flamer": SubResource("Animation_klrkx"),
+"hold_gatling": SubResource("Animation_o1a4k"),
 "hold_grenadelauncher": SubResource("Animation_mljjm"),
 "hold_magnum": SubResource("Animation_i1qh3"),
 "hold_pistol": SubResource("Animation_t10k8"),
@@ -3090,7 +3711,7 @@ material_override = SubResource("StandardMaterial3D_cra8u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -0.0216175, -0.865626, 0.000402629)
 
 [node name="Chest" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144374, 2.84003, -0.012361)
+transform = Transform3D(0.809017, 0, -0.587786, 0, 1, 0, 0.587786, 0, 0.809017, -0.0144374, 2.84003, -0.012361)
 
 [node name="LeftShoulder" parent="Chest" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454898, 0.243722, -0.193662)
@@ -3122,7 +3743,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.062, -0.172, -0.013)
 material_override = SubResource("StandardMaterial3D_sjhg2")
 
 [node name="RightForearm" parent="Chest/RightShoulder/RightBicep" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.20855, -0.449282, 0.00676589)
 material_override = SubResource("StandardMaterial3D_i6i4u")
 
 [node name="RightHand" parent="Chest/RightShoulder/RightBicep/RightForearm" index="0"]
@@ -3140,7 +3761,6 @@ transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.757
 
 [node name="Sword" parent="Chest/Guns" index="0" instance=ExtResource("4_0ahde")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
-visible = false
 
 [node name="Area3D" parent="Chest/Guns/Sword/sword" index="1"]
 monitoring = true
@@ -3162,19 +3782,23 @@ visible = false
 [node name="Cube" parent="Chest/Guns/Shotgun/shotgun/Shotgun" index="0"]
 transform = Transform3D(1.456, -2.68221e-07, -1.13687e-13, 2.38419e-07, 1.215, 4.54747e-13, 0, -2.27374e-13, 1.083, 0, 0, 0)
 
-[node name="Sniper" parent="Chest/Guns" index="3" instance=ExtResource("7_kyppt")]
+[node name="Gatling" parent="Chest/Guns" index="3" instance=ExtResource("7_stpax")]
+transform = Transform3D(-0.485409, 0, -0.352673, 0, 0.6, 0, 0.352673, 0, -0.485409, -0.950353, -0.530699, -0.47982)
+visible = false
+
+[node name="Sniper" parent="Chest/Guns" index="4" instance=ExtResource("7_kyppt")]
 transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 visible = false
 
-[node name="Flamer" parent="Chest/Guns" index="4" instance=ExtResource("8_18h8k")]
+[node name="Flamer" parent="Chest/Guns" index="5" instance=ExtResource("8_18h8k")]
 transform = Transform3D(-0.414841, 0, -0.279119, 0, 0.5, 0, 0.279119, 0, -0.414841, -0.551524, -0.0985792, 0.239912)
 visible = false
 
-[node name="Bazooka" parent="Chest/Guns" index="5" instance=ExtResource("9_20v23")]
+[node name="Bazooka" parent="Chest/Guns" index="6" instance=ExtResource("9_20v23")]
 transform = Transform3D(-0.587789, 0, 0.809014, 0, 1, 0, -0.809014, 0, -0.587789, -0.128259, -0.294339, 0.30849)
 visible = false
 
-[node name="GrenadeLauncher" parent="Chest/Guns" index="6" instance=ExtResource("10_ve0ol")]
+[node name="GrenadeLauncher" parent="Chest/Guns" index="7" instance=ExtResource("10_ve0ol")]
 transform = Transform3D(-0.293891, 0, 0.40451, 0, 0.5, 0, -0.40451, 0, -0.293891, -0.426324, -0.0614387, 0.309743)
 visible = false
 
@@ -3184,9 +3808,13 @@ transform = Transform3D(1, 0, 0, 0, 1, -1.77636e-15, 0, 0, -0.215687, -0.568552,
 [node name="Barrel" parent="Chest/Guns/GrenadeLauncher/grenadeLauncher/NadeLauncher" index="0"]
 transform = Transform3D(0.222876, -3.13369e-07, 0, 5.65031e-07, 0.123608, 0, 0, 0, -0.817161, 1.45061, 0.0554583, 0)
 
-[node name="Magnum" parent="Chest/Guns" index="7" instance=ExtResource("11_0uyy8")]
+[node name="Magnum" parent="Chest/Guns" index="8" instance=ExtResource("11_0uyy8")]
 transform = Transform3D(-0.75, 9.95392e-07, -1.49651e-06, -1.39718e-07, 0.590298, 0.462653, 1.79188e-06, 0.462653, -0.590298, 0, 0.656189, -0.160127)
 visible = false
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Chest" index="4"]
+transform = Transform3D(-1.99995, 0, -0.0141721, 0, 2, 0, 0.0141721, 0, -1.99995, -0.00347841, 0.122429, -0.414925)
+omni_range = 0.0
 
 [node name="Chest Animator" type="AnimationPlayer" parent="." index="2"]
 libraries = {
@@ -3220,22 +3848,26 @@ stream = ExtResource("11_c0w5v")
 stream = ExtResource("12_obj7t")
 volume_db = -16.0
 
-[node name="Sniper" type="AudioStreamPlayer3D" parent="AudioController" index="3"]
+[node name="Gatling" type="AudioStreamPlayer3D" parent="AudioController" index="3"]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
+stream = ExtResource("11_c0w5v")
+
+[node name="Sniper" type="AudioStreamPlayer3D" parent="AudioController" index="4"]
 stream = ExtResource("13_jxa4a")
 
-[node name="Bazooka" type="AudioStreamPlayer3D" parent="AudioController" index="4"]
+[node name="Bazooka" type="AudioStreamPlayer3D" parent="AudioController" index="5"]
 stream = ExtResource("14_4f12c")
 volume_db = 5.0
 
-[node name="GrenadeLauncher" type="AudioStreamPlayer3D" parent="AudioController" index="5"]
+[node name="GrenadeLauncher" type="AudioStreamPlayer3D" parent="AudioController" index="6"]
 stream = ExtResource("16_hjc37")
 volume_db = 5.0
 
-[node name="Magnum" type="AudioStreamPlayer3D" parent="AudioController" index="6"]
+[node name="Magnum" type="AudioStreamPlayer3D" parent="AudioController" index="7"]
 stream = ExtResource("16_hjc37")
 volume_db = 5.0
 
-[node name="Flamer" type="AudioStreamPlayer3D" parent="AudioController" index="7"]
+[node name="Flamer" type="AudioStreamPlayer3D" parent="AudioController" index="8"]
 stream = ExtResource("16_hjc37")
 volume_db = 5.0
 
@@ -3243,6 +3875,8 @@ volume_db = 5.0
 [editable path="Chest/Guns/Pistol"]
 [editable path="Chest/Guns/Shotgun"]
 [editable path="Chest/Guns/Shotgun/shotgun"]
+[editable path="Chest/Guns/Gatling"]
+[editable path="Chest/Guns/Gatling/gatling"]
 [editable path="Chest/Guns/Flamer"]
 [editable path="Chest/Guns/GrenadeLauncher"]
 [editable path="Chest/Guns/GrenadeLauncher/grenadeLauncher"]

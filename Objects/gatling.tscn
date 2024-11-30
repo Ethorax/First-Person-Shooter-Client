@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://d3nget1g4mqyc"]
+
+[ext_resource type="PackedScene" uid="uid://dxgnuumohiaje" path="res://Graphics/Meshes/Guns/gatling.glb" id="1_50f58"]
+
+[node name="Gatling" type="Node3D"]
+
+[node name="gatling" parent="." instance=ExtResource("1_50f58")]
+
+[editable path="gatling"]

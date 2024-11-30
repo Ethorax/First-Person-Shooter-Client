@@ -8,7 +8,7 @@ anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_right = -514.0
-offset_bottom = -407.0
+offset_bottom = -378.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_r6ilw")
@@ -16,7 +16,7 @@ script = ExtResource("1_r6ilw")
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
 offset_right = 637.0
-offset_bottom = 239.0
+offset_bottom = 276.0
 
 [node name="Label" type="Label" parent="."]
 layout_mode = 1
@@ -32,10 +32,10 @@ text = "Settings
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
-offset_left = 2.29
-offset_top = 48.355
-offset_right = 471.29
-offset_bottom = 226.355
+offset_left = 2.0
+offset_top = 48.0
+offset_right = 568.0
+offset_bottom = 226.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -43,12 +43,36 @@ alignment = 2
 
 [node name="Label" type="Label" parent="VBoxContainer/HBoxContainer"]
 layout_mode = 2
-text = "Volume
+text = "Game Volume
 "
 
-[node name="TabBar" type="HSlider" parent="VBoxContainer/HBoxContainer"]
+[node name="GameSlider" type="HSlider" parent="VBoxContainer/HBoxContainer"]
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
+value = 100.0
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer"]
+layout_mode = 2
+text = "100"
+
+[node name="HBoxContainer4" type="HBoxContainer" parent="VBoxContainer"]
+layout_mode = 2
+alignment = 2
+
+[node name="Label" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "Music Volume
+"
+
+[node name="MusicSlider" type="HSlider" parent="VBoxContainer/HBoxContainer4"]
+custom_minimum_size = Vector2(300, 40)
+layout_mode = 2
+value = 100.0
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer4"]
+layout_mode = 2
+text = "100
+"
 
 [node name="HBoxContainer2" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -59,9 +83,17 @@ layout_mode = 2
 text = "FOV
 "
 
-[node name="TabBar" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
+[node name="FOVSlider" type="HSlider" parent="VBoxContainer/HBoxContainer2"]
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
+min_value = 50.0
+max_value = 130.0
+value = 75.0
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer2"]
+layout_mode = 2
+text = "75
+"
 
 [node name="HBoxContainer3" type="HBoxContainer" parent="VBoxContainer"]
 layout_mode = 2
@@ -71,25 +103,34 @@ alignment = 2
 layout_mode = 2
 text = "Mouse Sensitivity"
 
-[node name="TabBar" type="HSlider" parent="VBoxContainer/HBoxContainer3"]
+[node name="MouseSlider" type="HSlider" parent="VBoxContainer/HBoxContainer3"]
 custom_minimum_size = Vector2(300, 40)
 layout_mode = 2
+
+[node name="Label2" type="Label" parent="VBoxContainer/HBoxContainer3"]
+layout_mode = 2
+text = "???"
 
 [node name="Apply" type="Button" parent="."]
 layout_mode = 0
 offset_left = 233.0
-offset_top = 196.0
+offset_top = 223.0
 offset_right = 285.0
-offset_bottom = 227.0
+offset_bottom = 254.0
 text = "Apply"
 
 [node name="Discard" type="Button" parent="."]
 layout_mode = 0
 offset_left = 371.0
-offset_top = 195.0
+offset_top = 222.0
 offset_right = 438.0
-offset_bottom = 226.0
+offset_bottom = 253.0
 text = "Discard"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer/GameSlider" to="." method="_on_game_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer4/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer2/FOVSlider" to="." method="_on_fov_slider_value_changed"]
+[connection signal="value_changed" from="VBoxContainer/HBoxContainer3/MouseSlider" to="." method="_on_mouse_slider_value_changed"]
 [connection signal="pressed" from="Apply" to="." method="_on_apply_pressed"]
 [connection signal="pressed" from="Discard" to="." method="_on_discard_pressed"]

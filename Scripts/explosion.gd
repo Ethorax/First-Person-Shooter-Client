@@ -12,7 +12,7 @@ func _ready() -> void:
 	$AudioStreamPlayer3D.play()
 
 func _on_body_entered(body: Node3D) -> void:
-	if(body is CharacterBody3D and body.is_in_group("Player")):
+	if(body is CharacterBody3D and body.is_in_group("PlayerRoot")):
 		print("character exploded")
 		
 		var center = global_transform.origin

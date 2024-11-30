@@ -53,7 +53,7 @@ func _physics_process(delta: float) -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.is_in_group("Player"):
+	if body.is_in_group("PlayerRoot"):
 		if !body.weapons[weapon_index]:
 			body.add_weapon(weapon_index)
 			despawn()
