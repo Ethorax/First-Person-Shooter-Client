@@ -7,6 +7,8 @@ enum pickup_types {
 	ammo_shotgun,
 	ammo_magnum,
 	ammo_rocket,
+	ammo_flamer,
+	ammo_energy,
 	health_small,
 	health_medium,
 	health_large,
@@ -50,6 +52,19 @@ func _ready() -> void:
 			$AudioStreamPlayer3D.stream = preload("res://Audio/SFX/Pickups/Books Impact D.wav")
 			amount = 5
 			ammo_type = "bazooka"
+		
+		pickup_types.ammo_flamer:
+			$Sprite3D.texture = preload("res://Graphics/Pickups/flamerpickup.png")
+			$AudioStreamPlayer3D.stream = preload("res://Audio/SFX/Pickups/Books Impact D.wav")
+			amount = 30
+			ammo_type = "flamer"
+			
+		pickup_types.ammo_energy:
+			$Sprite3D.texture = preload("res://Graphics/Pickups/energypickup.png")
+			$AudioStreamPlayer3D.stream = preload("res://Audio/SFX/Pickups/Books Impact D.wav")
+			amount = 40
+			ammo_type = "energy"
+		
 		pickup_types.health_small:
 			amount = 5
 			ammo_type = "health"

@@ -1,0 +1,7 @@
+[gd_scene load_steps=2 format=3 uid="uid://bq3gmucf7byy4"]
+
+[ext_resource type="PackedScene" uid="uid://c4yavsfe372id" path="res://Graphics/Meshes/Guns/energygun.glb" id="1_6o2u0"]
+
+[node name="Energy" type="Node3D"]
+
+[node name="energygun" parent="." instance=ExtResource("1_6o2u0")]

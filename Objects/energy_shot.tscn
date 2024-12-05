@@ -1,0 +1,32 @@
+[gd_scene load_steps=4 format=3 uid="uid://5250jvptmxac"]
+
+[ext_resource type="Script" path="res://Scripts/energy_shot.gd" id="1_n8dw7"]
+[ext_resource type="Texture2D" uid="uid://5dfr1mu28icm" path="res://Graphics/GunTextures/energyshot.png" id="1_p26xc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8h65b"]
+
+[node name="EnergyShot" type="CharacterBody3D"]
+script = ExtResource("1_n8dw7")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
+modulate = Color(0.668699, 0.0624019, 0.240471, 0.819608)
+billboard = 1
+shaded = true
+texture = ExtResource("1_p26xc")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.838773, 0, 0.144087, 1)
+
+[node name="RayCast3D" type="RayCast3D" parent="."]
+target_position = Vector3(0, 0, -10)
+debug_shape_custom_color = Color(0.99558, 0.99558, 0.99558, 1)
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 17
+collision_mask = 17
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_8h65b")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

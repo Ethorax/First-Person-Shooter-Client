@@ -41,11 +41,11 @@ func OnConnectionSucceeded():
 @rpc("any_peer","call_remote","reliable")
 func recieve_map(map):
 	print("Receiving Map: "+map)
-	enter_game()
+	enter_game(map)
 	
-func enter_game():
+func enter_game(map):
 	get_tree().root.get_node("Client").get_node("CanvasLayer").hide()
-	var map_instance = load("res://Objects/Maps/default_dm_textured.tscn").instantiate()
+	var map_instance = load("res://Objects/Maps/"+map+".tscn").instantiate()
 	get_tree().root.get_node("Client").add_child(map_instance)
 	print("Entering Game...")
 	
@@ -77,7 +77,7 @@ func send_rocket(direction, position,target,fly_direction,player_name):
 	
 	r.global_position = position
 	
-	r.velocity = fly_direction  * 15
+	r.velocity = fly_direction  * 35
 	r.rotation = direction
 	r.rotation.x -= rad_to_deg(-90)
 	r.shooter = player_name
@@ -97,6 +97,21 @@ func send_grenade(direction, position,target,fly_direction,player_name):
 
 func add_rocket(direction, position,target,fly_direction,player_name):
 	rpc_id(1,"send_rocket",direction, position,target,fly_direction,player_name)	
+
+func add_energy(direction, position,target,fly_direction,player_name):
+	rpc_id(1,"send_energy",direction, position,target,fly_direction,player_name)	
+
+@rpc("any_peer")
+func send_energy(direction, position,target,fly_direction,player_name):
+	var r = preload("res://Objects/energy_shot.tscn").instantiate()
+	
+	r.global_position = position
+	
+	r.velocity = fly_direction  * 60
+	r.rotation = direction
+	r.rotation.x -= rad_to_deg(-90)
+	r.shooter = player_name
+	add_child(r)
 
 
 func add_fireball(direction, position,target,fly_direction,player_name):
@@ -210,7 +225,7 @@ func frag(to,from = "1"):
 @rpc
 func update_scoreboard(name_array,color_array,frag_array):
 	for player in get_children():
-		if player.is_in_group("Player"):
+		if player.is_in_group("PlayerRoot"):
 			player.update_scores(name_array,color_array,frag_array)
 
 
@@ -229,3 +244,12 @@ func server_message(message):
 			new_text.text = (message)
 			print(message)
 			player.get_node("CanvasLayer/UI/Chat/VScrollBar/VBoxContainer").add_child(new_text)
+
+
+
+@rpc
+func map_change(map):
+	get_tree().root.get_node("Client").get_node("CanvasLayer").hide()
+	var map_instance = load("res://Objects/Maps/"+map+".tscn").instantiate()
+	get_tree().root.get_node("Client").add_child(map_instance)
+	get_tree().root.get_node("Client").get_child(2).queue_free()

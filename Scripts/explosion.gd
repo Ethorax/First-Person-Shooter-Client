@@ -1,7 +1,7 @@
 extends Area3D
 
 
-var energy : float = 10
+var energy : float = 20
 var size : float
 var damage : int
 var player_id
@@ -24,10 +24,10 @@ func _on_body_entered(body: Node3D) -> void:
 		
 		#body.velocity += direction *10* energy
 		var target_body = body.get_multiplayer_authority()
-		print(target_body)
+		print(distance)
 		#rpc_id(target_body,"knockback",direction,energy/distance_squared)
-		Server.knockback_player(body.get_multiplayer_authority(),direction,energy/distance_squared)
-		Server.hit_player(100/distance_squared,str(body.get_multiplayer_authority()),str(player_id))
+		Server.knockback_player(body.get_multiplayer_authority(),direction,energy/distance)
+		Server.hit_player(50/distance,str(body.get_multiplayer_authority()),str(player_id))
 		
 		#body.knockback.rpc_id(body.get_multiplayer_authority(),direction,10*energy)
 		

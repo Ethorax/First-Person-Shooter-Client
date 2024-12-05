@@ -4,6 +4,9 @@ var shooter
 @export var SPEED  = 100
 @export var energy = 50
 @onready var explosion = preload("res://Objects/explosion.tscn")
+
+var direct = true
+
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	pass # Replace with function body.
@@ -22,3 +25,15 @@ func _on_timer_timeout() -> void:
 	e.player_id = str(shooter)
 	get_parent().add_child(e)
 	queue_free()
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.name != str(shooter):
+		if body.is_in_group("PlayerRoot"):
+			print("explosion")
+			var e = explosion.instantiate()
+			e.global_position = global_position
+			e.scale = e.scale *1.5
+			e.player_id = str(shooter)
+			get_parent().add_child(e)
+			queue_free()

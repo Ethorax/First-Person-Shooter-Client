@@ -1,4 +1,4 @@
-[gd_scene load_steps=59 format=3 uid="uid://48c4gt87x0i1"]
+[gd_scene load_steps=63 format=3 uid="uid://48c4gt87x0i1"]
 
 [ext_resource type="PackedScene" uid="uid://cthfoq2i0kg0p" path="res://Graphics/Meshes/player.glb" id="1_lv1nl"]
 [ext_resource type="Script" path="res://Scripts/player_model.gd" id="2_sducw"]
@@ -15,9 +15,11 @@
 [ext_resource type="AudioStream" uid="uid://cr6idfwswjux8" path="res://Audio/SFX/Guns/Sword.wav" id="11_3vjro"]
 [ext_resource type="AudioStream" uid="uid://ddcslotrxy6r5" path="res://Audio/SFX/Guns/PistolShot.wav" id="11_c0w5v"]
 [ext_resource type="AudioStream" uid="uid://b28vv816s2shb" path="res://Audio/SFX/Guns/shotgun.wav" id="12_obj7t"]
+[ext_resource type="PackedScene" uid="uid://c4yavsfe372id" path="res://Graphics/Meshes/Guns/energygun.glb" id="12_x2don"]
 [ext_resource type="AudioStream" uid="uid://1djni80xci8y" path="res://Audio/SFX/Guns/sniper.wav" id="13_jxa4a"]
 [ext_resource type="AudioStream" uid="uid://ch0icnlc2sqtq" path="res://Audio/SFX/Guns/bazooka.wav" id="14_4f12c"]
 [ext_resource type="AudioStream" uid="uid://cemc88rc8id4g" path="res://Audio/SFX/Guns/GrenadeLauncher.wav" id="16_hjc37"]
+[ext_resource type="AudioStream" uid="uid://cxhfyvb3f07vu" path="res://Audio/SFX/Guns/energygun.wav" id="20_fq0sg"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_034fm"]
 load_path = "res://.godot/imported/player_player.png-bdc1ffc7dd29727a34be4dd4d950b210.s3tc.ctex"
@@ -390,7 +392,7 @@ tracks/25/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [true]
+"values": [false]
 }
 tracks/26/type = "value"
 tracks/26/imported = false
@@ -475,6 +477,30 @@ tracks/32/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [0.0]
+}
+tracks/33/type = "value"
+tracks/33/imported = false
+tracks/33/enabled = true
+tracks/33/path = NodePath("Chest/Guns/Energy:position")
+tracks/33/interp = 1
+tracks/33/loop_wrap = true
+tracks/33/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.586846, -0.20991, 0.0799953)]
+}
+tracks/34/type = "value"
+tracks/34/imported = false
+tracks/34/enabled = true
+tracks/34/path = NodePath("Chest/Guns/Energy:rotation")
+tracks/34/interp = 1
+tracks/34/loop_wrap = true
+tracks/34/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.1293, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_u7idq"]
@@ -646,6 +672,201 @@ tracks/13/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [false, true]
+}
+
+[sub_resource type="Animation" id="Animation_kspkc"]
+resource_name = "fire_energy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chest/LeftShoulder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.454898, 0.243722, -0.193662)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest/LeftShoulder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.735342, -0.374695, -0.26735)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chest/LeftShoulder/LeftBicep/LeftForearm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.205188, 0.08518, 0.0404207), Vector3(-0.129664, -0.214572, -0.299604), Vector3(-0.205188, 0.08518, 0.0404207)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chest/LeftShoulder/LeftBicep/LeftForearm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.176723, -0.435823, 0.00277105)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Chest/Neck/Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00351592, 0.383105, 0.06779)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Chest/Neck/Head:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.628319, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Chest/RightShoulder:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.454899, 0.243722, -0.193662)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Chest/RightShoulder:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0.228432, 0.72342, 0.0612527), Vector3(0.816991, 0.763872, 0.138769), Vector3(0.228432, 0.72342, 0.0612527)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Chest/RightShoulder/RightBicep/RightForearm:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.20855, -0.449282, 0.00676596)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Chest/RightShoulder/RightBicep/RightForearm:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.33024, -0.895558, 0.84928), Vector3(-1.29851, -2.54182, 2.54379), Vector3(-1.33024, -0.895558, 0.84928)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Chest:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.628319, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Chest/Guns/Flamer:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.54933, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Chest/Guns/Flamer:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.551524, -0.0985792, 0.239912)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Chest/Guns/Energy:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 1),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.586846, -0.20991, 0.0799953), Vector3(-0.456124, -0.20991, 0.259918), Vector3(-0.586846, -0.20991, 0.0799953)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Chest/Guns/Energy:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 2.30383, 0), Vector3(0, 2.30383, 0)]
+}
+tracks/15/type = "value"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0, 0.0666667, 0.133333, 1),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 5.0, 0.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_os1h6"]
@@ -2081,6 +2302,189 @@ tracks/12/keys = {
 "values": [Vector3(0, 2.19912, 0)]
 }
 
+[sub_resource type="Animation" id="Animation_leu6k"]
+resource_name = "hold_energy"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Chest/LeftShoulder:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.454898, 0.243722, -0.193662)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Chest/LeftShoulder:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.735342, -0.374695, -0.26735)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Chest/LeftShoulder/LeftBicep/LeftForearm:rotation")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.205188, 0.08518, 0.0404207)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Chest/LeftShoulder/LeftBicep/LeftForearm:position")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.176723, -0.435823, 0.00277105)]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Chest/Neck/Head:position")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.00351592, 0.383105, 0.06779)]
+}
+tracks/5/type = "value"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Chest/Neck/Head:rotation")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0.628319, 0)]
+}
+tracks/6/type = "value"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath("Chest/RightShoulder:position")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.454899, 0.243722, -0.193662)]
+}
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("Chest/RightShoulder:rotation")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.228432, 0.72342, 0.0612527)]
+}
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("Chest/RightShoulder/RightBicep/RightForearm:position")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.20855, -0.449282, 0.00676596)]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("Chest/RightShoulder/RightBicep/RightForearm:rotation")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.33024, -0.895558, 0.84928)]
+}
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("Chest:rotation")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -0.628319, 0)]
+}
+tracks/11/type = "value"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath("Chest/Guns/Flamer:rotation")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -2.54933, 0)]
+}
+tracks/12/type = "value"
+tracks/12/imported = false
+tracks/12/enabled = true
+tracks/12/path = NodePath("Chest/Guns/Flamer:position")
+tracks/12/interp = 1
+tracks/12/loop_wrap = true
+tracks/12/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.551524, -0.0985792, 0.239912)]
+}
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Chest/Guns/Energy:position")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.586846, -0.20991, 0.0799953)]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("Chest/Guns/Energy:rotation")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 2.30383, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_klrkx"]
 resource_name = "hold_flamer"
 tracks/0/type = "value"
@@ -3396,6 +3800,7 @@ tracks/12/keys = {
 _data = {
 "RESET": SubResource("Animation_vrma8"),
 "fire_bazooka": SubResource("Animation_u7idq"),
+"fire_energy": SubResource("Animation_kspkc"),
 "fire_flamer": SubResource("Animation_os1h6"),
 "fire_gatling": SubResource("Animation_m4mqv"),
 "fire_grenadelauncher": SubResource("Animation_nshs3"),
@@ -3405,6 +3810,7 @@ _data = {
 "fire_sniper": SubResource("Animation_g3ese"),
 "fire_sword": SubResource("Animation_ytgoe"),
 "hold_bazooka": SubResource("Animation_urd2r"),
+"hold_energy": SubResource("Animation_leu6k"),
 "hold_flamer": SubResource("Animation_klrkx"),
 "hold_gatling": SubResource("Animation_o1a4k"),
 "hold_grenadelauncher": SubResource("Animation_mljjm"),
@@ -3711,7 +4117,7 @@ material_override = SubResource("StandardMaterial3D_cra8u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -0.0216175, -0.865626, 0.000402629)
 
 [node name="Chest" parent="." index="1"]
-transform = Transform3D(0.809017, 0, -0.587786, 0, 1, 0, 0.587786, 0, 0.809017, -0.0144374, 2.84003, -0.012361)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144374, 2.84003, -0.012361)
 
 [node name="LeftShoulder" parent="Chest" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454898, 0.243722, -0.193662)
@@ -3761,9 +4167,7 @@ transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.757
 
 [node name="Sword" parent="Chest/Guns" index="0" instance=ExtResource("4_0ahde")]
 transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
-
-[node name="Area3D" parent="Chest/Guns/Sword/sword" index="1"]
-monitoring = true
+visible = false
 
 [node name="Pistol" parent="Chest/Guns" index="1" instance=ExtResource("5_po4to")]
 transform = Transform3D(-3.50165e-06, 9.19521e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
@@ -3791,7 +4195,7 @@ transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
 visible = false
 
 [node name="Flamer" parent="Chest/Guns" index="5" instance=ExtResource("8_18h8k")]
-transform = Transform3D(-0.414841, 0, -0.279119, 0, 0.5, 0, 0.279119, 0, -0.414841, -0.551524, -0.0985792, 0.239912)
+transform = Transform3D(-0.41484, 0, -0.27912, 0, 0.5, 0, 0.27912, 0, -0.41484, -0.551524, -0.0985792, 0.239912)
 visible = false
 
 [node name="Bazooka" parent="Chest/Guns" index="6" instance=ExtResource("9_20v23")]
@@ -3808,12 +4212,16 @@ transform = Transform3D(1, 0, 0, 0, 1, -1.77636e-15, 0, 0, -0.215687, -0.568552,
 [node name="Barrel" parent="Chest/Guns/GrenadeLauncher/grenadeLauncher/NadeLauncher" index="0"]
 transform = Transform3D(0.222876, -3.13369e-07, 0, 5.65031e-07, 0.123608, 0, 0, 0, -0.817161, 1.45061, 0.0554583, 0)
 
-[node name="Magnum" parent="Chest/Guns" index="8" instance=ExtResource("11_0uyy8")]
+[node name="Energy" parent="Chest/Guns" index="8" instance=ExtResource("12_x2don")]
+transform = Transform3D(-0.397438, 0, 0.636037, 0, 0.75, 0, -0.636037, 0, -0.397438, -0.586846, -0.20991, 0.0799953)
+visible = false
+
+[node name="Magnum" parent="Chest/Guns" index="9" instance=ExtResource("11_0uyy8")]
 transform = Transform3D(-0.75, 9.95392e-07, -1.49651e-06, -1.39718e-07, 0.590298, 0.462653, 1.79188e-06, 0.462653, -0.590298, 0, 0.656189, -0.160127)
 visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Chest" index="4"]
-transform = Transform3D(-1.99995, 0, -0.0141721, 0, 2, 0, 0.0141721, 0, -1.99995, -0.00347841, 0.122429, -0.414925)
+transform = Transform3D(-1.99995, 0, -0.0141726, 0, 2, 0, 0.0141726, 0, -1.99995, -0.00347841, 0.122429, -0.414925)
 omni_range = 0.0
 
 [node name="Chest Animator" type="AnimationPlayer" parent="." index="2"]
@@ -3839,37 +4247,51 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 stream = ExtResource("11_3vjro")
 volume_db = 14.829
 pitch_scale = 0.6
+bus = &"SFX"
 
 [node name="Pistol" type="AudioStreamPlayer3D" parent="AudioController" index="1"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 stream = ExtResource("11_c0w5v")
+bus = &"SFX"
 
 [node name="Shotgun" type="AudioStreamPlayer3D" parent="AudioController" index="2"]
 stream = ExtResource("12_obj7t")
 volume_db = -16.0
+bus = &"SFX"
 
 [node name="Gatling" type="AudioStreamPlayer3D" parent="AudioController" index="3"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 stream = ExtResource("11_c0w5v")
+bus = &"SFX"
 
 [node name="Sniper" type="AudioStreamPlayer3D" parent="AudioController" index="4"]
 stream = ExtResource("13_jxa4a")
+bus = &"SFX"
 
 [node name="Bazooka" type="AudioStreamPlayer3D" parent="AudioController" index="5"]
 stream = ExtResource("14_4f12c")
 volume_db = 5.0
+bus = &"SFX"
 
 [node name="GrenadeLauncher" type="AudioStreamPlayer3D" parent="AudioController" index="6"]
 stream = ExtResource("16_hjc37")
 volume_db = 5.0
+bus = &"SFX"
 
 [node name="Magnum" type="AudioStreamPlayer3D" parent="AudioController" index="7"]
 stream = ExtResource("16_hjc37")
 volume_db = 5.0
+bus = &"SFX"
 
 [node name="Flamer" type="AudioStreamPlayer3D" parent="AudioController" index="8"]
 stream = ExtResource("16_hjc37")
 volume_db = 5.0
+bus = &"SFX"
+
+[node name="Energy" type="AudioStreamPlayer3D" parent="AudioController" index="9"]
+stream = ExtResource("20_fq0sg")
+pitch_scale = 1.2
+bus = &"SFX"
 
 [editable path="Chest/Guns/Sword"]
 [editable path="Chest/Guns/Pistol"]

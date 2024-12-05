@@ -13,6 +13,8 @@ config_version=5
 config/name="MultiplayerTest"
 run/main_scene="res://Objects/Client/client.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
+boot_splash/bg_color=Color(0.169133, 0.476951, 0.123943, 1)
+boot_splash/image="res://Graphics/UI/splash.png"
 config/icon="res://icon.svg"
 
 [autoload]

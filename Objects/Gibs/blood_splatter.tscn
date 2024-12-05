@@ -1,0 +1,17 @@
+[gd_scene load_steps=4 format=3 uid="uid://cmpv1fqyf235w"]
+
+[ext_resource type="Texture2D" uid="uid://dckwhsowq3j5a" path="res://Graphics/bloodsplatter.png" id="1_gx7wo"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kwcm6"]
+transparency = 1
+shading_mode = 0
+albedo_texture = ExtResource("1_gx7wo")
+
+[sub_resource type="QuadMesh" id="QuadMesh_mgra5"]
+material = SubResource("StandardMaterial3D_kwcm6")
+
+[node name="BloodSplatter" type="Node3D"]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, 0, 0, -0.02)
+mesh = SubResource("QuadMesh_mgra5")

@@ -38,7 +38,6 @@ var chat_focused : bool = false
 enum player_states{
 	normal,
 	chatting,
-	dead,
 	paused,
 }
 var player_state = player_states.normal
@@ -85,25 +84,27 @@ var zoom_fov : float = 5.0
 var current_weapon_index : int = 0
 var can_shoot : bool = true
 @onready var reload_timer: Timer = $ReloadTimer
-# KEY : MELEE, PISTOL, SHOTGUN, GATLING, SNIPER, FLAMER, BAZOOKA, GRENADE
-var weapons = [true,true,true,true,true,true,true,true,true]
+# KEY : MELEE, PISTOL, SHOTGUN, GATLING, SNIPER, FLAMER, BAZOOKA, GRENADE, MAGNUM, ENERGY
+var weapons = [true,true,true,true,true,true,true,true,true,true]
 var ammo_dict = {
 	"sword" : 99999999999,
-	"pistol" : 40,
-	"shotgun" : 40,
-	"sniper" : 40,
-	"flamer" : 40,
-	"bazooka" : 40,
-	"magnum" : 40
+	"pistol" : 50,
+	"shotgun" : 20,
+	"sniper" : 15,
+	"flamer" : 35,
+	"bazooka" : 15,
+	"magnum" : 15,
+	"energy" : 50
  }
 
 var ammo_limits = {
 	"pistol" : 200,
 	"shotgun" : 50,
-	"sniper" : 50,
+	"sniper" : 30,
 	"bazooka" : 50,
 	"flamer" : 75,
-	"magnum" : 30
+	"magnum" : 30,
+	"energy" : 150
 }
 
 var gun_to_ammo = {
@@ -115,7 +116,8 @@ var gun_to_ammo = {
 	"Flamer" : "flamer",
 	"Bazooka" : "bazooka",
 	"GrenadeLauncher" : "bazooka",
-	"Magnum" : "magnum"
+	"Magnum" : "magnum",
+	"Energy" : "energy"
 }
  
 
@@ -149,6 +151,11 @@ func _physics_process(delta: float) -> void:
 	
 	if is_multiplayer_authority():
 		
+		
+		if og_fov != Global.fov:
+			og_fov = Global.fov
+			camera_3d.fov = og_fov
+		
 		if !player_anim.is_playing():
 			player_anim.play("RESET")
 		
@@ -177,7 +184,6 @@ func _physics_process(delta: float) -> void:
 				# Add the gravity.
 				if not is_on_floor():
 					velocity += get_gravity() * delta
-
 				# Handle jump.
 				
 				process_movement(delta)
@@ -192,14 +198,26 @@ func _physics_process(delta: float) -> void:
 					fire_gun()
 				
 			player_states.paused:
-				pass
+				if not is_on_floor():
+					velocity += get_gravity() * delta
+					velocity.x = lerp(velocity.x,0.0,0.01)
+					velocity.z = lerp(velocity.z,0.0,0.01)
+				else:
+					velocity.x = lerp(velocity.x,0,0.5)
+					velocity.z = lerp(velocity.z,0,0.5)
 			player_states.chatting:
-				pass
+				if not is_on_floor():
+					velocity += get_gravity() * delta
+					velocity.x = lerp(velocity.x,0.0,0.01)
+					velocity.z = lerp(velocity.z,0.0,0.01)
+				else:
+					velocity.x = lerp(velocity.x,0.0,0.5)
+					velocity.z = lerp(velocity.z,0.0,0.5)
+					
 				
 				
-				
-			player_states.dead:
-				pass	
+			#player_states.dead:
+				#pass	
 	move_and_slide()
 	
 	
@@ -273,15 +291,15 @@ func _input(event):
 					chat_input.text = ""
 					chat.hide()
 					chat_focused = false
-				
-			player_states.dead:
-				pass
+		
+			#player_states.dead:
+				#pass
 			player_states.paused:
 				pass
 			
 func process_movement(delta):
 	
-	if !in_water:
+	if !in_water and alive:
 		direction = Vector3.ZERO
 		
 		var h_rot = global_transform.basis.get_euler().y
@@ -299,7 +317,7 @@ func process_movement(delta):
 		else:
 			velocity.x = lerp(velocity.x,direction.x * actualSpeed,0.01)
 			velocity.z = lerp(velocity.z,direction.z * actualSpeed,0.01)
-	elif in_water:
+	elif in_water and alive:
 		direction = Vector3.ZERO
 		
 		var h_rot = global_transform.basis.get_euler().y
@@ -316,10 +334,19 @@ func process_movement(delta):
 		else:
 			velocity.x = lerp(velocity.x,direction.x * actualSpeed,0.01)
 			velocity.z = lerp(velocity.z,direction.z * actualSpeed,0.01)
+	
+	elif !alive:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+			velocity.x = lerp(velocity.x,0.0,0.01)
+			velocity.z = lerp(velocity.z,0.0,0.01)
+		else:
+			velocity.x = lerp(velocity.x,0.0,0.5)
+			velocity.z = lerp(velocity.z,0.0,0.5)
 
 
 func fire_gun():
-	if can_shoot and ammo_dict[gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)] > 0:
+	if can_shoot and ammo_dict[gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)] > 0 and alive:
 		player_model.get_node("AudioController").get_node(str($playerModel/Chest/Guns.get_child(current_weapon_index).name)).play()
 		chest_animator.stop()
 		chest_animator.play("fire_"+$playerModel/Chest/Guns.get_child(current_weapon_index).name.to_lower(),-1,1.0)
@@ -377,7 +404,8 @@ func fire_gun():
 					#print(body_part)
 					if(body_part == "Head"):
 						print("HEADSHOT")
-						headshot_damage = 100
+						headshot_damage = 200
+						$Audio/Announcer/AudioStreamPlayer3D.play()
 					if(aim.get_collider().is_in_group("Player")):
 						
 						print(aim.get_collider().name)
@@ -466,7 +494,7 @@ func fire_gun():
 				var target = $Camera3D/Aim/Target.global_position
 				#
 				#var direction = (target - global_position).normalized()
-				Server.add_fireball($Camera3D/ShootLocation.global_transform.basis.z*100,$Camera3D/ShootLocation.global_position,$Camera3D/Aim/Target.global_position,(target - global_position).normalized(),name)
+				Server.add_fireball($Camera3D/ShootLocation.global_transform.basis.z*200,$Camera3D/ShootLocation.global_position,$Camera3D/Aim/Target.global_position,(target - global_position).normalized(),name)
 						
 		if $playerModel/Chest/Guns.get_node_or_null("Gatling")!=null:
 			if($playerModel/Chest/Guns/Gatling.visible):	
@@ -514,7 +542,7 @@ func fire_gun():
 				var target = $Camera3D/Aim/Target.global_position
 				#
 				#var direction = (target - global_position).normalized()
-				Server.add_grenade($Camera3D/ShootLocation.global_transform.basis.z*100,$Camera3D/ShootLocation.global_position,$Camera3D/Aim/Target.global_position,(target - global_position).normalized(),name)
+				Server.add_grenade($Camera3D/ShootLocation.global_transform.basis.z*150,$Camera3D/ShootLocation.global_position,$Camera3D/Aim/Target.global_position,(target - global_position).normalized(),name)
 				#r_instance.velocity = direction  * 15
 
 		if $playerModel/Chest/Guns.get_node_or_null("Magnum")!=null:
@@ -554,6 +582,21 @@ func fire_gun():
 				#print(aim.rotation_degrees)
 				aim.rotation_degrees = Vector3.ZERO
 				
+		if $playerModel/Chest/Guns.get_node_or_null("Energy")!=null:
+			if($playerModel/Chest/Guns/Energy.visible):			
+				#$playerModel/Chest/Guns/Flamer/AnimationPlayer.play("fire")
+				
+				apply_shake(0.05)
+				reload_timer.start(0.35)
+				can_shoot = false
+				
+				var target = $Camera3D/Aim/Target.global_position
+				#
+				#var direction = (target - global_position).normalized()
+				Server.add_energy($Camera3D/ShootLocation.global_rotation,$Camera3D/ShootLocation.global_position,$Camera3D/Aim/Target.global_position,(target - global_position).normalized(),name)
+				
+		
+		
 		
 func alt_fire():
 	if($playerModel/Chest/Guns.get_node("Pistol").visible):
@@ -566,6 +609,31 @@ func alt_fire():
 			camera_3d.fov = zoom_fov
 			mouse_sense = mouse_sense/2
 		
+	
+func leave_blood(scale_mod):
+	var blood_instance = load("res://Objects/Gibs/blood_splatter.tscn").instantiate()
+	blood_instance.global_position = global_position
+	
+	var blood_pointer: RayCast3D = $Gibs/BloodPointer
+
+	blood_instance.scale = blood_instance.scale * scale_mod
+	
+	blood_instance.scale.z = 1
+	blood_instance.global_position = blood_pointer.get_collision_point()
+	#print(aim.get_collision_point())
+	var surface_dir_up = Vector3(0,1,0)
+	var surface_dir_down = Vector3(0,-1,0)
+	print(blood_pointer.get_collision_normal())
+	
+	blood_instance.rotation_degrees.x = blood_pointer.get_collision_normal().y * 90
+	#if blood_pointer.get_collision_normal() == surface_dir_up:
+		#blood_instance.look_at(blood_pointer.get_collision_point() + blood_pointer.get_collision_normal(), Vector3.RIGHT)
+	#elif blood_pointer.get_collision_normal() == surface_dir_down:
+		#blood_instance.look_at(blood_pointer.get_collision_point() + blood_pointer.get_collision_normal(), Vector3.RIGHT)
+	#else:
+		#blood_instance.look_at(blood_pointer.get_collision_point() + blood_pointer.get_collision_normal(), Vector3.DOWN)
+	
+	get_tree().root.get_node("Client").get_child(2).add_child(blood_instance)
 			
 @rpc("any_peer")
 func take_damage(damage : int,to : String = "1", from_id : String = "1") -> void:
@@ -592,6 +660,7 @@ func take_damage(damage : int,to : String = "1", from_id : String = "1") -> void
 	
 	if(health <= 0 and beginning_health > 0):
 		Server.rpc_id(1,"frag", to,from_id)
+		alive = false
 		player_anim.stop()
 		player_anim.play("death")
 		$DeathMenu.show()
@@ -602,7 +671,8 @@ func take_damage(damage : int,to : String = "1", from_id : String = "1") -> void
 		print(str(to)+" was killed by " + from_id)
 		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 		for gib in $Gibs.get_children():
-			gib.emitting = true
+			if gib is CPUParticles3D:
+				gib.emitting = true
 		
 		
 		#$AnimationPlayer.play("death")
@@ -624,6 +694,18 @@ func _on_respawn_pressed() -> void:
 	#$HeadHitbox.disabled = false
 	#$BodyHitbox.disabled = false
 
+
+	ammo_dict = {
+	"sword" : 99999999999,
+	"pistol" : 50,
+	"shotgun" : 20,
+	"sniper" : 15,
+	"flamer" : 35,
+	"bazooka" : 15,
+	"magnum" : 15,
+	"energy" : 50
+ }
+	
 	#$AnimationPlayer.play("respawn")
 	global_position = Global.spawn_points.pick_random()
 	
@@ -701,6 +783,9 @@ func add_ammo(amount, type):
 		$"CanvasLayer/UI/Shield/Shield Label".text = str(shield)
 	else:
 		ammo_dict[type] += amount
+		
+		if ammo_dict[type] > ammo_limits[type]:
+			ammo_dict[type] = ammo_limits[type]
 		
 		$"CanvasLayer/UI/Ammo/Ammo Label".text = str(ammo_dict.get(gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)))
 
@@ -789,7 +874,6 @@ func hide_player():
 	$playerModel/Pelvis/RightThigh/RightKnee/RightShin/RightFoot.set_layer_mask_value(1,false)
 	$playerModel/Pelvis/RightThigh/RightKnee.set_layer_mask_value(1,false)
 	
-
 
 
 

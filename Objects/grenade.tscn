@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy4ae8pmyeick"]
+[gd_scene load_steps=9 format=3 uid="uid://dy4ae8pmyeick"]
 
 [ext_resource type="Script" path="res://Scripts/grenade.gd" id="1_5exwv"]
 [ext_resource type="Shader" path="res://Shaders/grenade.gdshader" id="2_0p2n8"]
@@ -24,8 +24,10 @@ radius = 0.1
 height = 0.4
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_rta8f"]
-radius = 0.1
-height = 0.4
+radius = 0.169655
+height = 0.65916
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_y2ik6"]
 
 [node name="Grenade" type="RigidBody3D"]
 collision_layer = 4
@@ -42,4 +44,10 @@ shape = SubResource("CapsuleShape3D_rta8f")
 wait_time = 4.0
 autostart = true
 
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_y2ik6")
+
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

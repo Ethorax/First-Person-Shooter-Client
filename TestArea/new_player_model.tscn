@@ -42,13 +42,13 @@ bones/0/rotation = Quaternion(0.000474975, 0.000474975, 0.000474975, 0.997475)
 bones/4/rotation = Quaternion(-0.0168153, -0.0247669, -0.489333, 0.871583)
 
 [node name="Cube_040" parent="newFPSPlayermodel/Armature/Skeleton3D" index="0"]
-transform = Transform3D(0.999999, -0.000703793, 0.00114812, 0.000952806, 0.972262, -0.233891, -0.000951661, 0.233891, 0.972262, -0.000334023, 3.5685, 0.101551)
+transform = Transform3D(0.999999, -0.000703794, 0.00114812, 0.000952807, 0.972262, -0.233891, -0.000951662, 0.233891, 0.972262, -0.000334023, 3.5685, 0.101551)
 
 [node name="Head_001" parent="newFPSPlayermodel/Armature/Skeleton3D" index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00246406, 0.00669193, -0.00249434)
 
 [node name="Torso" type="BoneAttachment3D" parent="newFPSPlayermodel/Armature/Skeleton3D" index="14"]
-transform = Transform3D(0.999999, -0.0009519, 0.000952806, 0.000952807, 0.999999, -0.0009519, -0.0009519, 0.000952806, 0.999999, 0.000474975, 2.61848, 0.000474975)
+transform = Transform3D(0.999999, -0.0009519, 0.000952807, 0.000952808, 0.999999, -0.0009519, -0.000951901, 0.000952807, 0.999999, 0.000474975, 2.61848, 0.000474975)
 bone_name = "Torso"
 bone_idx = 0
 
@@ -60,6 +60,7 @@ transform = Transform3D(1, -3.67923e-08, -2.35562e-07, -7.10543e-15, 0.988021, -
 shape = SubResource("ConcavePolygonShape3D_x6av5")
 
 [node name="LBicep" type="BoneAttachment3D" parent="newFPSPlayermodel/Armature/Skeleton3D" index="15"]
+transform = Transform3D(-0.890308, 0.330108, 0.313655, -0.359272, -0.93244, -0.0384384, 0.279776, -0.14691, 0.948758, 0.46446, 3.13549, -0.128452)
 bone_name = "LBicep"
 bone_idx = 4
 
@@ -70,7 +71,7 @@ collision_layer = 0
 shape = SubResource("ConcavePolygonShape3D_5x5ll")
 
 [node name="LForeArm" type="BoneAttachment3D" parent="newFPSPlayermodel/Armature/Skeleton3D" index="16"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, 0, 0, 0)
+transform = Transform3D(-0.914668, 0.317922, 0.249616, -0.292255, -0.946772, 0.134939, 0.27923, 0.0504724, 0.958897, 0.664668, 2.56997, -0.217551)
 bone_name = "LForearm"
 bone_idx = 5
 
@@ -81,6 +82,7 @@ collision_layer = 0
 shape = SubResource("ConcavePolygonShape3D_cyfnu")
 
 [node name="RBicep" type="BoneAttachment3D" parent="newFPSPlayermodel/Armature/Skeleton3D" index="17"]
+transform = Transform3D(-0.85764, -0.417763, -0.299881, 0.440682, -0.897609, -0.00986426, -0.265055, -0.140612, 0.953926, -0.464924, 3.1346, -0.127567)
 bone_name = "RBicep"
 bone_idx = 9
 
@@ -91,6 +93,7 @@ collision_layer = 0
 shape = SubResource("ConcavePolygonShape3D_34cav")
 
 [node name="RForeArm" type="BoneAttachment3D" parent="newFPSPlayermodel/Armature/Skeleton3D" index="18"]
+transform = Transform3D(-0.931209, -0.25558, -0.259862, 0.231365, -0.965389, 0.120392, -0.281638, 0.0519868, 0.958111, -0.728331, 2.56864, -0.216226)
 bone_name = "RForearm"
 bone_idx = 10
 
@@ -105,6 +108,7 @@ bones/5/position = Vector3(0.000474975, 0.334475, 0.000474975)
 bones/5/rotation = Quaternion(0.000474975, 0.000474975, -0.366525, 0.930475)
 
 [node name="Pelvis" type="BoneAttachment3D" parent="newFPSPlayermodel/Armature_001/Skeleton3D" index="9"]
+transform = Transform3D(0.745333, -0.666692, 1.54287e-07, -0.666692, -0.745333, -1.10162e-07, 1.88439e-07, -2.07548e-08, -1, 0, 2.24871, 0)
 bone_name = "RHip"
 bone_idx = 4
 
@@ -115,6 +119,7 @@ collision_layer = 0
 shape = SubResource("ConcavePolygonShape3D_wpfus")
 
 [node name="LThigh" type="BoneAttachment3D" parent="newFPSPlayermodel/Armature_001/Skeleton3D" index="10"]
+transform = Transform3D(0.999315, -0.0370039, 5.30566e-08, -0.0370039, -0.999315, 2.58027e-08, 5.20655e-08, -2.77484e-08, -1, 0.22227, 1.98893, -1.56581e-09)
 bone_name = "LThigh"
 bone_idx = 1
 
@@ -125,6 +130,7 @@ collision_layer = 0
 shape = SubResource("ConcavePolygonShape3D_ppp06")
 
 [node name="LCalf" type="BoneAttachment3D" parent="newFPSPlayermodel/Armature_001/Skeleton3D" index="11"]
+transform = Transform3D(1, -9.35289e-08, 1.03942e-07, -1.04308e-07, -0.99803, 0.0627374, 9.75273e-08, -0.0627374, -0.99803, 0.190953, 1.1432, -2.50494e-08)
 bone_name = "LCalf"
 bone_idx = 2
 
@@ -135,6 +141,7 @@ collision_layer = 0
 shape = SubResource("ConcavePolygonShape3D_krknq")
 
 [node name="RThigh" type="BoneAttachment3D" parent="newFPSPlayermodel/Armature_001/Skeleton3D" index="12"]
+transform = Transform3D(0.999784, 0.0207305, 0.00122072, 0.0207298, -0.999785, 0.00056097, 0.00123208, -0.000535544, -0.999999, -0.222638, 1.9991, -0.000474982)
 bone_name = "RThigh"
 bone_idx = 5
 
@@ -145,6 +152,7 @@ collision_layer = 0
 shape = SubResource("ConcavePolygonShape3D_6405y")
 
 [node name="RCalf" type="BoneAttachment3D" parent="newFPSPlayermodel/Armature_001/Skeleton3D" index="13"]
+transform = Transform3D(0.999999, 0.000453887, 0.00119466, 0.000377256, -0.997995, 0.0632972, 0.001221, -0.0632967, -0.997994, -0.204695, 1.13376, -0.00093851)
 bone_name = "RCalf"
 bone_idx = 6
 

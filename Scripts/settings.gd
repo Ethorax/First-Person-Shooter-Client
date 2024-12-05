@@ -41,6 +41,20 @@ func _on_apply_pressed() -> void:
 	config.set_value("Options","mouse_sense",$VBoxContainer/HBoxContainer3/MouseSlider.value)
 	
 	config.save("res://Config/options.cfg")
+	
+	var music = AudioServer.get_bus_index("Music")
+	var sfx = AudioServer.get_bus_index("SFX")
+	var music_amount = -80.0 + $VBoxContainer/HBoxContainer4/MusicSlider.value*(80.0/100.0)
+	print($VBoxContainer/HBoxContainer4/MusicSlider.value)
+	print(music_amount)
+	AudioServer.set_bus_volume_db(music,music_amount)
+	var sound_amount = -80.0 + $VBoxContainer/HBoxContainer/GameSlider.value*(80.0/100.0)
+	AudioServer.set_bus_volume_db(sfx,sound_amount)
+	print(AudioServer.get_bus_volume_db(music))
+	print(AudioServer.get_bus_volume_db(sfx))
+	Global.fov = $VBoxContainer/HBoxContainer2/FOVSlider.value
+
+	
 	hide()
 
 

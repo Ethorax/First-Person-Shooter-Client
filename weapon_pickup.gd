@@ -10,34 +10,41 @@ enum gun {
 	flamer,
 	bazooka,
 	grenade,
-	magnum
+	magnum,
+	gatling,
+	energy
 }
 var weapon_index
 @export var gun_pickup = gun.shotgun
-
+# KEY : MELEE, PISTOL, SHOTGUN, GATLING, SNIPER, FLAMER, BAZOOKA, GRENADE, MAGNUM, ENERGY
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	match gun_pickup:
 		gun.shotgun:
 			gun_model ="res://Objects/shotgun.tscn"
 			weapon_index = 2
+		gun.gatling:
+			gun_model ="res://Objects/gatling.tscn"
+			weapon_index = 3
 		gun.sniper:
 			gun_model ="res://Objects/sniper.tscn"
-			weapon_index = 3
-
+			weapon_index = 4
 		gun.flamer:
 			gun_model ="res://Objects/flamer.tscn"
-			weapon_index = 4
+			weapon_index = 5
 
 		gun.bazooka:
 			gun_model ="res://Objects/bazooka.tscn"
-			weapon_index = 5
+			weapon_index = 6
 		gun.grenade:
 			gun_model = "res://Objects/grenade_launcher.tscn"
-			weapon_index = 6
+			weapon_index = 7
 		gun.magnum:
 			gun_model = "res://Objects/magnum.tscn"
-			weapon_index = 7
+			weapon_index = 8
+		gun.energy:
+			gun_model = "res://Objects/energy.tscn"
+			weapon_index = 9
 	
 	
 	var gun_instance = load(gun_model).instantiate()
