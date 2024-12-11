@@ -31,7 +31,13 @@ layout_mode = 2
 text = "PlayerName"
 
 [node name="Frags" type="Label" parent="."]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(300, 0)
+layout_mode = 2
+text = "100"
+horizontal_alignment = 2
+
+[node name="Killstreak" type="Label" parent="."]
+custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
 text = "100"
 horizontal_alignment = 2

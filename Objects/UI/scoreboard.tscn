@@ -69,9 +69,16 @@ text = "Name"
 horizontal_alignment = 1
 
 [node name="Frags" type="Label" parent="VBoxContainer/HBoxContainer"]
-custom_minimum_size = Vector2(500, 0)
+custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
 text = "Frags
+"
+horizontal_alignment = 2
+
+[node name="KS" type="Label" parent="VBoxContainer/HBoxContainer"]
+custom_minimum_size = Vector2(200, 0)
+layout_mode = 2
+text = "KS
 "
 horizontal_alignment = 2
 
@@ -81,11 +88,19 @@ layout_mode = 2
 [node name="Color" parent="VBoxContainer/PlayerInfo" index="1"]
 texture = SubResource("GradientTexture2D_hsvj3")
 
+[node name="Killstreak" parent="VBoxContainer/PlayerInfo" index="4"]
+text = "10
+"
+
 [node name="PlayerInfo2" parent="VBoxContainer" instance=ExtResource("1_rh3b4")]
 layout_mode = 2
 
 [node name="Color" parent="VBoxContainer/PlayerInfo2" index="1"]
 texture = SubResource("GradientTexture2D_3e5v3")
+
+[node name="Killstreak" parent="VBoxContainer/PlayerInfo2" index="4"]
+text = "2
+"
 
 [editable path="VBoxContainer/PlayerInfo"]
 [editable path="VBoxContainer/PlayerInfo2"]

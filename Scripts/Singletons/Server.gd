@@ -75,13 +75,14 @@ func add_player_character(peer_id):
 func send_rocket(direction, position,target,fly_direction,player_name):
 	var r = preload("res://Objects/rocket.tscn").instantiate()
 	
-	r.global_position = position
+	
 	
 	r.velocity = fly_direction  * 35
 	r.rotation = direction
 	r.rotation.x -= rad_to_deg(-90)
 	r.shooter = player_name
 	add_child(r)
+	r.global_position = position
 
 func add_grenade(direction, position,target,fly_direction,player_name):
 	rpc_id(1,"send_grenade",direction, position,target,fly_direction,player_name)
@@ -105,14 +106,14 @@ func add_energy(direction, position,target,fly_direction,player_name):
 func send_energy(direction, position,target,fly_direction,player_name):
 	var r = preload("res://Objects/energy_shot.tscn").instantiate()
 	
-	r.global_position = position
+	
 	
 	r.velocity = fly_direction  * 60
 	r.rotation = direction
 	r.rotation.x -= rad_to_deg(-90)
 	r.shooter = player_name
 	add_child(r)
-
+	r.global_position = position
 
 func add_fireball(direction, position,target,fly_direction,player_name):
 	rpc_id(1,"send_fireball",direction, position,target,fly_direction,player_name)
@@ -156,7 +157,7 @@ func remove_other_player(player_id):
 @rpc
 func kill_player(player_id):
 	for player in get_children():
-		if player.is_in_group("Player"):
+		if player.is_in_group("PlayerRoot"):
 			if player.get_multiplayer_authority() == player_id:
 				player.take_damage(1000,"1",str(player_id))
 				break
@@ -200,7 +201,7 @@ func broadcast_chat(player_name,text):
 @rpc
 func new_chat(player_name,text):
 	for player in get_children():
-		if player.is_in_group("Player"):
+		if player.is_in_group("PlayerRoot"):
 			var new_text : Label = Label.new()
 			new_text.text = (player_name+": "+text)
 			print(player_name+": "+text)
@@ -223,10 +224,10 @@ func frag(to,from = "1"):
 	pass
 
 @rpc
-func update_scoreboard(name_array,color_array,frag_array):
+func update_scoreboard(name_array,color_array,frag_array,killstreak_array):
 	for player in get_children():
 		if player.is_in_group("PlayerRoot"):
-			player.update_scores(name_array,color_array,frag_array)
+			player.update_scores(name_array,color_array,frag_array,killstreak_array)
 
 
 
@@ -239,17 +240,37 @@ func test_connection():
 @rpc
 func server_message(message):
 	for player in get_children():
-		if player.is_in_group("Player"):
+		if player.is_in_group("PlayerRoot"):
 			var new_text : Label = Label.new()
 			new_text.text = (message)
 			print(message)
 			player.get_node("CanvasLayer/UI/Chat/VScrollBar/VBoxContainer").add_child(new_text)
 
+@rpc
+func play_sound(sound : String, to_all : bool = false):
+	
+	for player in get_children():
+		if player.is_in_group("PlayerRoot"):
+			var sound_to_play = local_player_character.get_node("Audio").get_node("Announcer").get_node_or_null(sound) as AudioStreamPlayer3D
+	
+			if sound_to_play:
+				sound_to_play.play()
+		
 
+func respawn_local():
+	local_player_character.global_position = Global.spawn_points.pick_random()
 
 @rpc
 func map_change(map):
 	get_tree().root.get_node("Client").get_node("CanvasLayer").hide()
 	var map_instance = load("res://Objects/Maps/"+map+".tscn").instantiate()
+	for player in get_children():
+		if player.is_in_group("PlayerRoot"):
+			player.get_node("CanvasLayer").get_node("Scoreboard").show()
+	await get_tree().create_timer(15).timeout
+	for player in get_children():
+		if player.is_in_group("PlayerRoot"):
+			player.get_node("CanvasLayer").get_node("Scoreboard").hide()
 	get_tree().root.get_node("Client").add_child(map_instance)
 	get_tree().root.get_node("Client").get_child(2).queue_free()
+	respawn_local()

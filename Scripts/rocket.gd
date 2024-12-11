@@ -24,9 +24,10 @@ func _physics_process(delta: float) -> void:
 	if e_location:
 		print("explosion")
 		var e = explosion.instantiate()
-		e.global_position = e_location
+		
 		e.player_id = str(shooter)
 		get_parent().add_child(e)
+		e.global_position = e_location
 		queue_free()
 	
 	move_and_slide()
@@ -37,6 +38,7 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		print("explosion")
 		var e = explosion.instantiate()
 		e.player_id = str(shooter)
-		e.global_position = global_position
+		
 		get_parent().add_child(e)
+		e.global_position = global_position
 		queue_free()

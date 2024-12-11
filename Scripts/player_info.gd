@@ -4,6 +4,7 @@ var placing : int
 var color : Color
 var username : String
 var frags : int
+var killstreak : int
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -23,6 +24,7 @@ func _ready() -> void:
 	$Placing.text = str(placing)
 	$Name.text = username
 	$Frags.text = str(frags)
+	$Killstreak.text = str(killstreak)
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.

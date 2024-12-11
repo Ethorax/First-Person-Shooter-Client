@@ -405,7 +405,7 @@ func fire_gun():
 					if(body_part == "Head"):
 						print("HEADSHOT")
 						headshot_damage = 200
-						$Audio/Announcer/AudioStreamPlayer3D.play()
+						$Audio/Announcer/headshot.play()
 					if(aim.get_collider().is_in_group("Player")):
 						
 						print(aim.get_collider().name)
@@ -612,14 +612,14 @@ func alt_fire():
 	
 func leave_blood(scale_mod):
 	var blood_instance = load("res://Objects/Gibs/blood_splatter.tscn").instantiate()
-	blood_instance.global_position = global_position
+	
 	
 	var blood_pointer: RayCast3D = $Gibs/BloodPointer
 
 	blood_instance.scale = blood_instance.scale * scale_mod
 	
 	blood_instance.scale.z = 1
-	blood_instance.global_position = blood_pointer.get_collision_point()
+	
 	#print(aim.get_collision_point())
 	var surface_dir_up = Vector3(0,1,0)
 	var surface_dir_down = Vector3(0,-1,0)
@@ -634,6 +634,7 @@ func leave_blood(scale_mod):
 		#blood_instance.look_at(blood_pointer.get_collision_point() + blood_pointer.get_collision_normal(), Vector3.DOWN)
 	
 	get_tree().root.get_node("Client").get_child(2).add_child(blood_instance)
+	blood_instance.global_position = blood_pointer.get_collision_point()
 			
 @rpc("any_peer")
 func take_damage(damage : int,to : String = "1", from_id : String = "1") -> void:
@@ -877,7 +878,7 @@ func hide_player():
 
 
 
-func update_scores(names,colors,frags):
+func update_scores(names,colors,frags,killstreaks):
 	
 	
 	if is_multiplayer_authority():
@@ -898,6 +899,7 @@ func update_scores(names,colors,frags):
 			info_instance.username = names[i]
 			info_instance.color = colors[i]
 			info_instance.placing = str(i+1)
+			info_instance.killstreak = killstreaks[i]
 			
 			scoreboard.get_child(2).add_child(info_instance)
 		

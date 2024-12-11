@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://cmvyqpkrbc2r2"]
+
+[ext_resource type="Script" path="res://Scripts/jump_pad.gd" id="1_ofi3r"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8mcx"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_55bwl"]
+material = SubResource("StandardMaterial3D_l8mcx")
+size = Vector3(1, 0.05, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14ovd"]
+transparency = 1
+albedo_color = Color(0, 1, 1, 0.843137)
+metallic = 1.0
+metallic_specular = 1.0
+emission_enabled = true
+emission = Color(0, 1, 1, 1)
+emission_energy_multiplier = 5.47
+grow = true
+
+[sub_resource type="TorusMesh" id="TorusMesh_e6lk0"]
+material = SubResource("StandardMaterial3D_14ovd")
+inner_radius = 0.382
+outer_radius = 0.268
+rings = 10
+ring_segments = 10
+
+[sub_resource type="Curve" id="Curve_7y8tx"]
+_data = [Vector2(0.464481, 1), 0.0, 0.0, 0, 0, Vector2(0.978142, 0.435381), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hv744"]
+albedo_color = Color(0.525101, 0.525101, 0.525101, 1)
+metallic = 1.0
+metallic_specular = 1.0
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_q48re"]
+material = SubResource("StandardMaterial3D_hv744")
+top_radius = 0.4
+height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_ot0tj"]
+size = Vector3(0.6, 0.5, 0.6)
+
+[node name="JumpPad" type="Node3D"]
+script = ExtResource("1_ofi3r")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+mesh = SubResource("BoxMesh_55bwl")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+amount = 3
+mesh = SubResource("TorusMesh_e6lk0")
+gravity = Vector3(0, 1.75, 0)
+scale_amount_curve = SubResource("Curve_7y8tx")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+mesh = SubResource("CylinderMesh_q48re")
+
+[node name="Area3D" type="Area3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.518179, 0)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.192361, 0)
+shape = SubResource("BoxShape3D_ot0tj")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://dgcqpr57hkgaf"]
+
+[ext_resource type="PackedScene" uid="uid://byay2ein0hc1j" path="res://Graphics/Meshes/Props/sconce.glb" id="1_6cj36"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afcrr"]
+albedo_color = Color(0, 0, 43.783, 1)
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_yrwgu"]
+material = SubResource("StandardMaterial3D_afcrr")
+
+[node name="Sconce" type="Node3D"]
+
+[node name="sconce" parent="." instance=ExtResource("1_6cj36")]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.000956059, 0.681138, -0.0011425)
+mesh = SubResource("CapsuleMesh_yrwgu")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+light_color = Color(0.450825, 0.625867, 1, 1)
+omni_range = 18.3029

@@ -1,10 +1,11 @@
-[gd_scene load_steps=57 format=3 uid="uid://da3tqj3m5lpc3"]
+[gd_scene load_steps=68 format=3 uid="uid://da3tqj3m5lpc3"]
 
 [ext_resource type="Script" path="res://Scripts/player.gd" id="1_gjkee"]
 [ext_resource type="PackedScene" uid="uid://48c4gt87x0i1" path="res://Objects/player_model.tscn" id="2_3kiwc"]
 [ext_resource type="Script" path="res://Objects/player_synchronizer.gd" id="2_pfj5x"]
 [ext_resource type="Texture2D" uid="uid://bk0xal5fph3lb" path="res://Graphics/Meshes/player_player.png" id="3_iqtbq"]
 [ext_resource type="Texture2D" uid="uid://dn5ly5ci8y2q5" path="res://Objects/UI/reticle.png" id="4_8yjlq"]
+[ext_resource type="Texture2D" uid="uid://dckwhsowq3j5a" path="res://Graphics/bloodsplatter.png" id="5_eyqkg"]
 [ext_resource type="PackedScene" uid="uid://d4ei2e4e1qf3l" path="res://Objects/UI/scoreboard.tscn" id="5_p5rfr"]
 [ext_resource type="FontFile" uid="uid://p7sbyvx2o7pu" path="res://Graphics/Fonts/DIGIT-LCD.ttf" id="6_bjxa6"]
 [ext_resource type="PackedScene" uid="uid://c5kiwpxpjprmm" path="res://Objects/UI/pause_menu.tscn" id="6_jfxdn"]
@@ -13,6 +14,16 @@
 [ext_resource type="AudioStream" uid="uid://b00qwmeat8gkq" path="res://Audio/SFX/gib.wav" id="11_q6guc"]
 [ext_resource type="AudioStream" uid="uid://otbbwrsnux8p" path="res://Audio/SFX/Bryce Attack E.wav" id="12_dxco8"]
 [ext_resource type="AudioStream" uid="uid://bi7ck5g7pomal" path="res://Audio/headshot.wav" id="13_c5370"]
+[ext_resource type="AudioStream" uid="uid://0j246cu6vukp" path="res://Audio/Announcer/first bloood.wav" id="15_iecv3"]
+[ext_resource type="AudioStream" uid="uid://bpqgagjhxcybt" path="res://Audio/Announcer/killspree.wav" id="16_ld157"]
+[ext_resource type="AudioStream" uid="uid://cacsq31krgc4j" path="res://Audio/Announcer/rampage.wav" id="17_1v0kt"]
+[ext_resource type="AudioStream" uid="uid://cqn7jnipew300" path="res://Audio/Announcer/unkillable.wav" id="18_rebpg"]
+[ext_resource type="AudioStream" uid="uid://vvp3mkrs6ohg" path="res://Audio/Announcer/oh shit.wav" id="19_ofpoq"]
+[ext_resource type="AudioStream" uid="uid://bkadkbiicmed2" path="res://Audio/Announcer/doublekill.wav" id="20_8y3m1"]
+[ext_resource type="AudioStream" uid="uid://d2vcs0ass8buk" path="res://Audio/Announcer/triplekill.wav" id="21_hrv6o"]
+[ext_resource type="AudioStream" uid="uid://vnv3tk0w67kg" path="res://Audio/Announcer/killdozer.wav" id="22_rgmwe"]
+[ext_resource type="AudioStream" uid="uid://ki31klahetj5" path="res://Audio/Announcer/gane.wav" id="23_1nlnt"]
+[ext_resource type="AudioStream" uid="uid://bhkvctf8bsxml" path="res://Audio/Announcer/Game Point.wav" id="24_0s2p2"]
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_034fm"]
 load_path = "res://.godot/imported/player_player.png-bdc1ffc7dd29727a34be4dd4d950b210.s3tc.ctex"
@@ -146,6 +157,18 @@ tracks/1/keys = {
 "update": 1,
 "values": [false]
 }
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 0)]
+}
 
 [sub_resource type="Animation" id="Animation_6jwrx"]
 resource_name = "death"
@@ -202,6 +225,32 @@ tracks/1/keys = {
 "values": [{
 "args": [0.75],
 "method": &"leave_blood"
+}]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CanvasLayer/TextureRect:modulate")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 0.192157), Color(1, 1, 1, 0)]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [0.0],
+"method": &"apply_shake"
 }]
 }
 
@@ -488,9 +537,6 @@ transform = Transform3D(1.4556, -2.23517e-08, 3.55271e-15, 3.57628e-07, 1.21451,
 [node name="Flamer" parent="playerModel/Chest/Guns" index="5"]
 transform = Transform3D(-0.5, 0, -7.54979e-08, 0, 0.5, 0, 7.54979e-08, 0, -0.5, 0.309314, 0.345748, 0.354024)
 
-[node name="Bazooka" parent="playerModel/Chest/Guns" index="6"]
-transform = Transform3D(-0.587789, 0, 0.809014, 0, 1, 0, -0.809014, 0, -0.587789, -0.128259, -0.294339, 0.30849)
-
 [node name="StaticBody3D" type="StaticBody3D" parent="playerModel/Chest" index="4" groups=["Player"]]
 collision_layer = 16
 collision_mask = 0
@@ -606,6 +652,13 @@ texture = ExtResource("4_8yjlq")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 visible = false
+
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+modulate = Color(1, 1, 1, 0)
+offset_right = 1153.0
+offset_bottom = 648.0
+mouse_filter = 2
+texture = ExtResource("5_eyqkg")
 
 [node name="UI" type="Control" parent="CanvasLayer"]
 layout_mode = 3
@@ -782,8 +835,38 @@ bus = &"Music"
 
 [node name="Announcer" type="Node3D" parent="Audio"]
 
-[node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
+[node name="headshot" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
 stream = ExtResource("13_c5370")
+
+[node name="first_blood" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
+stream = ExtResource("15_iecv3")
+
+[node name="killing_spree" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
+stream = ExtResource("16_ld157")
+
+[node name="rampage" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
+stream = ExtResource("17_1v0kt")
+
+[node name="unkillable" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
+stream = ExtResource("18_rebpg")
+
+[node name="oh_shit" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
+stream = ExtResource("19_ofpoq")
+
+[node name="double_kill" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
+stream = ExtResource("20_8y3m1")
+
+[node name="triple_kill" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
+stream = ExtResource("21_hrv6o")
+
+[node name="killdozer" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
+stream = ExtResource("22_rgmwe")
+
+[node name="game" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
+stream = ExtResource("23_1nlnt")
+
+[node name="game_point" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
+stream = ExtResource("24_0s2p2")
 
 [connection signal="body_entered" from="playerModel/Chest/Guns/Sword/sword/Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="animation_finished" from="playerModel/Chest Animator" to="." method="_on_chest_animator_animation_finished"]

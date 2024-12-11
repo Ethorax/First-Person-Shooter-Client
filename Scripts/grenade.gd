@@ -28,7 +28,7 @@ func _on_timer_timeout() -> void:
 
 
 func _on_area_3d_body_entered(body: Node3D) -> void:
-	if body.name != str(shooter):
+	if body.name != str(shooter) and direct:
 		if body.is_in_group("PlayerRoot"):
 			print("explosion")
 			var e = explosion.instantiate()
@@ -37,3 +37,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			e.player_id = str(shooter)
 			get_parent().add_child(e)
 			queue_free()
+	else:
+		direct = false

@@ -1847,6 +1847,18 @@ tracks/15/keys = {
 "update": 1,
 "values": [2.0, 0.0]
 }
+tracks/16/type = "value"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Chest/OmniLight3D:position")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.382262, -0.287739, 1.42218)]
+}
 
 [sub_resource type="Animation" id="Animation_g3ese"]
 resource_name = "fire_sniper"
@@ -4117,7 +4129,7 @@ material_override = SubResource("StandardMaterial3D_cra8u")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -0.0216175, -0.865626, 0.000402629)
 
 [node name="Chest" parent="." index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144374, 2.84003, -0.012361)
+transform = Transform3D(0.809017, 0, -0.587786, 0, 1, 0, 0.587786, 0, 0.809017, -0.0144374, 2.84003, -0.012361)
 
 [node name="LeftShoulder" parent="Chest" index="0"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454898, 0.243722, -0.193662)
@@ -4221,7 +4233,8 @@ transform = Transform3D(-0.75, 9.95392e-07, -1.49651e-06, -1.39718e-07, 0.590298
 visible = false
 
 [node name="OmniLight3D" type="OmniLight3D" parent="Chest" index="4"]
-transform = Transform3D(-1.99995, 0, -0.0141726, 0, 2, 0, 0.0141726, 0, -1.99995, -0.00347841, 0.122429, -0.414925)
+transform = Transform3D(-1.99995, 0, -0.0141724, 0, 2, 0, 0.0141724, 0, -1.99995, -0.00347841, 0.122429, -0.414925)
+light_energy = 5.0
 omni_range = 0.0
 
 [node name="Chest Animator" type="AnimationPlayer" parent="." index="2"]
