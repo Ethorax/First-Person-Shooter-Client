@@ -1,9 +1,16 @@
-[gd_scene load_steps=21 format=3 uid="uid://w32xaofhsiut"]
+[gd_scene load_steps=32 format=3 uid="uid://w32xaofhsiut"]
 
 [ext_resource type="PackedScene" uid="uid://das2hecdfqyxd" path="res://Graphics/Meshes/Maps/MountainDM.glb" id="1_4kxfl"]
 [ext_resource type="Script" path="res://Scripts/map.gd" id="1_womh3"]
 [ext_resource type="PackedScene" uid="uid://cmvyqpkrbc2r2" path="res://Objects/jump_pad.tscn" id="3_0v0qm"]
 [ext_resource type="PackedScene" uid="uid://dgcqpr57hkgaf" path="res://Objects/props/sconce.tscn" id="4_t7w18"]
+[ext_resource type="PackedScene" uid="uid://b0r0pobkl8gyb" path="res://Objects/weapon_pickup.tscn" id="5_s6wau"]
+[ext_resource type="PackedScene" uid="uid://b6ho3h5p26ly6" path="res://Objects/pickup.tscn" id="6_euc45"]
+[ext_resource type="PackedScene" uid="uid://cba0hgrr8tofy" path="res://Objects/props/crate.tscn" id="7_kn485"]
+[ext_resource type="PackedScene" uid="uid://ca0wevg1lb4rx" path="res://water test/WaterMaker3D.tscn" id="8_lkjh0"]
+[ext_resource type="PackedScene" uid="uid://bi3454wwq2tld" path="res://Objects/killzone.tscn" id="9_tij8v"]
+[ext_resource type="PackedScene" uid="uid://dlxborjhslmqk" path="res://Objects/banner.tscn" id="10_fbpw1"]
+[ext_resource type="Texture2D" uid="uid://bpcx6mf34ogdw" path="res://Graphics/Banners/hogbanner.png" id="11_c0bi8"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_j86h2"]
 sky_top_color = Color(0.300208, 0.360251, 0.443768, 1)
@@ -62,12 +69,42 @@ billboard_mode = 1
 [sub_resource type="QuadMesh" id="QuadMesh_xconr"]
 material = SubResource("StandardMaterial3D_fo6rn")
 
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_r2dpi"]
+resource_local_to_scene = true
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c410q"]
+resource_local_to_scene = true
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_r2dpi")
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_i5rqc"]
+resource_local_to_scene = true
+seamless = true
+as_normal_map = true
+noise = SubResource("FastNoiseLite_r2dpi")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nl8l5"]
+resource_local_to_scene = true
+transparency = 1
+cull_mode = 2
+depth_draw_mode = 1
+albedo_color = Color(0.059, 0.467, 0.392, 1)
+roughness = 0.0
+normal_enabled = true
+normal_texture = SubResource("NoiseTexture2D_c410q")
+refraction_enabled = true
+refraction_texture = SubResource("NoiseTexture2D_i5rqc")
+uv1_scale = Vector3(-0.005, -0.005, -0.005)
+uv1_triplanar = true
+uv1_world_triplanar = true
+
 [node name="MountainDM" type="Node3D"]
 script = ExtResource("1_womh3")
 
 [node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
 transform = Transform3D(-0.702153, -0.296403, 0.6474, 0, 0.909236, 0.416281, -0.712026, 0.292293, -0.638423, 0, 0, 0)
-light_color = Color(0.808999, 0.808998, 0.808998, 1)
+light_color = Color(0.995629, 0.479255, 0.433239, 1)
 light_energy = 0.5
 shadow_enabled = true
 directional_shadow_max_distance = 331.0
@@ -159,7 +196,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9.12914, -8.16698, -13.912)
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 98.75, 0)
-amount = 500
+amount = 1000
 lifetime = 50.0
 mesh = SubResource("QuadMesh_xconr")
 emission_shape = 3
@@ -189,37 +226,197 @@ jump_force = 20.0
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 27.5913, 1.15918, -19.2254)
 jump_force = 20.0
 
-[node name="Sconce" parent="." instance=ExtResource("4_t7w18")]
+[node name="Crate" parent="." instance=ExtResource("7_kn485")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.70702, -9.43661, -6.71598)
+
+[node name="Crate2" parent="." instance=ExtResource("7_kn485")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.70702, -9.43661, -4.67544)
+
+[node name="Crate3" parent="." instance=ExtResource("7_kn485")]
+transform = Transform3D(4, 0, 0, 0, 4, 0, 0, 0, 4, 14.5853, -6.43661, -2.26568)
+
+[node name="Crate4" parent="." instance=ExtResource("7_kn485")]
+transform = Transform3D(2.5, 0, 0, 0, 2.5, 0, 0, 0, 2.5, 7.94044, -7.88389, -0.802073)
+
+[node name="Crate5" parent="." instance=ExtResource("7_kn485")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 10.3335, -8.43661, 9.47735)
+
+[node name="Crate6" parent="." instance=ExtResource("7_kn485")]
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 12.7796, -7.43661, 4.69762)
+
+[node name="Sconces" type="Node3D" parent="."]
+
+[node name="Sconce" parent="Sconces" instance=ExtResource("4_t7w18")]
 transform = Transform3D(0.585, 0, 0, 0, 0.585, 0, 0, 0, 0.585, -5.77904, 9.94846, -2.83069)
 
-[node name="Sconce2" parent="." instance=ExtResource("4_t7w18")]
+[node name="Sconce2" parent="Sconces" instance=ExtResource("4_t7w18")]
 transform = Transform3D(0.585, 0, 0, 0, 0.585, 0, 0, 0, 0.585, -5.77904, 9.94846, 3.84431)
 
-[node name="Sconce3" parent="." instance=ExtResource("4_t7w18")]
+[node name="Sconce3" parent="Sconces" instance=ExtResource("4_t7w18")]
 transform = Transform3D(0.46, 0, 0, 0, 0.46, 0, 0, 0, 0.46, 24.2699, 5.47067, -1.06674)
 
-[node name="Sconce4" parent="." instance=ExtResource("4_t7w18")]
+[node name="Sconce4" parent="Sconces" instance=ExtResource("4_t7w18")]
 transform = Transform3D(0.46, 0, 0, 0, 0.46, 0, 0, 0, 0.46, 24.3068, 5.51418, 1.88065)
 
-[node name="Sconce5" parent="." instance=ExtResource("4_t7w18")]
+[node name="Sconce5" parent="Sconces" instance=ExtResource("4_t7w18")]
 transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 60.4108, 5.46322, -2.2698)
 
-[node name="Sconce6" parent="." instance=ExtResource("4_t7w18")]
+[node name="Sconce6" parent="Sconces" instance=ExtResource("4_t7w18")]
 transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 70.4181, 5.46322, 3.42393)
 
-[node name="Sconce7" parent="." instance=ExtResource("4_t7w18")]
+[node name="Sconce7" parent="Sconces" instance=ExtResource("4_t7w18")]
 transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 72.7215, 5.46322, 3.42393)
 
-[node name="Sconce8" parent="." instance=ExtResource("4_t7w18")]
+[node name="Sconce8" parent="Sconces" instance=ExtResource("4_t7w18")]
 transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 73.3365, 4.75029, 25.6125)
 
-[node name="Sconce9" parent="." instance=ExtResource("4_t7w18")]
+[node name="Sconce9" parent="Sconces" instance=ExtResource("4_t7w18")]
 transform = Transform3D(0.36, 0, 0, 0, 0.36, 0, 0, 0, 0.36, 73.3365, 4.75029, -23.9526)
 
-[node name="Sconce10" parent="." instance=ExtResource("4_t7w18")]
+[node name="Sconce10" parent="Sconces" instance=ExtResource("4_t7w18")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 31.8929, -4.95191, 21.7005)
 
-[node name="Sconce11" parent="." instance=ExtResource("4_t7w18")]
+[node name="Sconce11" parent="Sconces" instance=ExtResource("4_t7w18")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 31.8929, -4.95191, -20.5798)
+
+[node name="WeaponPickups" type="Node3D" parent="."]
+
+[node name="WeaponPickup" parent="WeaponPickups" instance=ExtResource("5_s6wau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 7.17537, 0.9096, 0.462812)
+gun_pickup = 3
+
+[node name="WeaponPickup2" parent="WeaponPickups" instance=ExtResource("5_s6wau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 8.03687, 12.2669, 0.487173)
+gun_pickup = 4
+
+[node name="WeaponPickup3" parent="WeaponPickups" instance=ExtResource("5_s6wau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 34.3699, 9.8154, 0.613512)
+gun_pickup = 6
+
+[node name="WeaponPickup4" parent="WeaponPickups" instance=ExtResource("5_s6wau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 155.569, 1.1192, 1.4735)
+gun_pickup = 2
+
+[node name="WeaponPickup5" parent="WeaponPickups" instance=ExtResource("5_s6wau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 27.5015, -10.42, 0.683254)
+gun_pickup = 7
+
+[node name="WeaponPickup6" parent="WeaponPickups" instance=ExtResource("5_s6wau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -1.07795, -10.42, 0.135856)
+gun_pickup = 5
+
+[node name="WeaponPickup7" parent="WeaponPickups" instance=ExtResource("5_s6wau")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 49.6113, 1.1423, 3.39281)
+gun_pickup = 1
+
+[node name="Pickups" type="Node3D" parent="."]
+
+[node name="Pickup8" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.7136, 1.67304, -6.13171)
+type = 2
+
+[node name="Pickup9" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.0761, 1.67304, -6.13171)
+type = 2
+
+[node name="Pickup10" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 56.9587, 1.65147, 17.6137)
+type = 4
+
+[node name="Pickup11" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 55.5574, 1.65147, 17.6137)
+type = 7
+
+[node name="Pickup12" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 54.4217, 1.65147, 17.6137)
+type = 7
+
+[node name="Pickup13" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 53.2549, 1.65147, 17.6137)
+type = 7
+
+[node name="Pickup14" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.2156, 1.65147, 17.6137)
+type = 7
+
+[node name="Pickup15" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.1807, 1.64683, -0.318322)
+type = 11
+
+[node name="Pickup16" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 69.1807, 1.64683, 7.8439)
+type = 11
+
+[node name="Pickup17" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157, 14.9997, 19.4973)
+type = 1
+
+[node name="Pickup18" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157, 14.9997, 17.0821)
+type = 1
+
+[node name="Pickup19" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 157, 14.9997, 14.7462)
+type = 1
+
+[node name="Pickup20" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 78.7998, 1.78729, -22.1717)
+type = 5
+
+[node name="Pickup21" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 51.9286, -1.41028, -21.9031)
+type = 9
+
+[node name="Pickup22" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54235, 12.8172, -2.81398)
+type = 5
+
+[node name="Pickup23" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.54235, 12.8172, 3.562)
+type = 3
+
+[node name="Pickup2" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6044, -7.71203, 17.2929)
+
+[node name="Pickup3" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6044, -6.78826, 16.1297)
+
+[node name="Pickup4" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.4841, -7.83533, -15.9273)
+
+[node name="Pickup5" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.4841, -6.97972, -14.7758)
+
+[node name="Pickup6" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6399, 1.54084, 17.2524)
+type = 8
+
+[node name="Pickup7" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.6804, 1.50639, -16.2632)
+type = 11
+
+[node name="Pickup" parent="Pickups" instance=ExtResource("6_euc45")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 52.4028, -3.01984, 23.4167)
+type = 2
+
+[node name="WaterMaker3D" parent="." instance=ExtResource("8_lkjh0")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 395.488, -149.32, -267.64)
+size = Vector3(1220.96, 191.575, 891.694)
+material = SubResource("StandardMaterial3D_nl8l5")
+water_texture_move_speed = Vector3(0.002, 0.002, 0.002)
+water_texture_uv_scale = -0.005
+water_color = Color(0.059, 0.467, 0.392, 1)
+
+[node name="Killzone" parent="." instance=ExtResource("9_tij8v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 75.8999, -53.409, -106.887)
+size = Vector3(618.638, 1, 564.564)
+
+[node name="Banner" parent="." instance=ExtResource("10_fbpw1")]
+transform = Transform3D(-1.31134e-07, 3, -1.31134e-07, 0, -1.31134e-07, -3, -3, -1.31134e-07, 5.73206e-15, 23.8096, 7.97996, -6.93562)
+banner_texture = ExtResource("11_c0bi8")
+
+[node name="Banner2" parent="." instance=ExtResource("10_fbpw1")]
+transform = Transform3D(-1.31134e-07, 3, -1.31134e-07, 0, -1.31134e-07, -3, -3, -1.31134e-07, 5.73206e-15, 23.8096, 7.97996, 8.30785)
+banner_texture = ExtResource("11_c0bi8")
 
 [editable path="MountainDM"]

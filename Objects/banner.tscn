@@ -1,0 +1,48 @@
+[gd_scene load_steps=9 format=3 uid="uid://dlxborjhslmqk"]
+
+[ext_resource type="Script" path="res://Scripts/banner.gd" id="1_8r7jc"]
+[ext_resource type="Texture2D" uid="uid://cwvqv5a7htq1l" path="res://Graphics/TestGraphics/testbanner.png" id="1_wpuxx"]
+[ext_resource type="Texture2D" uid="uid://dg3oh4bghteb7" path="res://Graphics/Banners/polishbanner.png" id="2_av8wm"]
+[ext_resource type="Shader" path="res://Shaders/banner.gdshader" id="2_bxv61"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_3icxc"]
+frequency = 0.005
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_kyxhv"]
+width = 1
+seamless = true
+noise = SubResource("FastNoiseLite_3icxc")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_c1dne"]
+resource_local_to_scene = true
+render_priority = 0
+shader = ExtResource("2_bxv61")
+shader_parameter/wave_size = 0.2
+shader_parameter/face_distortion = 0.05
+shader_parameter/time_scale = Vector2(0.1, 0.1)
+shader_parameter/uv_offset_scale = Vector2(-0.1, -0.1)
+shader_parameter/uv_offset_texture = SubResource("NoiseTexture2D_kyxhv")
+shader_parameter/user_texture = ExtResource("2_av8wm")
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_7sari"]
+resource_local_to_scene = true
+material = SubResource("ShaderMaterial_c1dne")
+subdivide_width = 80
+subdivide_depth = 80
+
+[node name="Banner" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_8r7jc")
+banner_texture = ExtResource("2_av8wm")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+visible = false
+texture_filter = 0
+texture = ExtResource("1_wpuxx")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("PlaneMesh_7sari")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="."]
+transform = Transform3D(-0.999991, -0.00427611, 0, 0.00427611, -0.999991, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("PlaneMesh_7sari")

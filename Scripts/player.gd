@@ -20,7 +20,7 @@ var shake_strength : float = 0.0
 
 #PlayerModel Stuffs
 @onready var player_model: Node3D = $playerModel
-@onready var gun_hand: Marker3D = $playerModel/Chest/RightShoulder/RightBicep/RightForearm/RightHand/GunHand
+#@onready var gun_hand: Marker3D = $playerModel/Chest/RightShoulder/RightBicep/RightForearm/RightHand/GunHand
 @onready var chest: MeshInstance3D = $playerModel/Chest
 @onready var chest_animator: AnimationPlayer = $"playerModel/Chest Animator"
 @onready var pelvis_animator: AnimationPlayer = $"playerModel/Pelvis Animator"
@@ -32,6 +32,8 @@ var shake_strength : float = 0.0
 @onready var chat: Panel = $CanvasLayer/UI/Chat
 var chat_focused : bool = false
 
+
+@onready var hitmarker: TextureRect = $Crosshair/Hitmarker
 
 
 #state machine
@@ -49,13 +51,17 @@ const JUMP_VELOCITY = 4.5
 var direction
 var isRunning := false
 var speed := 12.0
+var og_speed = speed
 var jump := 30.0
 const GRAVITY := 2
 var distanceFootstep := 0.0
 var playFootstep := 3 #Lower if we want to play the sounds faster
 var _delta := 0.0
+
 var camBobSpeed := 10 #10 
-var camBobUpDown := 1 #.5
+var camBobUpDown := 0.001 #.5
+var og_cam_pos
+
 var mouse_sense = 0.15
 var og_sense = 0.15
 var mouse_locked : bool
@@ -78,14 +84,16 @@ var shield : int = 50
 var alive : bool = true
 
 #Gun Variables
-var b_spread : float = 10.0
+var b_spread : float = 1.0
 var og_fov : float = 75.0
 var zoom_fov : float = 5.0
 var current_weapon_index : int = 0
 var can_shoot : bool = true
 @onready var reload_timer: Timer = $ReloadTimer
 # KEY : MELEE, PISTOL, SHOTGUN, GATLING, SNIPER, FLAMER, BAZOOKA, GRENADE, MAGNUM, ENERGY
-var weapons = [true,true,true,true,true,true,true,true,true,true]
+#var weapons = [true,true,true,true,true,true,true,true,true,true]
+@export var weapons = [true,true,false,false,false,false,false,false,false,false]
+
 var ammo_dict = {
 	"sword" : 99999999999,
 	"pistol" : 50,
@@ -135,6 +143,7 @@ func _enter_tree() -> void:
 func _ready() -> void:
 	#position = Global.spawn_points.pick_random().position
 	#multiplayer_synchronizer.replication_config.add_property(name+":position")
+	og_cam_pos = $Camera3D.position
 	
 	if is_multiplayer_authority():
 		#player_model.update_color(color)
@@ -144,13 +153,18 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	
-	auto_disconnect_check()
+	#auto_disconnect_check()
 	
 	#$HeadHitbox.global_position = $playerModel/Chest/Neck/Head.global_position
 
 	
 	if is_multiplayer_authority():
 		
+		hitmarker.show()
+		hitmarker.modulate.a = lerp(hitmarker.modulate.a,0.0,0.1)
+		
+		if !$Audio/Music.playing:
+			$Audio/Music.go_mode()
 		
 		if og_fov != Global.fov:
 			og_fov = Global.fov
@@ -169,10 +183,10 @@ func _physics_process(delta: float) -> void:
 				
 				#player_model.hide()
 				#var temp_chest_rot = chest.rotation
-				chest.rotation.x = -camera_3d.rotation.x
+				#chest.rotation.x = -camera_3d.rotation.x
 				
 				if velocity != Vector3.ZERO:
-					pelvis_animator.play("Running")
+					pelvis_animator.play("Running",-1,1.5)
 				else:
 					pelvis_animator.play("Idle")
 				
@@ -218,6 +232,7 @@ func _physics_process(delta: float) -> void:
 				
 			#player_states.dead:
 				#pass	
+	floor_snap_length = 2
 	move_and_slide()
 	
 	
@@ -231,6 +246,8 @@ func _input(event):
 					rotate_y(deg_to_rad(-event.relative.x*mouse_sense))
 					camera_3d.rotate_x(deg_to_rad(-event.relative.y*mouse_sense))
 					camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+					
+					
 					
 				if(event.is_action_pressed("weapon_switch_down")):
 					switch_weapon_down()
@@ -246,6 +263,7 @@ func _input(event):
 					else:
 						Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 					$CanvasLayer/PauseMenu.visible = !$CanvasLayer/PauseMenu.visible
+					$CanvasLayer/Settings.hide()
 			
 				if event.is_action_pressed("ui_accept"):
 					if is_on_floor():
@@ -253,7 +271,9 @@ func _input(event):
 					elif in_water:
 						velocity.y = JUMP_VELOCITY
 					
-					
+				if(event.is_action_pressed("hide_hud")):
+					$CanvasLayer.visible = !$CanvasLayer.visible
+					$Crosshair.visible = !$Crosshair.visible
 					
 					
 						
@@ -299,6 +319,8 @@ func _input(event):
 			
 func process_movement(delta):
 	
+	_delta += delta
+	
 	if !in_water and alive:
 		direction = Vector3.ZERO
 		
@@ -309,6 +331,18 @@ func process_movement(delta):
 		direction = Vector3(direction.x,0,direction.z).rotated(Vector3.UP,h_rot).normalized()
 
 		var actualSpeed = speed if !isRunning else speed*2
+		
+		if velocity.y ==0 and direction != Vector3.ZERO:
+			#og_cam_pos = $Camera3D.position
+			#var bob_amount =og_cam_pos + Vector3.UP * sin(delta * camBobSpeed) * camBobUpDown
+			var bob_amount = (sin(_delta*10)* camBobUpDown*4) * Vector3.UP
+			#print(bob_amount)
+			#print(_delta)
+			$Camera3D.position += bob_amount
+			
+			
+		else:
+			$Camera3D.position = og_cam_pos
 		
 		
 		if is_on_floor():
@@ -325,7 +359,8 @@ func process_movement(delta):
 		direction.x = -Input.get_action_strength("move_left")+Input.get_action_strength("move_right")
 		direction.z = -Input.get_action_strength("move_forward")+Input.get_action_strength("move_back")
 		direction = Vector3(direction.x,0,direction.z).rotated(Vector3.UP,h_rot).normalized()
-
+		
+		
 		var actualSpeed = speed / 2 if !isRunning else speed
 		
 		if is_on_floor():
@@ -347,7 +382,7 @@ func process_movement(delta):
 
 func fire_gun():
 	if can_shoot and ammo_dict[gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)] > 0 and alive:
-		player_model.get_node("AudioController").get_node(str($playerModel/Chest/Guns.get_child(current_weapon_index).name)).play()
+		#player_model.get_node("AudioController").get_node(str($playerModel/Chest/Guns.get_child(current_weapon_index).name)).play()
 		chest_animator.stop()
 		chest_animator.play("fire_"+$playerModel/Chest/Guns.get_child(current_weapon_index).name.to_lower(),-1,1.0)
 		ammo_dict[gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)] -= 1
@@ -359,7 +394,7 @@ func fire_gun():
 			can_shoot = false
 		if $playerModel/Chest/Guns.get_node_or_null("Pistol") != null:
 			if($playerModel/Chest/Guns.get_node("Pistol").visible):
-				reload_timer.start(0.2)
+				reload_timer.start(0.35)
 				can_shoot = false
 				apply_shake(0.02)
 				
@@ -372,7 +407,8 @@ func fire_gun():
 						print("Player Hit")
 						var hit_player = aim.get_collider()
 						#hit_player.take_damage.rpc_id(hit_player.get_multiplayer_authority(),5,name)
-						Server.hit_player(5,str(hit_player.get_multiplayer_authority()),name)
+						Server.hit_player(10,str(hit_player.get_multiplayer_authority()),name)
+						hitmarker.modulate.a = 1.0
 					else:
 						var b = BULLET_DECAL.instantiate()
 						get_parent().add_child(b)
@@ -394,7 +430,7 @@ func fire_gun():
 		if $playerModel/Chest/Guns.get_node_or_null("Sniper"):
 			if($playerModel/Chest/Guns/Sniper.visible):
 				apply_shake(0.02)
-				reload_timer.start(0.5)
+				reload_timer.start(0.75)
 				can_shoot = false
 				
 				if(aim.is_colliding()):
@@ -411,7 +447,8 @@ func fire_gun():
 						print(aim.get_collider().name)
 						
 						print("Player Hit")
-						Server.hit_player(10+headshot_damage,str(hit_player.get_multiplayer_authority()),str(get_multiplayer_authority()))
+						Server.hit_player(40+headshot_damage,str(hit_player.get_multiplayer_authority()),str(get_multiplayer_authority()))
+						hitmarker.modulate.a = 1.0
 					else:
 						var b = BULLET_DECAL.instantiate()
 						get_parent().add_child(b)
@@ -435,7 +472,7 @@ func fire_gun():
 			if($playerModel/Chest/Guns/Bazooka.visible):
 				$playerModel/Chest/Guns/Bazooka/AnimationPlayer.play("fire")
 				apply_shake(0.01)
-				reload_timer.start(0.8)
+				reload_timer.start(1.0)
 				can_shoot = false
 				#var r_instance = rocket.instantiate()
 				
@@ -456,7 +493,7 @@ func fire_gun():
 		if $playerModel/Chest/Guns.get_node_or_null("Shotgun")!=null:
 			if($playerModel/Chest/Guns/Shotgun.visible):
 				$playerModel/Chest/Guns/Shotgun/AnimationPlayer.play("fire")
-				reload_timer.start(0.5)
+				reload_timer.start(0.9)
 				can_shoot = false
 				apply_shake(0.06)
 				for shotgun_aim in shotgun_container.get_children():
@@ -468,7 +505,8 @@ func fire_gun():
 						if(shotgun_aim.get_collider().is_in_group("Player")):
 							print("Player Hit")
 							var hit_player = shotgun_aim.get_collider()
-							Server.hit_player(5,str(hit_player.get_multiplayer_authority()),name)
+							Server.hit_player(10,str(hit_player.get_multiplayer_authority()),name)
+							hitmarker.modulate.a = 1.0
 						else:
 							var b = BULLET_DECAL.instantiate()
 							get_parent().add_child(b)
@@ -514,7 +552,8 @@ func fire_gun():
 						
 						
 						#hit_player.take_damage.rpc_id(hit_player.get_multiplayer_authority(),5,name)
-						Server.hit_player(5,str(hit_player.get_multiplayer_authority()),name)
+						Server.hit_player(8,str(hit_player.get_multiplayer_authority()),name)
+						hitmarker.modulate.a = 1.0
 					else:
 						var b = BULLET_DECAL.instantiate()
 						get_parent().add_child(b)
@@ -550,7 +589,7 @@ func fire_gun():
 				#$playerModel/Chest/Guns/Flamer/AnimationPlayer.play("fire")
 				
 				apply_shake(0.05)
-				reload_timer.start(0.8)
+				reload_timer.start(1.6)
 				can_shoot = false
 				
 				aim.global_rotation_degrees.x += rng.randf_range(-b_spread,b_spread)
@@ -562,7 +601,8 @@ func fire_gun():
 						print("Player Hit")
 						var hit_player = aim.get_collider()
 						#hit_player.take_damage.rpc_id(hit_player.get_multiplayer_authority(),5,name)
-						Server.hit_player(40,str(hit_player.get_multiplayer_authority()),name)
+						Server.hit_player(70,str(hit_player.get_multiplayer_authority()),name)
+						hitmarker.modulate.a = 1.0
 					else:
 						var b = BULLET_DECAL.instantiate()
 						get_parent().add_child(b)
@@ -587,7 +627,7 @@ func fire_gun():
 				#$playerModel/Chest/Guns/Flamer/AnimationPlayer.play("fire")
 				
 				apply_shake(0.05)
-				reload_timer.start(0.35)
+				reload_timer.start(0.40)
 				can_shoot = false
 				
 				var target = $Camera3D/Aim/Target.global_position
@@ -605,9 +645,11 @@ func alt_fire():
 		if(camera_3d.fov != og_fov):
 			camera_3d.fov = og_fov
 			mouse_sense = og_sense
+			speed = og_speed
 		else:
 			camera_3d.fov = zoom_fov
-			mouse_sense = mouse_sense/2
+			mouse_sense = mouse_sense/4
+			speed / 3
 		
 	
 func leave_blood(scale_mod):
@@ -646,13 +688,13 @@ func take_damage(damage : int,to : String = "1", from_id : String = "1") -> void
 	apply_shake(0.001 * damage)
 	
 	var beginning_health = health
-	shield += -(round(damage/3))*2
+	shield += -(round(damage/3.0))*2
 	if shield < 0 :
 		health += shield
 		shield = 0
 		
 	
-	health += -(damage/3)
+	health += -(damage/3.0)
 	#health += -damage
 	update_health()
 	print(health)
@@ -661,6 +703,10 @@ func take_damage(damage : int,to : String = "1", from_id : String = "1") -> void
 	
 	if(health <= 0 and beginning_health > 0):
 		Server.rpc_id(1,"frag", to,from_id)
+		
+		camera_3d.fov = og_fov
+		mouse_sense = og_sense
+		
 		alive = false
 		player_anim.stop()
 		player_anim.play("death")
@@ -692,10 +738,18 @@ func _on_respawn_pressed() -> void:
 	update_health()
 	alive = true
 	player_model.show()
+	velocity = Vector3.ZERO
 	#$HeadHitbox.disabled = false
 	#$BodyHitbox.disabled = false
 
-
+	
+	weapons = [true,true,false,false,false,false,false,false,false,false]
+	var guns = $playerModel/Chest/Guns
+	var anim = $"playerModel/Chest Animator"
+	guns.get_child(current_weapon_index).hide()
+	current_weapon_index = 0
+	guns.get_child(current_weapon_index).show()
+	anim.play("hold_"+guns.get_child(current_weapon_index).name.to_lower())
 	ammo_dict = {
 	"sword" : 99999999999,
 	"pistol" : 50,
@@ -763,9 +817,19 @@ func _on_reload_timer_timeout() -> void:
 	can_shoot = true
 
 func add_weapon(weapon_index : int):
+	var guns = $playerModel/Chest/Guns
+	var anim = $"playerModel/Chest Animator"
 	if is_multiplayer_authority():
 		if !weapons[weapon_index]:
 			weapons[weapon_index] = true
+		
+		
+		guns.get_child(current_weapon_index).hide()
+		current_weapon_index = weapon_index
+		guns.get_child(current_weapon_index).show()
+		anim.play("hold_"+guns.get_child(current_weapon_index).name.to_lower())
+		$"CanvasLayer/UI/Gun Selection/Gun Label".text = guns.get_child(current_weapon_index).name
+		$"CanvasLayer/UI/Ammo/Ammo Label".text = str(ammo_dict.get(gun_to_ammo.get(guns.get_child(current_weapon_index).name)))
 		
 
 
@@ -797,6 +861,7 @@ func add_ammo(amount, type):
 func _on_resume_pressed() -> void:	
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	$CanvasLayer/PauseMenu.hide()
+	$CanvasLayer/Settings.hide()
 
 
 func _on_settings_pressed() -> void:
@@ -805,6 +870,8 @@ func _on_settings_pressed() -> void:
 
 func _on_quit_menu_pressed() -> void:
 	disconnect_from_game()
+	get_tree().root.get_node("Client").get_node("CanvasLayer").show()
+	get_tree().root.get_node("Client").get_child(2).queue_free()
 
 
 func _on_quit_desktop_pressed() -> void:
@@ -834,11 +901,20 @@ func update_colors():
 	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand").material_override.albedo_color = color
 	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand/LeftThumb").material_override.albedo_color = color
 	player_model.get_node("Chest/Neck/Head/Cube_049").material_override.albedo_color = color
+	
+	player_model.get_node("Chest/Neck/Head/imperial/GreatHelm").get_surface_override_material(0).albedo_color = color
+	player_model.get_node("Chest/Neck/Head/Mercenary/Varangian").get_surface_override_material(0).albedo_color = color
+	player_model.get_node("Chest/Neck/Head/Chivalrous/Chivalrous").get_surface_override_material(0).albedo_color = color
+	player_model.get_node("Chest/Neck/Head/Chivalrous/Chivalrous/Cube_050").get_surface_override_material(0).albedo_color = color
+	player_model.get_node("Chest/Neck/Head/conquerer/Conquerer").get_surface_override_material(0).albedo_color = color
+	player_model.get_node("Chest/Neck/Head/Defender/Sallet").get_surface_override_material(0).albedo_color = color
+	
 
 
 func box_container_child_entered_tree(node: Node) -> void:
 	chat.show()
 	$chat_timer.start(5)
+	await get_tree().create_timer(0.16).timeout
 	v_scroll_bar.get_v_scroll_bar().value = v_scroll_bar.get_v_scroll_bar().max_value
 
 
@@ -849,6 +925,8 @@ func _on_chat_timer_timeout() -> void:
 
 func hide_player():
 	
+	
+	$username.hide()
 	
 	player_model.get_node("Pelvis").set_layer_mask_value(1,false)
 	player_model.get_node("Pelvis/RightThigh").set_layer_mask_value(1,false)
@@ -864,6 +942,14 @@ func hide_player():
 	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm").set_layer_mask_value(1,false)
 	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand").set_layer_mask_value(1,false)
 	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand/LeftThumb").set_layer_mask_value(1,false)
+	
+	player_model.get_node("Chest/Neck/Head/Chivalrous/Chivalrous").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/Neck/Head/Chivalrous/Chivalrous/Cube_050").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/Neck/Head/conquerer/Conquerer").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/Neck/Head/imperial/GreatHelm").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/Neck/Head/Mercenary/Varangian").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/Neck/Head/Defender/Sallet").set_layer_mask_value(1,false)
+	
 	player_model.get_node("Chest/Neck/Head/Cube_049").set_layer_mask_value(1,false)
 	$playerModel/Chest/LeftShoulder.set_layer_mask_value(1,false)
 	$playerModel/Chest/RightShoulder.set_layer_mask_value(1,false)
@@ -914,7 +1000,7 @@ func auto_disconnect_check():
 		if old_position == position:
 			disconnect_from_game()
 
-func _on_area_3d_body_entered(body: Node3D) -> void:
+func on_area_3d_body_entered(body: Node3D) -> void:
 	if body.get_multiplayer_authority() != get_multiplayer_authority():
 		Server.hit_player(30,str(body.get_multiplayer_authority()),str(get_multiplayer_authority()))
 		
@@ -936,7 +1022,7 @@ func toggle_hitbox():
 	$playerModel/Chest/LeftShoulder/LeftBicep/LeftForearm/StaticBody3D/CollisionShape3D.disabled = true
 	$playerModel/Chest/LeftShoulder/LeftBicep/StaticBody3D/CollisionShape3D.disabled = true
 	
-	$playerModel/Chest/Neck/Head/Cube_049/Head/Head.disabled = true
+	$playerModel/Chest/Neck/Head/Head/Head.disabled = true
 	
 	$playerModel/Chest/RightShoulder/RightBicep/RightForearm/StaticBody3D/CollisionShape3D.disabled = true
 	$playerModel/Chest/RightShoulder/RightBicep/StaticBody3D/CollisionShape3D.disabled = true
@@ -946,3 +1032,10 @@ func toggle_hitbox():
 
 func _on_chest_animator_animation_finished(anim_name: StringName) -> void:
 	chest_animator.play("hold_"+anim_name.split("_")[1])
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.get_multiplayer_authority() != get_multiplayer_authority():
+		Server.hit_player(30,str(body.get_multiplayer_authority()),str(get_multiplayer_authority()))
+		if body.is_in_group("PlayerRoot"):
+			hitmarker.modulate.a = 1.0

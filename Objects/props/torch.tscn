@@ -1,0 +1,68 @@
+[gd_scene load_steps=10 format=3 uid="uid://cww2pa6kl55bm"]
+
+[ext_resource type="Script" path="res://Scripts/torch.gd" id="1_idyfn"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_fi6ax"]
+frequency = 0.0328
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_t7jby"]
+noise = SubResource("FastNoiseLite_fi6ax")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_nht75"]
+transparency = 1
+blend_mode = 1
+cull_mode = 2
+shading_mode = 0
+vertex_color_use_as_albedo = true
+disable_receive_shadows = true
+shadow_to_opacity = true
+billboard_mode = 1
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_g8oi5"]
+material = SubResource("StandardMaterial3D_nht75")
+size = Vector2(0.5, 0.5)
+orientation = 2
+
+[sub_resource type="Gradient" id="Gradient_k8jc3"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 1, 1)
+
+[sub_resource type="Gradient" id="Gradient_1v2a8"]
+offsets = PackedFloat32Array(0.0156863, 1)
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1nw4t"]
+albedo_color = Color(0.147672, 0.147672, 0.147672, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_66ox5"]
+material = SubResource("StandardMaterial3D_1nw4t")
+size = Vector3(0.3, 3.49, 0.3)
+
+[node name="Torch" type="Node3D"]
+script = ExtResource("1_idyfn")
+noise = SubResource("NoiseTexture2D_t7jby")
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.0866582, 0)
+amount = 16
+mesh = SubResource("PlaneMesh_g8oi5")
+emission_shape = 1
+emission_sphere_radius = 0.5
+direction = Vector3(0, 0, 0)
+gravity = Vector3(0, 2.45, 0)
+tangential_accel_max = 1.0
+angle_max = 360.0
+scale_amount_max = 2.0
+color_ramp = SubResource("Gradient_k8jc3")
+color_initial_ramp = SubResource("Gradient_1v2a8")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.868198, 0.0102884)
+light_color = Color(1, 0.497079, 0.15105, 1)
+light_indirect_energy = 16.0
+light_size = 0.408
+omni_range = 15.0
+omni_attenuation = 0.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.86788, 0)
+mesh = SubResource("BoxMesh_66ox5")

@@ -20,10 +20,11 @@ func _process(delta: float) -> void:
 func _on_timer_timeout() -> void:
 	print("explosion")
 	var e = explosion.instantiate()
-	e.global_position = global_position
+	
 	e.scale = e.scale *1.5
 	e.player_id = str(shooter)
 	get_parent().add_child(e)
+	e.global_position = global_position
 	queue_free()
 
 
@@ -37,5 +38,5 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 			e.player_id = str(shooter)
 			get_parent().add_child(e)
 			queue_free()
-	else:
+	elif body.name != str(shooter):
 		direct = false

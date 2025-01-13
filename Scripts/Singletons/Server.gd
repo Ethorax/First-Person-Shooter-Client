@@ -27,7 +27,7 @@ func _ready() -> void:
 func connect_to_server():
 	
 	var peer = ENetMultiplayerPeer.new()
-	peer.create_client(ip, port)
+	peer.create_client(ip, int(port))
 	multiplayer.multiplayer_peer = peer		
 	#get_tree().root.get_node()
 	
@@ -70,6 +70,7 @@ func add_player_character(peer_id):
 		local_player_character = player_character
 		
 		local_player_character.toggle_hitbox()
+		local_player_character.get_node("playerModel/Chest/Neck/Head/"+Global.helmet).show()
 		
 @rpc("any_peer")
 func send_rocket(direction, position,target,fly_direction,player_name):
@@ -178,8 +179,14 @@ func update_colors(player_ids,player_colors):
 
 
 @rpc
-func knockback_player(player_id,direction,energy):
+func knockback_player(player_id,direction,energy,reset : bool = false):
+	
+	
 	var target = get_node(str(player_id))
+	
+	if reset:
+		target.velocity = Vector3.ZERO
+	
 	target.knockback(direction, energy)
 
 @rpc("any_peer")
@@ -259,7 +266,27 @@ func play_sound(sound : String, to_all : bool = false):
 
 func respawn_local():
 	local_player_character.global_position = Global.spawn_points.pick_random()
-
+	local_player_character.get_node("Audio").get_node("Music").go_mode()
+	local_player_character.health = 100
+	local_player_character.shield = 50
+	local_player_character.update_health()
+	local_player_character.weapons = [true,true,false,false,false,false,false,false,false,false]
+	var guns = local_player_character.get_node("playerModel/Chest/Guns")
+	var anim = local_player_character.get_node("playerModel/Chest Animator")
+	guns.get_child(local_player_character.current_weapon_index).hide()
+	local_player_character.current_weapon_index = 0
+	guns.get_child(local_player_character.current_weapon_index).show()
+	anim.play("hold_"+guns.get_child(local_player_character.current_weapon_index).name.to_lower())
+	local_player_character.ammo_dict = {
+	"sword" : 99999999999,
+	"pistol" : 50,
+	"shotgun" : 20,
+	"sniper" : 15,
+	"flamer" : 35,
+	"bazooka" : 15,
+	"magnum" : 15,
+	"energy" : 50
+	}
 @rpc
 func map_change(map):
 	get_tree().root.get_node("Client").get_node("CanvasLayer").hide()

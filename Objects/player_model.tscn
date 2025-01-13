@@ -1,8 +1,7 @@
-[gd_scene load_steps=63 format=3 uid="uid://48c4gt87x0i1"]
+[gd_scene load_steps=76 format=3 uid="uid://48c4gt87x0i1"]
 
 [ext_resource type="PackedScene" uid="uid://cthfoq2i0kg0p" path="res://Graphics/Meshes/player.glb" id="1_lv1nl"]
 [ext_resource type="Script" path="res://Scripts/player_model.gd" id="2_sducw"]
-[ext_resource type="Texture2D" uid="uid://bk0xal5fph3lb" path="res://Graphics/Meshes/player_player.png" id="3_dtgsa"]
 [ext_resource type="PackedScene" uid="uid://denf2xs37a83v" path="res://Objects/sword.tscn" id="4_0ahde"]
 [ext_resource type="PackedScene" uid="uid://ds0p43gbtinbm" path="res://Objects/pistol.tscn" id="5_po4to"]
 [ext_resource type="PackedScene" uid="uid://cu2yutayj2ylg" path="res://Objects/shotgun.tscn" id="6_bisf7"]
@@ -10,75 +9,24 @@
 [ext_resource type="PackedScene" uid="uid://d3nget1g4mqyc" path="res://Objects/gatling.tscn" id="7_stpax"]
 [ext_resource type="PackedScene" uid="uid://e6x2e401y71c" path="res://Objects/flamer.tscn" id="8_18h8k"]
 [ext_resource type="PackedScene" uid="uid://dj0kw8wv7i2jo" path="res://Objects/bazooka.tscn" id="9_20v23"]
+[ext_resource type="PackedScene" uid="uid://cdvlb6bgd2dbr" path="res://Graphics/Meshes/Helms/Chivalrous.glb" id="10_2now1"]
 [ext_resource type="PackedScene" uid="uid://ignsnpnh8ghn" path="res://Objects/grenade_launcher.tscn" id="10_ve0ol"]
 [ext_resource type="PackedScene" uid="uid://de8yiftlqsf2v" path="res://Objects/magnum.tscn" id="11_0uyy8"]
 [ext_resource type="AudioStream" uid="uid://cr6idfwswjux8" path="res://Audio/SFX/Guns/Sword.wav" id="11_3vjro"]
 [ext_resource type="AudioStream" uid="uid://ddcslotrxy6r5" path="res://Audio/SFX/Guns/PistolShot.wav" id="11_c0w5v"]
+[ext_resource type="PackedScene" uid="uid://dmqpvb6gerrqf" path="res://Graphics/Meshes/Helms/conquerer.glb" id="11_xx3ts"]
+[ext_resource type="PackedScene" uid="uid://3twhwe8j21bs" path="res://Graphics/Meshes/Helms/imperial.glb" id="12_jvvrc"]
 [ext_resource type="AudioStream" uid="uid://b28vv816s2shb" path="res://Audio/SFX/Guns/shotgun.wav" id="12_obj7t"]
 [ext_resource type="PackedScene" uid="uid://c4yavsfe372id" path="res://Graphics/Meshes/Guns/energygun.glb" id="12_x2don"]
+[ext_resource type="Texture2D" uid="uid://bea24rop1dtsf" path="res://Graphics/Meshes/Helms/conquerer_player.png" id="13_ei6ti"]
 [ext_resource type="AudioStream" uid="uid://1djni80xci8y" path="res://Audio/SFX/Guns/sniper.wav" id="13_jxa4a"]
+[ext_resource type="PackedScene" uid="uid://si6rdanid0kn" path="res://Graphics/Meshes/Helms/Mercenary.glb" id="13_tc6ah"]
 [ext_resource type="AudioStream" uid="uid://ch0icnlc2sqtq" path="res://Audio/SFX/Guns/bazooka.wav" id="14_4f12c"]
+[ext_resource type="PackedScene" uid="uid://ddjmu4u55mrv4" path="res://Graphics/Meshes/Helms/Defender.glb" id="14_ogrn3"]
+[ext_resource type="Texture2D" uid="uid://bimrn0y4suuo6" path="res://Graphics/Meshes/Helms/Mercenary_player.png" id="15_1tj28"]
 [ext_resource type="AudioStream" uid="uid://cemc88rc8id4g" path="res://Audio/SFX/Guns/GrenadeLauncher.wav" id="16_hjc37"]
+[ext_resource type="Texture2D" uid="uid://c7ko74empphud" path="res://Graphics/Meshes/Helms/Defender_player.png" id="17_fcr5r"]
 [ext_resource type="AudioStream" uid="uid://cxhfyvb3f07vu" path="res://Audio/SFX/Guns/energygun.wav" id="20_fq0sg"]
-
-[sub_resource type="CompressedTexture2D" id="CompressedTexture2D_034fm"]
-load_path = "res://.godot/imported/player_player.png-bdc1ffc7dd29727a34be4dd4d950b210.s3tc.ctex"
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b4ywy"]
-resource_local_to_scene = true
-albedo_texture = SubResource("CompressedTexture2D_034fm")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6ket4"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0vug6"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0yp4"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cra8u"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_g3boy"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mbxm3"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1p5cb"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_047f3"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sv238"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_sjhg2"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_i6i4u"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_gmt1l"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b6ryk"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("3_dtgsa")
 
 [sub_resource type="Animation" id="Animation_vrma8"]
 length = 0.001
@@ -361,7 +309,7 @@ tracks/22/keys = {
 tracks/23/type = "value"
 tracks/23/imported = false
 tracks/23/enabled = true
-tracks/23/path = NodePath("AudioController/Sniper:playing")
+tracks/23/path = NodePath("AudioController/Bazooka:playing")
 tracks/23/interp = 1
 tracks/23/loop_wrap = true
 tracks/23/keys = {
@@ -373,7 +321,7 @@ tracks/23/keys = {
 tracks/24/type = "value"
 tracks/24/imported = false
 tracks/24/enabled = true
-tracks/24/path = NodePath("AudioController/Bazooka:playing")
+tracks/24/path = NodePath("Chest/Guns/Sword/sword/Area3D:monitoring")
 tracks/24/interp = 1
 tracks/24/loop_wrap = true
 tracks/24/keys = {
@@ -385,122 +333,146 @@ tracks/24/keys = {
 tracks/25/type = "value"
 tracks/25/imported = false
 tracks/25/enabled = true
-tracks/25/path = NodePath("Chest/Guns/Sword/sword/Area3D:monitoring")
+tracks/25/path = NodePath("Chest/Guns/Magnum:rotation")
 tracks/25/interp = 1
 tracks/25/loop_wrap = true
 tracks/25/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
+"update": 0,
+"values": [Vector3(-0.664761, -3.14159, -2.3669e-07)]
 }
 tracks/26/type = "value"
 tracks/26/imported = false
 tracks/26/enabled = true
-tracks/26/path = NodePath("Chest/Guns/Magnum:rotation")
+tracks/26/path = NodePath("Chest/Guns/Magnum:position")
 tracks/26/interp = 1
 tracks/26/loop_wrap = true
 tracks/26/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.664761, -3.14159, -2.3669e-07)]
+"values": [Vector3(0, 0.656189, -0.160127)]
 }
 tracks/27/type = "value"
 tracks/27/imported = false
 tracks/27/enabled = true
-tracks/27/path = NodePath("Chest/Guns/Magnum:position")
+tracks/27/path = NodePath("Chest/Guns/Gatling:position")
 tracks/27/interp = 1
 tracks/27/loop_wrap = true
 tracks/27/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0.656189, -0.160127)]
+"values": [Vector3(-0.950353, -0.530699, -0.47982)]
 }
 tracks/28/type = "value"
 tracks/28/imported = false
 tracks/28/enabled = true
-tracks/28/path = NodePath("Chest/Guns/Gatling:position")
+tracks/28/path = NodePath("Chest/Guns/Gatling:rotation")
 tracks/28/interp = 1
 tracks/28/loop_wrap = true
 tracks/28/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.950353, -0.530699, -0.47982)]
+"values": [Vector3(0, -2.51327, 0)]
 }
 tracks/29/type = "value"
 tracks/29/imported = false
 tracks/29/enabled = true
-tracks/29/path = NodePath("Chest/Guns/Gatling:rotation")
+tracks/29/path = NodePath("Chest/Guns/Gatling/gatling/GatlingGun/Barrels:rotation")
 tracks/29/interp = 1
 tracks/29/loop_wrap = true
 tracks/29/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -2.51327, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 tracks/30/type = "value"
 tracks/30/imported = false
 tracks/30/enabled = true
-tracks/30/path = NodePath("Chest/Guns/Gatling/gatling/GatlingGun/Barrels:rotation")
+tracks/30/path = NodePath("Chest/OmniLight3D:position")
 tracks/30/interp = 1
 tracks/30/loop_wrap = true
 tracks/30/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 0, 0)]
+"values": [Vector3(-0.00347841, 0.122429, -0.414925)]
 }
 tracks/31/type = "value"
 tracks/31/imported = false
 tracks/31/enabled = true
-tracks/31/path = NodePath("Chest/OmniLight3D:position")
+tracks/31/path = NodePath("Chest/OmniLight3D:omni_range")
 tracks/31/interp = 1
 tracks/31/loop_wrap = true
 tracks/31/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.00347841, 0.122429, -0.414925)]
+"values": [0.0]
 }
 tracks/32/type = "value"
 tracks/32/imported = false
 tracks/32/enabled = true
-tracks/32/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/32/path = NodePath("Chest/Guns/Energy:position")
 tracks/32/interp = 1
 tracks/32/loop_wrap = true
 tracks/32/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector3(-0.586846, -0.20991, 0.0799953)]
 }
 tracks/33/type = "value"
 tracks/33/imported = false
 tracks/33/enabled = true
-tracks/33/path = NodePath("Chest/Guns/Energy:position")
+tracks/33/path = NodePath("Chest/Guns/Energy:rotation")
 tracks/33/interp = 1
 tracks/33/loop_wrap = true
 tracks/33/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.586846, -0.20991, 0.0799953)]
+"values": [Vector3(0, 2.1293, 0)]
 }
 tracks/34/type = "value"
 tracks/34/imported = false
 tracks/34/enabled = true
-tracks/34/path = NodePath("Chest/Guns/Energy:rotation")
+tracks/34/path = NodePath("../Camera3D/Effects/Shotgun:emitting")
 tracks/34/interp = 1
 tracks/34/loop_wrap = true
 tracks/34/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/35/type = "value"
+tracks/35/imported = false
+tracks/35/enabled = true
+tracks/35/path = NodePath("../Camera3D/Effects/SingleShot:emitting")
+tracks/35/interp = 1
+tracks/35/loop_wrap = true
+tracks/35/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/36/type = "value"
+tracks/36/imported = false
+tracks/36/enabled = true
+tracks/36/path = NodePath("Chest:rotation")
+tracks/36/interp = 1
+tracks/36/loop_wrap = true
+tracks/36/keys = {
+"times": PackedFloat32Array(0.001),
+"transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 2.1293, 0)]
+"values": [Vector3(0, 0, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_u7idq"]
@@ -868,6 +840,20 @@ tracks/15/keys = {
 "update": 0,
 "values": [0.0, 5.0, 0.0, 0.0]
 }
+tracks/16/type = "method"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath(".")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_os1h6"]
 resource_name = "fire_flamer"
@@ -1026,6 +1012,20 @@ tracks/12/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(-0.551524, -0.0985792, 0.239912)]
+}
+tracks/13/type = "method"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath(".")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_m4mqv"]
@@ -1246,6 +1246,32 @@ tracks/17/keys = {
 "update": 1,
 "values": [1.5, 0.0]
 }
+tracks/18/type = "value"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath("../Camera3D/Effects/SingleShot:emitting")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/19/type = "method"
+tracks/19/imported = false
+tracks/19/enabled = true
+tracks/19/path = NodePath(".")
+tracks/19/interp = 1
+tracks/19/loop_wrap = true
+tracks/19/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_nshs3"]
 resource_name = "fire_grenadelauncher"
@@ -1417,6 +1443,20 @@ tracks/13/keys = {
 "update": 0,
 "values": [Vector3(0, 0, -3.14159), Vector3(0, 0, -3.14159), Vector3(0, 0, -4.3703), Vector3(0, 0, -3.14159)]
 }
+tracks/14/type = "method"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath(".")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_40rwy"]
 resource_name = "fire_magnum"
@@ -1540,10 +1580,35 @@ tracks/9/keys = {
 "update": 0,
 "values": [Vector3(0, -3.14159, 0), Vector3(-0.664761, -3.14159, -2.3669e-07), Vector3(0, -3.14159, 0)]
 }
+tracks/10/type = "value"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath("../Camera3D/Effects/SingleShot:emitting")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/11/type = "method"
+tracks/11/imported = false
+tracks/11/enabled = true
+tracks/11/path = NodePath(".")
+tracks/11/interp = 1
+tracks/11/loop_wrap = true
+tracks/11/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_rf8js"]
 resource_name = "fire_pistol"
-loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -1651,6 +1716,32 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [1.0, 0.0]
+}
+tracks/9/type = "value"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath("../Camera3D/Effects/SingleShot:emitting")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/10/type = "method"
+tracks/10/imported = false
+tracks/10/enabled = true
+tracks/10/path = NodePath(".")
+tracks/10/interp = 1
+tracks/10/loop_wrap = true
+tracks/10/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_72l1r"]
@@ -1859,6 +1950,32 @@ tracks/16/keys = {
 "update": 0,
 "values": [Vector3(0.382262, -0.287739, 1.42218)]
 }
+tracks/17/type = "value"
+tracks/17/imported = false
+tracks/17/enabled = true
+tracks/17/path = NodePath("../Camera3D/Effects/Shotgun:emitting")
+tracks/17/interp = 1
+tracks/17/loop_wrap = true
+tracks/17/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/18/type = "method"
+tracks/18/imported = false
+tracks/18/enabled = true
+tracks/18/path = NodePath(".")
+tracks/18/interp = 1
+tracks/18/loop_wrap = true
+tracks/18/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire_sound"
+}]
+}
 
 [sub_resource type="Animation" id="Animation_g3ese"]
 resource_name = "fire_sniper"
@@ -2009,38 +2126,52 @@ tracks/11/keys = {
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("AudioController/Sniper:playing")
+tracks/12/path = NodePath("Chest/OmniLight3D:position")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
-"times": PackedFloat32Array(0, 0.133333),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [false, true]
-}
-tracks/13/type = "value"
-tracks/13/imported = false
-tracks/13/enabled = true
-tracks/13/path = NodePath("Chest/OmniLight3D:position")
-tracks/13/interp = 1
-tracks/13/loop_wrap = true
-tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector3(0.666551, -0.173634, 1.95006)]
 }
-tracks/14/type = "value"
-tracks/14/imported = false
-tracks/14/enabled = true
-tracks/14/path = NodePath("Chest/OmniLight3D:omni_range")
-tracks/14/interp = 1
-tracks/14/loop_wrap = true
-tracks/14/keys = {
+tracks/13/type = "value"
+tracks/13/imported = false
+tracks/13/enabled = true
+tracks/13/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/13/interp = 1
+tracks/13/loop_wrap = true
+tracks/13/keys = {
 "times": PackedFloat32Array(0, 0.0666667),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
 "values": [1.2, 0.0]
+}
+tracks/14/type = "value"
+tracks/14/imported = false
+tracks/14/enabled = true
+tracks/14/path = NodePath("../Camera3D/Effects/SingleShot:emitting")
+tracks/14/interp = 1
+tracks/14/loop_wrap = true
+tracks/14/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/15/type = "method"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath(".")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_ytgoe"]
@@ -2153,6 +2284,20 @@ tracks/8/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 1,
 "values": [false, true, false]
+}
+tracks/9/type = "method"
+tracks/9/imported = false
+tracks/9/enabled = true
+tracks/9/path = NodePath(".")
+tracks/9/interp = 1
+tracks/9/loop_wrap = true
+tracks/9/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"fire_sound"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_urd2r"]
@@ -3590,62 +3735,83 @@ tracks/9/keys = {
 tracks/10/type = "value"
 tracks/10/imported = false
 tracks/10/enabled = true
-tracks/10/path = NodePath("Chest:rotation")
+tracks/10/path = NodePath("Chest/Guns/Sniper:rotation")
 tracks/10/interp = 1
 tracks/10/loop_wrap = true
 tracks/10/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, -0.628319, 0)]
+"values": [Vector3(0, 2.22011, 0)]
 }
 tracks/11/type = "value"
 tracks/11/imported = false
 tracks/11/enabled = true
-tracks/11/path = NodePath("Chest/Guns/Sniper:rotation")
+tracks/11/path = NodePath("Chest/Guns/Sniper:position")
 tracks/11/interp = 1
 tracks/11/loop_wrap = true
 tracks/11/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(0, 2.22011, 0)]
+"values": [Vector3(-0.552929, -0.0672101, -0.0348915)]
 }
 tracks/12/type = "value"
 tracks/12/imported = false
 tracks/12/enabled = true
-tracks/12/path = NodePath("Chest/Guns/Sniper:position")
+tracks/12/path = NodePath("Chest/OmniLight3D:omni_range")
 tracks/12/interp = 1
 tracks/12/loop_wrap = true
 tracks/12/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.552929, -0.0672101, -0.0348915)]
+"values": [0.0]
 }
 tracks/13/type = "value"
 tracks/13/imported = false
 tracks/13/enabled = true
-tracks/13/path = NodePath("Chest/OmniLight3D:omni_range")
+tracks/13/path = NodePath("Chest/OmniLight3D:position")
 tracks/13/interp = 1
 tracks/13/loop_wrap = true
 tracks/13/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [Vector3(-1.40904, 0.000467181, -1.14606)]
 }
-tracks/14/type = "value"
+tracks/14/type = "bezier"
 tracks/14/imported = false
 tracks/14/enabled = true
-tracks/14/path = NodePath("Chest/OmniLight3D:position")
+tracks/14/path = NodePath("Chest:rotation:x")
 tracks/14/interp = 1
 tracks/14/loop_wrap = true
 tracks/14/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-1.40904, 0.000467181, -1.14606)]
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/15/type = "bezier"
+tracks/15/imported = false
+tracks/15/enabled = true
+tracks/15/path = NodePath("Chest:rotation:y")
+tracks/15/interp = 1
+tracks/15/loop_wrap = true
+tracks/15/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(-0.628319, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
+}
+tracks/16/type = "bezier"
+tracks/16/imported = false
+tracks/16/enabled = true
+tracks/16/path = NodePath("Chest:rotation:z")
+tracks/16/interp = 1
+tracks/16/loop_wrap = true
+tracks/16/keys = {
+"handle_modes": PackedInt32Array(0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0),
+"times": PackedFloat32Array(0)
 }
 
 [sub_resource type="Animation" id="Animation_guc2v"]
@@ -3995,18 +4161,6 @@ tracks/5/keys = {
 "update": 0,
 "values": [Vector3(0, 0, 0)]
 }
-tracks/6/type = "value"
-tracks/6/imported = false
-tracks/6/enabled = true
-tracks/6/path = NodePath(".:position")
-tracks/6/interp = 1
-tracks/6/loop_wrap = true
-tracks/6/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -1, 0)]
-}
 
 [sub_resource type="Animation" id="Animation_iw4xm"]
 resource_name = "Running"
@@ -4095,171 +4249,98 @@ _data = {
 [sub_resource type="BoxMesh" id="BoxMesh_phhay"]
 size = Vector3(10, 1, 10)
 
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_0dyt2"]
+data = PackedVector3Array(-0.0582, 0.0646, 0.1443, 0.027, 0.0756, -0.0644, 0.027, 0.0575, 0.1443, -0.0582, 0.0646, 0.1443, -0.0582, 0.0827, -0.0644, 0.027, 0.0756, -0.0644, -0.108, -0.1059, -0.1166, 0.027, 0.0756, -0.0644, -0.0582, 0.0827, -0.0644, -0.108, -0.1059, -0.1166, 0.1385, -0.1059, -0.1166, 0.027, 0.0756, -0.0644, 0.1385, -0.1059, -0.1166, 0.027, 0.0575, 0.1443, 0.027, 0.0756, -0.0644, 0.1385, -0.1059, -0.1166, 0.1385, -0.1344, 0.2178, 0.027, 0.0575, 0.1443, 0.1385, -0.1344, 0.2178, -0.108, -0.1059, -0.1166, -0.108, -0.1344, 0.2178, 0.1385, -0.1344, 0.2178, 0.1385, -0.1059, -0.1166, -0.108, -0.1059, -0.1166, -0.108, -0.1344, 0.2178, -0.0582, 0.0827, -0.0644, -0.0582, 0.0646, 0.1443, -0.108, -0.1344, 0.2178, -0.108, -0.1059, -0.1166, -0.0582, 0.0827, -0.0644, -0.0582, 0.0646, 0.1443, -0.1075, -0.1481, 0.4798, -0.108, -0.1344, 0.2178, -0.0582, 0.0646, 0.1443, -0.0577, -0.0727, 0.4722, -0.1075, -0.1481, 0.4798, 0.139, -0.1481, 0.4798, -0.0577, -0.0727, 0.4722, 0.0274, -0.0798, 0.4722, 0.139, -0.1481, 0.4798, -0.1075, -0.1481, 0.4798, -0.0577, -0.0727, 0.4722, 0.1385, -0.1344, 0.2178, 0.0274, -0.0798, 0.4722, 0.027, 0.0575, 0.1443, 0.1385, -0.1344, 0.2178, 0.139, -0.1481, 0.4798, 0.0274, -0.0798, 0.4722, -0.108, -0.1344, 0.2178, 0.139, -0.1481, 0.4798, 0.1385, -0.1344, 0.2178, -0.108, -0.1344, 0.2178, -0.1075, -0.1481, 0.4798, 0.139, -0.1481, 0.4798, 0.027, 0.0575, 0.1443, -0.0577, -0.0727, 0.4722, -0.0582, 0.0646, 0.1443, 0.027, 0.0575, 0.1443, 0.0274, -0.0798, 0.4722, -0.0577, -0.0727, 0.4722)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_nplf5"]
+data = PackedVector3Array(0.0132, 0.0382, -0.0805, -0.041, 0.0249, 0.1336, -0.041, 0.0382, -0.0805, 0.0132, 0.0382, -0.0805, 0.0132, 0.0249, 0.1336, -0.041, 0.0249, 0.1336, -0.0145, -0.2409, 0.1169, -0.041, 0.0249, 0.1336, 0.0132, 0.0249, 0.1336, -0.0145, -0.2409, 0.1169, -0.1287, -0.2365, 0.1169, -0.041, 0.0249, 0.1336, -0.1287, -0.2365, 0.1169, -0.041, 0.0382, -0.0805, -0.041, 0.0249, 0.1336, -0.1287, -0.2365, 0.1169, -0.1287, -0.1558, -0.1639, -0.041, 0.0382, -0.0805, 0.0013, -0.7543, -0.0887, 0.0507, -0.7648, 0.0826, 0.0507, -0.7567, -0.0887, 0.0013, -0.7543, -0.0887, 0.0013, -0.7624, 0.0826, 0.0507, -0.7648, 0.0826, 0.0998, -0.1645, -0.1639, 0.0673, 0.0249, 0.1336, 0.0673, 0.0382, -0.0805, 0.0998, -0.1645, -0.1639, 0.0998, -0.2452, 0.1169, 0.0673, 0.0249, 0.1336, -0.0145, -0.1601, -0.1639, 0.0673, 0.0382, -0.0805, 0.0132, 0.0382, -0.0805, -0.0145, -0.1601, -0.1639, 0.0998, -0.1645, -0.1639, 0.0673, 0.0382, -0.0805, 0.0013, -0.7543, -0.0887, 0.0998, -0.1645, -0.1639, -0.0145, -0.1601, -0.1639, 0.0013, -0.7543, -0.0887, 0.0507, -0.7567, -0.0887, 0.0998, -0.1645, -0.1639, 0.0507, -0.7567, -0.0887, 0.0998, -0.2452, 0.1169, 0.0998, -0.1645, -0.1639, 0.0507, -0.7567, -0.0887, 0.0507, -0.7648, 0.0826, 0.0998, -0.2452, 0.1169, -0.0481, -0.7601, 0.0826, -0.1287, -0.1558, -0.1639, -0.1287, -0.2365, 0.1169, -0.0481, -0.7601, 0.0826, -0.0481, -0.752, -0.0887, -0.1287, -0.1558, -0.1639, 0.0013, -0.7624, 0.0826, -0.1287, -0.2365, 0.1169, -0.0145, -0.2409, 0.1169, 0.0013, -0.7624, 0.0826, -0.0481, -0.7601, 0.0826, -0.1287, -0.2365, 0.1169, 0.0507, -0.7648, 0.0826, -0.0145, -0.2409, 0.1169, 0.0998, -0.2452, 0.1169, 0.0507, -0.7648, 0.0826, 0.0013, -0.7624, 0.0826, -0.0145, -0.2409, 0.1169, -0.0481, -0.752, -0.0887, -0.0145, -0.1601, -0.1639, -0.1287, -0.1558, -0.1639, -0.0481, -0.752, -0.0887, 0.0013, -0.7543, -0.0887, -0.0145, -0.1601, -0.1639, -0.1287, -0.1558, -0.1639, 0.0132, 0.0382, -0.0805, -0.041, 0.0382, -0.0805, -0.1287, -0.1558, -0.1639, -0.0145, -0.1601, -0.1639, 0.0132, 0.0382, -0.0805, -0.0481, -0.752, -0.0887, 0.0013, -0.7624, 0.0826, 0.0013, -0.7543, -0.0887, -0.0481, -0.752, -0.0887, -0.0481, -0.7601, 0.0826, 0.0013, -0.7624, 0.0826, 0.0998, -0.2452, 0.1169, 0.0132, 0.0249, 0.1336, 0.0673, 0.0249, 0.1336, 0.0998, -0.2452, 0.1169, -0.0145, -0.2409, 0.1169, 0.0132, 0.0249, 0.1336, 0.0673, 0.0382, -0.0805, 0.0132, 0.0249, 0.1336, 0.0132, 0.0382, -0.0805, 0.0673, 0.0382, -0.0805, 0.0673, 0.0249, 0.1336, 0.0132, 0.0249, 0.1336)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_b5cp6"]
+data = PackedVector3Array(0, -0.0934, 0, -0.0152, -0.0795, 0.0467, 0.0397, -0.0795, 0.0289, 0.0676, -0.0418, 0.0491, 0.0795, -0.0491, 0, 0.0397, -0.0795, 0.0289, 0, -0.0934, 0, -0.0491, -0.0795, 0, -0.0152, -0.0795, 0.0467, 0, -0.0934, 0, -0.0152, -0.0795, -0.0467, -0.0491, -0.0795, 0, 0, -0.0934, 0, 0.0397, -0.0795, -0.0289, -0.0152, -0.0795, -0.0467, 0.0676, -0.0418, 0.0491, 0.0888, 0, 0.0289, 0.0795, -0.0491, 0, -0.0258, -0.0418, 0.0795, 0, 0, 0.0934, 0.0246, -0.0491, 0.0756, -0.0836, -0.0418, 0, -0.0888, 0, 0.0289, -0.0643, -0.0491, 0.0467, -0.0258, -0.0418, -0.0795, -0.0549, 0, -0.0756, -0.0643, -0.0491, -0.0467, 0.0676, -0.0418, -0.0491, 0.0549, 0, -0.0756, 0.0246, -0.0491, -0.0756, 0.0676, -0.0418, 0.0491, 0.0549, 0, 0.0756, 0.0888, 0, 0.0289, -0.0258, -0.0418, 0.0795, -0.0549, 0, 0.0756, 0, 0, 0.0934, -0.0836, -0.0418, 0, -0.0888, 0, -0.0289, -0.0888, 0, 0.0289, -0.0258, -0.0418, -0.0795, 0, 0, -0.0934, -0.0549, 0, -0.0756, 0.0676, -0.0418, -0.0491, 0.0888, 0, -0.0289, 0.0549, 0, -0.0756, 0.0258, 0.0418, 0.0795, 0.0152, 0.0795, 0.0467, 0.0643, 0.0491, 0.0467, -0.0676, 0.0418, 0.0491, -0.0397, 0.0795, 0.0289, -0.0246, 0.0491, 0.0756, -0.0676, 0.0418, -0.0491, -0.0397, 0.0795, -0.0289, -0.0795, 0.0491, 0, 0.0258, 0.0418, -0.0795, 0.0152, 0.0795, -0.0467, -0.0246, 0.0491, -0.0756, 0.0836, 0.0418, 0, 0.0491, 0.0795, 0, 0.0643, 0.0491, -0.0467, 0.0491, 0.0795, 0, 0, 0.0934, 0, 0.0152, 0.0795, -0.0467, 0.0491, 0.0795, 0, 0.0152, 0.0795, -0.0467, 0.0643, 0.0491, -0.0467, 0.0643, 0.0491, -0.0467, 0.0152, 0.0795, -0.0467, 0.0258, 0.0418, -0.0795, 0.0152, 0.0795, -0.0467, 0, 0.0934, 0, -0.0397, 0.0795, -0.0289, 0.0152, 0.0795, -0.0467, -0.0397, 0.0795, -0.0289, -0.0246, 0.0491, -0.0756, -0.0246, 0.0491, -0.0756, -0.0397, 0.0795, -0.0289, -0.0676, 0.0418, -0.0491, -0.0397, 0.0795, -0.0289, 0, 0.0934, 0, -0.0397, 0.0795, 0.0289, -0.0397, 0.0795, -0.0289, -0.0397, 0.0795, 0.0289, -0.0795, 0.0491, 0, -0.0795, 0.0491, 0, -0.0397, 0.0795, 0.0289, -0.0676, 0.0418, 0.0491, -0.0397, 0.0795, 0.0289, 0, 0.0934, 0, 0.0152, 0.0795, 0.0467, -0.0397, 0.0795, 0.0289, 0.0152, 0.0795, 0.0467, -0.0246, 0.0491, 0.0756, -0.0246, 0.0491, 0.0756, 0.0152, 0.0795, 0.0467, 0.0258, 0.0418, 0.0795, 0.0152, 0.0795, 0.0467, 0, 0.0934, 0, 0.0491, 0.0795, 0, 0.0152, 0.0795, 0.0467, 0.0491, 0.0795, 0, 0.0643, 0.0491, 0.0467, 0.0643, 0.0491, 0.0467, 0.0491, 0.0795, 0, 0.0836, 0.0418, 0, 0.0888, 0, -0.0289, 0.0836, 0.0418, 0, 0.0643, 0.0491, -0.0467, 0.0888, 0, -0.0289, 0.0643, 0.0491, -0.0467, 0.0549, 0, -0.0756, 0.0549, 0, -0.0756, 0.0643, 0.0491, -0.0467, 0.0258, 0.0418, -0.0795, 0, 0, -0.0934, 0.0258, 0.0418, -0.0795, -0.0246, 0.0491, -0.0756, 0, 0, -0.0934, -0.0246, 0.0491, -0.0756, -0.0549, 0, -0.0756, -0.0549, 0, -0.0756, -0.0246, 0.0491, -0.0756, -0.0676, 0.0418, -0.0491, -0.0888, 0, -0.0289, -0.0676, 0.0418, -0.0491, -0.0795, 0.0491, 0, -0.0888, 0, -0.0289, -0.0795, 0.0491, 0, -0.0888, 0, 0.0289, -0.0888, 0, 0.0289, -0.0795, 0.0491, 0, -0.0676, 0.0418, 0.0491, -0.0549, 0, 0.0756, -0.0676, 0.0418, 0.0491, -0.0246, 0.0491, 0.0756, -0.0549, 0, 0.0756, -0.0246, 0.0491, 0.0756, 0, 0, 0.0934, 0, 0, 0.0934, -0.0246, 0.0491, 0.0756, 0.0258, 0.0418, 0.0795, 0.0549, 0, 0.0756, 0.0258, 0.0418, 0.0795, 0.0643, 0.0491, 0.0467, 0.0549, 0, 0.0756, 0.0643, 0.0491, 0.0467, 0.0888, 0, 0.0289, 0.0888, 0, 0.0289, 0.0643, 0.0491, 0.0467, 0.0836, 0.0418, 0, 0.0549, 0, -0.0756, 0.0258, 0.0418, -0.0795, 0, 0, -0.0934, 0.0549, 0, -0.0756, 0, 0, -0.0934, 0.0246, -0.0491, -0.0756, 0.0246, -0.0491, -0.0756, 0, 0, -0.0934, -0.0258, -0.0418, -0.0795, -0.0549, 0, -0.0756, -0.0676, 0.0418, -0.0491, -0.0888, 0, -0.0289, -0.0549, 0, -0.0756, -0.0888, 0, -0.0289, -0.0643, -0.0491, -0.0467, -0.0643, -0.0491, -0.0467, -0.0888, 0, -0.0289, -0.0836, -0.0418, 0, -0.0888, 0, 0.0289, -0.0676, 0.0418, 0.0491, -0.0549, 0, 0.0756, -0.0888, 0, 0.0289, -0.0549, 0, 0.0756, -0.0643, -0.0491, 0.0467, -0.0643, -0.0491, 0.0467, -0.0549, 0, 0.0756, -0.0258, -0.0418, 0.0795, 0, 0, 0.0934, 0.0258, 0.0418, 0.0795, 0.0549, 0, 0.0756, 0, 0, 0.0934, 0.0549, 0, 0.0756, 0.0246, -0.0491, 0.0756, 0.0246, -0.0491, 0.0756, 0.0549, 0, 0.0756, 0.0676, -0.0418, 0.0491, 0.0888, 0, 0.0289, 0.0836, 0.0418, 0, 0.0888, 0, -0.0289, 0.0888, 0, 0.0289, 0.0888, 0, -0.0289, 0.0795, -0.0491, 0, 0.0795, -0.0491, 0, 0.0888, 0, -0.0289, 0.0676, -0.0418, -0.0491, 0.0397, -0.0795, -0.0289, 0.0676, -0.0418, -0.0491, 0.0246, -0.0491, -0.0756, 0.0397, -0.0795, -0.0289, 0.0246, -0.0491, -0.0756, -0.0152, -0.0795, -0.0467, -0.0152, -0.0795, -0.0467, 0.0246, -0.0491, -0.0756, -0.0258, -0.0418, -0.0795, -0.0152, -0.0795, -0.0467, -0.0258, -0.0418, -0.0795, -0.0643, -0.0491, -0.0467, -0.0152, -0.0795, -0.0467, -0.0643, -0.0491, -0.0467, -0.0491, -0.0795, 0, -0.0491, -0.0795, 0, -0.0643, -0.0491, -0.0467, -0.0836, -0.0418, 0, -0.0491, -0.0795, 0, -0.0836, -0.0418, 0, -0.0643, -0.0491, 0.0467, -0.0491, -0.0795, 0, -0.0643, -0.0491, 0.0467, -0.0152, -0.0795, 0.0467, -0.0152, -0.0795, 0.0467, -0.0643, -0.0491, 0.0467, -0.0258, -0.0418, 0.0795, 0.0795, -0.0491, 0, 0.0676, -0.0418, -0.0491, 0.0397, -0.0795, -0.0289, 0.0795, -0.0491, 0, 0.0397, -0.0795, -0.0289, 0.0397, -0.0795, 0.0289, 0.0397, -0.0795, 0.0289, 0.0397, -0.0795, -0.0289, 0, -0.0934, 0, -0.0152, -0.0795, 0.0467, -0.0258, -0.0418, 0.0795, 0.0246, -0.0491, 0.0756, -0.0152, -0.0795, 0.0467, 0.0246, -0.0491, 0.0756, 0.0397, -0.0795, 0.0289, 0.0397, -0.0795, 0.0289, 0.0246, -0.0491, 0.0756, 0.0676, -0.0418, 0.0491)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2wnjl"]
+data = PackedVector3Array(0.1117, 0.1232, -0.2003, -0.1436, -0.1216, 0.1309, -0.1436, -0.1182, -0.2003, 0.1117, 0.1232, -0.2003, 0.1117, 0.1198, 0.1309, -0.1436, -0.1216, 0.1309, 0.1988, -0.3501, 0.1341, -0.1436, -0.1216, 0.1309, 0.1117, 0.1198, 0.1309, 0.1988, -0.3501, 0.1341, -0.1375, -0.5132, 0.1341, -0.1436, -0.1216, 0.1309, -0.1375, -0.5132, 0.1341, -0.1436, -0.1182, -0.2003, -0.1436, -0.1216, 0.1309, -0.1375, -0.5132, 0.1341, -0.1375, -0.515, -0.1477, -0.1436, -0.1182, -0.2003, -0.1009, -0.936, -0.0565, 0.0715, -0.9276, 0.1395, 0.0715, -0.9384, -0.0565, -0.1009, -0.936, -0.0565, -0.1009, -0.9252, 0.1395, 0.0715, -0.9276, 0.1395, 0.1988, -0.3519, -0.1477, 0.1117, 0.1198, 0.1309, 0.1117, 0.1232, -0.2003, 0.1988, -0.3519, -0.1477, 0.1988, -0.3501, 0.1341, 0.1117, 0.1198, 0.1309, -0.1375, -0.515, -0.1477, 0.1117, 0.1232, -0.2003, -0.1436, -0.1182, -0.2003, -0.1375, -0.515, -0.1477, 0.1988, -0.3519, -0.1477, 0.1117, 0.1232, -0.2003, -0.1009, -0.936, -0.0565, 0.1988, -0.3519, -0.1477, -0.1375, -0.515, -0.1477, -0.1009, -0.936, -0.0565, 0.0715, -0.9384, -0.0565, 0.1988, -0.3519, -0.1477, 0.0715, -0.9384, -0.0565, 0.1988, -0.3501, 0.1341, 0.1988, -0.3519, -0.1477, 0.0715, -0.9384, -0.0565, 0.0715, -0.9276, 0.1395, 0.1988, -0.3501, 0.1341, -0.1009, -0.9252, 0.1395, -0.1375, -0.515, -0.1477, -0.1375, -0.5132, 0.1341, -0.1009, -0.9252, 0.1395, -0.1009, -0.936, -0.0565, -0.1375, -0.515, -0.1477, 0.0715, -0.9276, 0.1395, -0.1375, -0.5132, 0.1341, 0.1988, -0.3501, 0.1341, 0.0715, -0.9276, 0.1395, -0.1009, -0.9252, 0.1395, -0.1375, -0.5132, 0.1341)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6alei"]
+data = PackedVector3Array(0.0581, 0.063, 0.1382, -0.027, 0.074, -0.0704, 0.0581, 0.0811, -0.0704, 0.0581, 0.063, 0.1382, -0.027, 0.0559, 0.1382, -0.027, 0.074, -0.0704, 0.108, -0.1075, -0.1226, -0.027, 0.074, -0.0704, -0.1385, -0.1075, -0.1226, 0.108, -0.1075, -0.1226, 0.0581, 0.0811, -0.0704, -0.027, 0.074, -0.0704, -0.1385, -0.1075, -0.1226, -0.027, 0.0559, 0.1382, -0.1385, -0.136, 0.2117, -0.1385, -0.1075, -0.1226, -0.027, 0.074, -0.0704, -0.027, 0.0559, 0.1382, -0.1385, -0.136, 0.2117, 0.108, -0.1075, -0.1226, -0.1385, -0.1075, -0.1226, -0.1385, -0.136, 0.2117, 0.108, -0.136, 0.2117, 0.108, -0.1075, -0.1226, 0.108, -0.136, 0.2117, 0.0581, 0.0811, -0.0704, 0.108, -0.1075, -0.1226, 0.108, -0.136, 0.2117, 0.0581, 0.063, 0.1382, 0.0581, 0.0811, -0.0704, 0.0581, 0.063, 0.1382, 0.1075, -0.1497, 0.4737, 0.0577, -0.0743, 0.4661, 0.0581, 0.063, 0.1382, 0.108, -0.136, 0.2117, 0.1075, -0.1497, 0.4737, -0.139, -0.1497, 0.4737, 0.0577, -0.0743, 0.4661, 0.1075, -0.1497, 0.4737, -0.139, -0.1497, 0.4737, -0.0274, -0.0814, 0.4661, 0.0577, -0.0743, 0.4661, -0.1385, -0.136, 0.2117, -0.0274, -0.0814, 0.4661, -0.139, -0.1497, 0.4737, -0.1385, -0.136, 0.2117, -0.027, 0.0559, 0.1382, -0.0274, -0.0814, 0.4661, 0.108, -0.136, 0.2117, -0.139, -0.1497, 0.4737, 0.1075, -0.1497, 0.4737, 0.108, -0.136, 0.2117, -0.1385, -0.136, 0.2117, -0.139, -0.1497, 0.4737, -0.027, 0.0559, 0.1382, 0.0577, -0.0743, 0.4661, -0.0274, -0.0814, 0.4661, -0.027, 0.0559, 0.1382, 0.0581, 0.063, 0.1382, 0.0577, -0.0743, 0.4661)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_ylglv"]
+data = PackedVector3Array(-0.0132, 0.0454, -0.0805, 0.041, 0.0321, 0.1336, -0.0132, 0.0321, 0.1336, -0.0132, 0.0454, -0.0805, 0.041, 0.0454, -0.0805, 0.041, 0.0321, 0.1336, 0.0145, -0.2337, 0.1169, 0.041, 0.0321, 0.1336, 0.1287, -0.2293, 0.1169, 0.0145, -0.2337, 0.1169, -0.0132, 0.0321, 0.1336, 0.041, 0.0321, 0.1336, 0.1287, -0.2293, 0.1169, 0.041, 0.0454, -0.0805, 0.1287, -0.1486, -0.1639, 0.1287, -0.2293, 0.1169, 0.041, 0.0321, 0.1336, 0.041, 0.0454, -0.0805, -0.0013, -0.7471, -0.0887, -0.0507, -0.7576, 0.0826, -0.0013, -0.7552, 0.0826, -0.0013, -0.7471, -0.0887, -0.0507, -0.7495, -0.0887, -0.0507, -0.7576, 0.0826, -0.0998, -0.1573, -0.1639, -0.0673, 0.0321, 0.1336, -0.0998, -0.238, 0.1169, -0.0998, -0.1573, -0.1639, -0.0673, 0.0454, -0.0805, -0.0673, 0.0321, 0.1336, 0.0145, -0.1529, -0.1639, -0.0673, 0.0454, -0.0805, -0.0998, -0.1573, -0.1639, 0.0145, -0.1529, -0.1639, -0.0132, 0.0454, -0.0805, -0.0673, 0.0454, -0.0805, -0.0013, -0.7471, -0.0887, -0.0998, -0.1573, -0.1639, -0.0507, -0.7495, -0.0887, -0.0013, -0.7471, -0.0887, 0.0145, -0.1529, -0.1639, -0.0998, -0.1573, -0.1639, -0.0507, -0.7495, -0.0887, -0.0998, -0.238, 0.1169, -0.0507, -0.7576, 0.0826, -0.0507, -0.7495, -0.0887, -0.0998, -0.1573, -0.1639, -0.0998, -0.238, 0.1169, 0.0481, -0.7529, 0.0826, 0.1287, -0.1486, -0.1639, 0.0481, -0.7448, -0.0887, 0.0481, -0.7529, 0.0826, 0.1287, -0.2293, 0.1169, 0.1287, -0.1486, -0.1639, -0.0013, -0.7552, 0.0826, 0.1287, -0.2293, 0.1169, 0.0481, -0.7529, 0.0826, -0.0013, -0.7552, 0.0826, 0.0145, -0.2337, 0.1169, 0.1287, -0.2293, 0.1169, -0.0507, -0.7576, 0.0826, 0.0145, -0.2337, 0.1169, -0.0013, -0.7552, 0.0826, -0.0507, -0.7576, 0.0826, -0.0998, -0.238, 0.1169, 0.0145, -0.2337, 0.1169, 0.0481, -0.7448, -0.0887, 0.0145, -0.1529, -0.1639, -0.0013, -0.7471, -0.0887, 0.0481, -0.7448, -0.0887, 0.1287, -0.1486, -0.1639, 0.0145, -0.1529, -0.1639, 0.1287, -0.1486, -0.1639, -0.0132, 0.0454, -0.0805, 0.0145, -0.1529, -0.1639, 0.1287, -0.1486, -0.1639, 0.041, 0.0454, -0.0805, -0.0132, 0.0454, -0.0805, 0.0481, -0.7448, -0.0887, -0.0013, -0.7552, 0.0826, 0.0481, -0.7529, 0.0826, 0.0481, -0.7448, -0.0887, -0.0013, -0.7471, -0.0887, -0.0013, -0.7552, 0.0826, -0.0998, -0.238, 0.1169, -0.0132, 0.0321, 0.1336, 0.0145, -0.2337, 0.1169, -0.0998, -0.238, 0.1169, -0.0673, 0.0321, 0.1336, -0.0132, 0.0321, 0.1336, -0.0673, 0.0454, -0.0805, -0.0132, 0.0321, 0.1336, -0.0673, 0.0321, 0.1336, -0.0673, 0.0454, -0.0805, -0.0132, 0.0454, -0.0805, -0.0132, 0.0321, 0.1336)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_tkgla"]
+data = PackedVector3Array(0, -0.0934, 0, -0.0397, -0.0795, 0.0289, 0.0152, -0.0795, 0.0467, -0.0676, -0.0418, 0.0491, -0.0397, -0.0795, 0.0289, -0.0795, -0.0491, 0, 0, -0.0934, 0, 0.0152, -0.0795, 0.0467, 0.0491, -0.0795, 0, 0, -0.0934, 0, 0.0491, -0.0795, 0, 0.0152, -0.0795, -0.0467, 0, -0.0934, 0, 0.0152, -0.0795, -0.0467, -0.0397, -0.0795, -0.0289, -0.0676, -0.0418, 0.0491, -0.0795, -0.0491, 0, -0.0888, 0, 0.0289, 0.0258, -0.0418, 0.0795, -0.0246, -0.0491, 0.0756, 0, 0, 0.0934, 0.0836, -0.0418, 0, 0.0643, -0.0491, 0.0467, 0.0888, 0, 0.0289, 0.0258, -0.0418, -0.0795, 0.0643, -0.0491, -0.0467, 0.0549, 0, -0.0756, -0.0676, -0.0418, -0.0491, -0.0246, -0.0491, -0.0756, -0.0549, 0, -0.0756, -0.0676, -0.0418, 0.0491, -0.0888, 0, 0.0289, -0.0549, 0, 0.0756, 0.0258, -0.0418, 0.0795, 0, 0, 0.0934, 0.0549, 0, 0.0756, 0.0836, -0.0418, 0, 0.0888, 0, 0.0289, 0.0888, 0, -0.0289, 0.0258, -0.0418, -0.0795, 0.0549, 0, -0.0756, 0, 0, -0.0934, -0.0676, -0.0418, -0.0491, -0.0549, 0, -0.0756, -0.0888, 0, -0.0289, -0.0258, 0.0418, 0.0795, -0.0643, 0.0491, 0.0467, -0.0152, 0.0795, 0.0467, 0.0676, 0.0418, 0.0491, 0.0246, 0.0491, 0.0756, 0.0397, 0.0795, 0.0289, 0.0676, 0.0418, -0.0491, 0.0795, 0.0491, 0, 0.0397, 0.0795, -0.0289, -0.0258, 0.0418, -0.0795, 0.0246, 0.0491, -0.0756, -0.0152, 0.0795, -0.0467, -0.0836, 0.0418, 0, -0.0643, 0.0491, -0.0467, -0.0491, 0.0795, 0, -0.0491, 0.0795, 0, -0.0152, 0.0795, -0.0467, 0, 0.0934, 0, -0.0491, 0.0795, 0, -0.0643, 0.0491, -0.0467, -0.0152, 0.0795, -0.0467, -0.0643, 0.0491, -0.0467, -0.0258, 0.0418, -0.0795, -0.0152, 0.0795, -0.0467, -0.0152, 0.0795, -0.0467, 0.0397, 0.0795, -0.0289, 0, 0.0934, 0, -0.0152, 0.0795, -0.0467, 0.0246, 0.0491, -0.0756, 0.0397, 0.0795, -0.0289, 0.0246, 0.0491, -0.0756, 0.0676, 0.0418, -0.0491, 0.0397, 0.0795, -0.0289, 0.0397, 0.0795, -0.0289, 0.0397, 0.0795, 0.0289, 0, 0.0934, 0, 0.0397, 0.0795, -0.0289, 0.0795, 0.0491, 0, 0.0397, 0.0795, 0.0289, 0.0795, 0.0491, 0, 0.0676, 0.0418, 0.0491, 0.0397, 0.0795, 0.0289, 0.0397, 0.0795, 0.0289, -0.0152, 0.0795, 0.0467, 0, 0.0934, 0, 0.0397, 0.0795, 0.0289, 0.0246, 0.0491, 0.0756, -0.0152, 0.0795, 0.0467, 0.0246, 0.0491, 0.0756, -0.0258, 0.0418, 0.0795, -0.0152, 0.0795, 0.0467, -0.0152, 0.0795, 0.0467, -0.0491, 0.0795, 0, 0, 0.0934, 0, -0.0152, 0.0795, 0.0467, -0.0643, 0.0491, 0.0467, -0.0491, 0.0795, 0, -0.0643, 0.0491, 0.0467, -0.0836, 0.0418, 0, -0.0491, 0.0795, 0, -0.0888, 0, -0.0289, -0.0643, 0.0491, -0.0467, -0.0836, 0.0418, 0, -0.0888, 0, -0.0289, -0.0549, 0, -0.0756, -0.0643, 0.0491, -0.0467, -0.0549, 0, -0.0756, -0.0258, 0.0418, -0.0795, -0.0643, 0.0491, -0.0467, 0, 0, -0.0934, 0.0246, 0.0491, -0.0756, -0.0258, 0.0418, -0.0795, 0, 0, -0.0934, 0.0549, 0, -0.0756, 0.0246, 0.0491, -0.0756, 0.0549, 0, -0.0756, 0.0676, 0.0418, -0.0491, 0.0246, 0.0491, -0.0756, 0.0888, 0, -0.0289, 0.0795, 0.0491, 0, 0.0676, 0.0418, -0.0491, 0.0888, 0, -0.0289, 0.0888, 0, 0.0289, 0.0795, 0.0491, 0, 0.0888, 0, 0.0289, 0.0676, 0.0418, 0.0491, 0.0795, 0.0491, 0, 0.0549, 0, 0.0756, 0.0246, 0.0491, 0.0756, 0.0676, 0.0418, 0.0491, 0.0549, 0, 0.0756, 0, 0, 0.0934, 0.0246, 0.0491, 0.0756, 0, 0, 0.0934, -0.0258, 0.0418, 0.0795, 0.0246, 0.0491, 0.0756, -0.0549, 0, 0.0756, -0.0643, 0.0491, 0.0467, -0.0258, 0.0418, 0.0795, -0.0549, 0, 0.0756, -0.0888, 0, 0.0289, -0.0643, 0.0491, 0.0467, -0.0888, 0, 0.0289, -0.0836, 0.0418, 0, -0.0643, 0.0491, 0.0467, -0.0549, 0, -0.0756, 0, 0, -0.0934, -0.0258, 0.0418, -0.0795, -0.0549, 0, -0.0756, -0.0246, -0.0491, -0.0756, 0, 0, -0.0934, -0.0246, -0.0491, -0.0756, 0.0258, -0.0418, -0.0795, 0, 0, -0.0934, 0.0549, 0, -0.0756, 0.0888, 0, -0.0289, 0.0676, 0.0418, -0.0491, 0.0549, 0, -0.0756, 0.0643, -0.0491, -0.0467, 0.0888, 0, -0.0289, 0.0643, -0.0491, -0.0467, 0.0836, -0.0418, 0, 0.0888, 0, -0.0289, 0.0888, 0, 0.0289, 0.0549, 0, 0.0756, 0.0676, 0.0418, 0.0491, 0.0888, 0, 0.0289, 0.0643, -0.0491, 0.0467, 0.0549, 0, 0.0756, 0.0643, -0.0491, 0.0467, 0.0258, -0.0418, 0.0795, 0.0549, 0, 0.0756, 0, 0, 0.0934, -0.0549, 0, 0.0756, -0.0258, 0.0418, 0.0795, 0, 0, 0.0934, -0.0246, -0.0491, 0.0756, -0.0549, 0, 0.0756, -0.0246, -0.0491, 0.0756, -0.0676, -0.0418, 0.0491, -0.0549, 0, 0.0756, -0.0888, 0, 0.0289, -0.0888, 0, -0.0289, -0.0836, 0.0418, 0, -0.0888, 0, 0.0289, -0.0795, -0.0491, 0, -0.0888, 0, -0.0289, -0.0795, -0.0491, 0, -0.0676, -0.0418, -0.0491, -0.0888, 0, -0.0289, -0.0397, -0.0795, -0.0289, -0.0246, -0.0491, -0.0756, -0.0676, -0.0418, -0.0491, -0.0397, -0.0795, -0.0289, 0.0152, -0.0795, -0.0467, -0.0246, -0.0491, -0.0756, 0.0152, -0.0795, -0.0467, 0.0258, -0.0418, -0.0795, -0.0246, -0.0491, -0.0756, 0.0152, -0.0795, -0.0467, 0.0643, -0.0491, -0.0467, 0.0258, -0.0418, -0.0795, 0.0152, -0.0795, -0.0467, 0.0491, -0.0795, 0, 0.0643, -0.0491, -0.0467, 0.0491, -0.0795, 0, 0.0836, -0.0418, 0, 0.0643, -0.0491, -0.0467, 0.0491, -0.0795, 0, 0.0643, -0.0491, 0.0467, 0.0836, -0.0418, 0, 0.0491, -0.0795, 0, 0.0152, -0.0795, 0.0467, 0.0643, -0.0491, 0.0467, 0.0152, -0.0795, 0.0467, 0.0258, -0.0418, 0.0795, 0.0643, -0.0491, 0.0467, -0.0795, -0.0491, 0, -0.0397, -0.0795, -0.0289, -0.0676, -0.0418, -0.0491, -0.0795, -0.0491, 0, -0.0397, -0.0795, 0.0289, -0.0397, -0.0795, -0.0289, -0.0397, -0.0795, 0.0289, 0, -0.0934, 0, -0.0397, -0.0795, -0.0289, 0.0152, -0.0795, 0.0467, -0.0246, -0.0491, 0.0756, 0.0258, -0.0418, 0.0795, 0.0152, -0.0795, 0.0467, -0.0397, -0.0795, 0.0289, -0.0246, -0.0491, 0.0756, -0.0397, -0.0795, 0.0289, -0.0676, -0.0418, 0.0491, -0.0246, -0.0491, 0.0756)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_uksvx"]
+data = PackedVector3Array(-0.1117, 0.1213, -0.2003, 0.1436, -0.1236, 0.1309, -0.1117, 0.1179, 0.1309, -0.1117, 0.1213, -0.2003, 0.1436, -0.1201, -0.2003, 0.1436, -0.1236, 0.1309, -0.1988, -0.352, 0.1341, 0.1436, -0.1236, 0.1309, 0.1375, -0.5151, 0.1341, -0.1988, -0.352, 0.1341, -0.1117, 0.1179, 0.1309, 0.1436, -0.1236, 0.1309, 0.1375, -0.5151, 0.1341, 0.1436, -0.1201, -0.2003, 0.1375, -0.5169, -0.1477, 0.1375, -0.5151, 0.1341, 0.1436, -0.1236, 0.1309, 0.1436, -0.1201, -0.2003, 0.1009, -0.938, -0.0565, -0.0715, -0.9295, 0.1395, 0.1009, -0.9271, 0.1395, 0.1009, -0.938, -0.0565, -0.0715, -0.9403, -0.0565, -0.0715, -0.9295, 0.1395, -0.1988, -0.3538, -0.1477, -0.1117, 0.1179, 0.1309, -0.1988, -0.352, 0.1341, -0.1988, -0.3538, -0.1477, -0.1117, 0.1213, -0.2003, -0.1117, 0.1179, 0.1309, 0.1375, -0.5169, -0.1477, -0.1117, 0.1213, -0.2003, -0.1988, -0.3538, -0.1477, 0.1375, -0.5169, -0.1477, 0.1436, -0.1201, -0.2003, -0.1117, 0.1213, -0.2003, 0.1009, -0.938, -0.0565, -0.1988, -0.3538, -0.1477, -0.0715, -0.9403, -0.0565, 0.1009, -0.938, -0.0565, 0.1375, -0.5169, -0.1477, -0.1988, -0.3538, -0.1477, -0.0715, -0.9403, -0.0565, -0.1988, -0.352, 0.1341, -0.0715, -0.9295, 0.1395, -0.0715, -0.9403, -0.0565, -0.1988, -0.3538, -0.1477, -0.1988, -0.352, 0.1341, 0.1009, -0.9271, 0.1395, 0.1375, -0.5169, -0.1477, 0.1009, -0.938, -0.0565, 0.1009, -0.9271, 0.1395, 0.1375, -0.5151, 0.1341, 0.1375, -0.5169, -0.1477, -0.0715, -0.9295, 0.1395, 0.1375, -0.5151, 0.1341, 0.1009, -0.9271, 0.1395, -0.0715, -0.9295, 0.1395, -0.1988, -0.352, 0.1341, 0.1375, -0.5151, 0.1341)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_xjbt5"]
+data = PackedVector3Array(-0.0123, -0.2605, 0.143, -0.0123, 0.2044, -0.1566, -0.0123, 0.1503, 0.2513, -0.0123, -0.2605, 0.143, -0.0123, -0.2605, -0.2649, -0.0123, 0.2044, -0.1566, 0.0195, -0.2589, -0.2629, 0.2415, 0.2044, -0.1109, 0.0134, 0.2044, -0.1566, 0.0195, -0.2589, -0.2629, 0.3013, 0.0044, -0.1752, 0.2415, 0.2044, -0.1109, 0.3013, 0.0044, -0.1752, 0.2415, 0.1503, 0.1862, 0.2415, 0.2044, -0.1109, 0.3013, 0.0044, -0.1752, 0.3013, -0.0269, 0.1468, 0.2415, 0.1503, 0.1862, 0.0195, -0.262, 0.1485, -0.0123, 0.1503, 0.2513, 0.0134, 0.1503, 0.2513, 0.0195, -0.262, 0.1485, -0.0123, -0.2605, 0.143, -0.0123, 0.1503, 0.2513, 0.0195, -0.2589, -0.2629, 0.3013, -0.0269, 0.1468, 0.3013, 0.0044, -0.1752, 0.0195, -0.2589, -0.2629, 0.0195, -0.262, 0.1485, 0.3013, -0.0269, 0.1468, 0.0134, 0.2044, -0.1566, -0.0123, 0.1503, 0.2513, -0.0123, 0.2044, -0.1566, 0.0134, 0.2044, -0.1566, 0.0134, 0.1503, 0.2513, -0.0123, 0.1503, 0.2513, 0.2415, 0.2044, -0.1109, 0.0134, 0.1503, 0.2513, 0.0134, 0.2044, -0.1566, 0.2415, 0.2044, -0.1109, 0.2415, 0.1503, 0.1862, 0.0134, 0.1503, 0.2513, -0.0123, -0.2605, -0.2649, 0.0195, -0.262, 0.1485, 0.0195, -0.2589, -0.2629, -0.0123, -0.2605, -0.2649, -0.0123, -0.2605, 0.143, 0.0195, -0.262, 0.1485, 0.3013, -0.0269, 0.1468, 0.0134, 0.1503, 0.2513, 0.2415, 0.1503, 0.1862, 0.3013, -0.0269, 0.1468, 0.0195, -0.262, 0.1485, 0.0134, 0.1503, 0.2513, -0.0123, -0.2605, -0.2649, 0.0134, 0.2044, -0.1566, -0.0123, 0.2044, -0.1566, -0.0123, -0.2605, -0.2649, 0.0195, -0.2589, -0.2629, 0.0134, 0.2044, -0.1566, 0.0123, -0.2605, 0.143, 0.0123, 0.2044, -0.1566, 0.0123, -0.2605, -0.2649, 0.0123, -0.2605, 0.143, 0.0123, 0.1503, 0.2513, 0.0123, 0.2044, -0.1566, -0.0195, -0.2589, -0.2629, -0.2415, 0.2044, -0.1109, -0.3013, 0.0044, -0.1752, -0.0195, -0.2589, -0.2629, -0.0134, 0.2044, -0.1566, -0.2415, 0.2044, -0.1109, -0.3013, 0.0044, -0.1752, -0.2415, 0.1503, 0.1862, -0.3013, -0.0269, 0.1468, -0.3013, 0.0044, -0.1752, -0.2415, 0.2044, -0.1109, -0.2415, 0.1503, 0.1862, -0.0195, -0.262, 0.1485, 0.0123, 0.1503, 0.2513, 0.0123, -0.2605, 0.143, -0.0195, -0.262, 0.1485, -0.0134, 0.1503, 0.2513, 0.0123, 0.1503, 0.2513, -0.0195, -0.2589, -0.2629, -0.3013, -0.0269, 0.1468, -0.0195, -0.262, 0.1485, -0.0195, -0.2589, -0.2629, -0.3013, 0.0044, -0.1752, -0.3013, -0.0269, 0.1468, -0.0134, 0.2044, -0.1566, 0.0123, 0.1503, 0.2513, -0.0134, 0.1503, 0.2513, -0.0134, 0.2044, -0.1566, 0.0123, 0.2044, -0.1566, 0.0123, 0.1503, 0.2513, -0.2415, 0.2044, -0.1109, -0.0134, 0.1503, 0.2513, -0.2415, 0.1503, 0.1862, -0.2415, 0.2044, -0.1109, -0.0134, 0.2044, -0.1566, -0.0134, 0.1503, 0.2513, 0.0123, -0.2605, -0.2649, -0.0195, -0.262, 0.1485, 0.0123, -0.2605, 0.143, 0.0123, -0.2605, -0.2649, -0.0195, -0.2589, -0.2629, -0.0195, -0.262, 0.1485, -0.3013, -0.0269, 0.1468, -0.0134, 0.1503, 0.2513, -0.0195, -0.262, 0.1485, -0.3013, -0.0269, 0.1468, -0.2415, 0.1503, 0.1862, -0.0134, 0.1503, 0.2513, 0.0123, -0.2605, -0.2649, -0.0134, 0.2044, -0.1566, -0.0195, -0.2589, -0.2629, 0.0123, -0.2605, -0.2649, 0.0123, 0.2044, -0.1566, -0.0134, 0.2044, -0.1566)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_8ilta"]
+data = PackedVector3Array(0.0449, -0.39, 0.2065, -0.0634, -0.0157, -0.0536, -0.0634, 0.0249, 0.0839, 0.0449, -0.39, 0.2065, 0.0449, -0.4307, 0.069, -0.0634, -0.0157, -0.0536, 0.0449, -0.4307, 0.069, 0.0498, 0.0114, -0.0616, -0.0634, -0.0157, -0.0536, 0.0449, -0.4307, 0.069, 0.1581, -0.4035, 0.061, 0.0498, 0.0114, -0.0616, 0.1581, -0.4035, 0.061, 0.0498, 0.0521, 0.0759, 0.0498, 0.0114, -0.0616, 0.1581, -0.4035, 0.061, 0.1581, -0.3629, 0.1985, 0.0498, 0.0521, 0.0759, 0.1581, -0.3629, 0.1985, -0.0634, 0.0249, 0.0839, 0.0498, 0.0521, 0.0759, 0.1581, -0.3629, 0.1985, 0.0449, -0.39, 0.2065, -0.0634, 0.0249, 0.0839, 0.0449, -0.4307, 0.069, 0.1581, -0.3629, 0.1985, 0.1581, -0.4035, 0.061, 0.0449, -0.4307, 0.069, 0.0449, -0.39, 0.2065, 0.1581, -0.3629, 0.1985, 0.0498, 0.0114, -0.0616, -0.0634, 0.0249, 0.0839, -0.0634, -0.0157, -0.0536, 0.0498, 0.0114, -0.0616, 0.0498, 0.0521, 0.0759, -0.0634, 0.0249, 0.0839)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_jn4eo"]
+data = PackedVector3Array(0.1023, -0.4216, 0.076, -0.0818, -0.0032, -0.076, -0.0818, -0.0032, 0.076, 0.1023, -0.4216, 0.076, 0.1023, -0.4216, -0.076, -0.0818, -0.0032, -0.076, 0.1023, -0.4216, -0.076, 0.0521, 0.0558, -0.076, -0.0818, -0.0032, -0.076, 0.1023, -0.4216, -0.076, 0.2363, -0.3627, -0.076, 0.0521, 0.0558, -0.076, 0.2363, -0.3627, -0.076, 0.0521, 0.0558, 0.076, 0.0521, 0.0558, -0.076, 0.2363, -0.3627, -0.076, 0.2363, -0.3627, 0.076, 0.0521, 0.0558, 0.076, 0.2363, -0.3627, 0.076, -0.0818, -0.0032, 0.076, 0.0521, 0.0558, 0.076, 0.2363, -0.3627, 0.076, 0.1023, -0.4216, 0.076, -0.0818, -0.0032, 0.076, 0.1023, -0.4216, -0.076, 0.2363, -0.3627, 0.076, 0.2363, -0.3627, -0.076, 0.1023, -0.4216, -0.076, 0.1023, -0.4216, 0.076, 0.2363, -0.3627, 0.076, 0.0521, 0.0558, -0.076, -0.0818, -0.0032, 0.076, -0.0818, -0.0032, -0.076, 0.0521, 0.0558, -0.076, 0.0521, 0.0558, 0.076, -0.0818, -0.0032, 0.076)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_k7oue"]
+data = PackedVector3Array(0, 0.1918, 0.1496, 0, 0.2569, -0.043, 0, 0.2528, 0.0357, 0, 0.1918, 0.1496, 0, 0.1973, -0.1839, 0, 0.2569, -0.043, 0, 0.1973, -0.1839, 0.0806, 0.2406, -0.157, 0, 0.2569, -0.043, 0, 0.1973, -0.1839, 0.1188, 0.1906, -0.1763, 0.0806, 0.2406, -0.157, 0.1188, 0.1906, -0.1763, 0.0806, 0.2392, 0.1332, 0.0806, 0.2406, -0.157, 0.1188, 0.1906, -0.1763, 0.1188, 0.1864, 0.1586, 0.0806, 0.2392, 0.1332, 0.1188, 0.1864, 0.1586, 0, 0.2528, 0.0357, 0.0806, 0.2392, 0.1332, 0.1188, 0.1864, 0.1586, 0, 0.1918, 0.1496, 0, 0.2528, 0.0357, 0, -0.2202, -0.1515, 0.0886, -0.2565, 0.1456, 0.0886, -0.1974, -0.1515, 0, -0.2202, -0.1515, 0, -0.2737, 0.1428, 0.0886, -0.2565, 0.1456, 0.0806, 0.2406, -0.157, 0, 0.2528, 0.0357, 0, 0.2569, -0.043, 0.0806, 0.2406, -0.157, 0.0806, 0.2392, 0.1332, 0, 0.2528, 0.0357, 0.1485, -0.0294, 0.1785, 0, 0.0116, 0.206, 0.1684, 0.0116, 0.206, 0.1485, -0.0294, 0.1785, 0, -0.035, 0.1785, 0, 0.0116, 0.206, 0.1485, -0.0482, -0.212, 0.1684, 0.0116, 0.206, 0.1684, 0.0157, -0.2175, 0.1485, -0.0482, -0.212, 0.1485, -0.0294, 0.1785, 0.1684, 0.0116, 0.206, 0, -0.0539, -0.212, 0.1684, 0.0157, -0.2175, 0, 0.0157, -0.2175, 0, -0.0539, -0.212, 0.1485, -0.0482, -0.212, 0.1684, 0.0157, -0.2175, 0, -0.035, 0.1785, 0, 0.0157, -0.2175, 0, 0.0116, 0.206, 0, -0.035, 0.1785, 0, -0.0539, -0.212, 0, 0.0157, -0.2175, 0.1684, 0.0116, 0.206, 0, 0.1308, 0.184, 0.157, 0.1337, 0.184, 0.1684, 0.0116, 0.206, 0, 0.0116, 0.206, 0, 0.1308, 0.184, 0.1684, 0.0157, -0.2175, 0.157, 0.1337, 0.184, 0.157, 0.1405, -0.1955, 0.1684, 0.0157, -0.2175, 0.1684, 0.0116, 0.206, 0.157, 0.1337, 0.184, 0, 0.0157, -0.2175, 0.157, 0.1405, -0.1955, 0, 0.1377, -0.1955, 0, 0.0157, -0.2175, 0.1684, 0.0157, -0.2175, 0.157, 0.1405, -0.1955, 0, 0.0116, 0.206, 0, 0.1377, -0.1955, 0, 0.1308, 0.184, 0, 0.0116, 0.206, 0, 0.0157, -0.2175, 0, 0.1377, -0.1955, 0, -0.2519, 0.1717, 0, -0.1263, -0.1241, 0, -0.0995, 0.1991, 0, -0.2519, 0.1717, 0, -0.1822, -0.1419, 0, -0.1263, -0.1241, 0, -0.1822, -0.1419, 0.1285, -0.1149, -0.1241, 0, -0.1263, -0.1241, 0, -0.1822, -0.1419, 0.1086, -0.1651, -0.1419, 0.1285, -0.1149, -0.1241, 0.1086, -0.1651, -0.1419, 0.1285, -0.0881, 0.1991, 0.1285, -0.1149, -0.1241, 0.1086, -0.1651, -0.1419, 0.1086, -0.2348, 0.1717, 0.1285, -0.0881, 0.1991, 0.1086, -0.2348, 0.1717, 0, -0.0995, 0.1991, 0.1285, -0.0881, 0.1991, 0.1086, -0.2348, 0.1717, 0, -0.2519, 0.1717, 0, -0.0995, 0.1991, 0, -0.0995, 0.1991, 0, -0.0539, -0.212, 0, -0.035, 0.1785, 0, -0.0995, 0.1991, 0, -0.1263, -0.1241, 0, -0.0539, -0.212, 0, -0.1263, -0.1241, 0.1485, -0.0482, -0.212, 0, -0.0539, -0.212, 0, -0.1263, -0.1241, 0.1285, -0.1149, -0.1241, 0.1485, -0.0482, -0.212, 0.1285, -0.1149, -0.1241, 0.1485, -0.0294, 0.1785, 0.1485, -0.0482, -0.212, 0.1285, -0.1149, -0.1241, 0.1285, -0.0881, 0.1991, 0.1485, -0.0294, 0.1785, 0.1285, -0.0881, 0.1991, 0, -0.035, 0.1785, 0.1485, -0.0294, 0.1785, 0.1285, -0.0881, 0.1991, 0, -0.0995, 0.1991, 0, -0.035, 0.1785, 0.0886, -0.2565, 0.1456, 0, -0.2519, 0.1717, 0.1086, -0.2348, 0.1717, 0.0886, -0.2565, 0.1456, 0, -0.2737, 0.1428, 0, -0.2519, 0.1717, 0.0886, -0.1974, -0.1515, 0.1086, -0.2348, 0.1717, 0.1086, -0.1651, -0.1419, 0.0886, -0.1974, -0.1515, 0.0886, -0.2565, 0.1456, 0.1086, -0.2348, 0.1717, 0, -0.2202, -0.1515, 0.1086, -0.1651, -0.1419, 0, -0.1822, -0.1419, 0, -0.2202, -0.1515, 0.0886, -0.1974, -0.1515, 0.1086, -0.1651, -0.1419, 0, -0.2737, 0.1428, 0, -0.1822, -0.1419, 0, -0.2519, 0.1717, 0, -0.2737, 0.1428, 0, -0.2202, -0.1515, 0, -0.1822, -0.1419, 0.157, 0.1337, 0.184, 0, 0.1918, 0.1496, 0.1188, 0.1864, 0.1586, 0.157, 0.1337, 0.184, 0, 0.1308, 0.184, 0, 0.1918, 0.1496, 0.157, 0.1405, -0.1955, 0.1188, 0.1864, 0.1586, 0.1188, 0.1906, -0.1763, 0.157, 0.1405, -0.1955, 0.157, 0.1337, 0.184, 0.1188, 0.1864, 0.1586, 0, 0.1377, -0.1955, 0.1188, 0.1906, -0.1763, 0, 0.1973, -0.1839, 0, 0.1377, -0.1955, 0.157, 0.1405, -0.1955, 0.1188, 0.1906, -0.1763, 0, 0.1308, 0.184, 0, 0.1973, -0.1839, 0, 0.1918, 0.1496, 0, 0.1308, 0.184, 0, 0.1377, -0.1955, 0, 0.1973, -0.1839, 0, 0.1973, -0.1839, -0.0806, 0.2406, -0.157, -0.1188, 0.1906, -0.1763, 0, 0.1973, -0.1839, 0, 0.2569, -0.043, -0.0806, 0.2406, -0.157, -0.1188, 0.1906, -0.1763, -0.0806, 0.2392, 0.1332, -0.1188, 0.1864, 0.1586, -0.1188, 0.1906, -0.1763, -0.0806, 0.2406, -0.157, -0.0806, 0.2392, 0.1332, -0.1188, 0.1864, 0.1586, 0, 0.2528, 0.0357, 0, 0.1918, 0.1496, -0.1188, 0.1864, 0.1586, -0.0806, 0.2392, 0.1332, 0, 0.2528, 0.0357, 0, -0.2202, -0.1515, -0.0887, -0.2565, 0.1456, 0, -0.2737, 0.1428, 0, -0.2202, -0.1515, -0.0887, -0.1974, -0.1515, -0.0887, -0.2565, 0.1456, -0.0806, 0.2406, -0.157, 0, 0.2528, 0.0357, -0.0806, 0.2392, 0.1332, -0.0806, 0.2406, -0.157, 0, 0.2569, -0.043, 0, 0.2528, 0.0357, -0.1485, -0.0294, 0.1785, 0, 0.0116, 0.206, 0, -0.035, 0.1785, -0.1485, -0.0294, 0.1785, -0.1684, 0.0116, 0.206, 0, 0.0116, 0.206, -0.1485, -0.0482, -0.212, -0.1684, 0.0116, 0.206, -0.1485, -0.0294, 0.1785, -0.1485, -0.0482, -0.212, -0.1684, 0.0157, -0.2175, -0.1684, 0.0116, 0.206, 0, -0.0539, -0.212, -0.1684, 0.0157, -0.2175, -0.1485, -0.0482, -0.212, 0, -0.0539, -0.212, 0, 0.0157, -0.2175, -0.1684, 0.0157, -0.2175, -0.1684, 0.0116, 0.206, 0, 0.1308, 0.184, 0, 0.0116, 0.206, -0.1684, 0.0116, 0.206, -0.157, 0.1337, 0.184, 0, 0.1308, 0.184, -0.1684, 0.0157, -0.2175, -0.157, 0.1337, 0.184, -0.1684, 0.0116, 0.206, -0.1684, 0.0157, -0.2175, -0.157, 0.1405, -0.1955, -0.157, 0.1337, 0.184, 0, 0.0157, -0.2175, -0.157, 0.1405, -0.1955, -0.1684, 0.0157, -0.2175, 0, 0.0157, -0.2175, 0, 0.1377, -0.1955, -0.157, 0.1405, -0.1955, 0, -0.1822, -0.1419, -0.1285, -0.1149, -0.1241, -0.1086, -0.1651, -0.1419, 0, -0.1822, -0.1419, 0, -0.1263, -0.1241, -0.1285, -0.1149, -0.1241, -0.1086, -0.1651, -0.1419, -0.1285, -0.0881, 0.1991, -0.1086, -0.2348, 0.1717, -0.1086, -0.1651, -0.1419, -0.1285, -0.1149, -0.1241, -0.1285, -0.0881, 0.1991, -0.1086, -0.2348, 0.1717, 0, -0.0995, 0.1991, 0, -0.2519, 0.1717, -0.1086, -0.2348, 0.1717, -0.1285, -0.0881, 0.1991, 0, -0.0995, 0.1991, 0, -0.1263, -0.1241, -0.1485, -0.0482, -0.212, -0.1285, -0.1149, -0.1241, 0, -0.1263, -0.1241, 0, -0.0539, -0.212, -0.1485, -0.0482, -0.212, -0.1285, -0.1149, -0.1241, -0.1485, -0.0294, 0.1785, -0.1285, -0.0881, 0.1991, -0.1285, -0.1149, -0.1241, -0.1485, -0.0482, -0.212, -0.1485, -0.0294, 0.1785, -0.1285, -0.0881, 0.1991, 0, -0.035, 0.1785, 0, -0.0995, 0.1991, -0.1285, -0.0881, 0.1991, -0.1485, -0.0294, 0.1785, 0, -0.035, 0.1785, -0.0887, -0.2565, 0.1456, 0, -0.2519, 0.1717, 0, -0.2737, 0.1428, -0.0887, -0.2565, 0.1456, -0.1086, -0.2348, 0.1717, 0, -0.2519, 0.1717, -0.0887, -0.1974, -0.1515, -0.1086, -0.2348, 0.1717, -0.0887, -0.2565, 0.1456, -0.0887, -0.1974, -0.1515, -0.1086, -0.1651, -0.1419, -0.1086, -0.2348, 0.1717, 0, -0.2202, -0.1515, -0.1086, -0.1651, -0.1419, -0.0887, -0.1974, -0.1515, 0, -0.2202, -0.1515, 0, -0.1822, -0.1419, -0.1086, -0.1651, -0.1419, -0.157, 0.1337, 0.184, 0, 0.1918, 0.1496, 0, 0.1308, 0.184, -0.157, 0.1337, 0.184, -0.1188, 0.1864, 0.1586, 0, 0.1918, 0.1496, -0.157, 0.1405, -0.1955, -0.1188, 0.1864, 0.1586, -0.157, 0.1337, 0.184, -0.157, 0.1405, -0.1955, -0.1188, 0.1906, -0.1763, -0.1188, 0.1864, 0.1586, 0, 0.1377, -0.1955, -0.1188, 0.1906, -0.1763, -0.157, 0.1405, -0.1955, 0, 0.1377, -0.1955, 0, 0.1973, -0.1839, -0.1188, 0.1906, -0.1763)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_p7dxn"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_euj74"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_siatw"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("13_ei6ti")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_0h3do"]
+resource_local_to_scene = true
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j0yyx"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("15_1tj28")
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o263a"]
+resource_local_to_scene = true
+albedo_texture = ExtResource("17_fcr5r")
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_6a7i6"]
+data = PackedVector3Array(-0.0405, -0.3854, 0.186, 0.0678, -0.0111, -0.0741, -0.0405, -0.4261, 0.0485, -0.0405, -0.3854, 0.186, 0.0678, 0.0295, 0.0634, 0.0678, -0.0111, -0.0741, -0.0405, -0.4261, 0.0485, -0.0454, 0.016, -0.0821, -0.1537, -0.3989, 0.0405, -0.0405, -0.4261, 0.0485, 0.0678, -0.0111, -0.0741, -0.0454, 0.016, -0.0821, -0.1537, -0.3989, 0.0405, -0.0454, 0.0567, 0.0554, -0.1537, -0.3583, 0.178, -0.1537, -0.3989, 0.0405, -0.0454, 0.016, -0.0821, -0.0454, 0.0567, 0.0554, -0.1537, -0.3583, 0.178, 0.0678, 0.0295, 0.0634, -0.0405, -0.3854, 0.186, -0.1537, -0.3583, 0.178, -0.0454, 0.0567, 0.0554, 0.0678, 0.0295, 0.0634, -0.0405, -0.4261, 0.0485, -0.1537, -0.3583, 0.178, -0.0405, -0.3854, 0.186, -0.0405, -0.4261, 0.0485, -0.1537, -0.3989, 0.0405, -0.1537, -0.3583, 0.178, -0.0454, 0.016, -0.0821, 0.0678, 0.0295, 0.0634, -0.0454, 0.0567, 0.0554, -0.0454, 0.016, -0.0821, 0.0678, -0.0111, -0.0741, 0.0678, 0.0295, 0.0634)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_2dgl0"]
+data = PackedVector3Array(-0.1261, -0.4279, 0.076, 0.0581, -0.0094, -0.076, -0.1261, -0.4279, -0.076, -0.1261, -0.4279, 0.076, 0.0581, -0.0094, 0.076, 0.0581, -0.0094, -0.076, -0.1261, -0.4279, -0.076, -0.0759, 0.0495, -0.076, -0.26, -0.369, -0.076, -0.1261, -0.4279, -0.076, 0.0581, -0.0094, -0.076, -0.0759, 0.0495, -0.076, -0.26, -0.369, -0.076, -0.0759, 0.0495, 0.076, -0.26, -0.369, 0.076, -0.26, -0.369, -0.076, -0.0759, 0.0495, -0.076, -0.0759, 0.0495, 0.076, -0.26, -0.369, 0.076, 0.0581, -0.0094, 0.076, -0.1261, -0.4279, 0.076, -0.26, -0.369, 0.076, -0.0759, 0.0495, 0.076, 0.0581, -0.0094, 0.076, -0.1261, -0.4279, -0.076, -0.26, -0.369, 0.076, -0.1261, -0.4279, 0.076, -0.1261, -0.4279, -0.076, -0.26, -0.369, -0.076, -0.26, -0.369, 0.076, -0.0759, 0.0495, -0.076, 0.0581, -0.0094, 0.076, -0.0759, 0.0495, 0.076, -0.0759, 0.0495, -0.076, 0.0581, -0.0094, -0.076, 0.0581, -0.0094, 0.076)
+
+[sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_q7mit"]
+data = PackedVector3Array(0, 0.1034, 0.3349, 0, 0.2845, -0.3251, 0, 0.385, 0.0267, 0, 0.1034, 0.3349, 0, 0.0573, -0.2427, 0, 0.2845, -0.3251, 0, 0.0573, -0.2427, 0.4099, 0.2449, -0.3251, 0, 0.2845, -0.3251, 0, 0.0573, -0.2427, 0.4313, 0.0363, -0.2427, 0.4099, 0.2449, -0.3251, 0.4313, 0.0363, -0.2427, 0.4099, 0.3454, 0.0267, 0.4099, 0.2449, -0.3251, 0.4313, 0.0363, -0.2427, 0.4313, 0.0825, 0.3349, 0.4099, 0.3454, 0.0267, 0.4313, 0.0825, 0.3349, 0, 0.385, 0.0267, 0.4099, 0.3454, 0.0267, 0.4313, 0.0825, 0.3349, 0, 0.1034, 0.3349, 0, 0.385, 0.0267, 0, -0.371, -0.1289, 0.3358, -0.3952, 0.335, 0.3358, -0.3224, -0.1289, 0, -0.371, -0.1289, 0, -0.4424, 0.335, 0.3358, -0.3952, 0.335, 0.4099, 0.2449, -0.3251, 0, 0.385, 0.0267, 0, 0.2845, -0.3251, 0.4099, 0.2449, -0.3251, 0.4099, 0.3454, 0.0267, 0, 0.385, 0.0267, 0.3358, -0.3952, 0.335, 0, 0.1034, 0.3349, 0.4313, 0.0825, 0.3349, 0.3358, -0.3952, 0.335, 0, -0.4424, 0.335, 0, 0.1034, 0.3349, 0.3358, -0.3224, -0.1289, 0.4313, 0.0825, 0.3349, 0.4313, 0.0363, -0.2427, 0.3358, -0.3224, -0.1289, 0.3358, -0.3952, 0.335, 0.4313, 0.0825, 0.3349, 0, -0.371, -0.1289, 0.4313, 0.0363, -0.2427, 0, 0.0573, -0.2427, 0, -0.371, -0.1289, 0.3358, -0.3224, -0.1289, 0.4313, 0.0363, -0.2427, 0, -0.4424, 0.335, 0, 0.0573, -0.2427, 0, 0.1034, 0.3349, 0, -0.4424, 0.335, 0, -0.371, -0.1289, 0, 0.0573, -0.2427, 0, 0.0573, -0.2427, -0.41, 0.2449, -0.3251, -0.4313, 0.0363, -0.2427, 0, 0.0573, -0.2427, 0, 0.2845, -0.3251, -0.41, 0.2449, -0.3251, -0.4313, 0.0363, -0.2427, -0.41, 0.3454, 0.0267, -0.4313, 0.0825, 0.3349, -0.4313, 0.0363, -0.2427, -0.41, 0.2449, -0.3251, -0.41, 0.3454, 0.0267, -0.4313, 0.0825, 0.3349, 0, 0.385, 0.0267, 0, 0.1034, 0.3349, -0.4313, 0.0825, 0.3349, -0.41, 0.3454, 0.0267, 0, 0.385, 0.0267, 0, -0.371, -0.1289, -0.3358, -0.3952, 0.335, 0, -0.4424, 0.335, 0, -0.371, -0.1289, -0.3358, -0.3224, -0.1289, -0.3358, -0.3952, 0.335, -0.41, 0.2449, -0.3251, 0, 0.385, 0.0267, -0.41, 0.3454, 0.0267, -0.41, 0.2449, -0.3251, 0, 0.2845, -0.3251, 0, 0.385, 0.0267, -0.3358, -0.3952, 0.335, 0, 0.1034, 0.3349, 0, -0.4424, 0.335, -0.3358, -0.3952, 0.335, -0.4313, 0.0825, 0.3349, 0, 0.1034, 0.3349, -0.3358, -0.3224, -0.1289, -0.4313, 0.0825, 0.3349, -0.3358, -0.3952, 0.335, -0.3358, -0.3224, -0.1289, -0.4313, 0.0363, -0.2427, -0.4313, 0.0825, 0.3349, 0, -0.371, -0.1289, -0.4313, 0.0363, -0.2427, -0.3358, -0.3224, -0.1289, 0, -0.371, -0.1289, 0, 0.0573, -0.2427, -0.4313, 0.0363, -0.2427)
+
 [node name="playerModel" instance=ExtResource("1_lv1nl")]
 transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -1, 0)
 script = ExtResource("2_sducw")
 
-[node name="Pelvis" parent="." index="0"]
-material_override = SubResource("StandardMaterial3D_b4ywy")
-
-[node name="LeftThigh" parent="Pelvis" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.193497, -0.132444, -0.0319123)
-material_override = SubResource("StandardMaterial3D_6ket4")
-
-[node name="LeftKnee" parent="Pelvis/LeftThigh" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0178276, -1.00973, -0.0161812)
-
-[node name="LeftShin" parent="Pelvis/LeftThigh/LeftKnee" index="0"]
-material_override = SubResource("StandardMaterial3D_0vug6")
-
-[node name="LeftFoot" parent="Pelvis/LeftThigh/LeftKnee/LeftShin" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0216177, -0.884766, -0.00562763)
-
-[node name="RightThigh" parent="Pelvis" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.218101, -0.1305, -0.0319123)
-material_override = SubResource("StandardMaterial3D_l0yp4")
-
-[node name="RightKnee" parent="Pelvis/RightThigh" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.0178276, -1.02804, -0.0161815)
-
-[node name="RightShin" parent="Pelvis/RightThigh/RightKnee" index="0"]
-material_override = SubResource("StandardMaterial3D_cra8u")
-
-[node name="RightFoot" parent="Pelvis/RightThigh/RightKnee/RightShin" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 0.999999, -0.0216175, -0.865626, 0.000402629)
-
-[node name="Chest" parent="." index="1"]
-transform = Transform3D(0.809017, 0, -0.587786, 0, 1, 0, 0.587786, 0, 0.809017, -0.0144374, 2.84003, -0.012361)
-
-[node name="LeftShoulder" parent="Chest" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454898, 0.243722, -0.193662)
-
-[node name="LeftBicep" parent="Chest/LeftShoulder" index="0"]
-material_override = SubResource("StandardMaterial3D_g3boy")
-
-[node name="LeftForearm" parent="Chest/LeftShoulder/LeftBicep" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.176723, -0.435823, 0.00277105)
-material_override = SubResource("StandardMaterial3D_mbxm3")
-
-[node name="LeftHand" parent="Chest/LeftShoulder/LeftBicep/LeftForearm" index="0"]
-material_override = SubResource("StandardMaterial3D_1p5cb")
-
-[node name="LeftThumb" parent="Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand" index="0"]
-material_override = SubResource("StandardMaterial3D_047f3")
-
-[node name="Head" parent="Chest/Neck" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00351591, 0.383105, 0.06779)
-
-[node name="Cube_049" parent="Chest/Neck/Head" index="0"]
-material_override = SubResource("StandardMaterial3D_sv238")
-
-[node name="RightShoulder" parent="Chest" index="2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454899, 0.243722, -0.193662)
-
-[node name="RightBicep" parent="Chest/RightShoulder" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.062, -0.172, -0.013)
-material_override = SubResource("StandardMaterial3D_sjhg2")
-
-[node name="RightForearm" parent="Chest/RightShoulder/RightBicep" index="0"]
-transform = Transform3D(1, 0, 0, 0, 0.999999, 0, 0, 0, 1, -0.20855, -0.449282, 0.00676589)
-material_override = SubResource("StandardMaterial3D_i6i4u")
-
-[node name="RightHand" parent="Chest/RightShoulder/RightBicep/RightForearm" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0864102, -0.398891, 0.126481)
-material_override = SubResource("StandardMaterial3D_gmt1l")
-
-[node name="RightThumb" parent="Chest/RightShoulder/RightBicep/RightForearm/RightHand" index="0"]
-material_override = SubResource("StandardMaterial3D_b6ryk")
-
-[node name="GunHand" type="Marker3D" parent="Chest/RightShoulder/RightBicep/RightForearm/RightHand" index="1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.160267, 0.0357358)
-
-[node name="Guns" type="Node3D" parent="Chest" index="3"]
-transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.75783, -0.172668, 0.794901)
-
-[node name="Sword" parent="Chest/Guns" index="0" instance=ExtResource("4_0ahde")]
-transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
-visible = false
-
-[node name="Pistol" parent="Chest/Guns" index="1" instance=ExtResource("5_po4to")]
-transform = Transform3D(-3.50165e-06, 9.19521e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
-visible = false
-
-[node name="MeshInstance3D" parent="Chest/Guns/Pistol" index="0"]
-transform = Transform3D(0.951078, 0.308951, 0, -0.308951, 0.951078, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="MeshInstance3D2" parent="Chest/Guns/Pistol/MeshInstance3D" index="0"]
-transform = Transform3D(0.951078, -0.308951, 0, 0.308951, 0.951078, -8.88178e-16, 3.55271e-15, 8.29046e-16, 1, 0.088526, 0.115665, 0)
-
-[node name="Shotgun" parent="Chest/Guns" index="2" instance=ExtResource("6_bisf7")]
-transform = Transform3D(-0.427757, 0.195283, 0.647216, 0.332237, 0.727749, 1.74255e-08, -0.588763, 0.268787, -0.470225, -0.73167, -0.144539, -0.0950127)
-visible = false
-
-[node name="Cube" parent="Chest/Guns/Shotgun/shotgun/Shotgun" index="0"]
-transform = Transform3D(1.456, -2.68221e-07, -1.13687e-13, 2.38419e-07, 1.215, 4.54747e-13, 0, -2.27374e-13, 1.083, 0, 0, 0)
-
-[node name="Gatling" parent="Chest/Guns" index="3" instance=ExtResource("7_stpax")]
-transform = Transform3D(-0.485409, 0, -0.352673, 0, 0.6, 0, 0.352673, 0, -0.485409, -0.950353, -0.530699, -0.47982)
-visible = false
-
-[node name="Sniper" parent="Chest/Guns" index="4" instance=ExtResource("7_kyppt")]
-transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
-visible = false
-
-[node name="Flamer" parent="Chest/Guns" index="5" instance=ExtResource("8_18h8k")]
-transform = Transform3D(-0.41484, 0, -0.27912, 0, 0.5, 0, 0.27912, 0, -0.41484, -0.551524, -0.0985792, 0.239912)
-visible = false
-
-[node name="Bazooka" parent="Chest/Guns" index="6" instance=ExtResource("9_20v23")]
-transform = Transform3D(-0.587789, 0, 0.809014, 0, 1, 0, -0.809014, 0, -0.587789, -0.128259, -0.294339, 0.30849)
-visible = false
-
-[node name="GrenadeLauncher" parent="Chest/Guns" index="7" instance=ExtResource("10_ve0ol")]
-transform = Transform3D(-0.293891, 0, 0.40451, 0, 0.5, 0, -0.40451, 0, -0.293891, -0.426324, -0.0614387, 0.309743)
-visible = false
-
-[node name="NadeLauncher" parent="Chest/Guns/GrenadeLauncher/grenadeLauncher" index="0"]
-transform = Transform3D(1, 0, 0, 0, 1, -1.77636e-15, 0, 0, -0.215687, -0.568552, -0.158075, 0)
-
-[node name="Barrel" parent="Chest/Guns/GrenadeLauncher/grenadeLauncher/NadeLauncher" index="0"]
-transform = Transform3D(0.222876, -3.13369e-07, 0, 5.65031e-07, 0.123608, 0, 0, 0, -0.817161, 1.45061, 0.0554583, 0)
-
-[node name="Energy" parent="Chest/Guns" index="8" instance=ExtResource("12_x2don")]
-transform = Transform3D(-0.397438, 0, 0.636037, 0, 0.75, 0, -0.636037, 0, -0.397438, -0.586846, -0.20991, 0.0799953)
-visible = false
-
-[node name="Magnum" parent="Chest/Guns" index="9" instance=ExtResource("11_0uyy8")]
-transform = Transform3D(-0.75, 9.95392e-07, -1.49651e-06, -1.39718e-07, 0.590298, 0.462653, 1.79188e-06, 0.462653, -0.590298, 0, 0.656189, -0.160127)
-visible = false
-
-[node name="OmniLight3D" type="OmniLight3D" parent="Chest" index="4"]
-transform = Transform3D(-1.99995, 0, -0.0141724, 0, 2, 0, 0.0141724, 0, -1.99995, -0.00347841, 0.122429, -0.414925)
-light_energy = 5.0
-omni_range = 0.0
-
-[node name="Chest Animator" type="AnimationPlayer" parent="." index="2"]
+[node name="Chest Animator" type="AnimationPlayer" parent="." index="0"]
 libraries = {
 "": SubResource("AnimationLibrary_3tqgo")
 }
 
-[node name="Pelvis Animator" type="AnimationPlayer" parent="." index="3"]
+[node name="Pelvis Animator" type="AnimationPlayer" parent="." index="1"]
 libraries = {
 "": SubResource("AnimationLibrary_gt528")
 }
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="4"]
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." index="2"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.412784, -0.0103587)
 visible = false
 mesh = SubResource("BoxMesh_phhay")
 
-[node name="AudioController" type="Node3D" parent="." index="5"]
+[node name="AudioController" type="Node3D" parent="." index="3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.39402, 0)
 
 [node name="Sword" type="AudioStreamPlayer3D" parent="AudioController" index="0"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 stream = ExtResource("11_3vjro")
 volume_db = 14.829
-pitch_scale = 0.6
 bus = &"SFX"
 
 [node name="Pistol" type="AudioStreamPlayer3D" parent="AudioController" index="1"]
@@ -4292,8 +4373,9 @@ volume_db = 5.0
 bus = &"SFX"
 
 [node name="Magnum" type="AudioStreamPlayer3D" parent="AudioController" index="7"]
-stream = ExtResource("16_hjc37")
+stream = ExtResource("13_jxa4a")
 volume_db = 5.0
+pitch_scale = 0.55
 bus = &"SFX"
 
 [node name="Flamer" type="AudioStreamPlayer3D" parent="AudioController" index="8"]
@@ -4306,6 +4388,245 @@ stream = ExtResource("20_fq0sg")
 pitch_scale = 1.2
 bus = &"SFX"
 
+[node name="StaticBody3D" type="StaticBody3D" parent="Pelvis/LeftThigh/LeftKnee/LeftShin/LeftFoot" index="0" groups=["Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pelvis/LeftThigh/LeftKnee/LeftShin/LeftFoot/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_0dyt2")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pelvis/LeftThigh/LeftKnee/LeftShin" index="1" groups=["Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pelvis/LeftThigh/LeftKnee/LeftShin/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_nplf5")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pelvis/LeftThigh/LeftKnee" index="1" groups=["Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pelvis/LeftThigh/LeftKnee/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_b5cp6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pelvis/LeftThigh" index="1" groups=["Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pelvis/LeftThigh/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_2wnjl")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pelvis/RightThigh/RightKnee/RightShin/RightFoot" index="0"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pelvis/RightThigh/RightKnee/RightShin/RightFoot/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_6alei")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pelvis/RightThigh/RightKnee/RightShin" index="1"]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pelvis/RightThigh/RightKnee/RightShin/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_ylglv")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pelvis/RightThigh/RightKnee" index="1" groups=["Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pelvis/RightThigh/RightKnee/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_tkgla")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Pelvis/RightThigh" index="1" groups=["Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Pelvis/RightThigh/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_uksvx")
+
+[node name="Pelvis" type="StaticBody3D" parent="Pelvis" index="2" groups=["Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Pelvis" type="CollisionShape3D" parent="Pelvis/Pelvis" index="0"]
+shape = SubResource("ConcavePolygonShape3D_xjbt5")
+
+[node name="GunHand" type="Marker3D" parent="." index="5"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.160267, 0.0357358)
+
+[node name="Chest" parent="." index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0144374, 2.84003, -0.012361)
+rotation_edit_mode = 1
+
+[node name="LeftShoulder" parent="Chest" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.454898, 0.243722, -0.193662)
+
+[node name="LeftForearm" parent="Chest/LeftShoulder/LeftBicep" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.176723, -0.435823, 0.00277105)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Chest/LeftShoulder/LeftBicep/LeftForearm" index="1" groups=["Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chest/LeftShoulder/LeftBicep/LeftForearm/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_8ilta")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Chest/LeftShoulder/LeftBicep" index="1" groups=["Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chest/LeftShoulder/LeftBicep/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_jn4eo")
+
+[node name="Head" parent="Chest/Neck" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00351591, 0.383105, 0.06779)
+
+[node name="Cube_049" parent="Chest/Neck/Head" index="0"]
+visible = false
+
+[node name="Head" type="StaticBody3D" parent="Chest/Neck/Head" index="1" groups=["Head", "Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="Head" type="CollisionShape3D" parent="Chest/Neck/Head/Head" index="0"]
+shape = SubResource("ConcavePolygonShape3D_k7oue")
+
+[node name="Chivalrous" parent="Chest/Neck/Head" index="2" instance=ExtResource("10_2now1")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00351592, 6.4373e-05, -0.06779)
+visible = false
+
+[node name="Chivalrous" parent="Chest/Neck/Head/Chivalrous" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_p7dxn")
+
+[node name="Cube_050" parent="Chest/Neck/Head/Chivalrous/Chivalrous" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_euj74")
+
+[node name="conquerer" parent="Chest/Neck/Head" index="3" instance=ExtResource("11_xx3ts")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00351592, -0.0162448, 0.0547348)
+visible = false
+
+[node name="Conquerer" parent="Chest/Neck/Head/conquerer" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_siatw")
+
+[node name="imperial" parent="Chest/Neck/Head" index="4" instance=ExtResource("12_jvvrc")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00351592, -0.148533, 0.0550036)
+visible = false
+
+[node name="GreatHelm" parent="Chest/Neck/Head/imperial" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_0h3do")
+
+[node name="Mercenary" parent="Chest/Neck/Head" index="5" instance=ExtResource("13_tc6ah")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00351592, -0.149796, 0.00528982)
+visible = false
+
+[node name="Varangian" parent="Chest/Neck/Head/Mercenary" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_j0yyx")
+
+[node name="Defender" parent="Chest/Neck/Head" index="6" instance=ExtResource("14_ogrn3")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.00351592, -0.097898, 0.0325736)
+visible = false
+
+[node name="Sallet" parent="Chest/Neck/Head/Defender" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_o263a")
+
+[node name="RightShoulder" parent="Chest" index="2"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.454899, 0.243722, -0.193662)
+
+[node name="RightForearm" parent="Chest/RightShoulder/RightBicep" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.20855, -0.449282, 0.00676589)
+
+[node name="RightHand" parent="Chest/RightShoulder/RightBicep/RightForearm" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0864102, -0.398891, 0.126481)
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Chest/RightShoulder/RightBicep/RightForearm" index="1" groups=["Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chest/RightShoulder/RightBicep/RightForearm/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_6a7i6")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Chest/RightShoulder/RightBicep" index="1" groups=["Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chest/RightShoulder/RightBicep/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_2dgl0")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Chest" index="3" groups=["Player"]]
+collision_layer = 16
+collision_mask = 0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Chest/StaticBody3D" index="0"]
+shape = SubResource("ConcavePolygonShape3D_q7mit")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="Chest" index="4"]
+transform = Transform3D(-1.99995, 0, -0.0141724, 0, 2, 0, 0.0141724, 0, -1.99995, -0.00347841, 0.122429, -0.414925)
+light_energy = 5.0
+omni_range = 0.0
+omni_attenuation = 0.5
+
+[node name="Guns" type="Node3D" parent="Chest" index="5"]
+transform = Transform3D(-1, 0, -1.50996e-07, 0, 1, 0, 1.50996e-07, 0, -1, -0.743393, -0.150997, 0.807262)
+
+[node name="Sword" parent="Chest/Guns" index="0" instance=ExtResource("4_0ahde")]
+transform = Transform3D(1.25, 0, 0, 0, 1.25, 0, 0, 0, 1.25, 0, 0, 0)
+
+[node name="Pistol" parent="Chest/Guns" index="1" instance=ExtResource("5_po4to")]
+transform = Transform3D(-3.50165e-06, 9.19521e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
+visible = false
+
+[node name="MeshInstance3D" parent="Chest/Guns/Pistol" index="0"]
+transform = Transform3D(0.951078, 0.308951, 0, -0.308951, 0.951078, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="MeshInstance3D2" parent="Chest/Guns/Pistol/MeshInstance3D" index="0"]
+transform = Transform3D(0.951078, -0.308951, 0, 0.308951, 0.951078, -8.88178e-16, 3.55271e-15, 8.29046e-16, 1, 0.088526, 0.115665, 0)
+
+[node name="Shotgun" parent="Chest/Guns" index="2" instance=ExtResource("6_bisf7")]
+transform = Transform3D(-0.427757, 0.195283, 0.647216, 0.332237, 0.727749, 1.74255e-08, -0.588763, 0.268787, -0.470225, -0.73167, -0.144539, -0.0950127)
+visible = false
+
+[node name="Cube" parent="Chest/Guns/Shotgun/shotgun/Shotgun" index="0"]
+transform = Transform3D(1.456, -2.68221e-07, -1.13687e-13, 2.38419e-07, 1.215, 4.54747e-13, 0, -2.27374e-13, 1.083, 3.586, -1.932, -0.035)
+
+[node name="Gatling" parent="Chest/Guns" index="3" instance=ExtResource("7_stpax")]
+transform = Transform3D(-0.485409, 0, -0.352673, 0, 0.6, 0, 0.352673, 0, -0.485409, -0.950353, -0.530699, -0.47982)
+visible = false
+
+[node name="Sniper" parent="Chest/Guns" index="4" instance=ExtResource("7_kyppt")]
+transform = Transform3D(1.5, 0, 0, 0, 1.5, 0, 0, 0, 1.5, 0, 0, 0)
+visible = false
+
+[node name="Flamer" parent="Chest/Guns" index="5" instance=ExtResource("8_18h8k")]
+transform = Transform3D(-0.41484, 0, -0.27912, 0, 0.5, 0, 0.27912, 0, -0.41484, -0.551524, -0.0985792, 0.239912)
+visible = false
+
+[node name="Bazooka" parent="Chest/Guns" index="6" instance=ExtResource("9_20v23")]
+transform = Transform3D(-0.587789, 0, 0.809014, 0, 1, 0, -0.809014, 0, -0.587789, -0.128259, -0.294339, 0.30849)
+visible = false
+
+[node name="GrenadeLauncher" parent="Chest/Guns" index="7" instance=ExtResource("10_ve0ol")]
+transform = Transform3D(-0.293891, 0, 0.40451, 0, 0.5, 0, -0.40451, 0, -0.293891, -0.426324, -0.0614387, 0.309743)
+visible = false
+
+[node name="NadeLauncher" parent="Chest/Guns/GrenadeLauncher/grenadeLauncher" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, -1.77636e-15, 0, 0, -0.215687, -0.568552, -0.158075, 0)
+
+[node name="Barrel" parent="Chest/Guns/GrenadeLauncher/grenadeLauncher/NadeLauncher" index="0"]
+transform = Transform3D(0.222876, -3.13369e-07, 0, 5.65031e-07, 0.123608, 0, 0, 0, -0.817161, 1.45061, 0.0554583, 0)
+
+[node name="Magnum" parent="Chest/Guns" index="8" instance=ExtResource("11_0uyy8")]
+transform = Transform3D(-0.75, 9.95392e-07, -1.49651e-06, -1.39718e-07, 0.590298, 0.462653, 1.79188e-06, 0.462653, -0.590298, 0, 0.656189, -0.160127)
+visible = false
+
+[node name="Energy" parent="Chest/Guns" index="9" instance=ExtResource("12_x2don")]
+transform = Transform3D(-0.397438, 0, 0.636037, 0, 0.75, 0, -0.636037, 0, -0.397438, -0.586846, -0.20991, 0.0799953)
+visible = false
+
+[editable path="Chest/Neck/Head/Chivalrous"]
+[editable path="Chest/Neck/Head/conquerer"]
+[editable path="Chest/Neck/Head/imperial"]
+[editable path="Chest/Neck/Head/Mercenary"]
+[editable path="Chest/Neck/Head/Defender"]
 [editable path="Chest/Guns/Sword"]
 [editable path="Chest/Guns/Pistol"]
 [editable path="Chest/Guns/Shotgun"]

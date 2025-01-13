@@ -13,8 +13,8 @@ script = ExtResource("1_7vwgq")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
-offset_right = 1159.0
-offset_bottom = 660.0
+offset_right = 2326.0
+offset_bottom = 1311.0
 
 [node name="Resume" type="Button" parent="."]
 layout_mode = 1
@@ -23,12 +23,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -140.0
-offset_right = 35.0
-offset_bottom = -109.0
+offset_left = -32.0
+offset_top = -157.0
+offset_right = 38.0
+offset_bottom = -126.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 text = "Resume
 "
 
@@ -39,12 +40,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -35.0
-offset_top = -106.0
-offset_right = 35.0
-offset_bottom = -75.0
+offset_left = -32.0
+offset_top = -79.0
+offset_right = 38.0
+offset_bottom = -48.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 text = "Settings
 "
 
@@ -55,12 +57,13 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -50.0
-offset_top = -72.0
-offset_right = 50.0
-offset_bottom = -41.0
+offset_left = -58.0
+offset_top = 2.0
+offset_right = 42.0
+offset_bottom = 33.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 text = "Quit - Menu"
 
 [node name="QuitDesktop" type="Button" parent="."]
@@ -70,10 +73,11 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -59.5
-offset_top = -37.0
-offset_right = 59.5
-offset_bottom = -6.0
+offset_left = -72.0
+offset_top = 89.0
+offset_right = 47.0
+offset_bottom = 120.0
 grow_horizontal = 2
 grow_vertical = 2
+scale = Vector2(2, 2)
 text = "Quit - Desktop"

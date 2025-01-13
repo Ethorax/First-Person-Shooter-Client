@@ -1,0 +1,60 @@
+[gd_scene load_steps=2 format=3 uid="uid://b1au0a1oeb275"]
+
+[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_v2twb"]
+
+[node name="Credits" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_v2twb")
+
+[node name="Panel" type="Panel" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 54.0
+offset_top = 40.0
+offset_right = 2258.0
+offset_bottom = 1243.0
+
+[node name="Panel2" type="Panel" parent="."]
+modulate = Color(0, 0, 0, 1)
+layout_mode = 0
+offset_left = 54.0
+offset_top = 40.0
+offset_right = 2258.0
+offset_bottom = 1243.0
+
+[node name="RichTextLabel" type="RichTextLabel" parent="."]
+layout_mode = 0
+offset_left = 54.0
+offset_top = 40.0
+offset_right = 2261.0
+offset_bottom = 1239.0
+theme_override_font_sizes/normal_font_size = 82
+bbcode_enabled = true
+text = "[center][font_size=82][i]THOUSAND YEAR TOURNEY[/i]
+[font_size=42] An Ethorax Game
+
+Programming: Ethorax
+
+Music: axmrdr
+
+Voicework: Merryachi
+
+Modeling: Ethorax
+
+QA: Willpoptomus"
+
+[node name="X" type="Button" parent="."]
+layout_mode = 0
+offset_left = 2140.0
+offset_top = 67.0
+offset_right = 2186.0
+offset_bottom = 116.0
+scale = Vector2(2, 2)
+text = "X"
+
+[connection signal="pressed" from="X" to="." method="_on_x_pressed"]

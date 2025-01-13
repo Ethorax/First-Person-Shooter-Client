@@ -19,4 +19,4 @@ func _on_area_3d_body_entered(body: Node3D) -> void:
 		print("Jump Activated")
 		
 		
-		Server.knockback_player(body.name,Vector3.UP,jump_force)
+		Server.knockback_player(body.name,Vector3.UP,jump_force,true)

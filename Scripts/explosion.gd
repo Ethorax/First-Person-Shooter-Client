@@ -26,8 +26,9 @@ func _on_body_entered(body: Node3D) -> void:
 		var target_body = body.get_multiplayer_authority()
 		print(distance)
 		#rpc_id(target_body,"knockback",direction,energy/distance_squared)
-		Server.knockback_player(body.get_multiplayer_authority(),direction,energy/distance)
-		Server.hit_player(50/distance,str(body.get_multiplayer_authority()),str(player_id))
+		if body.is_multiplayer_authority():
+			Server.knockback_player(body.get_multiplayer_authority(),direction,energy/distance)
+			Server.hit_player(40/distance,str(body.get_multiplayer_authority()),str(player_id))
 		
 		#body.knockback.rpc_id(body.get_multiplayer_authority(),direction,10*energy)
 		

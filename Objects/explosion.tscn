@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://8oim78yr2vu4"]
+[gd_scene load_steps=18 format=3 uid="uid://8oim78yr2vu4"]
 
 [ext_resource type="Script" path="res://Scripts/explosion.gd" id="1_ni0mk"]
 [ext_resource type="AudioStream" uid="uid://ch0icnlc2sqtq" path="res://Audio/SFX/Guns/bazooka.wav" id="2_3c41j"]
@@ -129,6 +129,18 @@ tracks/6/keys = {
 "update": 0,
 "values": [0.0]
 }
+tracks/7/type = "value"
+tracks/7/imported = false
+tracks/7/enabled = true
+tracks/7/path = NodePath("CPUParticles3D2:emitting")
+tracks/7/interp = 1
+tracks/7/loop_wrap = true
+tracks/7/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
 [sub_resource type="Animation" id="Animation_kuqg2"]
 resource_name = "explode"
@@ -228,6 +240,18 @@ tracks/7/keys = {
 "update": 0,
 "values": [5.0, 0.0]
 }
+tracks/8/type = "value"
+tracks/8/imported = false
+tracks/8/enabled = true
+tracks/8/path = NodePath("CPUParticles3D2:emitting")
+tracks/8/interp = 1
+tracks/8/loop_wrap = true
+tracks/8/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dh7si"]
 _data = {
@@ -246,6 +270,14 @@ size = Vector3(0.1, 0.1, 0.1)
 properties/0/path = NodePath("CPUParticles3D:emitting")
 properties/0/spawn = true
 properties/0/replication_mode = 1
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krdqi"]
+vertex_color_use_as_albedo = true
+billboard_mode = 1
+
+[sub_resource type="QuadMesh" id="QuadMesh_1p8ai"]
+material = SubResource("StandardMaterial3D_krdqi")
+size = Vector2(0.1, 0.1)
 
 [node name="Explosion" type="Area3D"]
 script = ExtResource("1_ni0mk")
@@ -292,12 +324,25 @@ pitch_scale = 0.5
 bus = &"SFX"
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.38205, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.046735, 0)
 light_color = Color(1, 0.596078, 0, 1)
 light_energy = 0.0
 light_indirect_energy = 16.0
 omni_range = 5.5
 omni_attenuation = 10.0
+
+[node name="CPUParticles3D2" type="CPUParticles3D" parent="."]
+emitting = false
+amount = 128
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_1p8ai")
+emission_shape = 1
+emission_sphere_radius = 1.0
+direction = Vector3(0, 1, 0)
+spread = 90.0
+initial_velocity_max = 25.0
+color = Color(22.703, 7.027, 0, 1)
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

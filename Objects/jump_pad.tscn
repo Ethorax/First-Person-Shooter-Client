@@ -6,7 +6,7 @@
 
 [sub_resource type="BoxMesh" id="BoxMesh_55bwl"]
 material = SubResource("StandardMaterial3D_l8mcx")
-size = Vector3(1, 0.05, 1)
+size = Vector3(1, 0.15, 1)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_14ovd"]
 transparency = 1
@@ -46,7 +46,7 @@ size = Vector3(0.6, 0.5, 0.6)
 script = ExtResource("1_ofi3r")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.05, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0315518, 0)
 mesh = SubResource("BoxMesh_55bwl")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]

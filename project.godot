@@ -8,6 +8,10 @@
 
 config_version=5
 
+[animation]
+
+warnings/check_invalid_track_paths=false
+
 [application]
 
 config/name="MultiplayerTest"
@@ -15,7 +19,7 @@ run/main_scene="res://Objects/Client/client.tscn"
 config/features=PackedStringArray("4.3", "Forward Plus")
 boot_splash/bg_color=Color(0.169133, 0.476951, 0.123943, 1)
 boot_splash/image="res://Graphics/UI/splashcentered.png"
-config/icon="res://icon.svg"
+config/icon="res://Graphics/bullethole.png"
 
 [autoload]
 
@@ -23,8 +27,16 @@ Server="*res://Scripts/Singletons/Server.gd"
 Global="*res://Scripts/Singletons/Global.gd"
 ServerCore="*res://server_core.tscn"
 
+[debug]
+
+gdscript/warnings/unused_variable=0
+gdscript/warnings/unused_parameter=0
+gdscript/warnings/standalone_expression=0
+
 [display]
 
+window/size/viewport_width=2304
+window/size/viewport_height=1296
 window/stretch/mode="viewport"
 
 [input]
@@ -84,6 +96,11 @@ chat={
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":4194309,"key_label":0,"unicode":0,"location":0,"echo":false,"script":null)
 ]
 }
+hide_hud={
+"deadzone": 0.5,
+"events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":72,"key_label":0,"unicode":104,"location":0,"echo":false,"script":null)
+]
+}
 
 [layer_names]
 
@@ -92,5 +109,9 @@ chat={
 
 [rendering]
 
+textures/canvas_textures/default_texture_filter=0
 lights_and_shadows/directional_shadow/size=8192
+textures/decals/filter=0
+textures/light_projectors/filter=0
+environment/screen_space_reflection/roughness_quality=3
 viewport/hdr_2d=true

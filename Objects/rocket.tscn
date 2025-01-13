@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://ubmpdiyuukdx"]
+[gd_scene load_steps=9 format=3 uid="uid://ubmpdiyuukdx"]
 
 [ext_resource type="Script" path="res://Scripts/rocket.gd" id="1_3txty"]
 [ext_resource type="PackedScene" uid="uid://buiro70l3k0ns" path="res://Graphics/Meshes/Guns/rocket.glb" id="2_ymnk7"]
@@ -20,12 +20,16 @@ properties/1/spawn = true
 properties/1/replication_mode = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2y1sy"]
+vertex_color_use_as_albedo = true
 albedo_color = Color(0.303233, 0.303233, 0.303233, 1)
 billboard_mode = 1
 
 [sub_resource type="QuadMesh" id="QuadMesh_kb0vi"]
 material = SubResource("StandardMaterial3D_2y1sy")
 size = Vector2(0.1, 0.1)
+
+[sub_resource type="Gradient" id="Gradient_fvndp"]
+colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
 [node name="Rocket" type="CharacterBody3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
@@ -58,5 +62,6 @@ mesh = SubResource("QuadMesh_kb0vi")
 emission_shape = 3
 emission_box_extents = Vector3(0.1, 0.1, 0.1)
 gravity = Vector3(0, 0, 0)
+color_ramp = SubResource("Gradient_fvndp")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
