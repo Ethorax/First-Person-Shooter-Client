@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bo3q6ip6g4liy"
 path.s3tc="res://.godot/imported/shotgun_sniper.png-1bbcfa4b124d26ff9f45f67278ddc16f.s3tc.ctex"
+path.etc2="res://.godot/imported/shotgun_sniper.png-1bbcfa4b124d26ff9f45f67278ddc16f.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Graphics/GunTextures/shotgun_sniper.png"
-dest_files=["res://.godot/imported/shotgun_sniper.png-1bbcfa4b124d26ff9f45f67278ddc16f.s3tc.ctex"]
+dest_files=["res://.godot/imported/shotgun_sniper.png-1bbcfa4b124d26ff9f45f67278ddc16f.s3tc.ctex", "res://.godot/imported/shotgun_sniper.png-1bbcfa4b124d26ff9f45f67278ddc16f.etc2.ctex"]
 
 [params]
 

@@ -2,20 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dkkbr5n6jpq6d"
+uid="uid://cil66lqna0b7l"
 path.s3tc="res://.godot/imported/SanctuaryDM_soil.png-4314bfd915fe09d49d38a26780f63ae2.s3tc.ctex"
+path.etc2="res://.godot/imported/SanctuaryDM_soil.png-4314bfd915fe09d49d38a26780f63ae2.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "9ae084ca8377e980e8164838dd33c948"
 }
 
 [deps]
 
 source_file="res://Graphics/Meshes/Maps/SanctuaryDM_soil.png"
-dest_files=["res://.godot/imported/SanctuaryDM_soil.png-4314bfd915fe09d49d38a26780f63ae2.s3tc.ctex"]
+dest_files=["res://.godot/imported/SanctuaryDM_soil.png-4314bfd915fe09d49d38a26780f63ae2.s3tc.ctex", "res://.godot/imported/SanctuaryDM_soil.png-4314bfd915fe09d49d38a26780f63ae2.etc2.ctex"]
 
 [params]
 

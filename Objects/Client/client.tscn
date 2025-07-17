@@ -1,33 +1,35 @@
-[gd_scene load_steps=14 format=3 uid="uid://jpidwahcl0ma"]
+[gd_scene load_steps=15 format=3 uid="uid://jpidwahcl0ma"]
 
-[ext_resource type="Script" path="res://Objects/Client/client.gd" id="1_s05ac"]
+[ext_resource type="Script" uid="uid://b1bebgorqpwfk" path="res://Objects/Client/client.gd" id="1_s05ac"]
 [ext_resource type="Texture2D" uid="uid://b0i76btrbcsij" path="res://Objects/Maps/DefaultDMtextured_stonebrickwall.png" id="2_wv127"]
-[ext_resource type="PackedScene" uid="uid://48c4gt87x0i1" path="res://Objects/player_model.tscn" id="3_hkqgb"]
-[ext_resource type="Texture2D" uid="uid://bea24rop1dtsf" path="res://Graphics/Meshes/Helms/conquerer_player.png" id="4_qxnvl"]
-[ext_resource type="Texture2D" uid="uid://bimrn0y4suuo6" path="res://Graphics/Meshes/Helms/Mercenary_player.png" id="5_6jfor"]
-[ext_resource type="Texture2D" uid="uid://c7ko74empphud" path="res://Graphics/Meshes/Helms/Defender_player.png" id="6_uvh57"]
+[ext_resource type="Theme" uid="uid://bupxia2s67cmu" path="res://MainTheme.tres" id="3_fwv23"]
 [ext_resource type="PackedScene" uid="uid://b1au0a1oeb275" path="res://Objects/UI/credits.tscn" id="7_afekp"]
+[ext_resource type="PackedScene" uid="uid://bqebiu67hqqtt" path="res://Graphics/Meshes/betterplayer.glb" id="8_f5tc6"]
+[ext_resource type="AudioStream" uid="uid://c8dwkhdbwe24e" path="res://Audio/Music/enter the arena demo compressed.mp3" id="8_sqxbj"]
+[ext_resource type="PackedScene" uid="uid://b7pjsomjkhbow" path="res://Graphics/Meshes/Helmets/sallet.glb" id="9_lijcx"]
+[ext_resource type="PackedScene" uid="uid://cpv6qay0efl0e" path="res://Graphics/Meshes/Helmets/imperial.glb" id="10_ckou4"]
+[ext_resource type="Script" uid="uid://dujlnkc3okwx7" path="res://Scripts/Multiplayer/network_manager.gd" id="10_l3ewn"]
+[ext_resource type="Texture2D" uid="uid://b834bq7rmswi2" path="res://Graphics/UI/Title.png" id="10_qqmhw"]
+[ext_resource type="PackedScene" uid="uid://vonwvhr0b1cc" path="res://Objects/UI/host_screen.tscn" id="13_lijcx"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qww4v"]
-resource_local_to_scene = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_kcd2g"]
+metallic = 1.0
+roughness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_qp2d6"]
-resource_local_to_scene = true
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yrtmb"]
+metallic = 1.0
+roughness = 0.5
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_8ycyy"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("4_qxnvl")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_fmejt"]
-resource_local_to_scene = true
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_bskp0"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("5_6jfor")
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_obrcj"]
-resource_local_to_scene = true
-albedo_texture = ExtResource("6_uvh57")
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_ckou4"]
+properties/0/path = NodePath(".:current_map_name")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath(".:kill_limit")
+properties/1/spawn = true
+properties/1/replication_mode = 2
+properties/2/path = NodePath(".:round_end")
+properties/2/spawn = true
+properties/2/replication_mode = 2
 
 [node name="Client" type="Node"]
 script = ExtResource("1_s05ac")
@@ -35,10 +37,11 @@ script = ExtResource("1_s05ac")
 [node name="CanvasLayer" type="CanvasLayer" parent="."]
 
 [node name="Polygon2D" type="Polygon2D" parent="CanvasLayer"]
+modulate = Color(0.712129, 0.712129, 0.712129, 1)
 texture_repeat = 2
 color = Color(0.654232, 0.654232, 0.654232, 1)
 texture = ExtResource("2_wv127")
-texture_scale = Vector2(-0.33, -0.33)
+texture_scale = Vector2(-0.165, -0.165)
 polygon = PackedVector2Array(-268, -50, -266, 1431, 2520, 1431, 2515, -112, -36, -53)
 
 [node name="Connect" type="Button" parent="CanvasLayer"]
@@ -47,15 +50,16 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.56
-offset_left = -110.0
-offset_top = 45.0
-offset_right = -38.0
-offset_bottom = -1.76001
+offset_left = -135.0
+offset_top = 39.5
+offset_right = -48.0
+offset_bottom = 3.73999
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
 size_flags_horizontal = 4
 size_flags_vertical = 4
+theme = ExtResource("3_fwv23")
 text = "Connect"
 
 [node name="Quit" type="Button" parent="CanvasLayer"]
@@ -64,15 +68,33 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -63.0
-offset_top = 165.0
-offset_right = -21.0
-offset_bottom = 196.0
+offset_left = -89.0
+offset_top = 299.0
+offset_right = -30.0
+offset_bottom = 341.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
 size_flags_horizontal = 4
+theme = ExtResource("3_fwv23")
 text = "Quit"
+
+[node name="Host" type="Button" parent="CanvasLayer"]
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -97.0
+offset_top = 168.0
+offset_right = -32.0
+offset_bottom = 210.0
+grow_horizontal = 2
+grow_vertical = 2
+scale = Vector2(3, 3)
+size_flags_horizontal = 4
+theme = ExtResource("3_fwv23")
+text = "Host"
 
 [node name="TextEdit" type="TextEdit" parent="CanvasLayer"]
 anchors_preset = 8
@@ -81,22 +103,24 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -229.0
-offset_top = -221.0
+offset_top = -245.0
 offset_right = -88.0
-offset_bottom = -181.0
+offset_bottom = -197.0
 grow_horizontal = 2
 grow_vertical = 2
 scale = Vector2(3, 3)
 size_flags_horizontal = 4
+theme = ExtResource("3_fwv23")
 text = "localhost"
 placeholder_text = "IP ADDRESS"
 
 [node name="TextEdit2" type="TextEdit" parent="CanvasLayer"]
 offset_left = 927.0
-offset_top = 568.0
+offset_top = 538.0
 offset_right = 1067.0
-offset_bottom = 604.0
+offset_bottom = 584.0
 scale = Vector2(3, 3)
+theme = ExtResource("3_fwv23")
 text = "6969"
 placeholder_text = "Port"
 
@@ -106,6 +130,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(1.685, 1.685)
+theme = ExtResource("3_fwv23")
 
 [node name="ColorPicker" type="ColorPicker" parent="CanvasLayer/Customize"]
 layout_mode = 0
@@ -113,15 +138,18 @@ offset_left = 982.196
 offset_top = 108.0
 offset_right = 1280.2
 offset_bottom = 684.0
+theme = ExtResource("3_fwv23")
 edit_alpha = false
 presets_visible = false
 
 [node name="Username" type="LineEdit" parent="CanvasLayer/Customize"]
 layout_mode = 0
 offset_left = 984.196
-offset_top = 69.0
+offset_top = 49.2582
 offset_right = 1278.2
-offset_bottom = 100.0
+offset_bottom = 110.258
+theme = ExtResource("3_fwv23")
+theme_override_font_sizes/font_size = 41
 placeholder_text = "Username"
 alignment = 1
 max_length = 30
@@ -132,6 +160,7 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(1.87, 1.87)
+theme = ExtResource("3_fwv23")
 
 [node name="SubViewportContainer" type="SubViewportContainer" parent="CanvasLayer/HelmetSelect"]
 layout_mode = 0
@@ -150,41 +179,34 @@ render_target_update_mode = 4
 [node name="Camera3D" type="Camera3D" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -73.6987, 0.557)
 
-[node name="playerModel" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport" instance=ExtResource("3_hkqgb")]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -75.4768, 0)
-
-[node name="Chivalrous" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Neck/Head/Chivalrous" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_qww4v")
-
-[node name="Cube_050" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Neck/Head/Chivalrous/Chivalrous" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_qp2d6")
-
-[node name="Conquerer" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Neck/Head/conquerer" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_8ycyy")
-
-[node name="GreatHelm" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Neck/Head/imperial" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_fmejt")
-
-[node name="Varangian" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Neck/Head/Mercenary" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_bskp0")
-
-[node name="Sallet" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Neck/Head/Defender" index="0"]
-surface_material_override/0 = SubResource("StandardMaterial3D_obrcj")
-
-[node name="Pistol" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns" index="1"]
-transform = Transform3D(-3.50165e-06, 9.19521e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
-
-[node name="MeshInstance3D" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns/Pistol" index="0"]
-transform = Transform3D(0.951078, 0.308951, 0, -0.308951, 0.951078, 0, 0, 0, 1, 0, 0, 0)
-
-[node name="Shotgun" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns" index="2"]
-transform = Transform3D(-0.427757, 0.195283, 0.647216, 0.332237, 0.727749, 1.74255e-08, -0.588763, 0.268787, -0.470225, -0.73167, -0.144539, -0.0950127)
-
-[node name="Flamer" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns" index="5"]
-transform = Transform3D(0.41484, 0, 0.27912, 0, 0.5, 0, -0.27912, 0, 0.41484, -0.206306, 0.0740888, 0.554989)
-
 [node name="OmniLight3D" type="OmniLight3D" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -73.6987, 0.747)
+
+[node name="betterplayer" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport" instance=ExtResource("8_f5tc6")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, -75.4792, 0)
+
+[node name="Neck_001" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/betterplayer/Skeleton3D" index="0"]
+surface_material_override/1 = SubResource("StandardMaterial3D_kcd2g")
+
+[node name="Head" type="BoneAttachment3D" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/betterplayer/Skeleton3D" index="1"]
+transform = Transform3D(1, -7.10543e-15, -1.27898e-13, 2.4869e-14, 0.983866, 0.178909, 7.10543e-14, -0.178909, 0.983865, -8.39778e-15, 1.60369, 0.048299)
+bone_name = "Head"
+bone_idx = 2
+
+[node name="Helmets" type="Node3D" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/betterplayer/Skeleton3D/Head"]
+transform = Transform3D(1.2, -4.06576e-21, 6.05845e-29, 4.06576e-21, 1.2, -1.78814e-08, -7.22224e-36, 1.78814e-08, 1.2, -2.66698e-15, 0.269199, -0.0358081)
+
+[node name="sallet" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/betterplayer/Skeleton3D/Head/Helmets" instance=ExtResource("9_lijcx")]
+transform = Transform3D(0.8, 0, 7.10543e-15, 1.77636e-15, 0.8, -2.98023e-08, 7.10543e-15, -1.49012e-08, 0.8, -1.21006e-09, -0.0257378, 0.00938797)
+
+[node name="Sallet" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/betterplayer/Skeleton3D/Head/Helmets/sallet" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_yrtmb")
+
+[node name="imperial" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/betterplayer/Skeleton3D/Head/Helmets" instance=ExtResource("10_ckou4")]
+visible = false
+
+[node name="GreatHelm" parent="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/betterplayer/Skeleton3D/Head/Helmets/imperial" index="0"]
+surface_material_override/0 = SubResource("StandardMaterial3D_yrtmb")
 
 [node name="Previous" type="Button" parent="CanvasLayer/HelmetSelect"]
 layout_mode = 0
@@ -207,39 +229,69 @@ offset_left = 996.0
 offset_top = 1151.0
 offset_right = 1318.0
 offset_bottom = 1240.0
+theme = ExtResource("3_fwv23")
 theme_override_font_sizes/font_size = 56
 text = "Credits"
 
+[node name="TextureRect" type="TextureRect" parent="CanvasLayer"]
+offset_left = 870.0
+offset_top = 44.0
+offset_right = 1381.0
+offset_bottom = 387.0
+texture = ExtResource("10_qqmhw")
+
 [node name="CreditsWindow" parent="CanvasLayer" instance=ExtResource("7_afekp")]
 visible = false
-offset_left = 31.0
-offset_top = 17.0
-offset_right = 31.0
-offset_bottom = 17.0
+offset_left = 271.0
+offset_top = 93.0
+offset_right = 271.0
+offset_bottom = 93.0
+scale = Vector2(0.75, 0.75)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="CanvasLayer"]
+stream = ExtResource("8_sqxbj")
+autoplay = true
+bus = &"Music"
+
+[node name="HostScreen" parent="CanvasLayer" instance=ExtResource("13_lijcx")]
+visible = false
+offset_left = 431.0
+offset_right = -1873.0
+offset_bottom = -1296.0
 
 [node name="MultiplayerSpawner" type="MultiplayerSpawner" parent="."]
-_spawnable_scenes = PackedStringArray("res://Objects/rocket.tscn", "res://Objects/explosion.tscn", "res://Objects/Player.tscn")
+_spawnable_scenes = PackedStringArray("uid://dw2pe2mflch0l")
+spawn_path = NodePath("../Players")
+spawn_limit = 10
+
+[node name="Players" type="Node3D" parent="."]
+
+[node name="NetworkManager" type="Node" parent="." node_paths=PackedStringArray("_players_spawn_node")]
+unique_name_in_owner = true
+script = ExtResource("10_l3ewn")
+_players_spawn_node = NodePath("../Players")
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_ckou4")
+
+[node name="Decals" type="Node3D" parent="."]
+
+[node name="MapSpawner" type="MultiplayerSpawner" parent="."]
+_spawnable_scenes = PackedStringArray("uid://bgypwhjq181rl", "uid://c1ydc7wef0ccf", "uid://w32xaofhsiut", "uid://747bde05voec", "uid://crlqp5nr8vm5s")
 spawn_path = NodePath("..")
 
 [connection signal="pressed" from="CanvasLayer/Connect" to="." method="_on_connect_pressed"]
 [connection signal="pressed" from="CanvasLayer/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="CanvasLayer/Host" to="." method="_on_host_pressed"]
 [connection signal="color_changed" from="CanvasLayer/Customize/ColorPicker" to="." method="_on_color_picker_color_changed"]
 [connection signal="pressed" from="CanvasLayer/HelmetSelect/Previous" to="." method="_on_previous_pressed"]
 [connection signal="pressed" from="CanvasLayer/HelmetSelect/Next" to="." method="_on_next_pressed"]
 [connection signal="pressed" from="CanvasLayer/Credits" to="." method="_on_credits_pressed"]
+[connection signal="pressed" from="CanvasLayer/HostScreen/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="CanvasLayer/HostScreen/Start" to="CanvasLayer/HostScreen" method="_on_start_pressed"]
+[connection signal="child_entered_tree" from="Players" to="." method="_on_players_child_entered_tree"]
 
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Neck/Head/Chivalrous"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Neck/Head/conquerer"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Neck/Head/imperial"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Neck/Head/Mercenary"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Neck/Head/Defender"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns/Sword"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns/Pistol"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns/Shotgun"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns/Shotgun/shotgun"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns/Gatling"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns/Gatling/gatling"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns/Flamer"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns/GrenadeLauncher"]
-[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/playerModel/Chest/Guns/GrenadeLauncher/grenadeLauncher"]
+[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/betterplayer"]
+[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/betterplayer/Skeleton3D/Head/Helmets/sallet"]
+[editable path="CanvasLayer/HelmetSelect/SubViewportContainer/SubViewport/betterplayer/Skeleton3D/Head/Helmets/imperial"]
+[editable path="CanvasLayer/HostScreen"]

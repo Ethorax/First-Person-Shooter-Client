@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cmvyqpkrbc2r2"]
 
-[ext_resource type="Script" path="res://Scripts/jump_pad.gd" id="1_ofi3r"]
+[ext_resource type="Script" uid="uid://b82rax4eojwa2" path="res://Scripts/Props/jump_pad.gd" id="1_ofi3r"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l8mcx"]
 
@@ -51,6 +51,7 @@ mesh = SubResource("BoxMesh_55bwl")
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 amount = 3
+local_coords = true
 mesh = SubResource("TorusMesh_e6lk0")
 gravity = Vector3(0, 1.75, 0)
 scale_amount_curve = SubResource("Curve_7y8tx")

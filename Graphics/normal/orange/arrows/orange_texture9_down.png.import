@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://w37q1r3a1k6v"
 path.s3tc="res://.godot/imported/orange_texture9_down.png-0059f66bacf77db070bf47da697c756a.s3tc.ctex"
+path.etc2="res://.godot/imported/orange_texture9_down.png-0059f66bacf77db070bf47da697c756a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Graphics/normal/orange/arrows/orange_texture9_down.png"
-dest_files=["res://.godot/imported/orange_texture9_down.png-0059f66bacf77db070bf47da697c756a.s3tc.ctex"]
+dest_files=["res://.godot/imported/orange_texture9_down.png-0059f66bacf77db070bf47da697c756a.s3tc.ctex", "res://.godot/imported/orange_texture9_down.png-0059f66bacf77db070bf47da697c756a.etc2.ctex"]
 
 [params]
 

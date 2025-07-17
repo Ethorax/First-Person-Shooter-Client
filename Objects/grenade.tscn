@@ -1,7 +1,7 @@
 [gd_scene load_steps=9 format=3 uid="uid://dy4ae8pmyeick"]
 
-[ext_resource type="Script" path="res://Scripts/grenade.gd" id="1_5exwv"]
-[ext_resource type="Shader" path="res://Shaders/grenade.gdshader" id="2_0p2n8"]
+[ext_resource type="Script" uid="uid://3s3ny3g485jb" path="res://Scripts/Weapons/grenade.gd" id="1_5exwv"]
+[ext_resource type="Shader" uid="uid://ctkkcvwftprsw" path="res://Shaders/grenade.gdshader" id="2_0p2n8"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_y4etr"]
 noise_type = 3

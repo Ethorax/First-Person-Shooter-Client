@@ -1,6 +1,6 @@
 [gd_scene load_steps=10 format=3 uid="uid://cww2pa6kl55bm"]
 
-[ext_resource type="Script" path="res://Scripts/torch.gd" id="1_idyfn"]
+[ext_resource type="Script" uid="uid://x8nqkuo7v4tg" path="res://Scripts/Props/torch.gd" id="1_idyfn"]
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_fi6ax"]
 frequency = 0.0328

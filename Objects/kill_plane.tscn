@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://b2asxyc03msil"]
 
-[ext_resource type="Script" path="res://Scripts/kill_plane.gd" id="1_cmgk1"]
+[ext_resource type="Script" uid="uid://bb14yuxoniv3o" path="res://Scripts/Props/kill_plane.gd" id="1_cmgk1"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_nmplq"]
 size = Vector3(1000, 1, 1000)

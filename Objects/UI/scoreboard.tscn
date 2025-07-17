@@ -1,5 +1,6 @@
-[gd_scene load_steps=6 format=3 uid="uid://d4ei2e4e1qf3l"]
+[gd_scene load_steps=7 format=3 uid="uid://d4ei2e4e1qf3l"]
 
+[ext_resource type="Theme" uid="uid://bupxia2s67cmu" path="res://MainTheme.tres" id="1_owunp"]
 [ext_resource type="PackedScene" uid="uid://wxwtmgp6yhce" path="res://Objects/UI/player_info.tscn" id="1_rh3b4"]
 
 [sub_resource type="Gradient" id="Gradient_igv2t"]
@@ -21,11 +22,15 @@ fill_to = Vector2(1, 0.576923)
 
 [node name="Scoreboard" type="Control"]
 layout_mode = 3
-anchors_preset = 15
+anchor_left = -0.004
+anchor_top = -0.006
 anchor_right = 1.0
 anchor_bottom = 1.0
+offset_left = 9.216
+offset_top = 7.776
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_owunp")
 
 [node name="Panel" type="Panel" parent="."]
 layout_mode = 0
@@ -45,6 +50,7 @@ text = "Scoreboard"
 
 [node name="VBoxContainer" type="VBoxContainer" parent="."]
 layout_mode = 0
+offset_left = 18.0
 offset_top = 29.0
 offset_right = 1153.0
 offset_bottom = 650.0

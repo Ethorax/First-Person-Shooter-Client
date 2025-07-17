@@ -1,0 +1,50 @@
+[gd_scene load_steps=9 format=3 uid="uid://c8llqwf1djmhv"]
+
+[ext_resource type="Script" uid="uid://7n12t7hwntvm" path="res://Scripts/weapon.gd" id="1_jet5b"]
+[ext_resource type="Resource" uid="uid://c0x585nip1q4t" path="res://Resources/Guns/flamer.tres" id="2_lghim"]
+[ext_resource type="PackedScene" uid="uid://cawy6oxkwkvaw" path="res://Graphics/Meshes/Guns/flamer.glb" id="3_k4bg1"]
+
+[sub_resource type="Animation" id="Animation_3t8m0"]
+resource_name = "fire"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ro4lv"]
+_data = {
+&"fire": SubResource("Animation_3t8m0")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jet5b"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="SphereMesh" id="SphereMesh_lghim"]
+material = SubResource("StandardMaterial3D_jet5b")
+radius = 0.005
+height = 0.01
+radial_segments = 4
+rings = 2
+
+[sub_resource type="Gradient" id="Gradient_k4bg1"]
+offsets = PackedFloat32Array(0, 0.69103, 0.963455)
+colors = PackedColorArray(1, 0.188235, 0, 1, 0.855172, 0.160974, 0, 1, 0, 0, 0, 1)
+
+[node name="Flamer" type="Node3D"]
+script = ExtResource("1_jet5b")
+gun_data = ExtResource("2_lghim")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ro4lv")
+}
+
+[node name="flamer" parent="." instance=ExtResource("3_k4bg1")]
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="flamer"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.841422, 0.097298, 0)
+lifetime = 0.5
+mesh = SubResource("SphereMesh_lghim")
+emission_shape = 1
+emission_sphere_radius = 0.01
+direction = Vector3(0, 1, 0)
+spread = 10.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_max = 0.1
+color_ramp = SubResource("Gradient_k4bg1")

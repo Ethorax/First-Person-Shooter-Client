@@ -1,0 +1,391 @@
+[gd_scene load_steps=10 format=3 uid="uid://747bde05voec"]
+
+[ext_resource type="PackedScene" uid="uid://xkc7xyek70vx" path="res://Graphics/Meshes/Maps/SkyTowerDM.glb" id="1_5b2dc"]
+[ext_resource type="Script" uid="uid://cippb3thqa8gs" path="res://Scripts/Props/map.gd" id="1_m7la0"]
+[ext_resource type="PackedScene" uid="uid://bi3454wwq2tld" path="res://Objects/killzone.tscn" id="3_gqlwn"]
+[ext_resource type="PackedScene" uid="uid://b0r0pobkl8gyb" path="res://Objects/weapon_pickup.tscn" id="4_lvfip"]
+[ext_resource type="PackedScene" uid="uid://b6ho3h5p26ly6" path="res://Objects/pickup.tscn" id="4_or3qe"]
+[ext_resource type="PackedScene" uid="uid://cmvyqpkrbc2r2" path="res://Objects/jump_pad.tscn" id="5_or3qe"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_qhku6"]
+sky_top_color = Color(0.365788, 0.433163, 0.526897, 1)
+sky_horizon_color = Color(0.641447, 0.650541, 0.664974, 1)
+ground_horizon_color = Color(0.641447, 0.650541, 0.664974, 1)
+
+[sub_resource type="Sky" id="Sky_k7nns"]
+sky_material = SubResource("ProceduralSkyMaterial_qhku6")
+
+[sub_resource type="Environment" id="Environment_ux5mr"]
+background_mode = 2
+sky = SubResource("Sky_k7nns")
+tonemap_mode = 2
+glow_enabled = true
+fog_enabled = true
+fog_sun_scatter = 1.0
+fog_density = 0.0384
+fog_height = -23.27
+fog_height_density = 0.1818
+adjustment_enabled = true
+adjustment_contrast = 0.96
+
+[node name="SkyTowerDM" type="Node3D" groups=["map"]]
+script = ExtResource("1_m7la0")
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ux5mr")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(-0.756995, -0.653421, -2.85619e-08, 0, -4.37114e-08, 1, -0.653421, 0.756995, 3.30893e-08, 0, 0, 0)
+shadow_enabled = true
+
+[node name="SkyTowerDM" parent="." instance=ExtResource("1_5b2dc")]
+
+[node name="SpawnPoints" type="Node3D" parent="."]
+
+[node name="Marker3D" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.4754, -13.9707, 57.4051)
+
+[node name="Marker3D2" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.566, -13.9707, 77.8903)
+
+[node name="Marker3D3" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -39.7988, -13.9707, 77.8903)
+
+[node name="Marker3D4" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2609, -6.14411, 77.8903)
+
+[node name="Marker3D5" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.2609, -6.14411, 25.5015)
+
+[node name="Marker3D6" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.6805, -6.14411, 25.5015)
+
+[node name="Marker3D7" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.6805, -6.14411, 79.1388)
+
+[node name="Marker3D8" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.2396, -26.2179, 89.2899)
+
+[node name="Marker3D9" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.2396, -25.2559, 55.5521)
+
+[node name="Marker3D10" type="Marker3D" parent="SpawnPoints"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.712, -25.2559, 15.8281)
+
+[node name="Killzone" parent="." instance=ExtResource("3_gqlwn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.1397, -90.6918, 42.2462)
+visible = false
+size = Vector3(281.665, 59.8862, 256.844)
+
+[node name="Pickups" type="Node3D" parent="."]
+
+[node name="Pickup" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.5354, -27.6771, 13.4239)
+type = 2
+
+[node name="Pickup2" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.4903, -27.6771, 15.4138)
+type = 2
+
+[node name="Pickup3" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -44.3085, -27.6771, 17.5218)
+type = 2
+
+[node name="Pickup4" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -57.5426, -17.3199, 26.1741)
+type = 1
+
+[node name="Pickup5" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -59.4155, -17.3199, 26.1741)
+type = 7
+
+[node name="Pickup6" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -61.3081, -17.3199, 26.1741)
+type = 7
+
+[node name="Pickup7" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -49.0785, -17.3199, 26.1741)
+type = 1
+
+[node name="Pickup8" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -46.1905, -17.3199, 26.1741)
+type = 7
+
+[node name="Pickup9" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -43.2403, -17.3199, 26.1741)
+type = 7
+
+[node name="Pickup10" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -56.7339, -17.3199, 78.2813)
+type = 3
+
+[node name="Pickup11" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -58.6068, -17.3199, 78.2813)
+type = 7
+
+[node name="Pickup12" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -60.4994, -17.3199, 78.2813)
+type = 7
+
+[node name="Pickup13" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.2698, -17.3199, 78.2813)
+type = 3
+
+[node name="Pickup44" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.4592, -17.3199, 70.7803)
+type = 11
+
+[node name="Pickup45" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.4592, -17.3199, 34.9659)
+type = 11
+
+[node name="Pickup14" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -45.3817, -17.3199, 78.2813)
+type = 7
+
+[node name="Pickup15" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.4316, -17.3199, 78.2813)
+type = 7
+
+[node name="Pickup16" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.86, -17.3199, 47.7477)
+type = 5
+
+[node name="Pickup17" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.86, -17.3199, 45.8748)
+type = 10
+
+[node name="Pickup18" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.86, -17.3199, 43.9822)
+type = 10
+
+[node name="Pickup19" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.86, -17.3199, 56.2118)
+type = 5
+
+[node name="Pickup20" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.86, -17.3199, 59.0998)
+type = 10
+
+[node name="Pickup21" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -24.86, -17.3199, 62.05)
+type = 10
+
+[node name="Pickup22" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -76.269, -17.3199, 47.7477)
+
+[node name="Pickup23" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -76.269, -17.3199, 45.8748)
+type = 10
+
+[node name="Pickup24" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -76.269, -17.3199, 43.9822)
+type = 10
+
+[node name="Pickup25" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -76.269, -17.3199, 56.2118)
+
+[node name="Pickup26" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -76.269, -17.3199, 59.0998)
+type = 10
+
+[node name="Pickup46" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -69.985, -17.3199, 51.7601)
+type = 8
+
+[node name="Pickup47" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -33.7186, -17.3199, 51.7601)
+type = 8
+
+[node name="Pickup27" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-4.37114e-08, 0, -1, 0, 1, 0, 1, 0, -4.37114e-08, -76.269, -17.3199, 62.05)
+type = 10
+
+[node name="Pickup28" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.5038, -8.10542, 23.0155)
+type = 10
+
+[node name="Pickup29" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.9518, -8.10542, 26.3086)
+type = 10
+
+[node name="Pickup30" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.3305, -8.10542, 29.8309)
+type = 10
+
+[node name="Pickup31" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.8959, -8.10542, 26.3549)
+type = 4
+
+[node name="Pickup32" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.5038, -8.10542, 75.8266)
+type = 10
+
+[node name="Pickup33" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -72.9518, -8.10542, 79.1197)
+type = 10
+
+[node name="Pickup34" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.3305, -8.10542, 82.642)
+type = 4
+
+[node name="Pickup35" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -79.8959, -8.10542, 79.166)
+type = 10
+
+[node name="Pickup36" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7082, -8.10542, 74.4778)
+type = 10
+
+[node name="Pickup37" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.1561, -8.10542, 77.7709)
+type = 4
+
+[node name="Pickup38" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.5349, -8.10542, 81.2932)
+type = 10
+
+[node name="Pickup39" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.1003, -8.10542, 77.8172)
+type = 10
+
+[node name="Pickup40" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.5204, -8.10542, 22.9234)
+type = 4
+
+[node name="Pickup41" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.9684, -8.10542, 26.2164)
+type = 7
+
+[node name="Pickup42" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3471, -8.10542, 29.7387)
+type = 7
+
+[node name="Pickup43" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -28.9125, -8.10542, 26.2627)
+type = 7
+
+[node name="Pickup48" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.5685, -28.1393, 92.9937)
+type = 6
+
+[node name="Pickup49" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -48.5685, -28.1393, 87.2649)
+type = 6
+
+[node name="Pickup50" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -62.0033, -28.1383, 51.1939)
+type = 8
+
+[node name="Pickup51" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5371, -28.1383, 48.9703)
+type = 11
+
+[node name="Pickup52" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.8589, 17.7467, 51.3498)
+type = 12
+
+[node name="Pickup53" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.8589, 17.7467, 51.3498)
+type = 9
+
+[node name="Pickup54" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -52.0953, -28.0257, 31.7711)
+type = 8
+
+[node name="Pickup55" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.0963, -28.0257, 72.5992)
+type = 11
+
+[node name="Pickup56" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -83.8861, -17.6155, 78.0272)
+type = 8
+
+[node name="Pickup57" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -75.9657, -17.6155, 85.9473)
+type = 11
+
+[node name="Pickup58" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(0.00767934, 0, 0.99997, 0, 1, 0, -0.99997, 0, 0.00767934, -25.4228, -17.6155, 85.091)
+type = 8
+
+[node name="Pickup59" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(0.00767934, 0, 0.99997, 0, 1, 0, -0.99997, 0, 0.00767934, -17.4422, -17.6155, 77.2317)
+type = 11
+
+[node name="Pickup60" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-0.999708, 0, -0.0241705, 0, 1, 0, 0.0241705, 0, -0.999708, -18.1654, -17.6155, 26.6069)
+type = 8
+
+[node name="Pickup61" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-0.999708, 0, -0.0241705, 0, 1, 0, 0.0241705, 0, -0.999708, -26.2748, -17.6155, 18.8806)
+type = 11
+
+[node name="Pickup62" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-0.0468798, 0, -0.998901, 0, 1, 0, 0.998901, 0, -0.0468798, -75.5854, -17.6155, 18.9736)
+type = 8
+
+[node name="Pickup63" parent="Pickups" instance=ExtResource("4_or3qe")]
+transform = Transform3D(-0.0468798, 0, -0.998901, 0, 1, 0, 0.998901, 0, -0.0468798, -83.868, -17.6155, 26.514)
+type = 11
+
+[node name="Weapons" type="Node3D" parent="."]
+
+[node name="WeaponPickup" parent="Weapons" instance=ExtResource("4_lvfip")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -53.0503, -17.8404, 51.626)
+gun_pickup = 3
+
+[node name="WeaponPickup5" parent="Weapons" instance=ExtResource("4_lvfip")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -76.2674, -17.8404, 51.626)
+gun_pickup = 6
+
+[node name="WeaponPickup2" parent="Weapons" instance=ExtResource("4_lvfip")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -53.0503, -17.8404, 78.3411)
+gun_pickup = 5
+
+[node name="WeaponPickup6" parent="Weapons" instance=ExtResource("4_lvfip")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -53.0503, -28.393, 94.1219)
+gun_pickup = 7
+
+[node name="WeaponPickup8" parent="Weapons" instance=ExtResource("4_lvfip")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -53.0503, -28.393, 49.9828)
+gun_pickup = 4
+
+[node name="WeaponPickup7" parent="Weapons" instance=ExtResource("4_lvfip")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -50.7353, -28.3525, 11.0444)
+
+[node name="WeaponPickup3" parent="Weapons" instance=ExtResource("4_lvfip")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -24.9809, -17.8404, 51.596)
+gun_pickup = 2
+
+[node name="WeaponPickup4" parent="Weapons" instance=ExtResource("4_lvfip")]
+transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, -52.8151, -17.8404, 26.2831)
+gun_pickup = 1
+
+[node name="Jumppads" type="Node3D" parent="."]
+
+[node name="JumpPad" parent="Jumppads" instance=ExtResource("5_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -53.4191, -28.2687, 85.899)
+jump_force = 15.0
+
+[node name="JumpPad2" parent="Jumppads" instance=ExtResource("5_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -51.43, -28.2687, 21.2386)
+jump_force = 15.0
+
+[node name="JumpPad3" parent="Jumppads" instance=ExtResource("5_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.3592, -17.8832, 26.3532)
+jump_force = 15.0
+
+[node name="JumpPad4" parent="Jumppads" instance=ExtResource("5_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -76.3592, -17.8832, 78.6729)
+jump_force = 15.0
+
+[node name="JumpPad5" parent="Jumppads" instance=ExtResource("5_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -24.7702, -17.8832, 77.9891)
+jump_force = 15.0
+
+[node name="JumpPad6" parent="Jumppads" instance=ExtResource("5_or3qe")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.3137, -17.8908, 26.3501)
+jump_force = 15.0
+
+[editable path="SkyTowerDM"]

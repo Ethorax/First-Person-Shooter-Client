@@ -1,8 +1,7 @@
-[gd_scene load_steps=70 format=3 uid="uid://da3tqj3m5lpc3"]
+[gd_scene load_steps=68 format=3 uid="uid://da3tqj3m5lpc3"]
 
-[ext_resource type="Script" path="res://Scripts/player.gd" id="1_gjkee"]
+[ext_resource type="Script" uid="uid://bl3jv0ll3rj7q" path="res://Scripts/Weapons/player.gd" id="1_gjkee"]
 [ext_resource type="PackedScene" uid="uid://48c4gt87x0i1" path="res://Objects/player_model.tscn" id="2_3kiwc"]
-[ext_resource type="Script" path="res://Objects/player_synchronizer.gd" id="2_pfj5x"]
 [ext_resource type="Texture2D" uid="uid://bk0xal5fph3lb" path="res://Graphics/Meshes/player_player.png" id="3_iqtbq"]
 [ext_resource type="Texture2D" uid="uid://bea24rop1dtsf" path="res://Graphics/Meshes/Helms/conquerer_player.png" id="4_4v8of"]
 [ext_resource type="Texture2D" uid="uid://dn5ly5ci8y2q5" path="res://Objects/UI/reticle.png" id="4_8yjlq"]
@@ -12,6 +11,7 @@
 [ext_resource type="Texture2D" uid="uid://c7ko74empphud" path="res://Graphics/Meshes/Helms/Defender_player.png" id="6_65h2h"]
 [ext_resource type="FontFile" uid="uid://p7sbyvx2o7pu" path="res://Graphics/Fonts/DIGIT-LCD.ttf" id="6_bjxa6"]
 [ext_resource type="PackedScene" uid="uid://c5kiwpxpjprmm" path="res://Objects/UI/pause_menu.tscn" id="6_jfxdn"]
+[ext_resource type="Theme" uid="uid://bupxia2s67cmu" path="res://MainTheme.tres" id="7_da3te"]
 [ext_resource type="PackedScene" uid="uid://cmio8icdo5h3f" path="res://Objects/Gibs/gibs.tscn" id="7_k7k6i"]
 [ext_resource type="PackedScene" uid="uid://bt8k6ddnuhgug" path="res://Objects/UI/settings.tscn" id="7_rjult"]
 [ext_resource type="AudioStream" uid="uid://b00qwmeat8gkq" path="res://Audio/SFX/gib.wav" id="11_q6guc"]
@@ -21,7 +21,7 @@
 [ext_resource type="AudioStream" uid="uid://0j246cu6vukp" path="res://Audio/Announcer/first bloood.wav" id="15_iecv3"]
 [ext_resource type="AudioStream" uid="uid://bpqgagjhxcybt" path="res://Audio/Announcer/killspree.wav" id="16_ld157"]
 [ext_resource type="AudioStream" uid="uid://cacsq31krgc4j" path="res://Audio/Announcer/rampage.wav" id="17_1v0kt"]
-[ext_resource type="Script" path="res://Scripts/music.gd" id="17_dlexn"]
+[ext_resource type="Script" uid="uid://bd7cqvk5r17cl" path="res://Scripts/Props/music.gd" id="17_dlexn"]
 [ext_resource type="AudioStream" uid="uid://t6lfrjfrrjr4" path="res://Audio/Music/maybe sounds too much like Doom compressed.mp3" id="18_o3ta1"]
 [ext_resource type="AudioStream" uid="uid://cqn7jnipew300" path="res://Audio/Announcer/unkillable.wav" id="18_rebpg"]
 [ext_resource type="AudioStream" uid="uid://bre3bfovhldh" path="res://Audio/Music/more sci fi less dance compressed.mp3" id="19_j084u"]
@@ -266,39 +266,32 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8d5ss"]
 _data = {
-"RESET": SubResource("Animation_00u7p"),
-"death": SubResource("Animation_6jwrx"),
-"hurt": SubResource("Animation_beyrg"),
-"respawn": SubResource("Animation_xianb")
+&"RESET": SubResource("Animation_00u7p"),
+&"death": SubResource("Animation_6jwrx"),
+&"hurt": SubResource("Animation_beyrg"),
+&"respawn": SubResource("Animation_xianb")
 }
 
 [sub_resource type="CompressedTexture2D" id="CompressedTexture2D_40csx"]
 load_path = "res://.godot/imported/hitmarker.png-959556c1c04d9c12a1ad611dcc65a5f3.ctex"
 
-[sub_resource type="Gradient" id="Gradient_bfjf2"]
-offsets = PackedFloat32Array(1)
-colors = PackedColorArray(0, 1, 0, 0.254902)
-
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_tyemr"]
-gradient = SubResource("Gradient_bfjf2")
-
-[sub_resource type="Gradient" id="Gradient_o57rn"]
+[sub_resource type="Gradient" id="Gradient_2byg5"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(0.791518, 0.567196, 0.453443, 1)
 
 [sub_resource type="GradientTexture2D" id="GradientTexture2D_0mcm0"]
 resource_local_to_scene = true
-gradient = SubResource("Gradient_o57rn")
+gradient = SubResource("Gradient_2byg5")
 width = 128
 height = 32
 fill_from = Vector2(1, 1)
 fill_to = Vector2(1, 0.576923)
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1450b"]
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2byg5"]
 albedo_color = Color(0.379831, 0, 0.0870727, 1)
 
 [sub_resource type="SphereMesh" id="SphereMesh_ib8t6"]
-material = SubResource("StandardMaterial3D_1450b")
+material = SubResource("StandardMaterial3D_2byg5")
 radius = 0.2
 height = 0.4
 radial_segments = 4
@@ -307,13 +300,13 @@ rings = 16
 [sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_5yclh"]
 properties/0/path = NodePath(".:position")
 properties/0/spawn = true
-properties/0/replication_mode = 2
+properties/0/replication_mode = 1
 properties/1/path = NodePath(".:rotation")
 properties/1/spawn = true
-properties/1/replication_mode = 2
+properties/1/replication_mode = 1
 properties/2/path = NodePath("Camera3D:rotation")
 properties/2/spawn = true
-properties/2/replication_mode = 2
+properties/2/replication_mode = 0
 properties/3/path = NodePath("Gibs/Organs:emitting")
 properties/3/spawn = true
 properties/3/replication_mode = 2
@@ -462,8 +455,12 @@ material_override = SubResource("StandardMaterial3D_aunto")
 [node name="RightThumb" parent="playerModel/Chest/RightShoulder/RightBicep/RightForearm/RightHand" index="0"]
 material_override = SubResource("StandardMaterial3D_n1x5r")
 
+[node name="Sword" parent="playerModel/Chest/Guns" index="0"]
+visible = false
+
 [node name="Pistol" parent="playerModel/Chest/Guns" index="1"]
 transform = Transform3D(-3.50165e-06, 9.19521e-07, 1, 0.267894, 0.963448, 5.2161e-08, -0.963448, 0.267894, -3.61999e-06, -0.000399232, 0.129051, -0.0526521)
+visible = true
 
 [node name="MeshInstance3D" parent="playerModel/Chest/Guns/Pistol" index="0"]
 transform = Transform3D(0.951078, 0.308951, 0, -0.308951, 0.951078, 0, 0, 0, 1, 0, 0, 0)
@@ -488,6 +485,7 @@ transform = Transform3D(0.222876, -3.13369e-07, 0, 5.65031e-07, 0.123608, 0, 0, 
 
 [node name="Magnum" parent="playerModel/Chest/Guns" index="8"]
 transform = Transform3D(-0.75, 9.95392e-07, -1.49651e-06, -1.39718e-07, 0.590298, 0.462653, 1.79188e-06, 0.462653, -0.590298, 0, 0.656189, -0.160127)
+visible = true
 
 [node name="Energy" parent="playerModel/Chest/Guns" index="9"]
 transform = Transform3D(-0.397438, 0, 0.636037, 0, 0.75, 0, -0.636037, 0, -0.397438, -0.586846, -0.20991, 0.0799953)
@@ -498,6 +496,7 @@ shape = SubResource("CapsuleShape3D_7bk0o")
 
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.757565, 0.0354523)
+current = true
 
 [node name="Aim" type="RayCast3D" parent="Camera3D"]
 visible = false
@@ -575,7 +574,7 @@ initial_velocity_max = 600.0
 
 [node name="PlayerAnim" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_8d5ss")
+&"": SubResource("AnimationLibrary_8d5ss")
 }
 
 [node name="DeathMenu" type="Control" parent="."]
@@ -584,6 +583,7 @@ layout_mode = 3
 anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
+theme = ExtResource("7_da3te")
 
 [node name="Respawn" type="Button" parent="DeathMenu"]
 layout_mode = 0
@@ -656,59 +656,57 @@ anchors_preset = 0
 offset_right = 40.0
 offset_bottom = 40.0
 scale = Vector2(2, 2)
+theme = ExtResource("7_da3te")
 
-[node name="Gun Selection" type="TextureRect" parent="CanvasLayer/UI"]
+[node name="Gun Selection" type="Panel" parent="CanvasLayer/UI"]
 layout_mode = 0
-offset_top = 571.0
+offset_top = 561.0
 offset_right = 1154.0
 offset_bottom = 647.0
-texture = SubResource("GradientTexture2D_tyemr")
 
 [node name="Gun Label" type="Label" parent="CanvasLayer/UI/Gun Selection"]
 layout_mode = 0
-offset_left = 10.0
-offset_top = 11.0
-offset_right = 220.0
-offset_bottom = 84.0
+offset_left = 14.5
+offset_top = 24.5
+offset_right = 224.5
+offset_bottom = 97.5
 theme_override_colors/font_color = Color(1, 1, 1, 0.556863)
 theme_override_fonts/font = ExtResource("6_bjxa6")
 theme_override_font_sizes/font_size = 76
 text = "Pistol"
 
-[node name="Ammo" type="TextureRect" parent="CanvasLayer/UI"]
+[node name="Ammo" type="Panel" parent="CanvasLayer/UI"]
 layout_mode = 0
-offset_left = 1019.0
-offset_top = 495.0
-offset_right = 1154.0
-offset_bottom = 571.0
-texture = SubResource("GradientTexture2D_tyemr")
+offset_left = 992.0
+offset_top = 488.0
+offset_right = 1155.0
+offset_bottom = 572.0
 
 [node name="Ammo Label" type="Label" parent="CanvasLayer/UI/Ammo"]
 layout_mode = 0
-offset_left = -74.0
-offset_top = 11.0
-offset_right = 133.0
-offset_bottom = 84.0
+offset_left = -53.5
+offset_top = 21.0
+offset_right = 153.5
+offset_bottom = 94.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.556863)
 theme_override_fonts/font = ExtResource("6_bjxa6")
 theme_override_font_sizes/font_size = 76
-text = "00"
+text = "200"
 horizontal_alignment = 2
 
-[node name="Shield" type="TextureRect" parent="CanvasLayer/UI"]
+[node name="Shield" type="Panel" parent="CanvasLayer/UI"]
 layout_mode = 0
-offset_left = 1018.0
-offset_top = 2.0
-offset_right = 1153.0
+offset_left = 1002.0
+offset_top = -3.0
+offset_right = 1154.0
 offset_bottom = 78.0
-texture = SubResource("GradientTexture2D_tyemr")
 
 [node name="Shield Label" type="Label" parent="CanvasLayer/UI/Shield"]
 layout_mode = 0
 offset_left = -77.0
-offset_top = 10.0
-offset_right = 133.0
-offset_bottom = 83.0
+offset_top = 19.0
+offset_right = 144.0
+offset_bottom = 86.0
 theme_override_colors/font_color = Color(1, 1, 1, 0.556863)
 theme_override_fonts/font = ExtResource("6_bjxa6")
 theme_override_font_sizes/font_size = 76
@@ -716,20 +714,19 @@ text = "100
 "
 horizontal_alignment = 2
 
-[node name="Health" type="TextureRect" parent="CanvasLayer/UI"]
+[node name="Health" type="Panel" parent="CanvasLayer/UI"]
 layout_mode = 0
-offset_left = 1018.0
+offset_left = 1001.0
 offset_top = 79.0
 offset_right = 1153.0
-offset_bottom = 155.0
-texture = SubResource("GradientTexture2D_tyemr")
+offset_bottom = 161.0
 
 [node name="Health Label" type="Label" parent="CanvasLayer/UI/Health"]
 layout_mode = 0
-offset_left = -77.0
-offset_top = 12.0
-offset_right = 133.0
-offset_bottom = 85.0
+offset_left = -66.5
+offset_top = 19.5
+offset_right = 143.5
+offset_bottom = 92.5
 theme_override_colors/font_color = Color(1, 1, 1, 0.556863)
 theme_override_fonts/font = ExtResource("6_bjxa6")
 theme_override_font_sizes/font_size = 76
@@ -740,12 +737,16 @@ horizontal_alignment = 2
 [node name="Chat" type="Panel" parent="CanvasLayer/UI"]
 visible = false
 layout_mode = 0
+offset_left = -23.0
+offset_top = -15.0
 offset_right = 421.0
 offset_bottom = 121.0
 
 [node name="VScrollBar" type="ScrollContainer" parent="CanvasLayer/UI/Chat"]
 layout_mode = 2
-offset_right = 422.0
+offset_left = 29.0
+offset_top = 14.0
+offset_right = 426.0
 offset_bottom = 122.0
 
 [node name="VBoxContainer" type="VBoxContainer" parent="CanvasLayer/UI/Chat/VScrollBar"]
@@ -754,11 +755,14 @@ alignment = 2
 
 [node name="ChatBox" type="LineEdit" parent="CanvasLayer/UI/Chat"]
 layout_mode = 0
-offset_top = 121.0
-offset_right = 422.0
-offset_bottom = 157.0
+offset_left = 20.0
+offset_top = 131.0
+offset_right = 442.0
+offset_bottom = 173.0
 focus_mode = 1
 placeholder_text = "Type your message..."
+caret_blink = true
+caret_blink_interval = 0.5
 
 [node name="Scoreboard" parent="CanvasLayer" instance=ExtResource("5_p5rfr")]
 visible = false
@@ -773,6 +777,24 @@ texture = SubResource("GradientTexture2D_0mcm0")
 
 [node name="PauseMenu" parent="CanvasLayer" instance=ExtResource("6_jfxdn")]
 visible = false
+theme = ExtResource("7_da3te")
+
+[node name="Resume" parent="CanvasLayer/PauseMenu" index="1"]
+offset_top = -179.0
+offset_right = 48.0
+offset_bottom = -137.0
+
+[node name="QuitMenu" parent="CanvasLayer/PauseMenu" index="3"]
+offset_left = -55.5
+offset_top = 10.0
+offset_right = 48.5
+offset_bottom = 62.0
+
+[node name="QuitDesktop" parent="CanvasLayer/PauseMenu" index="4"]
+offset_left = -86.0
+offset_top = 127.0
+offset_right = 44.0
+offset_bottom = 179.0
 
 [node name="Settings" parent="CanvasLayer" instance=ExtResource("7_rjult")]
 visible = false
@@ -781,18 +803,19 @@ offset_top = 40.0
 offset_right = 162.0
 offset_bottom = -175.0
 scale = Vector2(1.5, 1.5)
+theme = ExtResource("7_da3te")
 
 [node name="HealthIcons" type="Sprite2D" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.611)
-position = Vector2(2075, 53)
-scale = Vector2(1.28175, 1.14062)
+position = Vector2(2063, 74)
+scale = Vector2(1.25992, 1.14062)
 texture = ExtResource("14_8meds")
 region_enabled = true
 region_rect = Rect2(65, 0, 63, 64)
 
 [node name="HealthIcons2" type="Sprite2D" parent="CanvasLayer"]
 modulate = Color(1, 1, 1, 0.611)
-position = Vector2(2072, 219)
+position = Vector2(2059, 243)
 scale = Vector2(1.16919, 1.0822)
 texture = ExtResource("14_8meds")
 region_enabled = true
@@ -824,10 +847,14 @@ process_priority = 1
 process_thread_group = 1
 process_thread_group_order = 0
 process_thread_messages = 0
+replication_interval = 0.05
+delta_interval = 0.05
 replication_config = SubResource("SceneReplicationConfig_5yclh")
-script = ExtResource("2_pfj5x")
+public_visibility = false
 
 [node name="chat_timer" type="Timer" parent="."]
+one_shot = true
+autostart = true
 
 [node name="Audio" type="Node3D" parent="."]
 
@@ -853,36 +880,47 @@ songs = Array[AudioStreamMP3]([ExtResource("18_o3ta1"), ExtResource("19_j084u"),
 
 [node name="headshot" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
 stream = ExtResource("13_c5370")
+bus = &"SFX"
 
 [node name="first_blood" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
 stream = ExtResource("15_iecv3")
+bus = &"SFX"
 
 [node name="killing_spree" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
 stream = ExtResource("16_ld157")
+bus = &"SFX"
 
 [node name="rampage" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
 stream = ExtResource("17_1v0kt")
+bus = &"SFX"
 
 [node name="unkillable" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
 stream = ExtResource("18_rebpg")
+bus = &"SFX"
 
 [node name="oh_shit" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
 stream = ExtResource("19_ofpoq")
+bus = &"SFX"
 
 [node name="double_kill" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
 stream = ExtResource("20_8y3m1")
+bus = &"SFX"
 
 [node name="triple_kill" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
 stream = ExtResource("21_hrv6o")
+bus = &"SFX"
 
 [node name="killdozer" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
 stream = ExtResource("22_rgmwe")
+bus = &"SFX"
 
 [node name="game" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
 stream = ExtResource("23_1nlnt")
+bus = &"SFX"
 
 [node name="game_point" type="AudioStreamPlayer3D" parent="Audio/Announcer"]
 stream = ExtResource("24_0s2p2")
+bus = &"SFX"
 
 [connection signal="animation_finished" from="playerModel/Chest Animator" to="." method="_on_chest_animator_animation_finished"]
 [connection signal="body_entered" from="playerModel/Chest/Guns/Sword/sword/Area3D" to="." method="_on_area_3d_body_entered"]

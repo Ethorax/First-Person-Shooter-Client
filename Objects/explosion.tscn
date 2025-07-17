@@ -1,6 +1,6 @@
-[gd_scene load_steps=18 format=3 uid="uid://8oim78yr2vu4"]
+[gd_scene load_steps=17 format=3 uid="uid://8oim78yr2vu4"]
 
-[ext_resource type="Script" path="res://Scripts/explosion.gd" id="1_ni0mk"]
+[ext_resource type="Script" uid="uid://c0xwc83tdupbn" path="res://Scripts/Weapons/explosion.gd" id="1_ni0mk"]
 [ext_resource type="AudioStream" uid="uid://ch0icnlc2sqtq" path="res://Audio/SFX/Guns/bazooka.wav" id="2_3c41j"]
 
 [sub_resource type="SphereShape3D" id="SphereShape3D_0qndj"]
@@ -238,7 +238,7 @@ tracks/7/keys = {
 "times": PackedFloat32Array(0, 1),
 "transitions": PackedFloat32Array(1, 1),
 "update": 0,
-"values": [5.0, 0.0]
+"values": [8.0, 0.0]
 }
 tracks/8/type = "value"
 tracks/8/imported = false
@@ -255,8 +255,8 @@ tracks/8/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dh7si"]
 _data = {
-"RESET": SubResource("Animation_dlqo1"),
-"explode": SubResource("Animation_kuqg2")
+&"RESET": SubResource("Animation_dlqo1"),
+&"explode": SubResource("Animation_kuqg2")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_mkmlp"]
@@ -265,11 +265,6 @@ albedo_color = Color(0.262932, 0.262932, 0.262932, 1)
 [sub_resource type="BoxMesh" id="BoxMesh_1ufve"]
 material = SubResource("StandardMaterial3D_mkmlp")
 size = Vector3(0.1, 0.1, 0.1)
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_vpqxg"]
-properties/0/path = NodePath("CPUParticles3D:emitting")
-properties/0/spawn = true
-properties/0/replication_mode = 1
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_krdqi"]
 vertex_color_use_as_albedo = true
@@ -302,7 +297,7 @@ mesh = SubResource("SphereMesh_fir4q")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_dh7si")
+&"": SubResource("AnimationLibrary_dh7si")
 }
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
@@ -315,9 +310,6 @@ direction = Vector3(0, 1, 0)
 spread = 90.0
 initial_velocity_max = 15.0
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_vpqxg")
-
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("2_3c41j")
 pitch_scale = 0.5
@@ -329,7 +321,6 @@ light_color = Color(1, 0.596078, 0, 1)
 light_energy = 0.0
 light_indirect_energy = 16.0
 omni_range = 5.5
-omni_attenuation = 10.0
 
 [node name="CPUParticles3D2" type="CPUParticles3D" parent="."]
 emitting = false

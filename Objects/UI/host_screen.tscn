@@ -1,0 +1,110 @@
+[gd_scene load_steps=3 format=3 uid="uid://vonwvhr0b1cc"]
+
+[ext_resource type="Theme" uid="uid://bupxia2s67cmu" path="res://MainTheme.tres" id="1_wfd67"]
+[ext_resource type="Script" uid="uid://c0seiahtt3eof" path="res://Scripts/UI/host_screen.gd" id="2_iaxg3"]
+
+[node name="HostScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -870.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_wfd67")
+script = ExtResource("2_iaxg3")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 0
+offset_right = 1444.0
+offset_bottom = 1301.0
+
+[node name="Panel" type="Panel" parent="Panel"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = -3.0
+offset_top = -2.0
+offset_right = 727.0
+offset_bottom = 794.0
+
+[node name="Panel2" type="Panel" parent="Panel"]
+modulate = Color(0, 1, 0, 1)
+layout_mode = 0
+offset_left = 713.0
+offset_top = -2.0
+offset_right = 1443.0
+offset_bottom = 794.0
+
+[node name="Maps" type="HBoxContainer" parent="Panel"]
+layout_mode = 0
+offset_left = 12.0
+offset_top = 21.0
+offset_right = 1445.0
+offset_bottom = 802.0
+
+[node name="MapSelection" type="VBoxContainer" parent="Panel/Maps"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Panel/Maps/MapSelection"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "MAP SELECTION"
+horizontal_alignment = 1
+
+[node name="MapPool" type="VBoxContainer" parent="Panel/Maps"]
+layout_mode = 2
+
+[node name="Header" type="Label" parent="Panel/Maps/MapPool"]
+custom_minimum_size = Vector2(700, 0)
+layout_mode = 2
+theme_override_font_sizes/font_size = 80
+text = "MAP POOL"
+horizontal_alignment = 1
+
+[node name="OptionButton" type="OptionButton" parent="."]
+layout_mode = 0
+offset_left = 562.0
+offset_top = 1040.0
+offset_right = 886.0
+offset_bottom = 1097.0
+theme_override_font_sizes/font_size = 36
+alignment = 1
+selected = 0
+item_count = 1
+popup/item_0/text = "DeathMatch"
+popup/item_0/id = 0
+
+[node name="Start" type="Button" parent="."]
+layout_mode = 0
+offset_left = 236.0
+offset_top = 1153.0
+offset_right = 601.0
+offset_bottom = 1238.0
+theme_override_font_sizes/font_size = 50
+text = "START GAME"
+
+[node name="Back" type="Button" parent="."]
+layout_mode = 0
+offset_left = 861.0
+offset_top = 1153.0
+offset_right = 1226.0
+offset_bottom = 1238.0
+theme_override_font_sizes/font_size = 50
+text = "BACK"
+
+[node name="SpinBox" type="SpinBox" parent="."]
+layout_mode = 0
+offset_left = 568.0
+offset_top = 904.0
+offset_right = 743.0
+offset_bottom = 957.0
+scale = Vector2(2.06, 2.06)
+min_value = 1.0
+max_value = 999999.0
+value = 1.0
+alignment = 1
+prefix = "First to "
+suffix = " kills"
+
+[connection signal="pressed" from="Back" to="." method="_on_back_pressed"]

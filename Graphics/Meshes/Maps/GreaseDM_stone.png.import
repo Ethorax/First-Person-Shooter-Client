@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://cjwlfh6exdeq7"
+path="res://.godot/imported/GreaseDM_stone.png-8bc95ef5f6464b02a154dfab0a682cfe.ctex"
+metadata={
+"vram_texture": false
+}
+generator_parameters={
+"md5": "7193f96ade8df16144b84a370fa094cb"
+}
+
+[deps]
+
+source_file="res://Graphics/Meshes/Maps/GreaseDM_stone.png"
+dest_files=["res://.godot/imported/GreaseDM_stone.png-8bc95ef5f6464b02a154dfab0a682cfe.ctex"]
+
+[params]
+
+compress/mode=1
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Graphics/Meshes/Maps/DefaultDMtextured_stonewall.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

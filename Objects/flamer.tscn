@@ -1,7 +1,7 @@
 [gd_scene load_steps=12 format=3 uid="uid://e6x2e401y71c"]
 
 [ext_resource type="PackedScene" uid="uid://cawy6oxkwkvaw" path="res://Graphics/Meshes/Guns/flamer.glb" id="1_7vcp2"]
-[ext_resource type="Shader" path="res://Shaders/flame.gdshader" id="2_ak4ry"]
+[ext_resource type="Shader" uid="uid://c41d30jki62e1" path="res://Shaders/flame.gdshader" id="2_ak4ry"]
 
 [sub_resource type="Animation" id="Animation_atko0"]
 length = 0.001
@@ -35,8 +35,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ehtpk"]
 _data = {
-"RESET": SubResource("Animation_atko0"),
-"fire": SubResource("Animation_n5ql4")
+&"RESET": SubResource("Animation_atko0"),
+&"fire": SubResource("Animation_n5ql4")
 }
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_48c5t"]

@@ -6,21 +6,24 @@ var port  = 6969
 var gateway
 var spawner =  MultiplayerSpawner.new()
 
+
+
 var connected_peer_ids = []
 var local_player_character
 
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	multiplayer.connected_to_server.connect(OnConnectionSucceeded)
-	multiplayer.connection_failed.connect(OnConnectionFailed)
-	#connect_to_server()
-	#print(self.get_path())
-	spawner.add_spawnable_scene("res://Objects/rocket.tscn")
-	spawner.add_spawnable_scene("res://Objects/explosion.tscn")
-	spawner.spawn_path = ".."
-	spawner.add_spawnable_scene("res://Objects/Player.tscn")
-	add_child(spawner)
+	#multiplayer.connected_to_server.connect(OnConnectionSucceeded)
+	#multiplayer.connection_failed.connect(OnConnectionFailed)
+	##connect_to_server()
+	##print(self.get_path())
+	#spawner.add_spawnable_scene("res://Objects/rocket.tscn")
+	#spawner.add_spawnable_scene("res://Objects/explosion.tscn")
+	#spawner.spawn_path = ".."
+	#spawner.add_spawnable_scene("res://Objects/Player.tscn")
+	##add_child(spawner)
+	pass
 	
 	
 
@@ -28,7 +31,7 @@ func connect_to_server():
 	
 	var peer = ENetMultiplayerPeer.new()
 	peer.create_client(ip, int(port))
-	multiplayer.multiplayer_peer = peer		
+	multiplayer.multiplayer_peer = peer
 	#get_tree().root.get_node()
 	
 	
@@ -38,7 +41,8 @@ func OnConnectionFailed():
 func OnConnectionSucceeded():
 	print("Successfully Connected")
 	
-@rpc("any_peer","call_remote","reliable")
+#@rpc("any_peer","call_remote","reliable")
+@rpc("any_peer","call_remote")
 func recieve_map(map):
 	print("Receiving Map: "+map)
 	enter_game(map)
@@ -48,6 +52,8 @@ func enter_game(map):
 	var map_instance = load("res://Objects/Maps/"+map+".tscn").instantiate()
 	get_tree().root.get_node("Client").add_child(map_instance)
 	print("Entering Game...")
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	#await get_tree().create_timer(1).timeout
 	
 	
 
@@ -57,20 +63,25 @@ func add_player_character(peer_id):
 	
 	connected_peer_ids.append(peer_id)
 	var player_character = preload("res://Objects/Player.tscn").instantiate()
+	player_character.name = str(peer_id)
 	#await get_tree().create_timer(1).timeout
-	add_child(player_character)
+	#await get_tree().create_timer(1).timeout
+	add_child(player_character,true)
+	player_character.set_multiplayer_authority(int(peer_id))
 	#player_character.color = color
 	player_character.position = Global.spawn_points.pick_random()
-	player_character.set_multiplayer_authority(int(peer_id))
-	player_character.name = str(peer_id)
+	
+	
 	
 	#add_child(player_character)
-	
+	#await get_tree().create_timer(1).timeout
 	if int(peer_id) == multiplayer.get_unique_id():
 		local_player_character = player_character
 		
 		local_player_character.toggle_hitbox()
 		local_player_character.get_node("playerModel/Chest/Neck/Head/"+Global.helmet).show()
+		local_player_character.get_node("MultiplayerSynchronizer").public_visibility = true
+	
 		
 @rpc("any_peer")
 func send_rocket(direction, position,target,fly_direction,player_name):
@@ -129,11 +140,13 @@ func send_fireball(direction, position,target,fly_direction,player_name):
 	f.apply_central_force(direction*-10)
 
 
-@rpc("reliable")
+#@rpc("reliable")
+@rpc
 func add_newly_connected_player_character(new_peer_id):
 	add_player_character(new_peer_id)
 	
-@rpc("reliable")
+#@rpc("reliable")
+@rpc
 func add_previously_connected_player_characters(peer_ids,peer_names,peer_colors):
 	for i in peer_ids.size():
 		#print(peer_colors[i])
@@ -167,6 +180,10 @@ func kill_player(player_id):
 func update_colors(player_ids,player_colors):
 	for player in get_children():
 		for i in player_ids.size():
+			
+			if i >= player_colors.size():
+				return
+			
 			if str(player_ids[i]) == player.name:
 				player.color = player_colors[i]
 				player.update_colors()
@@ -193,7 +210,8 @@ func knockback_player(player_id,direction,energy,reset : bool = false):
 func send_player_data(player_id,color, username):
 	pass
 	
-@rpc("reliable")
+#@rpc("reliable")
+@rpc
 func recieve_player_data(player_id):
 	rpc_id(1,"send_player_data",str(player_id),Global.char_color,Global.char_name)
 	
@@ -216,13 +234,15 @@ func new_chat(player_name,text):
 
 
 			#player.get_node("CanvasLayer/UI/Chat/VScrollBar").get_v_scroll_bar().value = player.get_node("CanvasLayer/UI/Chat/VScrollBar").get_v_scroll_bar().max_value
-@rpc("reliable")
+#@rpc("reliable")
+@rpc
 func damage_player(damage,to,from):
 	for player in get_children():
 		if player.name == str(to):
 			player.take_damage(damage,to,from)
 
-@rpc("any_peer","call_local","reliable")
+#@rpc("any_peer","call_local","reliable")
+@rpc("any_peer","call_local")
 func hit_player(damage,to,from):
 	rpc_id(1,"hit_player",damage,to,from)
 	

@@ -1,6 +1,6 @@
-[gd_scene load_steps=9 format=3 uid="uid://ubmpdiyuukdx"]
+[gd_scene load_steps=8 format=3 uid="uid://ubmpdiyuukdx"]
 
-[ext_resource type="Script" path="res://Scripts/rocket.gd" id="1_3txty"]
+[ext_resource type="Script" uid="uid://dhvcty7b8t05k" path="res://Scripts/Weapons/rocket.gd" id="1_3txty"]
 [ext_resource type="PackedScene" uid="uid://buiro70l3k0ns" path="res://Graphics/Meshes/Guns/rocket.glb" id="2_ymnk7"]
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_j0cq1"]
@@ -9,15 +9,7 @@ height = 0.5
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_qn3b5"]
 radius = 0.1
-height = 0.913488
-
-[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_7j3d0"]
-properties/0/path = NodePath(".:position")
-properties/0/spawn = true
-properties/0/replication_mode = 1
-properties/1/path = NodePath(".:rotation")
-properties/1/spawn = true
-properties/1/replication_mode = 1
+height = 0.694897
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_2y1sy"]
 vertex_color_use_as_albedo = true
@@ -32,7 +24,6 @@ size = Vector2(0.1, 0.1)
 colors = PackedColorArray(0, 0, 0, 0, 1, 1, 1, 1)
 
 [node name="Rocket" type="CharacterBody3D"]
-transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
 script = ExtResource("1_3txty")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -40,19 +31,21 @@ visible = false
 mesh = SubResource("CapsuleMesh_j0cq1")
 
 [node name="Area3D" type="Area3D" parent="."]
+collision_layer = 19
+collision_mask = 19
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.0146487, -6.40313e-10)
 shape = SubResource("CapsuleShape3D_qn3b5")
 
-[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
-replication_config = SubResource("SceneReplicationConfig_7j3d0")
-
 [node name="rocket" parent="." instance=ExtResource("2_ymnk7")]
 transform = Transform3D(-7.21238e-09, -0.165, 0, 0.165, -7.21238e-09, 0, 0, 0, 0.165, 0, 0, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="."]
-target_position = Vector3(0, 1, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.345318, 0)
+target_position = Vector3(0, 3, 0)
+collision_mask = 3
+hit_from_inside = true
 
 [node name="CPUParticles3D" type="CPUParticles3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.19793, -8.65179e-09)
@@ -63,5 +56,10 @@ emission_shape = 3
 emission_box_extents = Vector3(0.1, 0.1, 0.1)
 gravity = Vector3(0, 0, 0)
 color_ramp = SubResource("Gradient_fvndp")
+
+[node name="Backcast" type="RayCast3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.375093, 0)
+target_position = Vector3(0, -2, 0)
+collision_mask = 2
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

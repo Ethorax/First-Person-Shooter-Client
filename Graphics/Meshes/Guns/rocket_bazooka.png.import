@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://1dquaqak4mtu"
 path.s3tc="res://.godot/imported/rocket_bazooka.png-8a97a1199e1a0cd0dfde1db54d7b7bfb.s3tc.ctex"
+path.etc2="res://.godot/imported/rocket_bazooka.png-8a97a1199e1a0cd0dfde1db54d7b7bfb.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Graphics/Meshes/Guns/rocket_bazooka.png"
-dest_files=["res://.godot/imported/rocket_bazooka.png-8a97a1199e1a0cd0dfde1db54d7b7bfb.s3tc.ctex"]
+dest_files=["res://.godot/imported/rocket_bazooka.png-8a97a1199e1a0cd0dfde1db54d7b7bfb.s3tc.ctex", "res://.godot/imported/rocket_bazooka.png-8a97a1199e1a0cd0dfde1db54d7b7bfb.etc2.ctex"]
 
 [params]
 

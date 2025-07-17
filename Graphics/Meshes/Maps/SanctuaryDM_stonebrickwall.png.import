@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c36vj4cgvnyyu"
 path.s3tc="res://.godot/imported/SanctuaryDM_stonebrickwall.png-7a4800d1c6b12d26bdee68e269f44807.s3tc.ctex"
+path.etc2="res://.godot/imported/SanctuaryDM_stonebrickwall.png-7a4800d1c6b12d26bdee68e269f44807.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Graphics/Meshes/Maps/SanctuaryDM_stonebrickwall.png"
-dest_files=["res://.godot/imported/SanctuaryDM_stonebrickwall.png-7a4800d1c6b12d26bdee68e269f44807.s3tc.ctex"]
+dest_files=["res://.godot/imported/SanctuaryDM_stonebrickwall.png-7a4800d1c6b12d26bdee68e269f44807.s3tc.ctex", "res://.godot/imported/SanctuaryDM_stonebrickwall.png-7a4800d1c6b12d26bdee68e269f44807.etc2.ctex"]
 
 [params]
 

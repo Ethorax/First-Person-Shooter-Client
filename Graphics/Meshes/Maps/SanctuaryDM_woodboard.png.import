@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dw5q54l523ahg"
 path.s3tc="res://.godot/imported/SanctuaryDM_woodboard.png-8ee2ccd4ed7c20a91525a2bc55103629.s3tc.ctex"
+path.etc2="res://.godot/imported/SanctuaryDM_woodboard.png-8ee2ccd4ed7c20a91525a2bc55103629.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Graphics/Meshes/Maps/SanctuaryDM_woodboard.png"
-dest_files=["res://.godot/imported/SanctuaryDM_woodboard.png-8ee2ccd4ed7c20a91525a2bc55103629.s3tc.ctex"]
+dest_files=["res://.godot/imported/SanctuaryDM_woodboard.png-8ee2ccd4ed7c20a91525a2bc55103629.s3tc.ctex", "res://.godot/imported/SanctuaryDM_woodboard.png-8ee2ccd4ed7c20a91525a2bc55103629.etc2.ctex"]
 
 [params]
 

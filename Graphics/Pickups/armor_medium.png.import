@@ -4,15 +4,16 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bkij7uqq61pt3"
 path.s3tc="res://.godot/imported/armor_medium.png-d1ea2eb8979ed9c8365c95ba0f63f0b0.s3tc.ctex"
+path.etc2="res://.godot/imported/armor_medium.png-d1ea2eb8979ed9c8365c95ba0f63f0b0.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 
 [deps]
 
 source_file="res://Graphics/Pickups/armor_medium.png"
-dest_files=["res://.godot/imported/armor_medium.png-d1ea2eb8979ed9c8365c95ba0f63f0b0.s3tc.ctex"]
+dest_files=["res://.godot/imported/armor_medium.png-d1ea2eb8979ed9c8365c95ba0f63f0b0.s3tc.ctex", "res://.godot/imported/armor_medium.png-d1ea2eb8979ed9c8365c95ba0f63f0b0.etc2.ctex"]
 
 [params]
 

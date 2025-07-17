@@ -1,0 +1,106 @@
+[gd_scene load_steps=10 format=3 uid="uid://cn2cd2xena7jr"]
+
+[ext_resource type="Script" uid="uid://7n12t7hwntvm" path="res://Scripts/weapon.gd" id="1_r3x7m"]
+[ext_resource type="Resource" uid="uid://dnb0uct8e35km" path="res://Resources/Guns/Bazooka.tres" id="2_xqkpe"]
+[ext_resource type="PackedScene" uid="uid://cswnetw28h1rq" path="res://Graphics/Meshes/Guns/bazooka.glb" id="3_kxj0p"]
+
+[sub_resource type="Animation" id="Animation_r3x7m"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bazooka:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_smtc0"]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CPUParticles3D:emitting")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("bazooka:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0523847, 0.1, 0.166667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(-5.96046e-08, 0.0138461, -0.0170799), Vector3(-8.3133e-08, -0.0394695, 0.0347924), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_gxjm4"]
+_data = {
+&"RESET": SubResource("Animation_r3x7m"),
+&"fire": SubResource("Animation_smtc0")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_xqkpe"]
+transparency = 1
+vertex_color_use_as_albedo = true
+billboard_mode = 1
+billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_kxj0p"]
+material = SubResource("StandardMaterial3D_xqkpe")
+size = Vector2(0.025, 0.025)
+
+[sub_resource type="Gradient" id="Gradient_smtc0"]
+colors = PackedColorArray(0, 0, 0, 1, 1, 1, 1, 0.478431)
+
+[node name="Bazooka" type="Node3D"]
+script = ExtResource("1_r3x7m")
+gun_data = ExtResource("2_xqkpe")
+
+[node name="bazooka" parent="." instance=ExtResource("3_kxj0p")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_gxjm4")
+}
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(0.999943, 0.0107161, 0, -0.0107161, 0.999943, 0, 0, 0, 1, -0.439558, 0.132155, 0)
+emitting = false
+amount = 16
+lifetime = 0.5
+one_shot = true
+explosiveness = 1.0
+mesh = SubResource("QuadMesh_kxj0p")
+direction = Vector3(-1, 0, 0)
+spread = 25.0
+gravity = Vector3(0, 0, 0)
+initial_velocity_min = 5.0
+initial_velocity_max = 5.0
+scale_amount_min = 2.0
+scale_amount_max = 5.0
+color_ramp = SubResource("Gradient_smtc0")

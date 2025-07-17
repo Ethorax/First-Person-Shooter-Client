@@ -1,0 +1,112 @@
+[gd_scene load_steps=7 format=3 uid="uid://dj0jhpmwjodxa"]
+
+[ext_resource type="Script" uid="uid://7n12t7hwntvm" path="res://Scripts/weapon.gd" id="1_ei5d5"]
+[ext_resource type="PackedScene" uid="uid://bngekbam3foi2" path="res://Graphics/Meshes/Guns/newshotgun.glb" id="1_l4ftt"]
+[ext_resource type="Resource" uid="uid://2k1x5cwcl0c5" path="res://Resources/Guns/Shotgun.tres" id="2_slfjk"]
+
+[sub_resource type="Animation" id="Animation_egvwc"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("newshotgun/Body/Pump:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.71, -0.0321325, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("newshotgun:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_l4ftt"]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("newshotgun/Body/Pump:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.3, 0.401855, 0.493708),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(-1.71, -0.0321325, 0), Vector3(-2.23757, -0.0321325, 0), Vector3(-1.71, -0.0321325, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0499905),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("newshotgun:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.0343047, 0.0666667, 0.3),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(5.96046e-08, 0.0177839, 0.0103878), Vector3(3.01292e-08, -0.00905505, -0.0183308), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ei5d5"]
+_data = {
+&"RESET": SubResource("Animation_egvwc"),
+&"fire": SubResource("Animation_l4ftt")
+}
+
+[node name="Shotgun" type="Node3D"]
+script = ExtResource("1_ei5d5")
+gun_data = ExtResource("2_slfjk")
+
+[node name="newshotgun" parent="." instance=ExtResource("1_l4ftt")]
+
+[node name="Pump" parent="newshotgun/Body" index="0"]
+transform = Transform3D(0.082426, -0.000934884, 0, 0.000934884, 0.082426, 0, 0, 0, 0.0824313, -1.71, -0.0321325, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_ei5d5")
+}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.682614, 0.0330838, 0)
+visible = false
+light_energy = 5.0
+omni_attenuation = 5.737
+omni_shadow_mode = 0
+
+[editable path="newshotgun"]

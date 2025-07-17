@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://e65p1apf0ayi"]
+
+[ext_resource type="AudioStream" uid="uid://1djni80xci8y" path="res://Audio/SFX/Guns/sniper.wav" id="1_600nl"]
+[ext_resource type="Script" uid="uid://cwyjc88udnjdk" path="res://Resources/gun_data.gd" id="2_7r4i1"]
+
+[resource]
+script = ExtResource("2_7r4i1")
+name = "Sniper"
+ammo_type = "sniper"
+fire_rate = 0.6
+fire_sound = ExtResource("1_600nl")
+hold_pose = 1
+damage = 25
+spread = 0.0
+metadata/_custom_type_script = "uid://cwyjc88udnjdk"

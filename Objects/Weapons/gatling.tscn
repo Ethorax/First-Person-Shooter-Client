@@ -1,0 +1,85 @@
+[gd_scene load_steps=7 format=3 uid="uid://elk0m0niwpnd"]
+
+[ext_resource type="PackedScene" uid="uid://dxgnuumohiaje" path="res://Graphics/Meshes/Guns/gatling.glb" id="1_6rssd"]
+[ext_resource type="Script" uid="uid://7n12t7hwntvm" path="res://Scripts/weapon.gd" id="1_vxgh7"]
+[ext_resource type="Resource" uid="uid://i6dona6lsm5n" path="res://Resources/Guns/Gatling.tres" id="2_3mv01"]
+
+[sub_resource type="Animation" id="Animation_3mv01"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gatling/Body/Barrels:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_4oc03"]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("gatling/Body/Barrels:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(3.14159, 0, 0), Vector3(6.28319, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("OmniLight3D:visible")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0666667),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_3mv01"]
+_data = {
+&"RESET": SubResource("Animation_3mv01"),
+&"fire": SubResource("Animation_4oc03")
+}
+
+[node name="Gatling" type="Node3D"]
+script = ExtResource("1_vxgh7")
+gun_data = ExtResource("2_3mv01")
+
+[node name="gatling" parent="." instance=ExtResource("1_6rssd")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_3mv01")
+}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.66696, -0.226795, 0)
+visible = false
+light_energy = 5.0
+omni_attenuation = 5.737
+omni_shadow_mode = 0
+
+[editable path="gatling"]

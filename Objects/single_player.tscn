@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://bxcbs3i3cw22c"]
 
-[ext_resource type="Script" path="res://Scripts/single_player.gd" id="1_hxx5e"]
+[ext_resource type="Script" uid="uid://b4i8vojnm5vnj" path="res://Scripts/Weapons/single_player.gd" id="1_hxx5e"]
 [ext_resource type="PackedScene" uid="uid://ds0p43gbtinbm" path="res://Objects/pistol.tscn" id="2_l1k50"]
 [ext_resource type="PackedScene" uid="uid://c12iijp3uibbu" path="res://Objects/sniper.tscn" id="3_x1u67"]
 
@@ -123,9 +123,9 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_8d5ss"]
 _data = {
-"RESET": SubResource("Animation_00u7p"),
-"death": SubResource("Animation_6jwrx"),
-"respawn": SubResource("Animation_xianb")
+&"RESET": SubResource("Animation_00u7p"),
+&"death": SubResource("Animation_6jwrx"),
+&"respawn": SubResource("Animation_xianb")
 }
 
 [node name="SinglePlayer" type="CharacterBody3D" groups=["Player"]]

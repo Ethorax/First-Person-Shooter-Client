@@ -1,0 +1,57 @@
+[gd_scene load_steps=7 format=3 uid="uid://dl18ma2m7xl7r"]
+
+[ext_resource type="Script" uid="uid://7n12t7hwntvm" path="res://Scripts/weapon.gd" id="1_g13dv"]
+[ext_resource type="PackedScene" uid="uid://beldduir8hhx5" path="res://Graphics/Meshes/Guns/pistol.glb" id="1_wttuh"]
+[ext_resource type="Resource" uid="uid://dg8vt6k5myv4a" path="res://Resources/Guns/Pistol.tres" id="2_x4xpv"]
+
+[sub_resource type="Animation" id="Animation_g13dv"]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pistol/GunBody/Slider:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.0666667, 0.133333, 0.333333),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0.698786, 0, 0), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_x4xpv"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("pistol/GunBody/Slider:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_6sdtj"]
+_data = {
+&"RESET": SubResource("Animation_x4xpv"),
+&"fire": SubResource("Animation_g13dv")
+}
+
+[node name="Pistol" type="Node3D"]
+script = ExtResource("1_g13dv")
+gun_data = ExtResource("2_x4xpv")
+
+[node name="pistol" parent="." instance=ExtResource("1_wttuh")]
+
+[node name="Slider" parent="pistol/GunBody" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_6sdtj")
+}
+
+[editable path="pistol"]

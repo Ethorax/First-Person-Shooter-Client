@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://bce62fbopb8jh"
 path.s3tc="res://.godot/imported/DefaultDMtextured_bathroomtiles.png-a473ab9723d85bb7bdb37f62f60464a3.s3tc.ctex"
+path.etc2="res://.godot/imported/DefaultDMtextured_bathroomtiles.png-a473ab9723d85bb7bdb37f62f60464a3.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Objects/Maps/DefaultDMtextured_bathroomtiles.png"
-dest_files=["res://.godot/imported/DefaultDMtextured_bathroomtiles.png-a473ab9723d85bb7bdb37f62f60464a3.s3tc.ctex"]
+dest_files=["res://.godot/imported/DefaultDMtextured_bathroomtiles.png-a473ab9723d85bb7bdb37f62f60464a3.s3tc.ctex", "res://.godot/imported/DefaultDMtextured_bathroomtiles.png-a473ab9723d85bb7bdb37f62f60464a3.etc2.ctex"]
 
 [params]
 

@@ -1,0 +1,26 @@
+[gd_scene load_steps=6 format=3 uid="uid://bibaf3gtwfnp"]
+
+[ext_resource type="Script" uid="uid://7n12t7hwntvm" path="res://Scripts/weapon.gd" id="1_tcx18"]
+[ext_resource type="PackedScene" uid="uid://14gpmw2x83ts" path="res://Graphics/Meshes/Guns/grenadelauncher.glb" id="2_tfvwd"]
+[ext_resource type="Resource" uid="uid://dibuienrdwgt" path="res://Resources/Guns/GrenadeLauncher.tres" id="2_xgshp"]
+
+[sub_resource type="Animation" id="Animation_xgshp"]
+resource_name = "fire"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_8qlfl"]
+_data = {
+&"fire": SubResource("Animation_xgshp")
+}
+
+[node name="GrenadeLauncher" type="Node3D"]
+script = ExtResource("1_tcx18")
+gun_data = ExtResource("2_xgshp")
+
+[node name="grenadelauncher" parent="." instance=ExtResource("2_tfvwd")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_8qlfl")
+}
+
+[editable path="grenadelauncher"]

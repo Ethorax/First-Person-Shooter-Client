@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://2k1x5cwcl0c5"]
+
+[ext_resource type="AudioStream" uid="uid://b28vv816s2shb" path="res://Audio/SFX/Guns/shotgun.wav" id="1_wtv6m"]
+[ext_resource type="Script" uid="uid://cwyjc88udnjdk" path="res://Resources/gun_data.gd" id="2_1okar"]
+
+[resource]
+script = ExtResource("2_1okar")
+name = "Shotgun"
+ammo_type = "shotgun"
+fire_rate = 0.9
+fire_sound = ExtResource("1_wtv6m")
+hold_pose = 1
+damage = 10
+spread = 3.0
+metadata/_custom_type_script = "uid://cwyjc88udnjdk"

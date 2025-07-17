@@ -3,7 +3,7 @@
 [ext_resource type="PackedScene" uid="uid://byay2ein0hc1j" path="res://Graphics/Meshes/Props/sconce.glb" id="1_6cj36"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_afcrr"]
-albedo_color = Color(0, 0, 43.783, 1)
+albedo_color = Color(0, 0, 8.87059, 1)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_yrwgu"]
 material = SubResource("StandardMaterial3D_afcrr")
@@ -18,4 +18,5 @@ mesh = SubResource("CapsuleMesh_yrwgu")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 light_color = Color(0.450825, 0.625867, 1, 1)
+light_energy = 5.0
 omni_range = 18.3029

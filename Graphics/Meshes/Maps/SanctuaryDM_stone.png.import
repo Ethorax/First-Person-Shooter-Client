@@ -2,20 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cuswj8rj7cx7o"
+uid="uid://cbj3p07elwhf0"
 path.s3tc="res://.godot/imported/SanctuaryDM_stone.png-9b269d0ebbeb9c973fac18feb1a6a42a.s3tc.ctex"
+path.etc2="res://.godot/imported/SanctuaryDM_stone.png-9b269d0ebbeb9c973fac18feb1a6a42a.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "7193f96ade8df16144b84a370fa094cb"
 }
 
 [deps]
 
 source_file="res://Graphics/Meshes/Maps/SanctuaryDM_stone.png"
-dest_files=["res://.godot/imported/SanctuaryDM_stone.png-9b269d0ebbeb9c973fac18feb1a6a42a.s3tc.ctex"]
+dest_files=["res://.godot/imported/SanctuaryDM_stone.png-9b269d0ebbeb9c973fac18feb1a6a42a.s3tc.ctex", "res://.godot/imported/SanctuaryDM_stone.png-9b269d0ebbeb9c973fac18feb1a6a42a.etc2.ctex"]
 
 [params]
 

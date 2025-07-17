@@ -2,20 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://c2asd8mixxrh"
+uid="uid://bealafphnhd4n"
 path.s3tc="res://.godot/imported/flamer_flamer.png-1daaa7c9d9df319f05da9219c1c7a5b7.s3tc.ctex"
+path.etc2="res://.godot/imported/flamer_flamer.png-1daaa7c9d9df319f05da9219c1c7a5b7.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "83062c47efbd34bb1d2ce5fb527275c3"
 }
 
 [deps]
 
 source_file="res://Graphics/Meshes/Guns/flamer_flamer.png"
-dest_files=["res://.godot/imported/flamer_flamer.png-1daaa7c9d9df319f05da9219c1c7a5b7.s3tc.ctex"]
+dest_files=["res://.godot/imported/flamer_flamer.png-1daaa7c9d9df319f05da9219c1c7a5b7.s3tc.ctex", "res://.godot/imported/flamer_flamer.png-1daaa7c9d9df319f05da9219c1c7a5b7.etc2.ctex"]
 
 [params]
 

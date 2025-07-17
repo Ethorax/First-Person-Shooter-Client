@@ -1,0 +1,1076 @@
+extends CharacterBody3D
+
+@onready var camera_3d: Camera3D = $Camera3D
+@onready var aim: RayCast3D = $Camera3D/Aim
+@onready var shotgun_container: Node3D = $Camera3D/ShotgunContainer
+#@onready var multiplayer_synchronizer: MultiplayerSynchronizer = $MultiplayerSynchronizer
+@onready var player_anim: AnimationPlayer = $PlayerAnim
+
+
+@onready var BULLET_DECAL = preload("res://Objects/bullet_decal.tscn")
+@onready var rocket = preload("res://Objects/rocket.tscn")
+
+#Camera Shake Variables
+@export var randomStrength : float = 0.1
+@export var shakeFade : float = 5.0
+var rng = RandomNumberGenerator.new()
+var shake_strength : float = 0.0
+
+
+#PlayerModel Stuffs
+@onready var player_model: Node3D = $playerModel
+#@onready var gun_hand: Marker3D = $playerModel/Chest/RightShoulder/RightBicep/RightForearm/RightHand/GunHand
+@onready var chest: MeshInstance3D = $playerModel/Chest
+@onready var chest_animator: AnimationPlayer = $"playerModel/Chest Animator"
+@onready var pelvis_animator: AnimationPlayer = $"playerModel/Pelvis Animator"
+
+#Chat Variables
+@onready var chat_input: LineEdit = $CanvasLayer/UI/Chat/ChatBox
+@onready var v_scroll_bar: ScrollContainer = $CanvasLayer/UI/Chat/VScrollBar
+@onready var v_box_container: VBoxContainer = $CanvasLayer/UI/Chat/VScrollBar/VBoxContainer
+@onready var chat: Panel = $CanvasLayer/UI/Chat
+var chat_focused : bool = false
+
+
+@onready var hitmarker: TextureRect = $Crosshair/Hitmarker
+
+
+#state machine
+enum player_states{
+	normal,
+	chatting,
+	paused,
+}
+var player_state = player_states.normal
+
+
+#Movement Variables
+const JUMP_VELOCITY = 4.5
+
+var direction
+var isRunning := false
+var speed := 12.0
+var og_speed = speed
+var jump := 30.0
+const GRAVITY := 2
+var distanceFootstep := 0.0
+var playFootstep := 3 #Lower if we want to play the sounds faster
+var _delta := 0.0
+
+var camBobSpeed := 10 #10 
+var camBobUpDown := 0.001 #.5
+var og_cam_pos
+
+var mouse_sense = 0.15
+var og_sense = 0.15
+var mouse_locked : bool
+
+
+#Water Variables
+var in_water : bool = false
+var swim_up_speed := 10.0
+var wish_dir := Vector3.ZERO
+var cam_aligned_wish_dir := Vector3.ZERO
+
+#Cosmetic Variables
+@export var color : Color = "ff0000"
+var username = Global.char_name
+@onready var username_label: Label3D = $username
+
+
+var health : int = 100
+var shield : int = 50
+var alive : bool = true
+
+#Gun Variables
+var b_spread : float = 1.0
+var og_fov : float = 75.0
+var zoom_fov : float = 5.0
+var current_weapon_index : int = 0
+var can_shoot : bool = true
+@onready var reload_timer: Timer = $ReloadTimer
+# KEY : MELEE, PISTOL, SHOTGUN, GATLING, SNIPER, FLAMER, BAZOOKA, GRENADE, MAGNUM, ENERGY
+#var weapons = [true,true,true,true,true,true,true,true,true,true]
+@export var weapons = [true,true,false,false,false,false,false,false,false,false]
+
+var ammo_dict = {
+	"sword" : 99999999999,
+	"pistol" : 50,
+	"shotgun" : 20,
+	"sniper" : 15,
+	"flamer" : 35,
+	"bazooka" : 15,
+	"magnum" : 15,
+	"energy" : 50
+ }
+
+var ammo_limits = {
+	"pistol" : 200,
+	"shotgun" : 50,
+	"sniper" : 30,
+	"bazooka" : 50,
+	"flamer" : 75,
+	"magnum" : 30,
+	"energy" : 150
+}
+
+var gun_to_ammo = {
+	"Sword" : "sword",
+	"Pistol" : "pistol",
+	"Gatling": "pistol",
+	"Shotgun" : "shotgun",
+	"Sniper" : "sniper",
+	"Flamer" : "flamer",
+	"Bazooka" : "bazooka",
+	"GrenadeLauncher" : "bazooka",
+	"Magnum" : "magnum",
+	"Energy" : "energy"
+}
+ 
+
+@onready var scoreboard: Control = $CanvasLayer/Scoreboard
+
+
+
+func _enter_tree() -> void:
+	#set_multiplayer_authority(name.to_int())
+	rng.randomize()
+	
+	
+	
+	
+func _ready() -> void:
+	#position = Global.spawn_points.pick_random().position
+	#multiplayer_synchronizer.replication_config.add_property(name+":position")
+	og_cam_pos = $Camera3D.position
+	
+	if is_multiplayer_authority():
+		#player_model.update_color(color)
+		username_label.text = username
+		update_health()
+		$CanvasLayer.show()
+
+func _physics_process(delta: float) -> void:
+	
+	#auto_disconnect_check()
+	
+	#$HeadHitbox.global_position = $playerModel/Chest/Neck/Head.global_position
+
+	
+	if is_multiplayer_authority():
+		
+		hitmarker.show()
+		hitmarker.modulate.a = lerp(hitmarker.modulate.a,0.0,0.1)
+		
+		if !$Audio/Music.playing:
+			$Audio/Music.go_mode()
+		
+		if og_fov != Global.fov:
+			og_fov = Global.fov
+			camera_3d.fov = og_fov
+		#TODO can we remove this????
+		#if !player_anim.is_playing():
+			#player_anim.play("RESET")
+		
+		match player_state:
+			player_states.normal:
+		#$Camera3D/Guns.get_child(current_weapon_index).position = 
+		
+				hide_player()
+				#player_model.update_colors(color)
+				username_label.text = username
+				
+				#player_model.hide()
+				#var temp_chest_rot = chest.rotation
+				#chest.rotation.x = -camera_3d.rotation.x
+				
+				if velocity != Vector3.ZERO:
+					pelvis_animator.play("Running",-1,1.5)
+				else:
+					pelvis_animator.play("Idle")
+				
+				if !$CanvasLayer.visible:
+					update_health()
+					$CanvasLayer.show()
+				
+				$Camera3D.current = true
+				# Add the gravity.
+				if not is_on_floor():
+					velocity += get_gravity() * delta
+				# Handle jump.
+				
+				process_movement(delta)
+				
+				if(shake_strength>0):
+					shake_strength = lerpf(shake_strength,0,shakeFade*delta)
+					var r = random_offset()
+					camera_3d.h_offset = r.x
+					camera_3d.v_offset = r.y
+			
+				if(Input.is_action_pressed("fire")):
+					fire_gun()
+				
+			player_states.paused:
+				if not is_on_floor():
+					velocity += get_gravity() * delta
+					velocity.x = lerp(velocity.x,0.0,0.01)
+					velocity.z = lerp(velocity.z,0.0,0.01)
+				else:
+					velocity.x = lerp(velocity.x,0,0.5)
+					velocity.z = lerp(velocity.z,0,0.5)
+			player_states.chatting:
+				if not is_on_floor():
+					velocity += get_gravity() * delta
+					velocity.x = lerp(velocity.x,0.0,0.01)
+					velocity.z = lerp(velocity.z,0.0,0.01)
+				else:
+					velocity.x = lerp(velocity.x,0.0,0.5)
+					velocity.z = lerp(velocity.z,0.0,0.5)
+					
+				
+				
+			#player_states.dead:
+				#pass	
+	floor_snap_length = 0.2
+	move_and_slide()
+	
+	
+func _input(event):
+	if is_multiplayer_authority():
+		
+		match player_state:
+			player_states.normal:
+				
+				if event.is_action_pressed("pause"):
+						if $CanvasLayer/PauseMenu.visible:
+							if !$DeathMenu.visible:
+								Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+						else:
+							Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+						$CanvasLayer/PauseMenu.visible = !$CanvasLayer/PauseMenu.visible
+						$CanvasLayer/Settings.hide()
+				
+				if !$CanvasLayer/PauseMenu.visible:
+					if event is InputEventMouseMotion:
+						rotate_y(deg_to_rad(-event.relative.x*mouse_sense))
+						camera_3d.rotate_x(deg_to_rad(-event.relative.y*mouse_sense))
+						camera_3d.rotation.x = clamp(camera_3d.rotation.x, deg_to_rad(-89), deg_to_rad(89))
+						
+						
+						
+					if(event.is_action_pressed("weapon_switch_down")):
+						switch_weapon_down()
+					if(event.is_action_pressed("weapon_switch_up")):
+						switch_weapon_up()
+					
+					if(event.is_action_pressed("alt_fire")):
+						alt_fire()			
+						
+					#if(event.is_action_pressed("taunt")):
+						#chest_animator.play("taunt")
+						#pelvis_animator.play("taunt")
+						#
+					
+				
+					if event.is_action_pressed("ui_accept"):
+						if is_on_floor():
+							velocity.y = JUMP_VELOCITY
+						elif in_water:
+							velocity.y = JUMP_VELOCITY
+						
+					if(event.is_action_pressed("hide_hud")):
+						$CanvasLayer.visible = !$CanvasLayer.visible
+						$Crosshair.visible = !$Crosshair.visible
+						
+						
+							
+					if event.is_action_pressed("scoreboard"):
+						$CanvasLayer/Scoreboard.show()
+					if event.is_action_released("scoreboard"):
+						$CanvasLayer/Scoreboard.hide()
+					
+					if event.is_action_pressed("chat"):
+						player_state = player_states.chatting
+						chat.show()
+						chat_focused = true
+						Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+						chat_input.grab_focus()
+					
+					
+	
+			player_states.chatting:
+				if Input.is_action_just_pressed("chat"):
+					player_state = player_states.normal
+					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+					chat_input.release_focus()
+					
+					if !chat_input.text == "":
+						Server.broadcast_chat(username,chat_input.text)
+					chat_focused = false
+					
+					
+					chat_input.text = ""
+					chat.hide()
+				if Input.is_action_just_pressed("pause"):
+					player_state = player_states.normal
+					Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+					chat_input.release_focus()
+					chat_input.text = ""
+					chat.hide()
+					chat_focused = false
+		
+			#player_states.dead:
+				#pass
+			player_states.paused:
+				pass
+			
+func process_movement(delta):
+	
+	_delta += delta
+	
+	if !in_water and alive:
+		direction = Vector3.ZERO
+		
+		var h_rot = global_transform.basis.get_euler().y
+		if !$CanvasLayer/PauseMenu.visible:
+			direction.x = -Input.get_action_strength("move_left")+Input.get_action_strength("move_right")
+			direction.z = -Input.get_action_strength("move_forward")+Input.get_action_strength("move_back")
+			direction = Vector3(direction.x,0,direction.z).rotated(Vector3.UP,h_rot).normalized()
+
+		var actualSpeed = speed if !isRunning else speed*2
+		
+		if velocity.y ==0 and direction != Vector3.ZERO:
+			#og_cam_pos = $Camera3D.position
+			#var bob_amount =og_cam_pos + Vector3.UP * sin(delta * camBobSpeed) * camBobUpDown
+			var bob_amount = (sin(_delta*10)* camBobUpDown*4) * Vector3.UP
+			#print(bob_amount)
+			#print(_delta)
+			$Camera3D.position += bob_amount
+			
+			
+		else:
+			$Camera3D.position = og_cam_pos
+		
+		
+		if is_on_floor():
+			velocity.x = lerp(velocity.x,direction.x * actualSpeed,0.5)
+			velocity.z = lerp(velocity.z,direction.z * actualSpeed,0.5)
+		else:
+			velocity.x = lerp(velocity.x,direction.x * actualSpeed,0.01)
+			velocity.z = lerp(velocity.z,direction.z * actualSpeed,0.01)
+	elif in_water and alive:
+		direction = Vector3.ZERO
+		
+		var h_rot = global_transform.basis.get_euler().y
+		
+		direction.x = -Input.get_action_strength("move_left")+Input.get_action_strength("move_right")
+		direction.z = -Input.get_action_strength("move_forward")+Input.get_action_strength("move_back")
+		direction = Vector3(direction.x,0,direction.z).rotated(Vector3.UP,h_rot).normalized()
+		
+		
+		var actualSpeed = speed / 2 if !isRunning else speed
+		
+		if is_on_floor():
+			velocity.x = lerp(velocity.x,direction.x * actualSpeed,0.25)
+			velocity.z = lerp(velocity.z,direction.z * actualSpeed,0.25)
+		else:
+			velocity.x = lerp(velocity.x,direction.x * actualSpeed,0.01)
+			velocity.z = lerp(velocity.z,direction.z * actualSpeed,0.01)
+	
+	elif !alive:
+		if not is_on_floor():
+			velocity += get_gravity() * delta
+			velocity.x = lerp(velocity.x,0.0,0.01)
+			velocity.z = lerp(velocity.z,0.0,0.01)
+		else:
+			velocity.x = lerp(velocity.x,0.0,0.5)
+			velocity.z = lerp(velocity.z,0.0,0.5)
+
+
+func fire_gun():
+	if can_shoot and ammo_dict[gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)] > 0 and alive and !$CanvasLayer/PauseMenu.visible:
+		#player_model.get_node("AudioController").get_node(str($playerModel/Chest/Guns.get_child(current_weapon_index).name)).play()
+		chest_animator.stop()
+		chest_animator.play("fire_"+$playerModel/Chest/Guns.get_child(current_weapon_index).name.to_lower(),-1,1.0)
+		ammo_dict[gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)] -= 1
+		
+		if current_weapon_index!=0:
+			$"CanvasLayer/UI/Ammo/Ammo Label".text = str(ammo_dict.get(gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)))
+
+		else:
+			$"CanvasLayer/UI/Ammo/Ammo Label".text = ""
+
+		if $playerModel/Chest/Guns.get_node_or_null("Sword"):
+			$playerModel/Chest/Guns/Sword/AnimationPlayer.play("fire")
+			reload_timer.start(0.9)
+			can_shoot = false
+		if $playerModel/Chest/Guns.get_node_or_null("Pistol") != null:
+			if($playerModel/Chest/Guns.get_node("Pistol").visible):
+				reload_timer.start(0.35)
+				can_shoot = false
+				apply_shake(0.02)
+				
+				aim.global_rotation_degrees.x += rng.randf_range(-b_spread,b_spread)
+				aim.global_rotation_degrees.y += rng.randf_range(-b_spread,b_spread)
+				aim.force_raycast_update()
+				if(aim.is_colliding()):
+					
+					if(aim.get_collider().is_in_group("Player")):
+						print("Player Hit")
+						var hit_player = aim.get_collider()
+						#hit_player.take_damage.rpc_id(hit_player.get_multiplayer_authority(),5,name)
+						Server.hit_player(10,str(hit_player.get_multiplayer_authority()),name)
+						hitmarker.modulate.a = 1.0
+					else:
+						var b = BULLET_DECAL.instantiate()
+						get_parent().add_child(b)
+						b.global_position = aim.get_collision_point()
+						#print(aim.get_collision_point())
+						var surface_dir_up = Vector3(0,1,0)
+						var surface_dir_down = Vector3(0,-1,0)
+						if aim.get_collision_normal() == surface_dir_up:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.RIGHT)
+						elif aim.get_collision_normal() == surface_dir_down:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.RIGHT)
+						else:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.DOWN)
+				var pistol_anim = $playerModel/Chest/Guns/Pistol/AnimationPlayer as AnimationPlayer	
+				pistol_anim.stop()
+				pistol_anim.play("fire")
+				#print(aim.rotation_degrees)
+				aim.rotation_degrees = Vector3.ZERO
+		if $playerModel/Chest/Guns.get_node_or_null("Sniper"):
+			if($playerModel/Chest/Guns/Sniper.visible):
+				apply_shake(0.02)
+				reload_timer.start(0.75)
+				can_shoot = false
+				
+				if(aim.is_colliding()):
+					var hit_player = aim.get_collider()
+					var headshot_damage = 0
+					var body_part = (hit_player.shape_owner_get_owner(aim.get_collider_shape()).name)
+					#print(body_part)
+					if(body_part == "Head"):
+						print("HEADSHOT")
+						headshot_damage = 200
+						$Audio/Announcer/headshot.play()
+					if(aim.get_collider().is_in_group("Player")):
+						
+						print(aim.get_collider().name)
+						
+						print("Player Hit")
+						Server.hit_player(40+headshot_damage,str(hit_player.get_multiplayer_authority()),str(get_multiplayer_authority()))
+						hitmarker.modulate.a = 1.0
+					else:
+						var b = BULLET_DECAL.instantiate()
+						get_parent().add_child(b)
+						b.global_position = aim.get_collision_point()
+						#print(aim.get_collision_point())
+						var surface_dir_up = Vector3(0,1,0)
+						var surface_dir_down = Vector3(0,-1,0)
+						if aim.get_collision_normal() == surface_dir_up:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.RIGHT)
+						elif aim.get_collision_normal() == surface_dir_down:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.RIGHT)
+						else:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.DOWN)
+				var sniper_anim = $playerModel/Chest/Guns/Sniper/AnimationPlayer as AnimationPlayer	
+				sniper_anim.stop()
+				sniper_anim.play("fire")
+				#print(aim.rotation_degrees)
+				aim.rotation_degrees = Vector3.ZERO
+									
+		if $playerModel/Chest/Guns.get_node_or_null("Bazooka")!=null:
+			if($playerModel/Chest/Guns/Bazooka.visible):
+				$playerModel/Chest/Guns/Bazooka/AnimationPlayer.play("fire")
+				apply_shake(0.01)
+				reload_timer.start(1.0)
+				can_shoot = false
+				#var r_instance = rocket.instantiate()
+				
+				#get_parent().add_child(r_instance)
+				#r_instance.global_position = Vector3(aim.global_position.x,aim.global_position.y,aim.global_position.z-2)
+				#r_instance.global_rotation.y = camera_3d.global_rotation.y
+				#r_instance.global_rotation.x = rotation.x
+				#r_instance.global_position = $Camera3D/ShootLocation.global_position
+				#r_instance.rotation = $Camera3D/ShootLocation.global_rotation
+				#r_instance.rotation.x -= rad_to_deg(-90)
+				#r_instance.shooter = self
+				var target = $Camera3D/Aim/Target.global_position
+				#
+				#var direction = (target - global_position).normalized()
+				Server.add_rocket($Camera3D/ShootLocation.global_rotation,$Camera3D/ShootLocation.global_position,$Camera3D/Aim/Target.global_position,(target - global_position).normalized(),name)
+				#r_instance.velocity = direction  * 15
+				
+		if $playerModel/Chest/Guns.get_node_or_null("Shotgun")!=null:
+			if($playerModel/Chest/Guns/Shotgun.visible):
+				$playerModel/Chest/Guns/Shotgun/AnimationPlayer.play("fire")
+				reload_timer.start(0.9)
+				can_shoot = false
+				apply_shake(0.06)
+				for shotgun_aim in shotgun_container.get_children():
+					shotgun_aim.global_rotation_degrees.x += rng.randf_range(-b_spread,b_spread)
+					shotgun_aim.global_rotation_degrees.y += rng.randf_range(-b_spread,b_spread)
+					shotgun_aim.force_raycast_update()
+					if(shotgun_aim.is_colliding()):
+						
+						if(shotgun_aim.get_collider().is_in_group("Player")):
+							print("Player Hit")
+							var hit_player = shotgun_aim.get_collider()
+							Server.hit_player(10,str(hit_player.get_multiplayer_authority()),name)
+							hitmarker.modulate.a = 1.0
+						else:
+							var b = BULLET_DECAL.instantiate()
+							get_parent().add_child(b)
+							b.global_position = shotgun_aim.get_collision_point()
+							#print(shotgun_aim.get_collision_point())
+							var surface_dir_up = Vector3(0,1,0)
+							var surface_dir_down = Vector3(0,-1,0)
+							if shotgun_aim.get_collision_normal() == surface_dir_up:
+								b.look_at(shotgun_aim.get_collision_point() + shotgun_aim.get_collision_normal(), Vector3.RIGHT)
+							elif shotgun_aim.get_collision_normal() == surface_dir_down:
+								b.look_at(shotgun_aim.get_collision_point() + shotgun_aim.get_collision_normal(), Vector3.RIGHT)
+							else:
+								b.look_at(shotgun_aim.get_collision_point() + shotgun_aim.get_collision_normal(), Vector3.DOWN)
+					#print(shotgun_aim.rotation_degrees)
+					shotgun_aim.rotation_degrees = Vector3.ZERO
+
+		if $playerModel/Chest/Guns.get_node_or_null("Flamer")!=null:
+			if($playerModel/Chest/Guns/Flamer.visible):			
+				#$playerModel/Chest/Guns/Flamer/AnimationPlayer.play("fire")
+				apply_shake(0.01)
+				reload_timer.start(0.8)
+				can_shoot = false
+				var target = $Camera3D/Aim/Target.global_position
+				#
+				#var direction = (target - global_position).normalized()
+				Server.add_fireball($Camera3D/ShootLocation.global_transform.basis.z*200,$Camera3D/ShootLocation.global_position,$Camera3D/Aim/Target.global_position,(target - global_position).normalized(),name)
+						
+		if $playerModel/Chest/Guns.get_node_or_null("Gatling")!=null:
+			if($playerModel/Chest/Guns/Gatling.visible):	
+				reload_timer.start(0.1)
+				can_shoot = false
+				apply_shake(0.04)
+				
+				aim.global_rotation_degrees.x += rng.randf_range(-b_spread,b_spread)
+				aim.global_rotation_degrees.y += rng.randf_range(-b_spread,b_spread)
+				aim.force_raycast_update()
+				if(aim.is_colliding()):
+					
+					if(aim.get_collider().is_in_group("Player")):
+						print("Player Hit")
+						var hit_player = aim.get_collider()
+						
+						
+						
+						#hit_player.take_damage.rpc_id(hit_player.get_multiplayer_authority(),5,name)
+						Server.hit_player(8,str(hit_player.get_multiplayer_authority()),name)
+						hitmarker.modulate.a = 1.0
+					else:
+						var b = BULLET_DECAL.instantiate()
+						get_parent().add_child(b)
+						b.global_position = aim.get_collision_point()
+						#print(aim.get_collision_point())
+						var surface_dir_up = Vector3(0,1,0)
+						var surface_dir_down = Vector3(0,-1,0)
+						if aim.get_collision_normal() == surface_dir_up:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.RIGHT)
+						elif aim.get_collision_normal() == surface_dir_down:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.RIGHT)
+						else:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.DOWN)
+					
+				#print(aim.rotation_degrees)
+				aim.rotation_degrees = Vector3.ZERO
+				
+		if $playerModel/Chest/Guns.get_node_or_null("GrenadeLauncher")!=null:
+			if($playerModel/Chest/Guns/GrenadeLauncher.visible):			
+				#$playerModel/Chest/Guns/Flamer/AnimationPlayer.play("fire")
+				
+				apply_shake(0.01)
+				reload_timer.start(0.8)
+				can_shoot = false
+				var target = $Camera3D/Aim/Target.global_position
+				#
+				#var direction = (target - global_position).normalized()
+				Server.add_grenade($Camera3D/ShootLocation.global_transform.basis.z*150,$Camera3D/ShootLocation.global_position,$Camera3D/Aim/Target.global_position,(target - global_position).normalized(),name)
+				#r_instance.velocity = direction  * 15
+
+		if $playerModel/Chest/Guns.get_node_or_null("Magnum")!=null:
+			if($playerModel/Chest/Guns/Magnum.visible):			
+				#$playerModel/Chest/Guns/Flamer/AnimationPlayer.play("fire")
+				
+				apply_shake(0.05)
+				reload_timer.start(1.3)
+				can_shoot = false
+				
+				aim.global_rotation_degrees.x += rng.randf_range(-b_spread,b_spread)
+				aim.global_rotation_degrees.y += rng.randf_range(-b_spread,b_spread)
+				aim.force_raycast_update()
+				if(aim.is_colliding()):
+					
+					if(aim.get_collider().is_in_group("Player")):
+						print("Player Hit")
+						var hit_player = aim.get_collider()
+						#hit_player.take_damage.rpc_id(hit_player.get_multiplayer_authority(),5,name)
+						Server.hit_player(70,str(hit_player.get_multiplayer_authority()),name)
+						hitmarker.modulate.a = 1.0
+					else:
+						var b = BULLET_DECAL.instantiate()
+						get_parent().add_child(b)
+						b.global_position = aim.get_collision_point()
+						#print(aim.get_collision_point())
+						var surface_dir_up = Vector3(0,1,0)
+						var surface_dir_down = Vector3(0,-1,0)
+						if aim.get_collision_normal() == surface_dir_up:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.RIGHT)
+						elif aim.get_collision_normal() == surface_dir_down:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.RIGHT)
+						else:
+							b.look_at(aim.get_collision_point() + aim.get_collision_normal(), Vector3.DOWN)
+				#var pistol_anim = $playerModel/Chest/Guns/Pistol/AnimationPlayer as AnimationPlayer	
+				#pistol_anim.stop()
+				#pistol_anim.play("fire")
+				#print(aim.rotation_degrees)
+				aim.rotation_degrees = Vector3.ZERO
+				
+		if $playerModel/Chest/Guns.get_node_or_null("Energy")!=null:
+			if($playerModel/Chest/Guns/Energy.visible):			
+				#$playerModel/Chest/Guns/Flamer/AnimationPlayer.play("fire")
+				
+				apply_shake(0.05)
+				reload_timer.start(0.40)
+				can_shoot = false
+				
+				var target = $Camera3D/Aim/Target.global_position
+				#
+				#var direction = (target - global_position).normalized()
+				Server.add_energy($Camera3D/ShootLocation.global_rotation,$Camera3D/ShootLocation.global_position,$Camera3D/Aim/Target.global_position,(target - global_position).normalized(),name)
+				
+		
+		
+		
+func alt_fire():
+	if($playerModel/Chest/Guns.get_node("Pistol").visible):
+		pass
+	elif($playerModel/Chest/Guns.get_node("Sniper").visible):
+		if(camera_3d.fov != og_fov):
+			camera_3d.fov = og_fov
+			mouse_sense = og_sense
+			speed = og_speed
+		else:
+			camera_3d.fov = zoom_fov
+			mouse_sense = mouse_sense/4
+			speed / 3
+		
+	
+func leave_blood(scale_mod):
+	var blood_instance = load("res://Objects/Gibs/blood_splatter.tscn").instantiate()
+	
+	
+	var blood_pointer: RayCast3D = $Gibs/BloodPointer
+
+	blood_instance.scale = blood_instance.scale * scale_mod
+	
+	blood_instance.scale.z = 1
+	
+	#print(aim.get_collision_point())
+	var surface_dir_up = Vector3(0,1,0)
+	var surface_dir_down = Vector3(0,-1,0)
+	print(blood_pointer.get_collision_normal())
+	
+	blood_instance.rotation_degrees.x = blood_pointer.get_collision_normal().y * 90
+	#if blood_pointer.get_collision_normal() == surface_dir_up:
+		#blood_instance.look_at(blood_pointer.get_collision_point() + blood_pointer.get_collision_normal(), Vector3.RIGHT)
+	#elif blood_pointer.get_collision_normal() == surface_dir_down:
+		#blood_instance.look_at(blood_pointer.get_collision_point() + blood_pointer.get_collision_normal(), Vector3.RIGHT)
+	#else:
+		#blood_instance.look_at(blood_pointer.get_collision_point() + blood_pointer.get_collision_normal(), Vector3.DOWN)
+	
+	get_tree().root.get_node("Client").get_child(2).add_child(blood_instance)
+	blood_instance.global_position = blood_pointer.get_collision_point()
+			
+@rpc("any_peer")
+func take_damage(damage : int,to : String = "1", from_id : String = "1") -> void:
+	if not is_multiplayer_authority(): return
+	
+	#damage reaction
+	player_anim.stop()
+	player_anim.play("hurt")
+	apply_shake(0.001 * damage)
+	
+	var beginning_health = health
+	shield += -(round(damage/3.0))*2
+	if shield < 0 :
+		health += shield
+		shield = 0
+		
+	
+	health += -(damage/3.0)
+	#health += -damage
+	update_health()
+	print(health)
+	
+	
+	
+	if(health <= 0 and beginning_health > 0):
+		Server.rpc_id(1,"frag", to,from_id)
+		
+		camera_3d.fov = og_fov
+		mouse_sense = og_sense
+		
+		alive = false
+		player_anim.stop()
+		player_anim.play("death")
+		$DeathMenu.show()
+		$playerModel.hide()
+		player_model.hide()
+		#$HeadHitbox.disabled = true
+		#$BodyHitbox.disabled = true
+		print(str(to)+" was killed by " + from_id)
+		Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
+		for gib in $Gibs.get_children():
+			if gib is CPUParticles3D:
+				gib.emitting = true
+		
+		
+		#$AnimationPlayer.play("death")
+
+func knockback(direction, force):
+	if not is_multiplayer_authority(): return
+	velocity += direction * force
+
+func _on_respawn_pressed() -> void:
+	$DeathMenu.hide()
+	$playerModel.show()
+	#$MeshInstance3D.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	health = 100
+	shield = 50
+	update_health()
+	alive = true
+	player_model.show()
+	velocity = Vector3.ZERO
+	#$HeadHitbox.disabled = false
+	#$BodyHitbox.disabled = false
+
+	
+	weapons = [true,true,false,false,false,false,false,false,false,false]
+	var guns = $playerModel/Chest/Guns
+	var anim = $"playerModel/Chest Animator"
+	guns.get_child(current_weapon_index).hide()
+	current_weapon_index = 0
+	guns.get_child(current_weapon_index).show()
+	anim.play("hold_"+guns.get_child(current_weapon_index).name.to_lower())
+	ammo_dict = {
+	"sword" : 99999999999,
+	"pistol" : 50,
+	"shotgun" : 20,
+	"sniper" : 15,
+	"flamer" : 35,
+	"bazooka" : 15,
+	"magnum" : 15,
+	"energy" : 50
+ }
+	
+	#$AnimationPlayer.play("respawn")
+	global_position = Global.spawn_points.pick_random()
+	
+	
+
+func _on_quit_pressed() -> void:
+	get_tree().quit()
+
+
+func apply_shake(random_strength):
+	shake_strength = random_strength
+	
+func random_offset():
+	return Vector2(rng.randf_range(-shake_strength,shake_strength),rng.randf_range(-shake_strength,shake_strength))
+	
+func switch_weapon_up():
+	var guns = $playerModel/Chest/Guns
+	var anim = $"playerModel/Chest Animator"
+	guns.get_child(current_weapon_index).hide()
+	current_weapon_index += 1
+	if(current_weapon_index >= guns.get_child_count()):
+			current_weapon_index = 0
+	while !weapons[current_weapon_index]:
+		current_weapon_index += 1
+		if(current_weapon_index >= guns.get_child_count()):
+			current_weapon_index = 0
+	
+	guns.get_child(current_weapon_index).show()
+	anim.play("hold_"+guns.get_child(current_weapon_index).name.to_lower())
+	
+	$"CanvasLayer/UI/Gun Selection/Gun Label".text = guns.get_child(current_weapon_index).name
+	
+	if current_weapon_index!=0:
+		$"CanvasLayer/UI/Ammo/Ammo Label".text = str(ammo_dict.get(gun_to_ammo.get(guns.get_child(current_weapon_index).name)))
+	else:
+		$"CanvasLayer/UI/Ammo/Ammo Label".text = ""
+func switch_weapon_down():
+	var guns = $playerModel/Chest/Guns
+	var anim = $"playerModel/Chest Animator"
+	guns.get_child(current_weapon_index).hide()
+	current_weapon_index -= 1
+	if(current_weapon_index <= -1):
+		current_weapon_index = guns.get_child_count()-1
+	while !weapons[current_weapon_index]:
+		current_weapon_index -= 1
+		if(current_weapon_index <= -1):
+			current_weapon_index = guns.get_child_count()-1
+	
+	guns.get_child(current_weapon_index).show()
+	anim.play("hold_"+guns.get_child(current_weapon_index).name.to_lower())
+	
+	
+	
+	$"CanvasLayer/UI/Gun Selection/Gun Label".text = guns.get_child(current_weapon_index).name
+	if current_weapon_index!=0:
+		$"CanvasLayer/UI/Ammo/Ammo Label".text = str(ammo_dict.get(gun_to_ammo.get(guns.get_child(current_weapon_index).name)))
+	else:
+		$"CanvasLayer/UI/Ammo/Ammo Label".text = ""
+
+
+func _on_reload_timer_timeout() -> void:
+	can_shoot = true
+
+func add_weapon(weapon_index : int):
+	var guns = $playerModel/Chest/Guns
+	var anim = $"playerModel/Chest Animator"
+	if is_multiplayer_authority():
+		if !weapons[weapon_index]:
+			weapons[weapon_index] = true
+			current_weapon_index = weapon_index
+		
+		
+		guns.get_child(current_weapon_index).hide()
+		current_weapon_index = weapon_index
+		guns.get_child(current_weapon_index).show()
+		anim.play("hold_"+guns.get_child(current_weapon_index).name.to_lower())
+		$"CanvasLayer/UI/Gun Selection/Gun Label".text = guns.get_child(current_weapon_index).name
+		
+		if current_weapon_index!=0:
+			$"CanvasLayer/UI/Ammo/Ammo Label".text = str(ammo_dict.get(gun_to_ammo.get(guns.get_child(current_weapon_index).name)))
+		else:
+			$"CanvasLayer/UI/Ammo/Ammo Label".text = ""
+		
+
+
+func add_ammo(amount, type):
+	
+	if type == "health":
+		health += amount
+		if health > 100:
+			health = 100
+		$"CanvasLayer/UI/Health/Health Label".text = str(health)
+		
+	elif type == "armor":
+		shield += amount
+		if shield > 100:
+			shield = 100
+		$"CanvasLayer/UI/Shield/Shield Label".text = str(shield)
+	else:
+		ammo_dict[type] += amount
+		
+		if ammo_dict[type] > ammo_limits[type]:
+			ammo_dict[type] = ammo_limits[type]
+		
+		if current_weapon_index!=0:
+			$"CanvasLayer/UI/Ammo/Ammo Label".text = str(ammo_dict.get(gun_to_ammo.get($playerModel/Chest/Guns.get_child(current_weapon_index).name)))
+
+	
+
+
+
+func _on_resume_pressed() -> void:	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
+	$CanvasLayer/PauseMenu.hide()
+	$CanvasLayer/Settings.hide()
+
+
+func _on_settings_pressed() -> void:
+	$CanvasLayer/Settings.show()
+
+
+func _on_quit_menu_pressed() -> void:
+	disconnect_from_game()
+	get_tree().root.get_node("Client").get_node("CanvasLayer").show()
+	get_tree().root.get_node("Client").get_child(2).queue_free()
+	for child in get_tree().root.get_node("Server").get_children():
+		child.queue_free()
+
+
+func _on_quit_desktop_pressed() -> void:
+	disconnect_from_game()
+	get_tree().quit()
+	
+func disconnect_from_game():
+	Server.remove_player()
+	
+func update_health():
+	$"CanvasLayer/UI/Shield/Shield Label".text = str(shield)
+	$"CanvasLayer/UI/Health/Health Label".text = str(health)
+	
+func update_colors():
+	player_model.get_node("Pelvis").material_override.albedo_color = color
+	player_model.get_node("Pelvis/RightThigh").material_override.albedo_color = color
+	player_model.get_node("Pelvis/LeftThigh").material_override.albedo_color = color
+	player_model.get_node("Pelvis/RightThigh/RightKnee/RightShin").material_override.albedo_color = color
+	player_model.get_node("Pelvis/LeftThigh/LeftKnee/LeftShin").material_override.albedo_color = color
+	player_model.get_node("Chest/RightShoulder/RightBicep").material_override.albedo_color = color
+	player_model.get_node("Chest/RightShoulder/RightBicep/RightForearm").material_override.albedo_color = color
+	player_model.get_node("Chest/RightShoulder/RightBicep/RightForearm/RightHand").material_override.albedo_color = color
+	player_model.get_node("Chest/RightShoulder/RightBicep/RightForearm/RightHand/RightThumb").material_override.albedo_color = color
+
+	player_model.get_node("Chest/LeftShoulder/LeftBicep").material_override.albedo_color = color
+	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm").material_override.albedo_color = color
+	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand").material_override.albedo_color = color
+	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand/LeftThumb").material_override.albedo_color = color
+	player_model.get_node("Chest/Neck/Head/Cube_049").material_override.albedo_color = color
+	
+	player_model.get_node("Chest/Neck/Head/imperial/GreatHelm").get_surface_override_material(0).albedo_color = color
+	player_model.get_node("Chest/Neck/Head/Mercenary/Varangian").get_surface_override_material(0).albedo_color = color
+	player_model.get_node("Chest/Neck/Head/Chivalrous/Chivalrous").get_surface_override_material(0).albedo_color = color
+	player_model.get_node("Chest/Neck/Head/Chivalrous/Chivalrous/Cube_050").get_surface_override_material(0).albedo_color = color
+	player_model.get_node("Chest/Neck/Head/conquerer/Conquerer").get_surface_override_material(0).albedo_color = color
+	player_model.get_node("Chest/Neck/Head/Defender/Sallet").get_surface_override_material(0).albedo_color = color
+	
+
+
+func box_container_child_entered_tree(node: Node) -> void:
+	chat.show()
+	$chat_timer.start(5)
+	await get_tree().create_timer(0.16).timeout
+	v_scroll_bar.get_v_scroll_bar().value = v_scroll_bar.get_v_scroll_bar().max_value
+
+
+func _on_chat_timer_timeout() -> void:
+	if !chat_focused:
+		chat.hide()
+
+
+func hide_player():
+	
+	
+	$username.hide()
+	
+	player_model.get_node("Pelvis").set_layer_mask_value(1,false)
+	player_model.get_node("Pelvis/RightThigh").set_layer_mask_value(1,false)
+	player_model.get_node("Pelvis/LeftThigh").set_layer_mask_value(1,false)
+	player_model.get_node("Pelvis/RightThigh/RightKnee/RightShin").set_layer_mask_value(1,false)
+	player_model.get_node("Pelvis/LeftThigh/LeftKnee/LeftShin").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/RightShoulder/RightBicep").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/RightShoulder/RightBicep/RightForearm").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/RightShoulder/RightBicep/RightForearm/RightHand").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/RightShoulder/RightBicep/RightForearm/RightHand/RightThumb").set_layer_mask_value(1,false)
+
+	player_model.get_node("Chest/LeftShoulder/LeftBicep").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/LeftShoulder/LeftBicep/LeftForearm/LeftHand/LeftThumb").set_layer_mask_value(1,false)
+	
+	player_model.get_node("Chest/Neck/Head/Chivalrous/Chivalrous").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/Neck/Head/Chivalrous/Chivalrous/Cube_050").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/Neck/Head/conquerer/Conquerer").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/Neck/Head/imperial/GreatHelm").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/Neck/Head/Mercenary/Varangian").set_layer_mask_value(1,false)
+	player_model.get_node("Chest/Neck/Head/Defender/Sallet").set_layer_mask_value(1,false)
+	
+	player_model.get_node("Chest/Neck/Head/Cube_049").set_layer_mask_value(1,false)
+	$playerModel/Chest/LeftShoulder.set_layer_mask_value(1,false)
+	$playerModel/Chest/RightShoulder.set_layer_mask_value(1,false)
+	$playerModel/Chest/Neck/Head.set_layer_mask_value(1,false)
+	$playerModel/Chest/Neck.set_layer_mask_value(1,false)
+	$playerModel/Chest.set_layer_mask_value(1,false)
+	$playerModel/Pelvis/LeftThigh/LeftKnee/LeftShin/LeftFoot.set_layer_mask_value(1,false)
+	$playerModel/Pelvis/LeftThigh/LeftKnee.set_layer_mask_value(1,false)
+	$playerModel/Pelvis/RightThigh/RightKnee/RightShin/RightFoot.set_layer_mask_value(1,false)
+	$playerModel/Pelvis/RightThigh/RightKnee.set_layer_mask_value(1,false)
+	
+
+
+
+func update_scores(names,colors,frags,killstreaks):
+	
+	
+	if is_multiplayer_authority():
+	
+		var is_first = true
+		for info in scoreboard.get_child(2).get_children():
+			if is_first:
+				is_first=false
+			else:
+				info.queue_free()
+		
+		
+		for i in names.size():
+			var player_info = preload("res://Objects/UI/player_info.tscn")
+			var info_instance = player_info.instantiate()
+			
+			info_instance.frags = int(frags[i])
+			info_instance.username = names[i]
+			info_instance.color = colors[i]
+			info_instance.placing = str(i+1)
+			info_instance.killstreak = killstreaks[i]
+			
+			scoreboard.get_child(2).add_child(info_instance)
+		
+	
+
+
+func auto_disconnect_check():
+	
+	if username == "USERNAME":
+		var old_position = position
+		await get_tree().creat_timer(3).timeout
+		if old_position == position:
+			disconnect_from_game()
+
+func on_area_3d_body_entered(body: Node3D) -> void:
+	if body.get_multiplayer_authority() != get_multiplayer_authority():
+		Server.hit_player(30,str(body.get_multiplayer_authority()),str(get_multiplayer_authority()))
+		
+
+func toggle_hitbox():
+	if not is_multiplayer_authority(): return
+	$playerModel/Pelvis/LeftThigh/LeftKnee/LeftShin/LeftFoot/StaticBody3D/CollisionShape3D.disabled = true
+	$playerModel/Pelvis/LeftThigh/LeftKnee/LeftShin/StaticBody3D/CollisionShape3D.disabled = true
+	$playerModel/Pelvis/LeftThigh/LeftKnee/StaticBody3D/CollisionShape3D.disabled = true
+	$playerModel/Pelvis/LeftThigh/StaticBody3D/CollisionShape3D.disabled = true
+	
+	$playerModel/Pelvis/RightThigh/RightKnee/RightShin/RightFoot/StaticBody3D/CollisionShape3D.disabled = true
+	$playerModel/Pelvis/RightThigh/RightKnee/RightShin/StaticBody3D/CollisionShape3D.disabled = true
+	$playerModel/Pelvis/RightThigh/RightKnee/StaticBody3D/CollisionShape3D.disabled = true
+	$playerModel/Pelvis/RightThigh/StaticBody3D/CollisionShape3D.disabled = true
+	
+	$playerModel/Pelvis/Pelvis/Pelvis.disabled = true
+	
+	$playerModel/Chest/LeftShoulder/LeftBicep/LeftForearm/StaticBody3D/CollisionShape3D.disabled = true
+	$playerModel/Chest/LeftShoulder/LeftBicep/StaticBody3D/CollisionShape3D.disabled = true
+	
+	$playerModel/Chest/Neck/Head/Head/Head.disabled = true
+	
+	$playerModel/Chest/RightShoulder/RightBicep/RightForearm/StaticBody3D/CollisionShape3D.disabled = true
+	$playerModel/Chest/RightShoulder/RightBicep/StaticBody3D/CollisionShape3D.disabled = true
+	
+	$playerModel/Chest/StaticBody3D/CollisionShape3D.disabled = true
+
+
+func _on_chest_animator_animation_finished(anim_name: StringName) -> void:
+	if anim_name == "taunt":
+		var guns = $playerModel/Chest/Guns
+
+		chest_animator.play("hold_"+ str(guns.get_child(current_weapon_index).name))
+	
+	else:
+		chest_animator.play("hold_"+anim_name.split("_")[1])
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.get_multiplayer_authority() != get_multiplayer_authority():
+		if body.is_multiplayer_authority():
+			Server.hit_player(30,str(body.get_multiplayer_authority()),str(get_multiplayer_authority()))
+		if body.is_in_group("PlayerRoot"):
+			hitmarker.modulate.a = 1.0

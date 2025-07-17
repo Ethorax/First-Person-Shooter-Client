@@ -1,0 +1,24 @@
+[gd_scene load_steps=6 format=3 uid="uid://bomxd6hvvqyqr"]
+
+[ext_resource type="Script" uid="uid://7n12t7hwntvm" path="res://Scripts/weapon.gd" id="1_40jul"]
+[ext_resource type="PackedScene" uid="uid://bhfcm4v3di81n" path="res://Graphics/Meshes/Guns/betterSniper.glb" id="1_pr2ty"]
+[ext_resource type="Resource" uid="uid://e65p1apf0ayi" path="res://Resources/Guns/Sniper.tres" id="2_jvsom"]
+
+[sub_resource type="Animation" id="Animation_182d1"]
+resource_name = "fire"
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_40jul"]
+_data = {
+&"fire": SubResource("Animation_182d1")
+}
+
+[node name="Sniper" type="Node3D"]
+script = ExtResource("1_40jul")
+gun_data = ExtResource("2_jvsom")
+
+[node name="betterSniper" parent="." instance=ExtResource("1_pr2ty")]
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_40jul")
+}

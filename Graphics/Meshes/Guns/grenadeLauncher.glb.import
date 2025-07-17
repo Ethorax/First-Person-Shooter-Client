@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cwem7cq2dfgom"
-path="res://.godot/imported/grenadeLauncher.glb-99e4f60c75126a85a8dbcb757ef4518f.scn"
+uid="uid://14gpmw2x83ts"
+path="res://.godot/imported/grenadelauncher.glb-a3f5ef2224e82803e9275e809da3c49b.scn"
 
 [deps]
 
-source_file="res://Graphics/Meshes/Guns/grenadeLauncher.glb"
-dest_files=["res://.godot/imported/grenadeLauncher.glb-99e4f60c75126a85a8dbcb757ef4518f.scn"]
+source_file="res://Graphics/Meshes/Guns/grenadelauncher.glb"
+dest_files=["res://.godot/imported/grenadelauncher.glb-a3f5ef2224e82803e9275e809da3c49b.scn"]
 
 [params]
 
@@ -18,6 +18,7 @@ nodes/root_name=""
 nodes/apply_root_scale=true
 nodes/root_scale=1.0
 nodes/import_as_skeleton_bones=false
+nodes/use_node_type_suffixes=true
 meshes/ensure_tangents=true
 meshes/generate_lods=true
 meshes/create_shadow_meshes=true

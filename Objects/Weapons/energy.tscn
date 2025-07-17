@@ -1,0 +1,133 @@
+[gd_scene load_steps=10 format=3 uid="uid://drhuofqieiyi6"]
+
+[ext_resource type="Script" uid="uid://7n12t7hwntvm" path="res://Scripts/weapon.gd" id="1_dgigb"]
+[ext_resource type="Resource" uid="uid://br0sl4chf8lxx" path="res://Resources/Guns/Energy.tres" id="2_lld8v"]
+[ext_resource type="PackedScene" uid="uid://demxdd52r4gm0" path="res://Graphics/Meshes/Guns/energy.glb" id="3_qy13d"]
+
+[sub_resource type="Animation" id="Animation_lld8v"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("energy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles3D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_dgigb"]
+resource_name = "fire"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("OmniLight3D:visible")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.0504492),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [true, false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("energy:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.0186576, 0.0739127, 0.101899),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 0.0116176, -0.0155794), Vector3(0, -0.0174116, 0.0240091), Vector3(0, 0, 0)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("CPUParticles3D:emitting")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lld8v"]
+_data = {
+&"RESET": SubResource("Animation_lld8v"),
+&"fire": SubResource("Animation_dgigb")
+}
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_dgigb"]
+vertex_color_use_as_albedo = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_lld8v"]
+material = SubResource("StandardMaterial3D_dgigb")
+size = Vector3(0.025, 0.025, 0.025)
+
+[sub_resource type="Gradient" id="Gradient_qy13d"]
+colors = PackedColorArray(1, 0, 0, 1, 1, 1, 0, 1)
+
+[node name="Energy" type="Node3D"]
+script = ExtResource("1_dgigb")
+gun_data = ExtResource("2_lld8v")
+
+[node name="energy" parent="." instance=ExtResource("3_qy13d")]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0, 0, 0)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_lld8v")
+}
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.11808, -0.0114714, 0)
+visible = false
+light_color = Color(1, 0, 0, 1)
+light_energy = 5.0
+omni_attenuation = 5.737
+omni_shadow_mode = 0
+
+[node name="CPUParticles3D" type="CPUParticles3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.774602, 0.632448, 0, -0.632448, 0.774602, -0.363546, 0.0809475, -0.112825)
+emitting = false
+amount = 16
+one_shot = true
+explosiveness = 0.6
+randomness = 1.0
+mesh = SubResource("BoxMesh_lld8v")
+direction = Vector3(0, 1, 0)
+initial_velocity_min = 1.0
+initial_velocity_max = 3.0
+color = Color(1, 1, 0, 1)
+color_ramp = SubResource("Gradient_qy13d")

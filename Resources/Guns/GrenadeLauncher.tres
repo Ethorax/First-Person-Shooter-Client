@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=4 format=3 uid="uid://dibuienrdwgt"]
+
+[ext_resource type="AudioStream" uid="uid://cemc88rc8id4g" path="res://Audio/SFX/Guns/GrenadeLauncher.wav" id="1_5sx1g"]
+[ext_resource type="PackedScene" uid="uid://dy4ae8pmyeick" path="res://Objects/grenade.tscn" id="2_ckrhn"]
+[ext_resource type="Script" uid="uid://cwyjc88udnjdk" path="res://Resources/gun_data.gd" id="3_4tjbh"]
+
+[resource]
+script = ExtResource("3_4tjbh")
+name = "Grenade"
+ammo_type = "bazooka"
+fire_rate = 0.8
+projectile = ExtResource("2_ckrhn")
+fire_sound = ExtResource("1_5sx1g")
+hold_pose = 1
+damage = 50
+spread = 0.0
+metadata/_custom_type_script = "uid://cwyjc88udnjdk"

@@ -2,20 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://ckne64b078hjx"
+uid="uid://c0x506e8jhan5"
 path.s3tc="res://.godot/imported/sword_sniper.png-1b58016383abd284392aba479bd94817.s3tc.ctex"
+path.etc2="res://.godot/imported/sword_sniper.png-1b58016383abd284392aba479bd94817.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "f4a9f054ff8f6f0ddd9250cc34af8c67"
 }
 
 [deps]
 
 source_file="res://Graphics/Meshes/Guns/sword_sniper.png"
-dest_files=["res://.godot/imported/sword_sniper.png-1b58016383abd284392aba479bd94817.s3tc.ctex"]
+dest_files=["res://.godot/imported/sword_sniper.png-1b58016383abd284392aba479bd94817.s3tc.ctex", "res://.godot/imported/sword_sniper.png-1b58016383abd284392aba479bd94817.etc2.ctex"]
 
 [params]
 

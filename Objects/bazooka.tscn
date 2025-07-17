@@ -58,8 +58,8 @@ tracks/1/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_w770i"]
 _data = {
-"RESET": SubResource("Animation_cjkuo"),
-"fire": SubResource("Animation_ixf8n")
+&"RESET": SubResource("Animation_cjkuo"),
+&"fire": SubResource("Animation_ixf8n")
 }
 
 [node name="Bazooka" type="Node3D"]

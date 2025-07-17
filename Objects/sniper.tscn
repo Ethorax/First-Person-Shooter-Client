@@ -34,8 +34,8 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_dry0k"]
 _data = {
-"RESET": SubResource("Animation_xgh0a"),
-"fire": SubResource("Animation_2865b")
+&"RESET": SubResource("Animation_xgh0a"),
+&"fire": SubResource("Animation_2865b")
 }
 
 [node name="Sniper" type="Node3D"]

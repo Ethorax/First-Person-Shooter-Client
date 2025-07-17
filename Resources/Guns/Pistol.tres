@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://dg8vt6k5myv4a"]
+
+[ext_resource type="AudioStream" uid="uid://ddcslotrxy6r5" path="res://Audio/SFX/Guns/PistolShot.wav" id="1_r3jft"]
+[ext_resource type="Script" uid="uid://cwyjc88udnjdk" path="res://Resources/gun_data.gd" id="2_7prqp"]
+
+[resource]
+script = ExtResource("2_7prqp")
+name = "Pistol"
+ammo_type = "pistol"
+fire_rate = 0.2
+fire_sound = ExtResource("1_r3jft")
+hold_pose = 0
+damage = 8
+spread = 1.0
+metadata/_custom_type_script = "uid://cwyjc88udnjdk"

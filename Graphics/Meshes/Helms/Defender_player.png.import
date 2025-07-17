@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://c7ko74empphud"
 path.s3tc="res://.godot/imported/Defender_player.png-0ed792bd92b6bfb570e2fe5c76a1c72e.s3tc.ctex"
+path.etc2="res://.godot/imported/Defender_player.png-0ed792bd92b6bfb570e2fe5c76a1c72e.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Graphics/Meshes/Helms/Defender_player.png"
-dest_files=["res://.godot/imported/Defender_player.png-0ed792bd92b6bfb570e2fe5c76a1c72e.s3tc.ctex"]
+dest_files=["res://.godot/imported/Defender_player.png-0ed792bd92b6bfb570e2fe5c76a1c72e.s3tc.ctex", "res://.godot/imported/Defender_player.png-0ed792bd92b6bfb570e2fe5c76a1c72e.etc2.ctex"]
 
 [params]
 

@@ -2,20 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b8tcx5nfv8db5"
+uid="uid://dprj18tujpstx"
 path.s3tc="res://.godot/imported/DefaultDMtextured_defaultDM.png-829cdbdf81cb4190aa6e5f9b5f6b1efe.s3tc.ctex"
+path.etc2="res://.godot/imported/DefaultDMtextured_defaultDM.png-829cdbdf81cb4190aa6e5f9b5f6b1efe.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "7cf43ecf4069aab074ae94f0652827e5"
 }
 
 [deps]
 
 source_file="res://Objects/Maps/DefaultDMtextured_defaultDM.png"
-dest_files=["res://.godot/imported/DefaultDMtextured_defaultDM.png-829cdbdf81cb4190aa6e5f9b5f6b1efe.s3tc.ctex"]
+dest_files=["res://.godot/imported/DefaultDMtextured_defaultDM.png-829cdbdf81cb4190aa6e5f9b5f6b1efe.s3tc.ctex", "res://.godot/imported/DefaultDMtextured_defaultDM.png-829cdbdf81cb4190aa6e5f9b5f6b1efe.etc2.ctex"]
 
 [params]
 

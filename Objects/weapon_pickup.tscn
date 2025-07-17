@@ -1,7 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://b0r0pobkl8gyb"]
 
-[ext_resource type="Script" path="res://weapon_pickup.gd" id="1_amajw"]
-[ext_resource type="PackedScene" uid="uid://cswnetw28h1rq" path="res://Graphics/Meshes/Guns/bazooka.glb" id="2_fwdar"]
+[ext_resource type="Script" uid="uid://b665dqal3gb7l" path="res://Scripts/Props/weapon_pickup.gd" id="1_amajw"]
 [ext_resource type="AudioStream" uid="uid://cfsghqwss12xb" path="res://Audio/SFX/Pickups/weaponPickup.wav" id="3_nv1jq"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_l0eu2"]
@@ -51,23 +50,27 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_rswmk"]
 _data = {
-"RESET": SubResource("Animation_x7vpd"),
-"normal": SubResource("Animation_4smu7")
+&"RESET": SubResource("Animation_x7vpd"),
+&"normal": SubResource("Animation_4smu7")
 }
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_r1j0k"]
 size = Vector3(1, 0.817139, 1)
+
+[sub_resource type="SceneReplicationConfig" id="SceneReplicationConfig_u0p8m"]
+properties/0/path = NodePath("WeaponHolder:visible")
+properties/0/spawn = true
+properties/0/replication_mode = 2
+properties/1/path = NodePath("MeshInstance3D:visible")
+properties/1/spawn = true
+properties/1/replication_mode = 2
 
 [node name="WeaponPickup" type="Node3D"]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 0, 0, 0)
 script = ExtResource("1_amajw")
 
 [node name="WeaponHolder" type="Marker3D" parent="."]
-transform = Transform3D(-0.500022, 0, -0.866013, 0, 1, 0, 0.866013, 0, -0.500022, -0.033793, 0.531731, -0.0293851)
-
-[node name="bazooka" parent="WeaponHolder" instance=ExtResource("2_fwdar")]
-transform = Transform3D(0.2, 0, 0, 0, 0.2, 0, 0, 0, 0.2, 0, -0.213, 0.12)
-visible = false
+transform = Transform3D(0.30905, 0, 0.951045, 0, 1, 0, -0.951045, 0, 0.30905, -0.033793, 0.531731, -0.0293851)
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(-1, 8.74228e-08, 0, -8.74228e-08, -1, 0, 0, 0, 1, 0, 0.780254, 0)
@@ -79,7 +82,7 @@ mesh = SubResource("BoxMesh_g4dip")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_rswmk")
+&"": SubResource("AnimationLibrary_rswmk")
 }
 
 [node name="Area3D" type="Area3D" parent="."]
@@ -96,8 +99,10 @@ light_color = Color(1.92523e-07, 0.744222, 0.874236, 1)
 
 [node name="AudioStreamPlayer3D" type="AudioStreamPlayer3D" parent="."]
 stream = ExtResource("3_nv1jq")
+bus = &"SFX"
+
+[node name="MultiplayerSynchronizer" type="MultiplayerSynchronizer" parent="."]
+replication_config = SubResource("SceneReplicationConfig_u0p8m")
 
 [connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
-
-[editable path="WeaponHolder/bazooka"]

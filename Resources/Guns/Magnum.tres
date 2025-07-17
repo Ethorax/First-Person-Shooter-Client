@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://txokiwt2emsg"]
+
+[ext_resource type="AudioStream" uid="uid://1djni80xci8y" path="res://Audio/SFX/Guns/sniper.wav" id="1_6nt1k"]
+[ext_resource type="Script" uid="uid://cwyjc88udnjdk" path="res://Resources/gun_data.gd" id="2_pg71e"]
+
+[resource]
+script = ExtResource("2_pg71e")
+name = "Magnum"
+ammo_type = "magnum"
+fire_rate = 0.75
+fire_sound = ExtResource("1_6nt1k")
+hold_pose = 0
+damage = 50
+spread = 0.0
+metadata/_custom_type_script = "uid://cwyjc88udnjdk"

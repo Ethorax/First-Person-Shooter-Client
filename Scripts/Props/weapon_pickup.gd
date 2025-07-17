@@ -1,0 +1,87 @@
+@tool
+extends Node3D
+
+@onready var weapon_holder: Marker3D = $WeaponHolder
+var gun_model : String
+
+enum gun {
+	shotgun,
+	sniper,
+	flamer,
+	bazooka,
+	grenade,
+	magnum,
+	gatling,
+	energy
+}
+var weapon_index
+@export var gun_pickup = gun.shotgun
+# KEY : MELEE, PISTOL, SHOTGUN, GATLING, SNIPER, FLAMER, BAZOOKA, GRENADE, MAGNUM, ENERGY
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	match gun_pickup:
+		gun.shotgun:
+			gun_model ="res://Objects/Weapons/shotgun.tscn"
+			weapon_index = 2
+		gun.gatling:
+			gun_model ="res://Objects/gatling.tscn"
+			weapon_index = 3
+		gun.sniper:
+			gun_model ="res://Objects/Weapons/sniper.tscn"
+			weapon_index = 4
+		gun.flamer:
+			gun_model ="res://Objects/Weapons/flamer.tscn"
+			weapon_index = 5
+
+		gun.bazooka:
+			gun_model ="res://Objects/Weapons/bazooka.tscn"
+			weapon_index = 6
+		gun.grenade:
+			gun_model = "res://Objects/Weapons/grenade_launcher.tscn"
+			weapon_index = 7
+		gun.magnum:
+			gun_model = "res://Objects/Weapons/magnum.tscn"
+			weapon_index = 8
+		gun.energy:
+			gun_model = "res://Objects/Weapons/energy.tscn"
+			weapon_index = 9
+	
+	
+	var gun_instance = load(gun_model).instantiate()
+	#gun_instance.scale = Vector3(0.3,0.3,0.3)
+	$WeaponHolder.add_child(gun_instance)	
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _physics_process(delta: float) -> void:
+	weapon_holder.rotation_degrees.y = fposmod(move_toward(weapon_holder.rotation_degrees.y,361,1), 360)
+	
+	$AnimationPlayer.play("normal") 
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.is_in_group("Player") and $MeshInstance3D.visible:
+		#if !body.weapon_inventory[weapon_index]:
+		$AudioStreamPlayer3D.play()
+		if !is_multiplayer_authority(): return
+		#body.add_weapon(weapon_index)
+		if body.weapon_inventory[weapon_index] == false:
+			body.weapon_inventory[weapon_index] = true
+			body.weapon_index = weapon_index
+			despawn()
+		
+		
+		
+func despawn():
+	$WeaponHolder.hide()
+	$MeshInstance3D.hide()
+	$Timer.start(30)
+	$Area3D/CollisionShape3D.call_deferred("set_disabled",true)
+func respawn():
+	$WeaponHolder.show()
+	$MeshInstance3D.show()
+	$Area3D/CollisionShape3D.call_deferred("set_disabled",false)
+
+
+func _on_timer_timeout() -> void:
+	respawn()

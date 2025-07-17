@@ -1,0 +1,37 @@
+[remap]
+
+importer="texture"
+type="CompressedTexture2D"
+uid="uid://ypktv70313kt"
+path="res://.godot/imported/GreaseDM_stonebrickwall.png-7ddc2e6b511576ae5eed9c0d358d3343.ctex"
+metadata={
+"vram_texture": false
+}
+generator_parameters={
+"md5": "df1e2f4006d67fd25e3dac4e2110b01b"
+}
+
+[deps]
+
+source_file="res://Graphics/Meshes/Maps/GreaseDM_stonebrickwall.png"
+dest_files=["res://.godot/imported/GreaseDM_stonebrickwall.png-7ddc2e6b511576ae5eed9c0d358d3343.ctex"]
+
+[params]
+
+compress/mode=1
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/normal_map=1
+compress/channel_pack=0
+mipmaps/generate=true
+mipmaps/limit=-1
+roughness/mode=1
+roughness/src_normal="res://Graphics/Meshes/Maps/DefaultDMtextured_stonewall.png"
+process/fix_alpha_border=true
+process/premult_alpha=false
+process/normal_map_invert_y=false
+process/hdr_as_srgb=false
+process/hdr_clamp_exposure=false
+process/size_limit=0
+detect_3d/compress_to=0

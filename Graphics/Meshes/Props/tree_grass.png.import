@@ -2,20 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cflrkleihlrpb"
+uid="uid://co0s6km5nqct4"
 path.s3tc="res://.godot/imported/tree_grass.png-c8800347789be13ab12498e6557fe135.s3tc.ctex"
+path.etc2="res://.godot/imported/tree_grass.png-c8800347789be13ab12498e6557fe135.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "526d0c137265613c1ecfb9acd2756798"
 }
 
 [deps]
 
 source_file="res://Graphics/Meshes/Props/tree_grass.png"
-dest_files=["res://.godot/imported/tree_grass.png-c8800347789be13ab12498e6557fe135.s3tc.ctex"]
+dest_files=["res://.godot/imported/tree_grass.png-c8800347789be13ab12498e6557fe135.s3tc.ctex", "res://.godot/imported/tree_grass.png-c8800347789be13ab12498e6557fe135.etc2.ctex"]
 
 [params]
 

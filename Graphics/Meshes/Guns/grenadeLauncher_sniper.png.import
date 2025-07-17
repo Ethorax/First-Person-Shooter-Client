@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://ctm5ta8kpis5"
 path.s3tc="res://.godot/imported/grenadeLauncher_sniper.png-5ab66ab6b8a930f1d5b817d9707c6a01.s3tc.ctex"
+path.etc2="res://.godot/imported/grenadeLauncher_sniper.png-5ab66ab6b8a930f1d5b817d9707c6a01.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Graphics/Meshes/Guns/grenadeLauncher_sniper.png"
-dest_files=["res://.godot/imported/grenadeLauncher_sniper.png-5ab66ab6b8a930f1d5b817d9707c6a01.s3tc.ctex"]
+dest_files=["res://.godot/imported/grenadeLauncher_sniper.png-5ab66ab6b8a930f1d5b817d9707c6a01.s3tc.ctex", "res://.godot/imported/grenadeLauncher_sniper.png-5ab66ab6b8a930f1d5b817d9707c6a01.etc2.ctex"]
 
 [params]
 

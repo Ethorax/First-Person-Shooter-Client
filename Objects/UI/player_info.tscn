@@ -1,20 +1,24 @@
-[gd_scene load_steps=4 format=3 uid="uid://wxwtmgp6yhce"]
+[gd_scene load_steps=5 format=3 uid="uid://wxwtmgp6yhce"]
 
-[ext_resource type="Script" path="res://Scripts/player_info.gd" id="1_35fab"]
+[ext_resource type="Script" uid="uid://1jjwylobaexh" path="res://Scripts/UI/player_info.gd" id="1_35fab"]
+[ext_resource type="Theme" uid="uid://bupxia2s67cmu" path="res://MainTheme.tres" id="1_t84pb"]
 
-[sub_resource type="Gradient" id="Gradient_i7ahv"]
+[sub_resource type="Gradient" id="Gradient_7dqhq"]
 offsets = PackedFloat32Array(1)
 colors = PackedColorArray(0.362829, 0.362829, 0.362829, 1)
 
-[sub_resource type="GradientTexture2D" id="GradientTexture2D_fxew2"]
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_34fhj"]
 resource_local_to_scene = true
-gradient = SubResource("Gradient_i7ahv")
+gradient = SubResource("Gradient_7dqhq")
 width = 128
 height = 32
 fill_from = Vector2(1, 1)
-fill_to = Vector2(1, 0.576923)
+fill_to = Vector2(1, 0.587927)
 
 [node name="PlayerInfo" type="HBoxContainer"]
+offset_right = 1056.0
+offset_bottom = 40.0
+theme = ExtResource("1_t84pb")
 script = ExtResource("1_35fab")
 
 [node name="Placing" type="Label" parent="."]
@@ -23,21 +27,25 @@ text = "#1"
 
 [node name="Color" type="TextureRect" parent="."]
 layout_mode = 2
-texture = SubResource("GradientTexture2D_fxew2")
+texture = SubResource("GradientTexture2D_34fhj")
 
 [node name="Name" type="Label" parent="."]
 custom_minimum_size = Vector2(400, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "PlayerName"
+horizontal_alignment = 1
 
 [node name="Frags" type="Label" parent="."]
 custom_minimum_size = Vector2(300, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "100"
 horizontal_alignment = 2
 
 [node name="Killstreak" type="Label" parent="."]
 custom_minimum_size = Vector2(200, 0)
 layout_mode = 2
+theme_override_font_sizes/font_size = 32
 text = "100"
 horizontal_alignment = 2

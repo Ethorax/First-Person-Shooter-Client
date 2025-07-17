@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dhbj0nqf5bku5"
 path.s3tc="res://.godot/imported/energygun_pistol.png-7a38ce8a990c9e7dc2a5f785765c9269.s3tc.ctex"
+path.etc2="res://.godot/imported/energygun_pistol.png-7a38ce8a990c9e7dc2a5f785765c9269.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Graphics/Meshes/Guns/energygun_pistol.png"
-dest_files=["res://.godot/imported/energygun_pistol.png-7a38ce8a990c9e7dc2a5f785765c9269.s3tc.ctex"]
+dest_files=["res://.godot/imported/energygun_pistol.png-7a38ce8a990c9e7dc2a5f785765c9269.s3tc.ctex", "res://.godot/imported/energygun_pistol.png-7a38ce8a990c9e7dc2a5f785765c9269.etc2.ctex"]
 
 [params]
 

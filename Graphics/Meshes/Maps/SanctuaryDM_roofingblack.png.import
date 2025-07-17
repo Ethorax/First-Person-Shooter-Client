@@ -2,28 +2,24 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dod3feufi7lay"
-path.s3tc="res://.godot/imported/SanctuaryDM_roofingblack.png-e56be24001030c38fa313ddca5ed4301.s3tc.ctex"
+uid="uid://b1rqxumr0njie"
+path="res://.godot/imported/SanctuaryDM_roofingblack.png-e56be24001030c38fa313ddca5ed4301.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
-"vram_texture": true
-}
-generator_parameters={
-"md5": "0c6a4398d2c53e627f14aacc4d5cb0d4"
+"vram_texture": false
 }
 
 [deps]
 
 source_file="res://Graphics/Meshes/Maps/SanctuaryDM_roofingblack.png"
-dest_files=["res://.godot/imported/SanctuaryDM_roofingblack.png-e56be24001030c38fa313ddca5ed4301.s3tc.ctex"]
+dest_files=["res://.godot/imported/SanctuaryDM_roofingblack.png-e56be24001030c38fa313ddca5ed4301.ctex"]
 
 [params]
 
-compress/mode=2
+compress/mode=1
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
-compress/normal_map=0
+compress/normal_map=1
 compress/channel_pack=0
 mipmaps/generate=true
 mipmaps/limit=-1

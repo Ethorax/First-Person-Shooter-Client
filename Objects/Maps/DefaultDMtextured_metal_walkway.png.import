@@ -2,20 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://d0cs7e0dsrg0w"
+uid="uid://by40s1oaayaol"
 path.s3tc="res://.godot/imported/DefaultDMtextured_metal_walkway.png-8f00858402ded763729d486cfcd38fb5.s3tc.ctex"
+path.etc2="res://.godot/imported/DefaultDMtextured_metal_walkway.png-8f00858402ded763729d486cfcd38fb5.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "2fa70947868170ff915990b3bdd6959a"
 }
 
 [deps]
 
 source_file="res://Objects/Maps/DefaultDMtextured_metal_walkway.png"
-dest_files=["res://.godot/imported/DefaultDMtextured_metal_walkway.png-8f00858402ded763729d486cfcd38fb5.s3tc.ctex"]
+dest_files=["res://.godot/imported/DefaultDMtextured_metal_walkway.png-8f00858402ded763729d486cfcd38fb5.s3tc.ctex", "res://.godot/imported/DefaultDMtextured_metal_walkway.png-8f00858402ded763729d486cfcd38fb5.etc2.ctex"]
 
 [params]
 

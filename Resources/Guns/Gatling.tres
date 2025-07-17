@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://i6dona6lsm5n"]
+
+[ext_resource type="AudioStream" uid="uid://ddcslotrxy6r5" path="res://Audio/SFX/Guns/PistolShot.wav" id="1_qe6n1"]
+[ext_resource type="Script" uid="uid://cwyjc88udnjdk" path="res://Resources/gun_data.gd" id="2_o4en0"]
+
+[resource]
+script = ExtResource("2_o4en0")
+name = "Gatling"
+ammo_type = "pistol"
+fire_rate = 0.1
+fire_sound = ExtResource("1_qe6n1")
+hold_pose = 2
+damage = 8
+spread = 1.0
+metadata/_custom_type_script = "uid://cwyjc88udnjdk"

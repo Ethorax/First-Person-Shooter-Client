@@ -1,0 +1,15 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=3 format=3 uid="uid://dqvwvijxirpki"]
+
+[ext_resource type="AudioStream" uid="uid://cr6idfwswjux8" path="res://Audio/SFX/Guns/Sword.wav" id="1_cmj4x"]
+[ext_resource type="Script" uid="uid://cwyjc88udnjdk" path="res://Resources/gun_data.gd" id="2_yjuan"]
+
+[resource]
+script = ExtResource("2_yjuan")
+name = "Sword"
+ammo_type = "sword"
+fire_rate = 1.0
+fire_sound = ExtResource("1_cmj4x")
+hold_pose = 0
+damage = 25
+spread = 0.0
+metadata/_custom_type_script = "uid://cwyjc88udnjdk"

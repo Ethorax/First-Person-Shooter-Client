@@ -2,20 +2,18 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dp4vvj2tfkkt3"
+uid="uid://by1mof74o7xtk"
 path.s3tc="res://.godot/imported/MountainDM_sheetmetal.png-ad206052f26e9cac180d3c5bd0327152.s3tc.ctex"
+path.etc2="res://.godot/imported/MountainDM_sheetmetal.png-ad206052f26e9cac180d3c5bd0327152.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
-}
-generator_parameters={
-"md5": "f5be55c25a9ee0c337061c670d597df6"
 }
 
 [deps]
 
 source_file="res://Graphics/Meshes/Maps/MountainDM_sheetmetal.png"
-dest_files=["res://.godot/imported/MountainDM_sheetmetal.png-ad206052f26e9cac180d3c5bd0327152.s3tc.ctex"]
+dest_files=["res://.godot/imported/MountainDM_sheetmetal.png-ad206052f26e9cac180d3c5bd0327152.s3tc.ctex", "res://.godot/imported/MountainDM_sheetmetal.png-ad206052f26e9cac180d3c5bd0327152.etc2.ctex"]
 
 [params]
 

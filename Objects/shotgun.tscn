@@ -83,8 +83,8 @@ tracks/2/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_0fhqk"]
 _data = {
-"RESET": SubResource("Animation_kxmke"),
-"fire": SubResource("Animation_6n3ha")
+&"RESET": SubResource("Animation_kxmke"),
+&"fire": SubResource("Animation_6n3ha")
 }
 
 [node name="Shotgun" type="Node3D"]
@@ -100,7 +100,7 @@ transform = Transform3D(1.4556, 0, 0, -2.38419e-07, 1.21451, 0, 0, 0, 1.08294, 3
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_0fhqk")
+&"": SubResource("AnimationLibrary_0fhqk")
 }
 
 [node name="Grip" type="Marker3D" parent="."]

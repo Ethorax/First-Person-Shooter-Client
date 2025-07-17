@@ -1,0 +1,47 @@
+extends RigidBody3D
+
+var shooter
+@export var SPEED  = 100
+@export var energy = 50
+@onready var explosion = preload("res://Objects/explosion.tscn")
+var damage : int = 10
+
+var direct = true
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	
+	apply_impulse((transform.basis * Vector3(0,0,-1)).normalized() * 30)
+
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+
+
+func _on_timer_timeout() -> void:
+	print("explosion")
+	var e = explosion.instantiate()
+	
+	e.scale = e.scale *1.5
+	e.player_id = str(shooter)
+	get_parent().add_child(e)
+	e.damage = damage
+	e.global_position = global_position
+	queue_free()
+
+
+func _on_area_3d_body_entered(body: Node3D) -> void:
+	if body.name != str(shooter) and direct:
+		if body.is_in_group("Player"):
+			print("explosion")
+			var e = explosion.instantiate()
+			
+			e.scale = e.scale *1.5
+			e.player_id = str(shooter)
+			e.damage = damage
+			get_parent().add_child(e)
+			e.global_position = global_position
+			queue_free()
+	elif body.name != str(shooter):
+		direct = false

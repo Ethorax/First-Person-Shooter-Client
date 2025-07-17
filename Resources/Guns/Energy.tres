@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=4 format=3 uid="uid://br0sl4chf8lxx"]
+
+[ext_resource type="AudioStream" uid="uid://cxhfyvb3f07vu" path="res://Audio/SFX/Guns/energygun.wav" id="1_8pwx8"]
+[ext_resource type="PackedScene" uid="uid://5250jvptmxac" path="res://Objects/energy_shot.tscn" id="2_iidbe"]
+[ext_resource type="Script" uid="uid://cwyjc88udnjdk" path="res://Resources/gun_data.gd" id="3_35whv"]
+
+[resource]
+script = ExtResource("3_35whv")
+name = "Energy"
+ammo_type = "energy"
+fire_rate = 0.5
+projectile = ExtResource("2_iidbe")
+fire_sound = ExtResource("1_8pwx8")
+hold_pose = 1
+damage = 25
+spread = 0.5
+metadata/_custom_type_script = "uid://cwyjc88udnjdk"

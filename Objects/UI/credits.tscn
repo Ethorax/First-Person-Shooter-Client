@@ -1,6 +1,7 @@
-[gd_scene load_steps=2 format=3 uid="uid://b1au0a1oeb275"]
+[gd_scene load_steps=3 format=3 uid="uid://b1au0a1oeb275"]
 
-[ext_resource type="Script" path="res://Scripts/credits.gd" id="1_v2twb"]
+[ext_resource type="Theme" uid="uid://bupxia2s67cmu" path="res://MainTheme.tres" id="1_ijgdg"]
+[ext_resource type="Script" uid="uid://dlls72sbapu6" path="res://Scripts/UI/credits.gd" id="1_v2twb"]
 
 [node name="Credits" type="Control"]
 layout_mode = 3
@@ -9,34 +10,32 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("1_ijgdg")
 script = ExtResource("1_v2twb")
 
 [node name="Panel" type="Panel" parent="."]
-modulate = Color(0, 0, 0, 1)
 layout_mode = 0
-offset_left = 54.0
-offset_top = 40.0
-offset_right = 2258.0
-offset_bottom = 1243.0
+offset_right = 2306.0
+offset_bottom = 1292.0
 
-[node name="Panel2" type="Panel" parent="."]
-modulate = Color(0, 0, 0, 1)
+[node name="Panel" type="Panel" parent="Panel"]
 layout_mode = 0
-offset_left = 54.0
-offset_top = 40.0
-offset_right = 2258.0
-offset_bottom = 1243.0
+offset_left = 572.0
+offset_top = 99.0
+offset_right = 1719.0
+offset_bottom = 1186.0
 
 [node name="RichTextLabel" type="RichTextLabel" parent="."]
 layout_mode = 0
 offset_left = 54.0
-offset_top = 40.0
+offset_top = 97.0
 offset_right = 2261.0
-offset_bottom = 1239.0
+offset_bottom = 1296.0
 theme_override_font_sizes/normal_font_size = 82
 bbcode_enabled = true
-text = "[center][font_size=82][i]THOUSAND YEAR TOURNEY[/i]
-[font_size=42] An Ethorax Game
+text = "
+[center][font_size=82]THOUSAND YEAR TOURNEY
+[font_size=70] An Ethorax Game
 
 Programming: Ethorax
 
@@ -46,7 +45,10 @@ Voicework: Merryachi
 
 Modeling: Ethorax
 
-QA: Willpoptomus"
+QA: Willpoptomus
+
+Mapping: Ethorax and Sean Kelly"
+autowrap_mode = 0
 
 [node name="X" type="Button" parent="."]
 layout_mode = 0

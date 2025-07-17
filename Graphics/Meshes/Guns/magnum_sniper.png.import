@@ -4,8 +4,9 @@ importer="texture"
 type="CompressedTexture2D"
 uid="uid://dnhsnbvtve4ru"
 path.s3tc="res://.godot/imported/magnum_sniper.png-17f9f2e3c95f2afd088d05f665d6280d.s3tc.ctex"
+path.etc2="res://.godot/imported/magnum_sniper.png-17f9f2e3c95f2afd088d05f665d6280d.etc2.ctex"
 metadata={
-"imported_formats": ["s3tc_bptc"],
+"imported_formats": ["s3tc_bptc", "etc2_astc"],
 "vram_texture": true
 }
 generator_parameters={
@@ -15,7 +16,7 @@ generator_parameters={
 [deps]
 
 source_file="res://Graphics/Meshes/Guns/magnum_sniper.png"
-dest_files=["res://.godot/imported/magnum_sniper.png-17f9f2e3c95f2afd088d05f665d6280d.s3tc.ctex"]
+dest_files=["res://.godot/imported/magnum_sniper.png-17f9f2e3c95f2afd088d05f665d6280d.s3tc.ctex", "res://.godot/imported/magnum_sniper.png-17f9f2e3c95f2afd088d05f665d6280d.etc2.ctex"]
 
 [params]
 

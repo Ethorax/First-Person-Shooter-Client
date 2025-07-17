@@ -1,0 +1,17 @@
+[gd_resource type="Resource" script_class="GunData" load_steps=4 format=3 uid="uid://dnb0uct8e35km"]
+
+[ext_resource type="AudioStream" uid="uid://ch0icnlc2sqtq" path="res://Audio/SFX/Guns/bazooka.wav" id="1_jchr1"]
+[ext_resource type="Script" uid="uid://cwyjc88udnjdk" path="res://Resources/gun_data.gd" id="2_np17h"]
+[ext_resource type="PackedScene" uid="uid://ubmpdiyuukdx" path="res://Objects/rocket.tscn" id="2_vp0lu"]
+
+[resource]
+script = ExtResource("2_np17h")
+name = "Bazooka"
+ammo_type = "bazooka"
+fire_rate = 1.0
+projectile = ExtResource("2_vp0lu")
+fire_sound = ExtResource("1_jchr1")
+hold_pose = 0
+damage = 50
+spread = 0.0
+metadata/_custom_type_script = "uid://cwyjc88udnjdk"

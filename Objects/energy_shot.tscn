@@ -1,6 +1,6 @@
 [gd_scene load_steps=4 format=3 uid="uid://5250jvptmxac"]
 
-[ext_resource type="Script" path="res://Scripts/energy_shot.gd" id="1_n8dw7"]
+[ext_resource type="Script" uid="uid://d0cyf6mj5a77b" path="res://Scripts/Weapons/energy_shot.gd" id="1_n8dw7"]
 [ext_resource type="Texture2D" uid="uid://5dfr1mu28icm" path="res://Graphics/GunTextures/energyshot.png" id="1_p26xc"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_8h65b"]
@@ -10,7 +10,7 @@ script = ExtResource("1_n8dw7")
 
 [node name="Sprite3D" type="Sprite3D" parent="."]
 transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, 0, 0, 0)
-modulate = Color(0.668699, 0.0624019, 0.240471, 0.819608)
+modulate = Color(9.392, 0.062, 0.24, 0.82)
 billboard = 1
 shaded = true
 texture = ExtResource("1_p26xc")

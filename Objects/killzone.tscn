@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://bi3454wwq2tld"]
 
-[ext_resource type="Script" path="res://Scripts/killzone.gd" id="1_duskd"]
+[ext_resource type="Script" uid="uid://crwf08bqjdmek" path="res://Scripts/Props/killzone.gd" id="1_duskd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_t4ysg"]
 
