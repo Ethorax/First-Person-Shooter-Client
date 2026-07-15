@@ -16,7 +16,7 @@ warnings/check_invalid_track_paths=false
 
 config/name="MultiplayerTest"
 run/main_scene="res://Objects/Client/client.tscn"
-config/features=PackedStringArray("4.3", "Forward Plus")
+config/features=PackedStringArray("4.5", "Forward Plus")
 boot_splash/bg_color=Color(0.169133, 0.476951, 0.123943, 1)
 boot_splash/image="res://Graphics/UI/splashcentered.png"
 config/icon="res://Graphics/bullethole.png"
@@ -111,7 +111,7 @@ hide_hud={
 
 textures/canvas_textures/default_texture_filter=0
 lights_and_shadows/directional_shadow/size=8192
+viewport/hdr_2d=true
 textures/decals/filter=0
 textures/light_projectors/filter=0
 environment/screen_space_reflection/roughness_quality=3
-viewport/hdr_2d=true
